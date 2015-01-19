@@ -1,0 +1,8 @@
+#name : preloadhook
+# --
+${2:TYPE} ${1:NAME}(${3:ARGS})
+{
+    $2 (*orig)(${3:$(get-c-arg-types yas-text)}) = ($2(*)(${3:$(get-c-arg-types yas-text)}))dlsym(RTLD_NEXT, "$1");
+    $0
+    return orig(${3:$(get-c-arg-names yas-text)});
+}

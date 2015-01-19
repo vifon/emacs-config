@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name : print
+# --
+System.out.println($1)

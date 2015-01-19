@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : printf
+# contributor : joaotavora
+# --
+printf("${1:%d}\\n"${1:$(if (string-match "%" yas-text) ", " "\);")
+}$2${1:$(if (string-match "%" yas-text) "\);" "")}

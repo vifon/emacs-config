@@ -1,0 +1,4 @@
+# name: qw(...)
+# key: qw
+# --
+"${1:string}".split()

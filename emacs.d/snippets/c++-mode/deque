@@ -1,0 +1,3 @@
+#name : std::deque<...>;
+# --
+std::deque<${1:T}>$0;

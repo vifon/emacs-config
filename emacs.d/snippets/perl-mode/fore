@@ -1,0 +1,5 @@
+#name : foreach ... { ... }
+# --
+for${1:$(if (> (length yas-text) 0) " ")}${1:} (${2:@array}) {
+    ${3:# body...}
+}

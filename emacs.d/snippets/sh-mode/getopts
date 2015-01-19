@@ -1,0 +1,9 @@
+#name : getopts
+# --
+while getopts "$1" ${2:ARG}; do
+    case "$$2" in
+        ?)
+            ;;
+    esac
+done
+shift $[$OPTIND-1]

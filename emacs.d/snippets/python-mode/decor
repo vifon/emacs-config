@@ -1,0 +1,8 @@
+#name : decorator
+#expand-env: ((yas-indent-line 'fixed))
+# --
+def ${1:decorator}(fun):
+    def wrap(${2:*nargs, **kwargs}):
+        $0
+        return fun($2)
+    return wrap

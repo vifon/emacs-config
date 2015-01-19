@@ -1,0 +1,3 @@
+#name : str[strlen(str)-1] = '\0'
+# --
+${1:str}[strlen($1)-1] = '\0'

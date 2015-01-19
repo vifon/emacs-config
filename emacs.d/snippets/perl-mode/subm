@@ -1,0 +1,6 @@
+#name : sub ... { my $self = shift; ... }
+# --
+sub ${1:method_name} {
+    my $self = shift;
+    $0
+}

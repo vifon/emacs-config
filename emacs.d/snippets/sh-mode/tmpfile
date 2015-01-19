@@ -1,0 +1,7 @@
+#name : tmpfile
+# --
+${1:finish}() {
+    rm -f "\$${2:TMP}"
+    exit
+}; trap $1 EXIT INT TERM
+$2=\`mktemp -t ${3:prefix}.XXXXXX --tmpdir=/tmp\`

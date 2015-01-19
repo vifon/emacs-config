@@ -1,0 +1,3 @@
+#name : ... foreach ...
+# --
+${1:expression} for ${2:@array};

@@ -1,0 +1,6 @@
+(load "~/.emacs.d/my-fixes/pkgbuild-template.el")
+(load "~/.emacs.d/my-fixes/lineup.el")
+(load "~/.emacs.d/my-fixes/fuck-you-slime.el")
+(load "~/.emacs.d/my-fixes/winner-regex.el")
+(load "~/.emacs.d/my-fixes/disable-suspend.el")
+(provide 'my-fixes)

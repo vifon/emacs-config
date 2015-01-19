@@ -1,0 +1,5 @@
+#name : for ( auto& ... : ... ) { ... }
+# --
+for (auto ${1:i} : ${2:container}) {
+    $0
+}
