@@ -270,11 +270,12 @@
                         (interactive "P")
                         (if arg
                             (phi-search)
-                            (isearch-forward)))
-                      (defun phi-search-backward-dwim (arg) (interactive "P")
-                             (if arg
-                                 (phi-search-backward)
-                                 (isearch-backward))))))
+                            (call-interactively 'isearch-forward)))
+                      (defun phi-search-backward-dwim (arg)
+                        (interactive "P")
+                        (if arg
+                            (phi-search-backward)
+                            (call-interactively 'isearch-backward))))))
   :config (progn
             (define-key mc/keymap (kbd "C-s") 'phi-search)
             (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))

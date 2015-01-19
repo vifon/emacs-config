@@ -8,6 +8,11 @@
 (require 'helm-ls-git)
 (require 'helm-help)
 
+(use-package helm-swoop
+  :defer t
+  :commands helm-swoop-from-isearch
+  :init (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch))
+
 (setq helm-locate-command "locate %s -e -A %s")
 (setq helm-buffer-max-length 40)
 
