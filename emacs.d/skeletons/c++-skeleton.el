@@ -3,7 +3,11 @@
   "// File: "(file-name-nondirectory (buffer-file-name))"\n"
   (let ((header (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".hpp")))
     (if (file-exists-p header)
-        (concat "\n#include \"" header "\"\n\n")
+        (concat "\n#include \"" header "\"\n\n"
+                (when (progn
+                        (setq v1 (skeleton-read "Namespace: "))
+                        (not (string= "" v1)))
+                  (concat "namespace " v1 " {\n\n")))
         (concat "\n#include <iostream>\n"
                 "#include <string>\n\n"
 
@@ -12,7 +16,9 @@
     _
     (if (not (file-exists-p (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".hpp")))
         (concat "\n    return 0;\n"
-                "}\n")))
+                "}\n")
+        (when (not (string= "" v1))
+          (concat "\n\n} // namespace " v1))))
 
 
 (define-skeleton c-skeleton
@@ -36,7 +42,12 @@
   "// File: "(file-name-nondirectory (buffer-file-name))"\n"
   "#ifndef _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n"
   "#define _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n\n"
+  (and (setq v1 (skeleton-read "Namespace: ")) nil)
+  (when (not (string= "" v1))
+    (concat "namespace " v1 " {\n\n"))
   _
+  (when (not (string= "" v1))
+    (concat "\n\n} // namespace " v1))
   "\n\n"
   "#endif\n"
   )
