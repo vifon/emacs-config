@@ -379,6 +379,12 @@
               skeleton-complete-mode-map (kbd "C-M-/")
               'skeleton-expand-symbols)))
 
+(use-package sx
+  :defer t
+  :init (use-package sx-search
+          :defer t
+          :commands sx-search))
+
 (use-package ace-jump-mode
   :bind ("C-c j" . ace-jump-mode)
   :config (setq ace-jump-mode-scope 'frame))
