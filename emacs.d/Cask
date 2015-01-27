@@ -111,6 +111,7 @@
 (depends-on "sentence-highlight")
 (depends-on "simple-httpd")
 (depends-on "skeleton-complete" :git "https://github.com/baohaojun/skeleton-complete")
+(depends-on "skeletor")
 (depends-on "smex")
 (depends-on "solarized-theme")
 (depends-on "sos")

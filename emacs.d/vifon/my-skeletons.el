@@ -12,4 +12,12 @@
 (load "~/.emacs.d/skeletons/python-skeleton.el")
 (load "~/.emacs.d/skeletons/rust-skeleton.el")
 (load "~/.emacs.d/skeletons/tex-skeleton.el")
+
+(use-package skeletor
+  :defer t
+  :config (progn
+            (setq skeletor-project-directory "~/new-projects/")
+            (skeletor-define-template "c++-project"
+              :title "C++ Project")))
+
 (provide 'my-skeletons)
