@@ -97,6 +97,10 @@
             (define-key hs-minor-mode-map (kbd "<M-up>") 'hs-hide-level)
             (define-key hs-minor-mode-map (kbd "<M-down>") 'hs-show-all)))
 
+(use-package yafolding
+  :defer t
+  :init (add-hook 'prog-mode-hook #'yafolding-mode))
+
 (use-package hideshow-org
   :commands hs-org/minor-mode)
 
