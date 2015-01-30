@@ -49,10 +49,10 @@
 (add-hook 'semantic-symref-results-mode-hook
           '(lambda () (toggle-read-only 1)))
 
-(add-hook 'log-edit-mode-hook '(lambda () (ispell-change-dictionary "en")))
+(add-hook 'log-edit-mode-hook '(lambda () (ispell-change-dictionary "english")))
 
 (add-hook 'mail-mode-hook '(lambda ()
-                             (ispell-change-dictionary "pl")
+                             (ispell-change-dictionary "polish")
                              (flyspell-mode)))
 
 
