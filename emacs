@@ -367,17 +367,12 @@
                              (cppcm-get-exe-path-current-buffer)))))
   :config (setq cppcm-write-flymake-makefile nil))
 
-(use-package skeleton-complete
-  :diminish skeleton-complete-mode
-  :load-path "~/.emacs.d/modules/skeleton-complete"
+(use-package bbyac
+  :diminish bbyac-mode
   :config (progn
-            (skeleton-complete-global-mode 1)
-            (define-key
-              skeleton-complete-mode-map (kbd "M-?")
-              'skeleton-expand-partial-lines)
-            (define-key
-              skeleton-complete-mode-map (kbd "C-M-/")
-              'skeleton-expand-symbols)))
+            (bbyac-global-mode 1)
+            (define-key bbyac-mode-map (kbd "M-?") 'bbyac-expand-partial-lines)
+            (define-key bbyac-mode-map (kbd "C-M-/") 'bbyac-expand-symbols)))
 
 (use-package sx
   :defer t
