@@ -106,7 +106,7 @@
         ("n" "note" entry (file "notes.org")
          "* %? :NOTE:\n  %U\n  %a\n" :empty-lines 1)
 
-        ("p" "project" entry (file+headline "" "Projects")
+        ("p" "project" entry (file+headline "projects.org" "Ongoing")
          "* %? [/] :PROJECT:\n  %U\n" :empty-lines 1)
 
         ("j" "journal" entry (file+datetree "journal.org.gpg")
