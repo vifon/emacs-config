@@ -65,6 +65,8 @@
             (copy-from-above-command (if (consp arg)
                                          nil
                                          (or arg 1)))))
+(use-package zop-to-char
+  :bind (("M-Z" . zop-up-to-char)))
 
 (global-set-key (kbd "C-x M-!") 'find-file-path)
 (global-set-key (kbd "C-x M-j") 'dired-jump)
