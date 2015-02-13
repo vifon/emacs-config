@@ -50,8 +50,10 @@
 (setq org-default-notes-file (concat org-directory "/gtd.org"))
 
 (setq org-refile-targets '((org-agenda-files :tag . "PROJECT")
+                           (org-agenda-files :tag . "CATEGORY")
                            (org-agenda-files :level . 1)
                            (nil :tag . "PROJECT")
+                           (nil :tag . "CATEGORY")
                            (nil :level . 1)))
 (setq org-agenda-skip-scheduled-if-done nil
       org-agenda-skip-deadline-if-done t
