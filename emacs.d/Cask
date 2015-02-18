@@ -50,6 +50,7 @@
 (depends-on "flx")
 (depends-on "flx-ido")
 (depends-on "flycheck")
+(depends-on "flycheck-rust")
 (depends-on "geiser")
 (depends-on "ggtags")
 (depends-on "git-commit-mode")

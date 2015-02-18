@@ -391,6 +391,14 @@
                              (cppcm-get-exe-path-current-buffer)))))
   :config (setq cppcm-write-flymake-makefile nil))
 
+(ignore-errors
+  (use-package racer
+    :load-path "~/src/racer/editors"
+    :config (progn
+              (setq racer-rust-src-path "/home/vifon/src/rust/src")
+              (setq racer-cmd "racer")
+              (eval-after-load "rust-mode" '(require 'racer)))))
+
 (use-package bbyac
   :diminish bbyac-mode
   :config (progn
