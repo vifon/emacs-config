@@ -45,7 +45,6 @@
 
 (add-hook 'eshell-mode-hook 'eshell-hooks)
 
-(global-set-key (kbd "C-c e") 'eshell)
 (global-set-key (kbd "C-z") 'eshell)
 (global-set-key (kbd "C-x 4 C-z") '(lambda (&optional arg)
                                      (interactive "P")
