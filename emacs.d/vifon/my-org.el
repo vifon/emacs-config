@@ -139,19 +139,13 @@
            '((sh . t)
              (ditaa . t))))
 
-(defun my-find-existing-path (&rest path-list)
-  (if path-list
-      (let ((path (car path-list)))
-        (if (file-exists-p path)
-            path
-            (apply #'my-find-existing-path (cdr path-list))))
-      nil))
 (use-package ob-ditaa
   :defer t
   :config (unless (file-exists-p org-ditaa-jar-path)
             (setq org-ditaa-jar-path
-                  (my-find-existing-path
-                   "/usr/share/ditaa/ditaa.jar"
-                   "/usr/share/java/ditaa/ditaa-0_9.jar"))))
+                  (cl-find-if
+                   #'file-exists-p
+                   '("/usr/share/ditaa/ditaa.jar"
+                     "/usr/share/java/ditaa/ditaa-0_9.jar")))))
 
 (provide 'my-org)
