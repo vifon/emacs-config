@@ -55,9 +55,9 @@
                            (nil :tag . "PROJECT")
                            (nil :tag . "CATEGORY")
                            (nil :level . 1)))
-(setq org-agenda-skip-scheduled-if-done nil
+(setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
-      org-agenda-skip-timestamp-if-done nil)
+      org-agenda-skip-timestamp-if-done t)
 (setq org-use-tag-inheritance nil)
 (setq org-export-with-toc nil)
 (setq org-tags-exclude-from-inheritance '("PROJECT" "ATTACH"))
