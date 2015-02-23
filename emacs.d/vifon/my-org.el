@@ -1,7 +1,7 @@
 (use-package org
   :config (progn
             (define-key org-mode-map (kbd "<C-tab>") nil)
-            (define-key org-mode-map (kbd "C-c C-x h") 'helm-org-headlines)))
+            (define-key org-mode-map (kbd "C-c C-x h") 'helm-org-in-buffer-headings)))
 
 (use-package org-attach
   :commands (org-attach-expand-link org-attach-attach)
