@@ -552,10 +552,11 @@
 
 (add-hook 'after-init-hook '(lambda () (interactive) (load-theme 'zenburn)))
 (ignore-errors
- (let ((my-font "Monaco")
-       (my-size "11"))
-   (add-to-list 'default-frame-alist `(font . ,(concat my-font "-" my-size)))
-   (set-frame-font (concat my-font "-" my-size) nil t)))
+ (let ((font-name "DejaVu Sans Mono")
+       (font-size "11"))
+   (let ((font (concat font-name "-" font-size)))
+     (add-to-list 'default-frame-alist `(font . ,font))
+     (set-frame-font font nil t))))
 
 
 (ignore-errors
