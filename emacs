@@ -507,6 +507,14 @@
             (define-key projectile-command-map (kbd "C-b") 'helm-projectile-buffers)
             (define-key projectile-command-map [?h] 'helm-browse-project)))
 
+(use-package helm-ag
+  :bind ("C-c p s S" . projectile-helm-ag)
+  :config (progn
+            (require 'projectile)
+            (defun projectile-helm-ag ()
+             (interactive)
+             (helm-ag (projectile-project-root)))))
+
 (use-package sane-term
   :init (setq sane-term-shell-command "/bin/zsh")
   :config (add-hook 'term-mode-hook
