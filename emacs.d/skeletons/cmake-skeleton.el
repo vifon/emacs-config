@@ -88,7 +88,7 @@
      "\n"
      "add_executable("name" ${"name"_SOURCES})\n"
      "#target_link_libraries("name")\n"
-     "qt5_use_modules("name" Core Guid Widgets)\n"
+     "qt5_use_modules("name" Core Gui Widgets)\n"
      )) _ )
 
 (define-auto-insert "/CMakeLists\\.txt$" 'cmake-skeleton)
