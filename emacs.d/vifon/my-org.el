@@ -55,9 +55,11 @@
 
 (setq org-refile-targets '((org-agenda-files :tag . "PROJECT")
                            (org-agenda-files :tag . "CATEGORY")
+                           (org-agenda-files :tag . "GROUP")
                            (org-agenda-files :level . 1)
                            (nil :tag . "PROJECT")
                            (nil :tag . "CATEGORY")
+                           (nil :tag . "GROUP")
                            (nil :level . 1)))
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
