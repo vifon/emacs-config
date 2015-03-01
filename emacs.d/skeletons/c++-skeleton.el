@@ -40,9 +40,15 @@
 (define-skeleton c++-header-skeleton
   "" ""
   "// File: "(file-name-nondirectory (buffer-file-name))"\n"
-  "#ifndef _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n"
-  "#define _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n\n"
   (and (setq v1 (skeleton-read "Namespace: ")) nil)
+  (and (setq v2 (upcase
+             (concat
+              (unless (string= "" v1)
+                (concat v1 "_"))
+              (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))))
+       nil)
+  "#ifndef _h_" v2 "_\n"
+  "#define _h_" v2 "_\n\n"
   (when (not (string= "" v1))
     (concat "namespace " v1 " {\n\n"))
   _
