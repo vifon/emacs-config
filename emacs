@@ -99,7 +99,12 @@
 
 (use-package yafolding
   :defer t
-  :init (add-hook 'prog-mode-hook #'yafolding-mode))
+  :init (add-hook 'prog-mode-hook #'yafolding-mode)
+  :config (defadvice yafolding-go-parent-element
+              (around yafolding-python-fix activate)
+            (if (eq major-mode 'python-mode)
+                (python-nav-backward-up-list)
+                ad-do-it)))
 
 (use-package hideshow-org
   :commands hs-org/minor-mode)
