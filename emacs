@@ -556,6 +556,7 @@
 
 
 (add-hook 'after-init-hook '(lambda () (interactive) (load-theme 'zenburn)))
+(setq frame-background-mode 'dark)
 (ignore-errors
  (let ((font-name "DejaVu Sans Mono")
        (font-size "11"))
