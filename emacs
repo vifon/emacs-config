@@ -203,7 +203,8 @@
   :bind (([remap comment-dwim] . evil-nerd-commenter-dwim)))
 
 (use-package neotree
-  :bind ("C-c b" . neotree-toggle))
+  :bind (("C-c b" . neotree-toggle)
+         ("C-c B" . neotree-find)))
 
 (use-package magit
   :diminish magit-auto-revert-mode
