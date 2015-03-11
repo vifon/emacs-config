@@ -25,7 +25,10 @@
             (cd "../")
             (when (file-directory-p "build")
               (cd "build")))))
-    (start-process "my-urxvt" nil "urxvtcd")))
+    (if (window-system)
+        (start-process "my-urxvt" nil "urxvtcd")
+        (start-process "my-tmux" nil
+                       "tmux" "split-window" "-h"))))
 
 (global-set-key (kbd "C-c x") 'run-term)
 (global-set-key (kbd "M-o") 'run-term)
