@@ -47,8 +47,8 @@
 (use-package ido
   :init (progn
           (setq ido-vertical-define-keys nil)
-          (ido-everywhere 1)
           (ido-mode 1)
+          (ido-everywhere 1)
           (flx-ido-mode 1)
           (ido-vertical-mode 1))
   :config (progn
@@ -348,7 +348,6 @@
                                      company-semantic
                                      ;; company-clang
                                      company-xcode
-                                     company-ropemacs
                                      company-cmake
                                      company-capf
                                      (company-gtags
