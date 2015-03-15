@@ -25,6 +25,8 @@
                   key-chord-one-key-delay  0.070)
             (key-chord-mode 1)))
 
+(use-package hydra)
+
 
 (require 'my-hooks)
 (require 'my-skeletons)
@@ -131,30 +133,6 @@
 
 (use-package tiny
   :bind ("C-c M-y" . tiny-expand))
-
-(use-package hydra
-  :bind (("C-c e" . vydra/body))
-  :config (progn
-            (defhydra vydra
-                (global-map "C-c e")
-              "vi-hydra"
-
-              ("h" backward-char "left")
-              ("j" next-line "down")
-              ("k" previous-line "up")
-              ("l" forward-char "right")
-
-              ("f" scroll-up-command "PgDn")
-              ("b" scroll-down-command "PgUp")
-
-              ("v" er/expand-region "select")
-
-              ("0" move-beginning-of-line-dwim "BOL")
-              ("a" move-beginning-of-line-dwim "BOL")
-              ("e" move-end-of-line "EOL")
-
-              ("i" nil "quit")
-              ("q" nil "quit"))))
 
 (use-package undo-tree
   :diminish undo-tree-mode
