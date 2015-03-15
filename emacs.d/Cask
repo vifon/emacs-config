@@ -16,6 +16,7 @@
 (depends-on "autopair")
 (depends-on "bbyac")
 (depends-on "bind-key")
+(depends-on "bm")
 (depends-on "browse-kill-ring")
 (depends-on "c-eldoc")
 (depends-on "cdlatex")

@@ -214,8 +214,6 @@
   :demand t
   :bind (("<f10>"   . highlight-symbol-at-point)
          ("<C-f10>" . highlight-symbol-reset)
-         ("C-c w"   . highlight-symbol-at-point)
-         ("C-c W"   . highlight-symbol-reset)
          ("<f11>"   . highlight-symbol-prev)
          ("M-p"     . highlight-symbol-prev)
          ("<f12>"   . highlight-symbol-next)
@@ -225,6 +223,22 @@
             (interactive)
             (highlight-symbol-remove-all)
             (setq highlight-symbol-color-index 0)))
+
+(use-package bm
+  :config (global-set-key (kbd "M-S-SPC")
+                          (defhydra bookmark-hydra
+                            (global-map "M-S-SPC")
+                            "Bookmarks"
+
+                            ("n" bm-next "next")
+                            ("p" bm-previous "prev")
+
+                            ("SPC" bm-toggle "mark")
+
+                            ("l" bm-show "list" :color blue)
+
+                            ("C" bm-remove-all-current-buffer "clear" :color blue)
+                            ("q" nil "quit"))))
 
 (use-package sentence-highlight
   :commands sentence-highlight-mode)
