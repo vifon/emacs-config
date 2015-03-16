@@ -124,7 +124,7 @@
 
 (global-set-key (kbd "C-c e")
                 (defhydra vydra
-                  (global-map "C-c e")
+                  (global-map "C-c e" :color pink)
                   "vi-hydra"
 
                   ("h" backward-char "left")
