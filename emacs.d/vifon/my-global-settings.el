@@ -1,7 +1,3 @@
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
-
-
 (global-subword-mode 1)
 (electric-pair-mode 1)
 (electric-indent-mode 1)

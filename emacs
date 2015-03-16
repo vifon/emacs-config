@@ -1,6 +1,8 @@
 (add-to-list 'load-path "~/.emacs.d/my-fixes")
 (add-to-list 'load-path "~/.emacs.d/vifon")
 (add-to-list 'load-path "~/.emacs.d/modules")
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
 (require 'my-compat)
 
 ;; (setq package-archives
