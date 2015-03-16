@@ -225,20 +225,38 @@
             (setq highlight-symbol-color-index 0)))
 
 (use-package bm
-  :config (global-set-key (kbd "M-S-SPC")
-                          (defhydra bookmark-hydra
-                            (global-map "M-S-SPC")
-                            "Bookmarks"
+  :bind (("M-S-SPC" . bookmark-hydra/body)
+         ("C-c w" . bookmark-hydra/body))
+  :config (progn
+            (defun bm-toggle-fringe ()
+              (interactive)
+              (let ((bm-highlight-style 'bm-highlight-only-fringe))
+                (call-interactively 'bm-toggle)))
+            (defun bm-bookmark-regexp-fringe ()
+              (interactive)
+              (let ((bm-highlight-style 'bm-highlight-only-fringe))
+                (call-interactively 'bm-bookmark-regexp)))
+            (defhydra bookmark-hydra
+              (:color pink
+               :hint nil)
+              "Bookmarks"
 
-                            ("n" bm-next "next")
-                            ("p" bm-previous "prev")
+              ("n" bm-next "next")
+              ("p" bm-previous "prev")
 
-                            ("SPC" bm-toggle "mark")
+              ("M-SPC" bm-toggle "mark line")
+              ("SPC" bm-toggle-fringe "mark")
 
-                            ("l" bm-show "list" :color blue)
+              ("r" bm-bookmark-regexp-fringe "regex")
+              ("R" bm-bookmark-regexp "regex line")
 
-                            ("C" bm-remove-all-current-buffer "clear" :color blue)
-                            ("q" nil "quit"))))
+              ("a" bm-bookmark-annotate "annotate")
+
+              ("l" bm-show "list" :color blue)
+              ("L" bm-show-all "list all" :color blue)
+
+              ("C" bm-remove-all-current-buffer "clear" :color blue)
+              ("q" nil "quit"))))
 
 (use-package sentence-highlight
   :commands sentence-highlight-mode)
