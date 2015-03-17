@@ -6,7 +6,7 @@
 
 (define-skeleton org-latex-skeleton
   "" ""
+  "#+LATEX_HEADER: \\usepackage{indentfirst}\n"
   "#+BEGIN_LATEX\n"
-  "\\setlength{\\parindent}{0em}\n"
   "\\linespread{1.3}\n"
   "#+END_LATEX\n")
