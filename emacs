@@ -227,6 +227,7 @@
             (setq highlight-symbol-color-index 0)))
 
 (use-package bm
+  :commands (bm-load-and-restore)
   :bind (("M-S-SPC" . bookmark-hydra/body)
          ("C-c w" . bookmark-hydra/body))
   :config (progn
