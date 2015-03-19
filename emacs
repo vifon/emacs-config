@@ -114,12 +114,12 @@
   :commands hs-org/minor-mode)
 
 (use-package dired-x
-  :pre-load (setq dired-x-hands-off-my-keys t))
+  :init (setq dired-x-hands-off-my-keys t))
 
 (use-package yasnippet
+  :defer 7
   :diminish yas-minor-mode
   :commands yas-global-mode
-  :idle (yas-global-mode 1)
   :init (progn (setq yas-trigger-key "TAB"
                      yas-snippet-dirs '("~/.emacs.d/snippets")
                      yas-prompt-functions '(yas/dropdown-prompt
@@ -129,9 +129,11 @@
                                             yas/no-prompt)
                      auto-mode-alist (cons '("emacs\.d/snippets/" . snippet-mode)
                                            auto-mode-alist)))
-  :config (use-package auto-yasnippet
-            :bind (("C-c Y" . aya-create)
-                   ("C-c y" . aya-expand))))
+  :config (progn
+            (use-package auto-yasnippet
+              :bind (("C-c Y" . aya-create)
+                     ("C-c y" . aya-expand)))
+            (yas-global-mode 1)))
 
 (use-package tiny
   :bind ("C-c M-y" . tiny-expand))
@@ -334,7 +336,8 @@
   :bind ("C-;" . iedit-mode))
 
 (use-package vcursor
-  :pre-load (setq vcursor-key-bindings t)
+  :defer t
+  :init (setq vcursor-key-bindings t)
   :config (global-set-key (kbd "C-M-<tab>") 'vcursor-swap-point))
 
 (use-package expand-region
@@ -354,8 +357,8 @@
                                     '(("semantic-decoration-on-includes" . t))))))
 
 (use-package company
+  :defer 5
   :diminish "comp"
-  :idle (global-company-mode 1)
   :config (progn
             (setq company-idle-delay 0.25)
             (add-hook 'c++-mode-hook
@@ -383,7 +386,8 @@
             (add-hook 'eshell-mode-hook '(lambda ()
                                            (company-mode 0)))
             (add-hook 'org-mode-hook '(lambda ()
-                                        (company-mode 0))))
+                                        (company-mode 0)))
+            (global-company-mode 1))
   :bind (("C-c v" . company-complete)
          ("C-c V" . company-clang))
   :demand t)
@@ -409,7 +413,7 @@
                              (cppcm-get-exe-path-current-buffer)))))
   :config (setq cppcm-write-flymake-makefile nil))
 
-(ignore-errors
+(when (file-directory-p "~/src/racer/editors")
   (use-package racer
     :load-path "~/src/racer/editors"
     :config (progn
@@ -509,9 +513,9 @@
               (rainbow-mode 1)))))
 
 (use-package projectile
+  :defer 3
   :commands (projectile-global-mode
              projectile-switch-project)
-  :idle (projectile-global-mode 1)
   :init (progn
           (setq projectile-switch-project-action (lambda ()
                                                    (dired ".")))
@@ -523,7 +527,8 @@
                     (format " Pro[%s]"
                             (projectile-project-name))))
             (define-key projectile-command-map (kbd "C-b") 'helm-projectile-buffers)
-            (define-key projectile-command-map [?h] 'helm-browse-project)))
+            (define-key projectile-command-map [?h] 'helm-browse-project)
+            (projectile-global-mode 1)))
 
 (use-package helm-ag
   :bind ("C-c p s S" . projectile-helm-ag)
@@ -542,12 +547,12 @@
          ("C-x T" . sane-term-create)))
 
 (use-package diff-hl
-  :defer t
-  :idle (global-diff-hl-mode 1)
-  :init (key-chord-define-global "=f" 'diff-hl-mode))
+  :defer 5
+  :init (key-chord-define-global "=f" 'diff-hl-mode)
+  :config (global-diff-hl-mode 1))
 
 (use-package recentf-merge
-  :pre-load (setq recentf-max-menu-items 100))
+  :init (setq recentf-max-menu-items 100))
 
 (use-package image-mode
   :defer t
@@ -578,11 +583,12 @@
      (set-frame-font font nil t))))
 
 
-(ignore-errors
+(when (file-directory-p "~/.emacs.d/secret")
   (use-package my-mu4e
-    :idle (require 'my-mu4e)
+    :defer 17
+    :bind ("<f5>" . mu4e)
+    :config (require 'my-mu4e)
     :load-path ("~/.emacs.d/secret"
-                "~/local/share/emacs/site-lisp/mu4e")
-    :bind ("<f5>" . mu4e))
+                "~/local/share/emacs/site-lisp/mu4e"))
   (use-package my-secret
     :load-path ("~/.emacs.d/secret")))
