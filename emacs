@@ -231,13 +231,21 @@
 (use-package bm
   :commands (bm-load-and-restore)
   :bind (("M-S-SPC" . bookmark-hydra/body)
-         ("C-c w" . bookmark-hydra/body))
+         ("C-c w" . bookmark-hydra/body)
+         ("<left-fringe> <mouse-1>" . bm-toggle-mouse)
+         ("<left-fringe> <mouse-3>" . bm-toggle-line-mouse))
   :config (progn
-            (defun bm-toggle-fringe ()
+            (bm-load-and-restore)
+            (setq bm-highlight-style 'bm-highlight-only-fringe)
+            (defun bm-toggle-line ()
               (interactive)
-              (let ((bm-highlight-style 'bm-highlight-only-fringe))
+              (let ((bm-highlight-style 'bm-highlight-only-line))
                 (call-interactively 'bm-toggle)))
-            (defun bm-bookmark-regexp-fringe ()
+            (defun bm-toggle-line-mouse ()
+              (interactive)
+              (let ((bm-highlight-style 'bm-highlight-only-line))
+                (call-interactively 'bm-toggle-mouse)))
+            (defun bm-bookmark-regexp-line ()
               (interactive)
               (let ((bm-highlight-style 'bm-highlight-only-fringe))
                 (call-interactively 'bm-bookmark-regexp)))
@@ -249,16 +257,19 @@
               ("n" bm-next "next")
               ("p" bm-previous "prev")
 
-              ("M-SPC" bm-toggle "mark line")
-              ("SPC" bm-toggle-fringe "mark")
+              ("M-SPC" bm-toggle-line "mark line")
+              ("SPC" bm-toggle "mark")
 
-              ("r" bm-bookmark-regexp-fringe "regex")
-              ("R" bm-bookmark-regexp "regex line")
+              ("r" bm-bookmark-regexp "regex")
+              ("R" bm-bookmark-regexp-line "regex line")
 
               ("a" bm-bookmark-annotate "annotate")
 
               ("l" bm-show "list" :color blue)
               ("L" bm-show-all "list all" :color blue)
+
+              ("P" bm-toggle-buffer-persistence "persistent")
+              ("S" bm-save "save" :color blue)
 
               ("C" bm-remove-all-current-buffer "clear" :color blue)
               ("q" nil "quit"))))
