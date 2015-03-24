@@ -424,13 +424,13 @@
                              (cppcm-get-exe-path-current-buffer)))))
   :config (setq cppcm-write-flymake-makefile nil))
 
-(when (file-directory-p "~/src/racer/editors")
-  (use-package racer
-    :load-path "~/src/racer/editors"
-    :config (progn
-              (setq racer-rust-src-path "/home/vifon/src/rust/src")
-              (setq racer-cmd "racer")
-              (eval-after-load "rust-mode" '(require 'racer)))))
+(use-package racer
+  :if (file-directory-p "~/src/racer/editors")
+  :load-path "~/src/racer/editors"
+  :config (progn
+            (setq racer-rust-src-path "/home/vifon/src/rust/src")
+            (setq racer-cmd "racer")
+            (eval-after-load "rust-mode" '(require 'racer))))
 
 (use-package bbyac
   :diminish bbyac-mode
@@ -597,13 +597,13 @@
      (add-to-list 'default-frame-alist `(font . ,font))
      (set-frame-font font nil t))))
 
-
-(when (file-directory-p "~/.emacs.d/secret")
-  (use-package my-mu4e
-    :defer 17
-    :bind ("<f5>" . mu4e)
-    :config (require 'my-mu4e)
-    :load-path ("~/.emacs.d/secret"
-                "~/local/share/emacs/site-lisp/mu4e"))
-  (use-package my-secret
-    :load-path ("~/.emacs.d/secret")))
+(use-package my-mu4e
+  :if (file-directory-p "~/.emacs.d/secret")
+  :defer 17
+  :bind ("<f5>" . mu4e)
+  :config (require 'my-mu4e)
+  :load-path ("~/.emacs.d/secret"
+              "~/local/share/emacs/site-lisp/mu4e"))
+(use-package my-secret
+  :if (file-directory-p "~/.emacs.d/secret")
+  :load-path ("~/.emacs.d/secret"))
