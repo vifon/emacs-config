@@ -88,6 +88,7 @@
  '(helm-swoop-target-word-face ((t (:background "yellow"))))
  '(highlight ((t (:background "#282828"))))
  '(hl-line ((t (:inherit highlight :background "grey20"))))
+ '(hydra-face-blue ((t (:foreground "deep sky blue" :weight bold))))
  '(indent-guide-face ((t (:foreground "#666666"))))
  '(italic ((t (:slant italic))))
  '(jabber-chat-prompt-local ((t (:foreground "#4444ff" :weight bold))) t)

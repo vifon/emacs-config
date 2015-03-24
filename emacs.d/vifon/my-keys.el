@@ -34,18 +34,44 @@
 (global-set-key (kbd "M-o") 'run-term)
 (global-set-key (kbd "C-c q") 'auto-fill-mode)
 
-(global-set-key (kbd "C-c C-e e") 'epa-encrypt-region)
-(global-set-key (kbd "C-c C-e d") 'epa-decrypt-region)
-(global-set-key (kbd "C-c C-e s") 'epa-sign-region)
-(global-set-key (kbd "C-c C-e v") 'epa-verify-region)
+(global-set-key (kbd "C-c C-e")
+                (defhydra epa-hydra
+                  (:color blue)
+                  ("e" epa-encrypt-region "epa-encrypt-region")
+                  ("d" epa-decrypt-region "epa-decrypt-region")
+                  ("s" epa-sign-region "epa-sign-region")
+                  ("v" epa-verify-region "epa-verify-region")))
+(eval-after-load "epa-mail"
+  '(define-key epa-mail-mode-map (kbd "C-c C-e") 'epa-hydra/body))
 
 (global-set-key (kbd "C-c =") 'diff-buffer-with-file)
 
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "M-C-?") 'hippie-expand)
-(global-set-key (kbd "C-c t") '(lambda () (interactive)
-                                 (delete-trailing-whitespace)
-                                 (message "Trailing spaces deleted")))
+
+(global-set-key (kbd "C-c t")
+                (defhydra text-filter-hydra
+                  (:hint nil :color blue)
+                  "
+ ### Text utils ###
+
+ delete-_t_railing-whitespace   delete-_m_atching-lines       _A_lign
+ _a_ck                          delete-_n_on-matching-lines   align-_R_egexp
+
+ _v_isual-line-mode   auto-_f_ill-mode   _d_iff-buffer-with-file
+ _c_olumn-marker      _l_inum-mode       "
+                  ("t" delete-trailing-whitespace)
+                  ("a" ack-and-a-half-same)
+                  ("m" delete-matching-lines)
+                  ("n" delete-non-matching-lines)
+                  ("A" align)
+                  ("R" align-regexp)
+                  ("v" visual-line-mode :color red)
+                  ("l" nlinum-mode :color red)
+                  ("d" diff-buffer-with-file)
+                  ("c" column-marker-1 :color red)
+                  ("f" auto-fill-mode :color red)))
+
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
                                  (cd "~/")))
@@ -73,8 +99,6 @@
 
 (global-set-key (kbd "C-x M-!") 'find-file-path)
 (global-set-key (kbd "C-x M-j") 'dired-jump)
-(global-set-key (kbd "M-s a") 'align)
-(global-set-key (kbd "M-s r") 'align-regexp)
 
 (defun toggle-selective-display (arg)
   (interactive "P")
