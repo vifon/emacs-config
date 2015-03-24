@@ -549,6 +549,10 @@
              (interactive)
              (helm-ag (projectile-project-root)))))
 
+(use-package ack-and-a-half
+  :defer t
+  :config (setq ack-and-a-half-prompt-for-directory t))
+
 (use-package sane-term
   :init (setq sane-term-shell-command "/bin/zsh")
   :config (add-hook 'term-mode-hook
