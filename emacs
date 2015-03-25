@@ -403,6 +403,13 @@
          ("C-c V" . company-clang))
   :demand t)
 
+(use-package ggtags
+  :demand t        ;bad things happen in the globalized mode otherwise
+  :init (define-globalized-minor-mode global-ggtags-mode ggtags-mode
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1)))))
+
 (use-package flycheck
   :defer t
   :config (add-hook 'c++-mode-hook
