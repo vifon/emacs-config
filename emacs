@@ -516,13 +516,6 @@
                   (define-key jedi-mode-map [remap pop-tag-mark]
                     'jedi:goto-definition-pop-marker)))))
 
-(use-package rainbow-mode
-  :commands (rainbow-mode)
-  :init (define-globalized-minor-mode global-rainbow-mode rainbow-mode
-          (lambda ()
-            (when (not (equal major-mode 'woman-mode))
-              (rainbow-mode 1)))))
-
 (use-package projectile
   :defer 3
   :commands (projectile-global-mode
