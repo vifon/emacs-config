@@ -7,11 +7,11 @@
 
 
 (add-hook 'c-mode-common-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c o") 'ff-find-other-file)
-             (local-set-key (kbd "C-c C-r") 'cc-extract)
-             (local-set-key (kbd "C-c C-t") 'cc-headerize)
-             (hs-minor-mode 1)))
+          (defun my-c-common-hook ()
+            (local-set-key (kbd "C-c o") 'ff-find-other-file)
+            (local-set-key (kbd "C-c C-r") 'cc-extract)
+            (local-set-key (kbd "C-c C-t") 'cc-headerize)
+            (hs-minor-mode 1)))
 (add-hook 'c++-mode-hook
           '(lambda ()
              (make-local-variable 'c-macro-cppflags)
