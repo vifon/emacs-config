@@ -279,6 +279,8 @@
 
 (use-package indent-guide
   :defer t
+  :init (add-hook 'LaTeX-mode-hook #'(lambda ()
+                                       (indent-guide-mode 1)))
   :config (setq indent-guide-delay nil))
 
 (use-package visual-regexp-steroids
