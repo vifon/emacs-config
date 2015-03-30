@@ -58,8 +58,8 @@
  delete-_t_railing-whitespace   delete-_m_atching-lines       _A_lign
  _a_ck                          delete-_n_on-matching-lines   align-_R_egexp
 
- _v_isual-line-mode   auto-_f_ill-mode   _d_iff-buffer-with-file
- _c_olumn-marker      _l_inum-mode       "
+ _v_isual-line-mode        auto-_f_ill-mode   _d_iff-buffer-with-file
+ toggle-t_r_uncate-lines   _l_inum-mode       aggressive-_i_ndent-mode"
                   ("t" delete-trailing-whitespace)
                   ("a" ack-and-a-half-same)
                   ("m" delete-matching-lines)
@@ -69,8 +69,9 @@
                   ("v" visual-line-mode :color red)
                   ("l" nlinum-mode :color red)
                   ("d" diff-buffer-with-file)
-                  ("c" column-marker-1 :color red)
-                  ("f" auto-fill-mode :color red)))
+                  ("r" toggle-truncate-lines :color red)
+                  ("f" auto-fill-mode :color red)
+                  ("i" aggressive-indent-mode :color red)))
 
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
