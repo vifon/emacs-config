@@ -18,6 +18,7 @@
 (depends-on "bind-key")
 (depends-on "bm")
 (depends-on "browse-kill-ring")
+(depends-on "bug-hunter")
 (depends-on "c-eldoc")
 (depends-on "cdlatex")
 (depends-on "clojure-mode")
