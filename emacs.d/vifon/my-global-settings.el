@@ -99,6 +99,9 @@
 (add-to-list 'auto-mode-alist '("^/tmp/mutt.*" . mail-mode))
 (add-to-list 'auto-mode-alist '("\\.claws-mail/tmp/tmpmsg\\.0x.*" . mail-mode))
 
+(setq epa-file-name-regexp "\\.gpg\\(~\\|\\.~[0-9]+~\\)?\\'\\|\\.asc")
+(epa-file-name-regexp-update)
+
 (defalias 'elpa 'list-packages)
 (defalias 'repl 'ielm)
 (defalias 'colors 'list-colors-display)
