@@ -13,14 +13,14 @@
 ;;; used by yasnippet
 (defun get-c-arg-names (arg-list)
   (mapconcat
-   '(lambda (arg)
-      (replace-regexp-in-string "^.*?\\(\\w*\\)[[:blank:]]*$" "\\1" arg))
+   #'(lambda (arg)
+       (replace-regexp-in-string "^.*?\\(\\w*\\)[[:blank:]]*$" "\\1" arg))
    (split-string text ",")
    ", "))
 (defun get-c-arg-types (arg-list)
   (mapconcat
-   '(lambda (arg)
-      (replace-regexp-in-string "^[[:blank:]]*\\(.*?\\)[[:blank:]]*\\w*[[:blank:]]*$" "\\1" arg))
+   #'(lambda (arg)
+       (replace-regexp-in-string "^[[:blank:]]*\\(.*?\\)[[:blank:]]*\\w*[[:blank:]]*$" "\\1" arg))
    (split-string text ",")
    ", "))
 
@@ -36,7 +36,7 @@ Prefix argument initializes the Git repository."
                            "/")))
     (make-directory directory t)
     (when (file-symlink-p "~/scratch")
-     (delete-file "~/scratch"))
+      (delete-file "~/scratch"))
     (make-symbolic-link directory "~/scratch" t)
     (when (car use-git)
       (require 'vc-git)
@@ -62,8 +62,8 @@ Prefix argument initializes the Git repository."
     (save-restriction
       (narrow-to-defun)
       (let* ((function-body (buffer-substring-no-properties
-                              (point-min)
-                              (point-max)))
+                             (point-min)
+                             (point-max)))
              (function-indent ;get the absolute indent of the function body
               (replace-regexp-in-string "^\\([[:blank:]]*\\).*" "\\1"
                                         (car (split-string function-body "\n"))))
