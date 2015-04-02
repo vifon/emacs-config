@@ -401,8 +401,9 @@
             (add-hook 'org-mode-hook '(lambda ()
                                         (company-mode 0)))
             (global-company-mode 1))
-  :bind (("C-c v" . company-complete)
-         ("C-c V" . company-clang))
+  :init (use-package company-clang
+          :bind ("C-c V" . company-clang))
+  :bind ("C-c v" . company-complete)
   :demand t)
 
 (use-package ggtags
