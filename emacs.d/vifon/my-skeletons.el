@@ -18,6 +18,8 @@
   :config (progn
             (setq skeletor-project-directory "~/new-projects/")
             (skeletor-define-template "c++-project"
-              :title "C++ Project")))
+              :title "C++ Project")
+            (skeletor-define-template "interactive-c"
+              :title "Interactive C Project")))
 
 (provide 'my-skeletons)
