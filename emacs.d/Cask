@@ -77,6 +77,7 @@
 (depends-on "hl-sexp")
 (depends-on "htmlize")
 (depends-on "hydra")
+(depends-on "ibuffer-vc")
 (depends-on "ido-vertical-mode")
 (depends-on "iedit")
 (depends-on "impatient-mode")

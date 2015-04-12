@@ -34,4 +34,10 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(use-package ibuffer
+  :config (progn
+            (use-package ibuffer-vc)
+            (define-key ibuffer-mode-map
+              (kbd "/ V") #'ibuffer-vc-set-filter-groups-by-vc-root)))
+
 (provide 'my-ibuffer)
