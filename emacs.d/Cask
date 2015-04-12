@@ -130,6 +130,7 @@
 (depends-on "tabbar")
 (depends-on "tiny")
 (depends-on "transpose-frame")
+(depends-on "transpose-mark")
 (depends-on "typopunct")
 (depends-on "undo-tree")
 (depends-on "use-package")
