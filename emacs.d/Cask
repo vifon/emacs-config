@@ -83,6 +83,7 @@
 (depends-on "impatient-mode")
 (depends-on "indent-guide")
 (depends-on "jedi")
+(depends-on "jedi-core")
 (depends-on "key-chord")
 (depends-on "lacarte")
 (depends-on "legalese")
