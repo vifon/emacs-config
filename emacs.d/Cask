@@ -126,6 +126,7 @@
 (depends-on "smex")
 (depends-on "solarized-theme")
 (depends-on "sos")
+(depends-on "stgit")
 (depends-on "sublimity")
 (depends-on "sx")
 (depends-on "tabbar")

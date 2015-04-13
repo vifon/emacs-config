@@ -209,6 +209,8 @@
 (use-package git-timemachine
   :bind ("C-x v t" . git-timemachine))
 
+(use-package stgit)
+
 (use-package ed
   :commands ed)
 
