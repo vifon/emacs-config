@@ -54,6 +54,8 @@
           (flx-ido-mode 1)
           (ido-vertical-mode 1))
   :config (progn
+            (add-to-list 'ido-work-directory-list-ignore-regexps
+                         tramp-file-name-regexp)
             (setq ido-enable-flex-matching t
                   ido-enable-tramp-completion nil
                   ido-default-file-method 'selected-window
