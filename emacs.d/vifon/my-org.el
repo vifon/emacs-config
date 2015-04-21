@@ -65,6 +65,10 @@
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
       org-agenda-skip-timestamp-if-done t)
+(setq org-icalendar-combined-agenda-file "~/org/org.ics"
+      org-icalendar-use-deadline '(event-if-todo)
+      org-icalendar-use-scheduled '(event-if-todo)
+      org-export-with-tasks 'todo)
 (setq org-use-tag-inheritance nil)
 (setq org-export-with-toc nil)
 (setq org-tags-exclude-from-inheritance '("PROJECT" "ATTACH"))
