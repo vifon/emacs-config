@@ -289,6 +289,12 @@
                                        (indent-guide-mode 1)))
   :config (setq indent-guide-delay nil))
 
+(use-package writeroom-mode
+  :defer t
+  :init (setq writeroom-global-effects
+              (delete 'writeroom-toggle-fullscreen
+                      writeroom-global-effects)))
+
 (use-package visual-regexp-steroids
   :bind (([remap query-replace-regexp]    . vr/query-replace)
          ([remap isearch-forward-regexp]  . vr/isearch-forward)

@@ -145,6 +145,7 @@
 (depends-on "wgrep-ack")
 (depends-on "wgrep-ag")
 (depends-on "win-switch")
+(depends-on "writeroom-mode")
 (depends-on "wsd-mode")
 (depends-on "yafolding")
 (depends-on "yaml-mode")
