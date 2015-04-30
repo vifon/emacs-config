@@ -51,6 +51,7 @@
 (depends-on "fic-ext-mode")
 (depends-on "flx")
 (depends-on "flx-ido")
+(depends-on "flx-isearch")
 (depends-on "flycheck")
 (depends-on "flycheck-rust")
 (depends-on "geiser")

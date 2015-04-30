@@ -305,9 +305,11 @@
                         writeroom-global-effects)))
 
 (use-package visual-regexp-steroids
-  :bind (([remap query-replace-regexp]    . vr/query-replace)
-         ([remap isearch-forward-regexp]  . vr/isearch-forward)
-         ([remap isearch-backward-regexp] . vr/isearch-backward)))
+  :bind (([remap query-replace-regexp] . vr/query-replace)))
+
+(use-package flx-isearch
+  :bind (([remap isearch-forward-regexp]  . flx-isearch-forward)
+         ([remap isearch-backward-regexp] . flx-isearch-backward)))
 
 (use-package volatile-highlights
   :diminish volatile-highlights-mode
