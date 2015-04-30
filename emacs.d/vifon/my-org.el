@@ -200,10 +200,14 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
 
 (use-package ob
   :defer t
-  :config (org-babel-do-load-languages
-           'org-babel-load-languages
-           '((sh . t)
-             (ditaa . t))))
+  :config (progn
+            (org-babel-do-load-languages
+             'org-babel-load-languages
+             '((sh . t)
+               (ditaa . t)
+               (C . t)))
+            (setq org-babel-C-compiler "gcc -std=c99"
+                  org-babel-C++-compiler "g++ -std=c++14")))
 
 (use-package ob-ditaa
   :defer t
