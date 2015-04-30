@@ -15,8 +15,6 @@
 (add-to-list 'auto-mode-alist '("/Cask\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("/emacs\\'" . emacs-lisp-mode))
 (cask-initialize)
-(require 'pallet)
-(pallet-mode 1)
 (setq package-enable-at-startup nil)
 (package-initialize)
 (require 'use-package)
