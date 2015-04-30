@@ -89,6 +89,7 @@
  '(highlight ((t (:background "#282828"))))
  '(hl-line ((t (:inherit highlight :background "grey20"))))
  '(hydra-face-blue ((t (:foreground "deep sky blue" :weight bold))))
+ '(hydra-face-red ((t (:background "#3F3F3F" :foreground "red" :weight bold))))
  '(indent-guide-face ((t (:foreground "#666666"))))
  '(italic ((t (:slant italic))))
  '(jabber-chat-prompt-local ((t (:foreground "#4444ff" :weight bold))) t)
