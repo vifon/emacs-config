@@ -194,8 +194,10 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
 
 (use-package ox
   :defer t
-  :config (use-package ox-reveal
-            :load-path "~/.emacs.d/modules/org-reveal"))
+  :config (progn
+            (use-package ox-reveal
+              :load-path "~/.emacs.d/modules/org-reveal")
+            (use-package ox-ioslide)))
 (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.6.2/")
 
 (use-package ob

@@ -99,6 +99,7 @@
 (depends-on "neotree")
 (depends-on "nlinum")
 (depends-on "org")
+(depends-on "ox-ioslide")
 (depends-on "ox-reveal")
 (depends-on "package-build")
 (depends-on "pallet")
