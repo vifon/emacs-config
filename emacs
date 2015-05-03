@@ -303,6 +303,45 @@ Breadcrumb bookmarks:
                 (call-interactively 'pop-global-mark)
                 (call-interactively 'hydra-breadcrumb/body)))))
 
+(use-package eyebrowse
+  :init (progn
+          (eyebrowse-mode 1)
+          (defun eyebrowse-pretty-workspace-list ()
+            (let* ((workspaces (mapcar #'car (eyebrowse--get 'window-configs)))
+                   (current (car (member (eyebrowse--get 'current-slot)
+                                         workspaces))))
+              (setf (car (member (eyebrowse--get 'current-slot)
+                                 workspaces))
+                    (make-symbol (format "%c%d%c"
+                                         ?* current ?*)))
+              workspaces))
+          (defhydra eyebrowse-hydra
+            (:color red :hint nil)
+            "
+ ### eyebrowse ###
+ %(eyebrowse-pretty-workspace-list)
+ _0_-_9_: switch workspace   _n_: next   _p_: prev
+ _w_/_C-w_: last   _c_: close
+ _q_: quit"
+            ("0" eyebrowse-switch-to-window-config-0)
+            ("1" eyebrowse-switch-to-window-config-1)
+            ("2" eyebrowse-switch-to-window-config-2)
+            ("3" eyebrowse-switch-to-window-config-3)
+            ("4" eyebrowse-switch-to-window-config-4)
+            ("5" eyebrowse-switch-to-window-config-5)
+            ("6" eyebrowse-switch-to-window-config-6)
+            ("7" eyebrowse-switch-to-window-config-7)
+            ("8" eyebrowse-switch-to-window-config-8)
+            ("9" eyebrowse-switch-to-window-config-9)
+            ("n" eyebrowse-next-window-config)
+            ("p" eyebrowse-prev-window-config)
+            ("C-w" eyebrowse-last-window-config)
+            ("w" eyebrowse-last-window-config)
+            ("c" eyebrowse-close-window-config)
+            ("q" nil nil))
+          (define-key eyebrowse-mode-map (kbd "C-c C-w")
+            'eyebrowse-hydra/body)))
+
 (use-package sentence-highlight
   :commands sentence-highlight-mode
   :init (defun sentence-highlight-mode (&optional arg)
