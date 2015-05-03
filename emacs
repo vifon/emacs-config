@@ -278,6 +278,31 @@
               ("C" bm-remove-all-current-buffer "clear" :color blue)
               ("q" nil "quit"))))
 
+(use-package breadcrumb
+  :bind (([remap pop-global-mark] . breadcrumb-or-pop))
+  :init (progn
+          (defhydra hydra-breadcrumb
+            (:exit t)
+            "
+Breadcrumb bookmarks:
+  _p_:   prev   _P_:   local prev
+  _n_: next   _N_: local next
+  _s_: set  _c_: clear  _l_: list  _q_: quit
+"
+            ("n" bc-next nil :exit nil)
+            ("p" bc-previous nil :exit nil)
+            ("N" bc-local-next nil :exit nil)
+            ("P" bc-local-previous nil :exit nil)
+            ("l" bc-list nil)
+            ("s" bc-set nil)
+            ("c" bc-clear nil)
+            ("q" nil nil))
+          (defun breadcrumb-or-pop (arg)
+            (interactive "P")
+            (if arg
+                (call-interactively 'pop-global-mark)
+                (call-interactively 'hydra-breadcrumb/body)))))
+
 (use-package sentence-highlight
   :commands sentence-highlight-mode
   :init (defun sentence-highlight-mode (&optional arg)

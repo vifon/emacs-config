@@ -154,3 +154,6 @@
 (depends-on "yasnippet")
 (depends-on "zenburn-theme")
 (depends-on "zop-to-char")
+
+(depends-on "breadcrumb"
+            :git "https://github.com/pheaver/breadcrumb")
