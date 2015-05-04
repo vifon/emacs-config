@@ -590,7 +590,8 @@ Breadcrumb bookmarks:
               (company-mode 0)
               (setq tab-width 4
                     python-indent 4
-                    py-indent-offset 4))
+                    py-indent-offset 4)
+              (indent-guide-mode 1))
             (add-hook 'python-mode-hook 'my-python-hook)
             (if (file-exists-p "~/.emacs.d/.python-environments")
                 (add-hook 'python-mode-hook 'jedi:setup))

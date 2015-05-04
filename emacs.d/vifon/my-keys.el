@@ -60,7 +60,7 @@
 
  _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
  _w_riteroom-mode: %-3(bound-and-true-p writeroom-mode)     variable-_p_itch-mode           _s_entence-highlight-mode: %-3(bound-and-true-p sentence-highlight-mode)
- _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))"
+ _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)"
                   ("t" delete-trailing-whitespace)
                   ("a" ack-and-a-half-same)
                   ("m" delete-matching-lines)
@@ -74,7 +74,8 @@
                   ("i" aggressive-indent-mode :color red)
                   ("w" writeroom-mode :color red)
                   ("s" sentence-highlight-mode :color red)
-                  ("p" variable-pitch-mode :color red)))
+                  ("p" variable-pitch-mode :color red)
+                  ("g" indent-guide-mode :color red)))
 
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
