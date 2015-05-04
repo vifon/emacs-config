@@ -24,7 +24,6 @@
 (global-set-key (kbd "C-x b")                    'helm-buffers-list)
 (global-set-key (kbd "M-s f")                    'helm-swoop)
 (global-set-key [remap find-tag]                 'helm-etags-select)
-(global-set-key (kbd "C-c k")                    'helm-semantic-or-imenu)
 
 (key-chord-define-global "`h"
                          (defun my-helm-browse-project--basename (arg)

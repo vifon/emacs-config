@@ -444,6 +444,12 @@ Breadcrumb bookmarks:
   :bind ("C-=" . er/expand-region)
   :init (key-chord-define-global "'e" 'er/expand-region))
 
+(use-package imenu
+  :bind ("C-c k" . helm-semantic-or-imenu)
+  :config (add-to-list 'imenu-generic-expression
+                       '("Used Packages"
+                         "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)))
+
 (use-package semantic
   :defer t
   :config (progn
