@@ -37,6 +37,8 @@
                 mode-line-modes
                 (which-funcion-mode
                  ("" which-func-format "--"))
+                "---"
+                mode-line-misc-info
                 "-%-"
                 ))
 
