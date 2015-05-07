@@ -75,7 +75,8 @@
                   ("w" writeroom-mode :color red)
                   ("s" sentence-highlight-mode :color red)
                   ("p" variable-pitch-mode :color red)
-                  ("g" indent-guide-mode :color red)))
+                  ("g" indent-guide-mode :color red)
+                  ("SPC" vydra/body)))
 
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
@@ -151,27 +152,27 @@
 (key-chord-define-global "=v" 'visual-line-mode)
 
 
-(global-set-key (kbd "C-c e")
-                (defhydra vydra
-                  (global-map "C-c e" :color pink)
-                  "vi-hydra"
+(defhydra vydra
+  (global-map "C-c e" :color pink)
+  "vi-hydra"
 
-                  ("h" backward-char "left")
-                  ("j" next-line "down")
-                  ("k" previous-line "up")
-                  ("l" forward-char "right")
+  ("h" backward-char "left")
+  ("j" next-line "down")
+  ("k" previous-line "up")
+  ("l" forward-char "right")
 
-                  ("f" scroll-up-command "PgDn")
-                  ("b" scroll-down-command "PgUp")
+  ("f" scroll-up-command "PgDn")
+  ("b" scroll-down-command "PgUp")
 
-                  ("v" er/expand-region "select")
+  ("v" er/expand-region "select")
 
-                  ("0" move-beginning-of-line-dwim "BOL")
-                  ("a" move-beginning-of-line-dwim "BOL")
-                  ("e" move-end-of-line "EOL")
+  ("0" move-beginning-of-line-dwim "BOL")
+  ("a" move-beginning-of-line-dwim "BOL")
+  ("e" move-end-of-line "EOL")
 
-                  ("i" nil "quit")
-                  ("q" nil "quit")))
+  ("i" nil "quit")
+  ("q" nil "quit")
+  ("SPC" nil "quit"))
 
 
 (provide 'my-keys)

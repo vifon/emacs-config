@@ -339,7 +339,7 @@ Breadcrumb bookmarks:
             ("w" eyebrowse-last-window-config)
             ("c" eyebrowse-close-window-config)
             ("q" nil nil))
-          (define-key eyebrowse-mode-map (kbd "C-c C-w")
+          (define-key eyebrowse-mode-map (kbd "C-c e")
             'eyebrowse-hydra/body)))
 
 (use-package sentence-highlight
