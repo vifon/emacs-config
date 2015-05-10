@@ -1,22 +1,24 @@
 (define-skeleton markdown-skeleton
   "" ""
-  "NAME\n"
-  "====\n\n"
+  (let* ((path (split-string default-directory "/"))
+        (directory (nth (- (length path) 2) path)))
+    (concat directory "\n"
+            (make-string (length directory)
+                         ?=) "\n\n"))
 
-  (let ((path (split-string default-directory "/")))
-    (nth (- (length path) 2) path)) _ "\n\n"
+  _
 
   "SYNOPSIS\n"
-  "========\n\n"
+  "--------\n\n"
 
   "DESCRIPTION\n"
-  "===========\n\n"
+  "-----------\n\n"
 
   "AUTHOR\n"
-  "======\n\n"
+  "------\n\n"
 
   "COPYRIGHT\n"
-  "=========\n\n"
+  "---------\n\n"
 
   "Copyright (C) " (format-time-string "%Y") "  Wojciech Siewierski
 
