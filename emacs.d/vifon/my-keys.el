@@ -76,7 +76,8 @@
                   ("s" sentence-highlight-mode :color red)
                   ("p" variable-pitch-mode :color red)
                   ("g" indent-guide-mode :color red)
-                  ("SPC" vydra/body)))
+                  ("SPC" vydra/body)
+                  ("q" nil)))
 
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
