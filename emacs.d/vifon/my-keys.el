@@ -133,6 +133,19 @@
 
 (global-set-key [remap move-beginning-of-line] 'move-beginning-of-line-dwim)
 
+(defun kill-line-1 (&optional arg)
+  (interactive "P")
+  (let ((kill-whole-line t)
+        (saved-point (point))
+        (saved-line (line-number-at-pos)))
+    (beginning-of-line)
+    (kill-line arg)
+    (goto-char saved-point)
+    (unless (equal saved-line (line-number-at-pos))
+      (forward-line -1)
+      (end-of-line))))
+(global-set-key [remap kill-sentence] #'kill-line-1)
+
 (global-set-key (kbd "M-# q") 'quick-calc)
 (global-set-key (kbd "M-# M-#") 'calc)
 
@@ -151,6 +164,11 @@
 (key-chord-define-global "[s" 'toggle-selective-display)
 (key-chord-define-global "=t" 'ispell-change-dictionary)
 (key-chord-define-global "=v" 'visual-line-mode)
+(key-chord-define-global "=a" 'shrink-all-windows-if-larger-than-buffer)
+
+(defun shrink-all-windows-if-larger-than-buffer ()
+  (interactive)
+  (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
 
 
 (defhydra vydra
