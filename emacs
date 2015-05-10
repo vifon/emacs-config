@@ -261,6 +261,9 @@
               ("n" bm-next "next")
               ("p" bm-previous "prev")
 
+              ("N" bm-first-in-next-buffer "next file")
+              ("P" bm-last-in-previous-buffer "prev file")
+
               ("M-SPC" bm-toggle-line "mark line")
               ("SPC" bm-toggle "mark")
 
@@ -272,7 +275,7 @@
               ("l" bm-show "list" :color blue)
               ("L" bm-show-all "list all" :color blue)
 
-              ("P" bm-toggle-buffer-persistence "persistent")
+              ("E" bm-toggle-buffer-persistence "persistent")
               ("S" bm-save "save" :color blue)
 
               ("C" bm-remove-all-current-buffer "clear" :color blue)
