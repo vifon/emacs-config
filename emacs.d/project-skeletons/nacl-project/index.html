@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta charset="UTF-8">
+        <title>__PROJECT-NAME__</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="__PROJECT-NAME__.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body onload="pageDidLoad()">
+        <h1>__PROJECT-NAME__</h1>
+
+        <div id="listener">
+            <script type="text/javascript">
+             var listener = document.getElementById('listener');
+             listener.addEventListener('message', handleMessage, true);
+            </script>
+            <embed id="nacl_module"
+                   width=0 height=0
+                   src="pnacl/Release/__PROJECT-NAME__.nmf"
+                   type="application/x-pnacl" />
+        </div>
+
+        <div>
+            <input id="inputbox" type="text" />
+            <input id="confirm" type="submit" value="Confirm" />
+        </div><br />
+
+        <div id="output"></div>
+    </body>
+</html>

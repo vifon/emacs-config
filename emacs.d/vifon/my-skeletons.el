@@ -20,6 +20,8 @@
             (skeletor-define-template "c++-project"
               :title "C++ Project")
             (skeletor-define-template "interactive-c"
-              :title "Interactive C Project")))
+              :title "Interactive C Project")
+            (skeletor-define-template "nacl-project"
+              :title "PNaCl Project")))
 
 (provide 'my-skeletons)
