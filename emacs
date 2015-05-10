@@ -551,9 +551,8 @@ Breadcrumb bookmarks:
           :defer t
           :commands sx-search))
 
-(use-package ace-jump-mode
-  :bind ("C-c j" . ace-jump-mode)
-  :config (setq ace-jump-mode-scope 'frame))
+(use-package avy-jump
+  :bind ("C-c j" . avy-goto-word-1))
 
 (use-package win-switch
   :bind ("C-x o" . win-switch-dispatch)

@@ -3,8 +3,8 @@
 (source melpa)
 (source org)
 
-(depends-on "ace-jump-mode")
 (depends-on "ace-window")
+(depends-on "avy")
 (depends-on "ack-and-a-half")
 (depends-on "adaptive-wrap")
 (depends-on "ag")
