@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: functor
+# key: functor
+# binding: direct-keybinding
+# --
+class ${1:Functor} {
+  public:
+    ${2:void} operator()(${3:...})
+    {
+        $0
+    }
+};
