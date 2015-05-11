@@ -45,7 +45,6 @@
 (depends-on "ess")
 (depends-on "evil")
 (depends-on "evil-nerd-commenter")
-(depends-on "eyebrowse")
 (depends-on "expand-region")
 (depends-on "f")
 (depends-on "fancy-narrow")
