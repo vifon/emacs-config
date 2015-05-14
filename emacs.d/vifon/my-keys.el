@@ -133,12 +133,15 @@
 
 (global-set-key [remap move-beginning-of-line] 'move-beginning-of-line-dwim)
 
-(defun kill-line-1 (&optional arg)
+(defun kill-or-yank-whole-lines (&optional arg)
   (interactive "P")
   (if (consp arg)
       (save-excursion
         (beginning-of-line)
-        (yank))
+        (indent-region (point)
+                       (progn
+                         (yank)
+                         (point))))
       (let ((kill-whole-line t)
             (saved-point (point))
             (saved-line (line-number-at-pos)))
@@ -148,7 +151,7 @@
         (unless (equal saved-line (line-number-at-pos))
           (goto-line saved-line)
           (end-of-line)))))
-(global-set-key [remap kill-sentence] #'kill-line-1)
+(global-set-key [remap kill-sentence] #'kill-or-yank-whole-lines)
 
 (global-set-key (kbd "M-# q") 'quick-calc)
 (global-set-key (kbd "M-# M-#") 'calc)
