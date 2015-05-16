@@ -141,6 +141,11 @@
         (indent-region (point)
                        (progn
                          (yank)
+                         (unless (equal
+                                  (substring-no-properties (car kill-ring)
+                                                           -1)
+                                  "\n")
+                           (insert "\n"))
                          (point))))
       (let ((kill-whole-line t)
             (saved-point (point))
