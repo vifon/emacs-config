@@ -27,6 +27,12 @@
                                                    (org-attach-dir)))))
                   org-stored-links))))
 
+(defadvice org-insert-heading-respect-content
+    (after org-insert-heading-respect-content-with-empty-lines activate)
+  (save-excursion
+    (when (org-previous-line-empty-p)
+      (insert "\n"))))
+
 (use-package org-protocol)
 
 (setq org-hide-leading-stars nil)
