@@ -28,6 +28,7 @@
 (depends-on "company")
 (depends-on "company-c-headers")
 (depends-on "concurrent")
+(depends-on "corral")
 (depends-on "cperl-mode")
 (depends-on "cpputils-cmake")
 (depends-on "crontab-mode")

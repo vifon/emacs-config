@@ -91,6 +91,10 @@
 (use-package autopair
   :commands autopair-mode)
 
+(use-package corral
+  :bind (("M-(" . corral-parentheses-forward)
+         ("M-)" . corral-parentheses-backward)))
+
 (use-package hideshow
   :defer t
   :config (progn
