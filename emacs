@@ -395,6 +395,13 @@ Breadcrumb bookmarks:
               :config (setq-default semantic-decoration-styles
                                     '(("semantic-decoration-on-includes" . t))))))
 
+(use-package srefactor
+  :defer t
+  :init (progn
+          (defun srefactor-c-common-hook ()
+            (local-set-key (kbd "C-c C-c") #'srefactor-refactor-at-point))
+          (add-hook 'c-mode-common-hook #'srefactor-c-common-hook)))
+
 (use-package company
   :defer 5
   :diminish "comp"
