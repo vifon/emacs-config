@@ -33,6 +33,19 @@
     (when (org-previous-line-empty-p)
       (insert "\n"))))
 
+(defun org-followup ()
+  (interactive)
+  (let ((link (org-store-link nil)))
+    (org-insert-heading-respect-content)
+    (end-of-line)
+    (save-excursion
+      (insert "\n")
+      (indent-for-tab-command)
+      (org-time-stamp-inactive (quote (16)))
+      (insert "\n")
+      (indent-for-tab-command)
+      (insert "Follow-up of: " link))))
+
 (use-package org-protocol)
 
 (setq org-hide-leading-stars nil)
