@@ -489,7 +489,18 @@ Breadcrumb bookmarks:
           :commands sx-search))
 
 (use-package avy-jump
-  :bind ("C-c j" . avy-goto-word-1))
+  :bind ("C-c j" . avy-dwim)
+  :init (progn
+          (avy-setup-default)
+          (defun avy-dwim (arg)
+            (interactive "P")
+            (cond ((not arg)
+                   (avy-goto-word-1))
+                  ((equal arg '(4))
+                   (avy-goto-char))
+                  ((equal arg '(16))
+                   (avy-goto-line))
+                  (t nil)))))
 
 (use-package win-switch
   :bind ("C-x o" . win-switch-dispatch)
