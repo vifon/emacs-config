@@ -61,7 +61,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(avy-lead-face ((t (:background "dark red" :foreground "magenta" :inverse-video nil))))
  '(diff-added ((((background dark)) (:foreground "green"))))
  '(diff-changed ((((background dark)) (:foreground "yellow"))))
  '(diff-context ((((background dark)) (:foreground "White")) (t (:foreground "Black"))))
