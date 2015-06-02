@@ -147,8 +147,15 @@
   "}\n"
   )
 
+(define-skeleton c++-catch-skeleton
+  "" ""
+  "#define CATCH_CONFIG_MAIN\n"
+  "#include \"catch.hpp\"\n"
+  )
+
 
 (define-auto-insert "\\.\\(C\\|cc\\|cpp\\)$" 'c++-skeleton)
 (define-auto-insert "\\.c$" 'c-skeleton)
 (define-auto-insert "\\.\\(H\\|hpp\\)$" 'c++-header-skeleton)
 (define-auto-insert "\\.h$" 'c-header-skeleton)
+(define-auto-insert "/catch.cpp$" 'c++-catch-skeleton)
