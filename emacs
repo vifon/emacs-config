@@ -315,8 +315,6 @@ Breadcrumb bookmarks:
 (use-package column-marker
   :bind ("C-c u" . column-marker-1))
 
-(use-package typopunct)
-
 (use-package fic-ext-mode
   :diminish fic-ext-mode
   :init (add-hook 'prog-mode-hook
