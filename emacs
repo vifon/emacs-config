@@ -646,7 +646,8 @@ Breadcrumb bookmarks:
      (set-frame-font font nil t))))
 
 (use-package my-mu4e
-  :if (file-directory-p "~/.emacs.d/secret")
+  :if (and (file-directory-p "~/.emacs.d/secret")
+           (file-directory-p "~/pkgs/mu"))
   :defer 17
   :bind ("<f5>" . mu4e)
   :config (require 'my-mu4e)
