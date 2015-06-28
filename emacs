@@ -238,12 +238,16 @@
 
 (use-package bm
   :commands (bm-load-and-restore)
-  :bind (("<left-fringe> <mouse-1>" . bm-toggle-mouse)
+  :bind (("<left-fringe> <mouse-1>" . bm-toggle-fringe-mouse)
          ("<left-fringe> <mouse-3>" . bm-toggle-line-mouse))
   :config (progn
             (defun bm-toggle-line-mouse ()
               (interactive)
               (let ((bm-highlight-style 'bm-highlight-only-line))
+                (call-interactively 'bm-toggle-mouse)))
+            (defun bm-toggle-fringe-mouse ()
+              (interactive)
+              (let ((bm-highlight-style 'bm-highlight-only-fringe))
                 (call-interactively 'bm-toggle-mouse)))))
 
 (use-package breadcrumb
