@@ -22,6 +22,8 @@
             (skeletor-define-template "interactive-c"
               :title "Interactive C Project")
             (skeletor-define-template "nacl-project"
-              :title "PNaCl Project")))
+              :title "PNaCl Project")
+            (skeletor-define-template "scala-project"
+              :title "Scala Project")))
 
 (provide 'my-skeletons)
