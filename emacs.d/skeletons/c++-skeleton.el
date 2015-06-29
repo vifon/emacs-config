@@ -99,7 +99,7 @@
   "}\n"
   )
 
-(define-skeleton c++-unittest-skeleton
+(define-skeleton c++-cppunit-skeleton
   "" ""
   "// File: "(file-name-nondirectory (buffer-file-name))"\n"
   "#ifndef _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n"
@@ -121,7 +121,7 @@
   "#endif\n"
   )
 
-(define-skeleton c++-unittest-main-skeleton
+(define-skeleton c++-cppunit-main-skeleton
   "" ""
   "// File: "(file-name-nondirectory (buffer-file-name))"\n"
   "\n#include <cppunit/CompilerOutputter.h>\n"
