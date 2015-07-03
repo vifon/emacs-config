@@ -24,6 +24,11 @@
             (skeletor-define-template "nacl-project"
               :title "PNaCl Project")
             (skeletor-define-template "scala-project"
-              :title "Scala Project")))
+              :title "Scala Project"
+              :requires-executables '(("sbt" . "http://www.scala-sbt.org/download.html"))
+              :after-creation
+              (lambda (dir)
+                (skeletor-async-shell-command "sbt gen-ensime")
+                (find-file "src/main/scala/Main.scala")))))
 
 (provide 'my-skeletons)
