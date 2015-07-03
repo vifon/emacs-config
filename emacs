@@ -406,7 +406,6 @@ Breadcrumb bookmarks:
 
 (use-package company
   :defer 5
-  :diminish "comp"
   :config (progn
             (setq company-idle-delay 0.25)
             (add-hook 'c++-mode-hook
