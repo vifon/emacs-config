@@ -571,6 +571,14 @@ Breadcrumb bookmarks:
                   (define-key jedi-mode-map [remap pop-tag-mark]
                     'jedi:goto-definition-pop-marker)))))
 
+(use-package ensime
+  :defer t
+  :config (progn
+            (define-key ensime-mode-map (kbd "M-n") nil)
+            (define-key ensime-mode-map (kbd "M-p") nil)
+            (define-key ensime-mode-map [remap next-error] #'ensime-forward-note)
+            (define-key ensime-mode-map [remap previous-error] #'ensime-backward-note)))
+
 (use-package projectile
   :defer 3
   :commands (projectile-global-mode
