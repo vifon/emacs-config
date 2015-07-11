@@ -42,6 +42,10 @@
                 "-%-"
                 ))
 
+(setq mode-line-misc-info (delete '(global-mode-string
+                                    ("" global-mode-string " "))
+                                  mode-line-misc-info))
+
 ;; Helper function
 (defun shorten-directory (dir max-length skip)
   "Show up to `max-length' characters of a directory name `dir'."
