@@ -56,6 +56,7 @@
 (depends-on "flx-isearch")
 (depends-on "flycheck")
 (depends-on "flycheck-rust")
+(depends-on "focus-autosave-mode")
 (depends-on "geiser")
 (depends-on "ggtags")
 (depends-on "git-commit-mode")
