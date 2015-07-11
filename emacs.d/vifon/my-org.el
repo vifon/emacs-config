@@ -239,4 +239,15 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                    '("/usr/share/ditaa/ditaa.jar"
                      "/usr/share/java/ditaa/ditaa-0_9.jar")))))
 
+
+;;; https://lists.gnu.org/archive/html/emacs-orgmode/2012-12/msg00231.html
+(org-add-link-type "thunderlink" 'org-thunderlink-open)
+(defun org-thunderlink-open (path)
+  "Opens a specified email in Thunderbird with the help of the add-on ThunderLink."
+  (start-process "thunderlink" nil
+                 "thunderbird"
+                 "-thunderlink"
+                 (concat "thunderlink:"
+                         (substring-no-properties path))))
+
 (provide 'my-org)
