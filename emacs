@@ -570,6 +570,9 @@ Breadcrumb bookmarks:
                   (define-key jedi-mode-map [remap pop-tag-mark]
                     'jedi:goto-definition-pop-marker)))))
 
+(use-package scala-mode2
+  :config (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
+
 (use-package ensime
   :defer t
   :config (progn
