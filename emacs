@@ -193,10 +193,7 @@
          ("C-c B" . neotree-find)))
 
 (use-package magit
-  :diminish magit-auto-revert-mode
-  :bind (("C-c g" . magit-status)
-         ("C-x v C-l" . magit-log)
-         ("C-x v f" . magit-file-log))
+  :bind (("C-c g" . magit-status))
   :init (progn
           (key-chord-define-global "`m" 'magit-status)
           (setq magit-last-seen-setup-instructions "1.4.0")))
