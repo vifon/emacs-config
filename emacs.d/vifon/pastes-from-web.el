@@ -175,9 +175,9 @@ narrowed."
                  "url"))
      (cdr (magit-get-remote-branch)))))
 
-(eval-after-load 'magit
-  '(define-key magit-mode-map "V"
-     #'visit-pull-request-url))
+;; (eval-after-load 'magit
+;;   '(define-key magit-mode-map "V"
+;;      #'visit-pull-request-url))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
