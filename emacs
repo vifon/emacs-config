@@ -196,7 +196,12 @@
   :bind (("C-c g" . magit-status))
   :init (progn
           (key-chord-define-global "`m" 'magit-status)
-          (setq magit-last-seen-setup-instructions "1.4.0")))
+          (setq magit-last-seen-setup-instructions "1.4.0"))
+  :config (let ((keymap magit-status-mode-map))
+            (define-key keymap
+              (kbd "M-<tab>")
+              (lookup-key keymap (kbd "C-<tab>")))
+            (define-key magit-status-mode-map (kbd "C-<tab>") nil)))
 
 (use-package git-commit-mode
   :defer t
