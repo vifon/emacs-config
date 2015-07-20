@@ -64,7 +64,7 @@
  _w_riteroom-mode: %-3(bound-and-true-p writeroom-mode)     variable-_p_itch-mode           _s_entence-highlight-mode: %-3(bound-and-true-p sentence-highlight-mode)
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
 
- _h_ttpd settings"
+ _h_ttpd settings    fly_c_heck-mode etc."
                   ("t" delete-trailing-whitespace)
                   ("a" ack-and-a-half-same)
                   ("m" delete-matching-lines)
@@ -81,6 +81,7 @@
                   ("p" variable-pitch-mode :color red)
                   ("g" indent-guide-mode :color red)
                   ("h" httpd-hydra/body :color blue)
+                  ("c" fly*-hydra/body :color blue)
                   ("SPC" vydra/body)
                   ("q" nil)))
 
@@ -88,10 +89,20 @@
   (:hint nil :color blue)
   "
 ### httpd settings ###
+
 httpd-_s_tart    httpds-_S_top    _i_mpatient-mode"
   ("i" impatient-mode :color red)
   ("s" httpd-start)
   ("S" httpd-stop))
+
+(defhydra fly*-hydra
+  (:hint nil :color red)
+  "
+### fly*-mode ###
+
+fly_c_heck-mode: %-3(bound-and-true-p flycheck-mode)    fly_s_pell-mode: %-3(bound-and-true-p flyspell-mode)"
+  ("c" flycheck-mode)
+  ("s" flyspell-mode))
 
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
