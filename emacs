@@ -197,11 +197,15 @@
   :init (progn
           (key-chord-define-global "`m" 'magit-status)
           (setq magit-last-seen-setup-instructions "1.4.0"))
-  :config (let ((keymap magit-status-mode-map))
-            (define-key keymap
-              (kbd "M-<tab>")
-              (lookup-key keymap (kbd "C-<tab>")))
-            (define-key magit-status-mode-map (kbd "C-<tab>") nil)))
+  :config (mapcar
+           (lambda (keymap)
+             (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
+             (define-key keymap (kbd "C-<tab>") nil))
+           (list magit-status-mode-map
+                 magit-log-mode-map
+                 magit-reflog-mode-map
+                 magit-refs-mode-map
+                 magit-diff-mode-map)))
 
 (use-package git-commit-mode
   :defer t
