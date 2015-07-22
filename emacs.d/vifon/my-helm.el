@@ -16,8 +16,10 @@
 (setq helm-locate-command "locate %s -e -A %s")
 (setq helm-buffer-max-length 40)
 
+(global-set-key (kbd "M-X") (lambda ()
+                              (interactive)
+                              (call-interactively 'execute-extended-command)))
 (global-set-key [remap occur]                    'helm-occur)
-(global-set-key (kbd "M-X")                      'smex)
 (global-set-key [remap execute-extended-command] 'helm-M-x)
 (global-set-key [remap yank-pop]                 'helm-show-kill-ring)
 (global-set-key (kbd "C-h C-f")                  'helm-apropos)
