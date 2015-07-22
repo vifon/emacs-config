@@ -24,16 +24,19 @@
    (split-string text ",")
    ", "))
 
+(defun scratch-dir-path (name)
+  (concat "~/tmp/scratch-"
+          (format-time-string "%s_%Y-%m-%d")
+          (when (not (string= name ""))
+            (concat "--" name))
+          "/"))
+
 (defun scratch-dir (&optional use-git name)
   "Create an ad-hoc working directory and open it in dired.
 
 Prefix argument initializes the Git repository."
   (interactive "P\nMName: ")
-  (let ((directory (concat "~/tmp/scratch-"
-                           (format-time-string "%s_%Y-%m-%d")
-                           (when (not (string= name ""))
-                             (concat "--" name))
-                           "/")))
+  (let ((directory (scratch-dir-path name)))
     (make-directory directory t)
     (when (file-symlink-p "~/scratch")
       (delete-file "~/scratch"))
