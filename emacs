@@ -454,11 +454,7 @@ Breadcrumb bookmarks:
               (ggtags-mode 1)))))
 
 (use-package flycheck
-  :defer t
-  :config (add-hook 'c++-mode-hook
-                    #'(lambda ()
-                        (setq flycheck-clang-language-standard "c++11"
-                              flycheck-gcc-language-standard "c++11"))))
+  :defer t)
 
 (use-package cpputils-cmake
   :commands (cppcm-reload-all cppcm-get-exe-path-current-buffer)

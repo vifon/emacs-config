@@ -30,6 +30,8 @@
  '(dired-dwim-target t)
  '(ediff-grab-mouse nil)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(flycheck-clang-language-standard "c++14")
+ '(flycheck-gcc-language-standard "c++14")
  '(flymake-gui-warnings-enabled t)
  '(focus-follows-mouse t)
  '(glasses-separate-parentheses-p nil)
