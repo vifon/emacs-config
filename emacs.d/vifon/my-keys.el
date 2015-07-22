@@ -100,9 +100,11 @@ httpd-_s_tart    httpds-_S_top    _i_mpatient-mode"
   "
 ### fly*-mode ###
 
-fly_c_heck-mode: %-3(bound-and-true-p flycheck-mode)    fly_s_pell-mode: %-3(bound-and-true-p flyspell-mode)"
+fly_c_heck-mode: %-3(bound-and-true-p flycheck-mode)    fly_s_pell-mode: %-3(bound-and-true-p flyspell-mode)
+_S_emantic-mode: %-3(bound-and-true-p semantic-mode)"
   ("c" flycheck-mode)
-  ("s" flyspell-mode))
+  ("s" flyspell-mode)
+  ("S" semantic-mode))
 
 (global-set-key (kbd "C-c s") '(lambda () (interactive)
                                  (switch-to-buffer "*scratch*")
