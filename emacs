@@ -537,6 +537,13 @@ Breadcrumb bookmarks:
 (use-package crontab-mode
   :mode ("^/tmp/crontab\\..*" . crontab-mode))
 
+(use-package haskell-mode
+  :defer t
+  :config (progn
+            (setq haskell-indentation-show-indentations t)
+            (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+            (add-hook 'haskell-mode-hook #'inf-haskell-mode)))
+
 (use-package cperl-mode
   :commands cperl-mode
   :init (defalias 'perl-mode 'cperl-mode)

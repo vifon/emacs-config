@@ -44,9 +44,6 @@
 (add-hook 'mail-mode-hook #'(lambda ()
                               (setq show-trailing-whitespace t)))
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-(add-hook 'haskell-mode-hook 'inf-haskell-mode)
-
 (add-hook 'semantic-symref-results-mode-hook
           #'(lambda () (toggle-read-only 1)))
 
