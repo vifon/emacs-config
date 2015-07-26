@@ -5,7 +5,13 @@
   (god-mode-all)
   (god-mode-notify god-global-mode))
 
-(key-chord-define-global "jf" 'god-mode-all-mod)
+(defun god-mode+notify (&optional arg)
+  (interactive)
+  (god-mode)
+  (let ((visible-bell t))
+    (ding t)))
+
+(key-chord-define-global "jf" 'god-mode+notify)
 (key-chord-define god-local-mode-map "ci" (lambda ()
                                             (interactive)
                                             (er/mark-symbol)
