@@ -23,6 +23,7 @@
 (global-set-key [remap execute-extended-command] 'helm-M-x)
 (global-set-key [remap yank-pop]                 'helm-show-kill-ring)
 (global-set-key (kbd "C-h C-f")                  'helm-apropos)
+(global-set-key (kbd "C-x C-f")                  'helm-find-files)
 (global-set-key (kbd "C-x b")                    'helm-buffers-list)
 (global-set-key (kbd "M-s f")                    'helm-swoop)
 (global-set-key [remap find-tag]                 'helm-etags-select)
@@ -55,5 +56,37 @@
                                      "*helm project buffers*")))
             ;; to prevent overwriting
             (define-key projectile-command-map [?h] 'helm-browse-project)))
+
+(helm-mode 1)
+
+;;; use ido instead of helm
+(dolist (command
+         '(switch-to-buffer
+           find-file
+           find-file-other-window
+           find-file-other-frame
+           find-alternate-file
+           dired
+           c-set-offset
+           unload-feature
+           org-agenda-filter-by-tag
+           org-match-sparse-tree))
+  (add-to-list 'helm-completing-read-handlers-alist
+               (cons command 'ido)))
+
+;;; use completing-read instead of helm
+(dolist
+    (command
+     '(TeX-command-master
+       LaTeX-section
+       LaTeX-environment
+       insert-char
+       sql-get-login
+       find-file-at-point
+       highlight-regexp
+       org-set-tags
+       magit-gitignore))
+  (add-to-list 'helm-completing-read-handlers-alist
+               (cons command nil)))
 
 (provide 'my-helm)

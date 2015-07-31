@@ -45,13 +45,11 @@
 (require 'pastes-from-web)
 
 (use-package ido
-  :init (progn
-          (setq ido-vertical-define-keys nil)
-          (ido-mode 1)
-          (ido-everywhere 1)
-          (flx-ido-mode 1)
-          (ido-vertical-mode 1))
+  :defer t
+  :init (setq ido-vertical-define-keys nil)
   :config (progn
+            (flx-ido-mode 1)
+            (ido-vertical-mode 1)
             (add-to-list 'ido-work-directory-list-ignore-regexps
                          tramp-file-name-regexp)
             (setq ido-enable-flex-matching t
