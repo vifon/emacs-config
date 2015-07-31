@@ -525,7 +525,7 @@ Breadcrumb bookmarks:
   :init (defalias 'h++-mode 'c++-mode))
 
 (use-package uniquify
-  :config (setq uniquify-buffer-name-style 'forward
+  :config (setq uniquify-buffer-name-style 'post-forward-angle-brackets
                 uniquify-strip-common-suffix t))
 
 (use-package markdown-mode
