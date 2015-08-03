@@ -16,17 +16,19 @@
 (setq helm-locate-command "locate %s -e -A %s")
 (setq helm-buffer-max-length 40)
 
-(global-set-key (kbd "M-X") (lambda ()
-                              (interactive)
-                              (call-interactively 'execute-extended-command)))
-(global-set-key [remap occur]                    'helm-occur)
-(global-set-key [remap execute-extended-command] 'helm-M-x)
-(global-set-key [remap yank-pop]                 'helm-show-kill-ring)
-(global-set-key (kbd "C-h C-f")                  'helm-apropos)
-(global-set-key (kbd "C-x C-f")                  'helm-find-files)
-(global-set-key (kbd "C-x b")                    'helm-buffers-list)
-(global-set-key (kbd "M-s f")                    'helm-swoop)
-(global-set-key [remap find-tag]                 'helm-etags-select)
+(setq helm-quick-update t
+      helm-buffers-fuzzy-matching t
+      helm-move-to-line-cycle-in-source t)
+
+(global-set-key (kbd "M-x")      #'helm-M-x)
+(global-set-key (kbd "M-X")      #'execute-extended-command)
+(global-set-key [remap occur]    #'helm-occur)
+(global-set-key [remap yank-pop] #'helm-show-kill-ring)
+(global-set-key (kbd "C-h C-f")  #'helm-apropos)
+(global-set-key (kbd "C-x C-f")  #'helm-find-files)
+(global-set-key (kbd "C-x b")    #'helm-buffers-list)
+(global-set-key (kbd "M-s f")    #'helm-swoop)
+(global-set-key [remap find-tag] #'helm-etags-select)
 
 (key-chord-define-global "`h"
                          (defun my-helm-browse-project--basename (arg)
@@ -59,14 +61,12 @@
 
 (helm-mode 1)
 
+;;; Do not remove, used for the interactive evaluation!
+;; (setq helm-completing-read-handlers-alist nil)
+
 ;;; use ido instead of helm
 (dolist (command
          '(switch-to-buffer
-           find-file
-           find-file-other-window
-           find-file-other-frame
-           find-alternate-file
-           dired
            c-set-offset
            unload-feature
            org-agenda-filter-by-tag
@@ -85,7 +85,9 @@
        find-file-at-point
        highlight-regexp
        org-set-tags
-       magit-gitignore))
+       magit-gitignore
+       execute-extended-command
+       find-file))
   (add-to-list 'helm-completing-read-handlers-alist
                (cons command nil)))
 
