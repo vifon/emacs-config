@@ -18,7 +18,7 @@
 
 (setq helm-quick-update t
       helm-buffers-fuzzy-matching t
-      helm-move-to-line-cycle-in-source t)
+      helm-move-to-line-cycle-in-source nil)
 
 (global-set-key (kbd "M-x")      #'helm-M-x)
 (global-set-key (kbd "M-X")      #'execute-extended-command)
