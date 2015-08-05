@@ -323,17 +323,6 @@ Breadcrumb bookmarks:
 (use-package column-marker
   :bind ("C-c u" . column-marker-1))
 
-(use-package fic-ext-mode
-  :diminish fic-ext-mode
-  :init (add-hook 'prog-mode-hook
-                  #'(lambda () (fic-ext-mode 1)))
-  :config (progn
-            (defun fic-search-re ()
-              "Regexp to search for"
-              (let ((fic-words-re (regexp-opt fic-highlighted-words 'words)))
-                (concat fic-words-re "\\(?:(\\(" fic-author-name-regexp "\\))\\)?")))
-            (add-to-list 'fic-highlighted-words "XXX" 'append)))
-
 (use-package multiple-cursors
   :bind (("C-<"         . mc/mark-previous-like-this)
          ("C->"         . mc/mark-next-like-this)
@@ -613,10 +602,6 @@ Breadcrumb bookmarks:
             (defun projectile-helm-ag ()
              (interactive)
              (helm-ag (projectile-project-root)))))
-
-(use-package ack-and-a-half
-  :defer t
-  :config (setq ack-and-a-half-prompt-for-directory t))
 
 (use-package sane-term
   :init (setq sane-term-shell-command "/bin/zsh")
