@@ -62,7 +62,6 @@
 (depends-on "ggtags")
 (depends-on "git-gutter")
 (depends-on "git-messenger")
-(depends-on "git-rebase-mode")
 (depends-on "git-timemachine")
 (depends-on "god-mode")
 (depends-on "goto-chg")
