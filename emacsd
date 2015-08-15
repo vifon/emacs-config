@@ -1,0 +1,45 @@
+#!/bin/bash
+
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+BOLD=`tput bold`
+RESET=`tput sgr0`
+
+EMACS="emacs"
+EMACSCLIENT="emacsclient"
+
+unset ALTERNATE_EDITOR
+if [ -z "$1" ]; then
+    exec emacsd start
+fi
+case "$1" in
+    stop)
+        echo "$YELLOW$BOLD*$RESET stopping emacs daemon..."
+        if $EMACSCLIENT --eval '(let ((kill-emacs-query-functions nil)) (save-buffers-kill-emacs t))' &> /dev/null; then
+            echo "$GREEN$BOLD*$RESET emacs daemon stopped"
+        elif [ "$2" = "--force" ] && pkill -f "$EMACS --daemon"; then
+            echo "$GREEN$BOLD*$RESET emacs daemon force-stopped"
+        else
+            echo "$RED$BOLD*$RESET emacs daemon not running"
+        fi
+        ;;
+    start)
+        echo "$YELLOW$BOLD*$RESET starting emacs daemon..."
+        if $EMACS --daemon &> /dev/null; then
+            echo "$GREEN$BOLD*$RESET emacs daemon started"
+        else
+            echo "$RED$BOLD*$RESET emacs daemon not started (maybe it is still running?)"
+        fi
+        ;;
+    restart)
+        $0 stop $2
+        $0 start
+        ;;
+    connect)
+        $EMACSCLIENT -c
+        ;;
+    *)
+        echo '* Usage: emacsd {start|stop|restart}'
+        ;;
+esac
