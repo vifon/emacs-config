@@ -121,7 +121,6 @@
 (depends-on "s")
 (depends-on "sane-term")
 (depends-on "scala-mode2")
-(depends-on "sentence-highlight")
 (depends-on "simple-httpd")
 (depends-on "skeletor")
 (depends-on "slime")

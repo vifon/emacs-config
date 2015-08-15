@@ -283,20 +283,6 @@ Breadcrumb bookmarks:
                 (call-interactively 'pop-global-mark)
                 (call-interactively 'hydra-breadcrumb/body)))))
 
-(use-package sentence-highlight
-  :commands sentence-highlight-mode
-  :init (defun sentence-highlight-mode (&optional arg)
-          "Minor mode for highlighting current sentence."
-          ;; fixed
-          (interactive "P")
-          (setq sentence-highlight-mode (if arg
-                                            (> (prefix-numeric-value arg) 0)
-                                            (not sentence-highlight-mode)))
-          (if sentence-highlight-mode
-              (add-hook 'post-command-hook 'sentence-highlight-current nil t)
-              (remove-hook 'post-command-hook 'sentence-highlight-current t)
-              (delete-overlay sentence-extent))))
-
 (use-package indent-guide
   :defer t
   :init (add-hook 'LaTeX-mode-hook #'(lambda ()
