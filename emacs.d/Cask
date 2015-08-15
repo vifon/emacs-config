@@ -38,6 +38,7 @@
 (depends-on "diff-hl")
 (depends-on "diminish")
 (depends-on "dired-details")
+(depends-on "dired-subtree")
 (depends-on "dockerfile-mode")
 (depends-on "dpaste")
 (depends-on "drag-stuff")

@@ -118,6 +118,12 @@
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
 
+(use-package dired
+  :defer t
+  :config (progn
+            (define-key dired-mode-map (kbd "z") #'dired-subtree-toggle)
+            (define-key dired-mode-map (kbd "Z") #'dired-subtree-only-this-file)))
+
 (use-package yasnippet
   :defer 7
   :diminish yas-minor-mode
