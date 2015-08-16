@@ -2,6 +2,7 @@
 (load "~/.emacs.d/skeletons/asm-skeleton.el")
 (load "~/.emacs.d/skeletons/c++-skeleton.el")
 (load "~/.emacs.d/skeletons/cmake-skeleton.el")
+(load "~/.emacs.d/skeletons/docker-skeleton.el")
 (load "~/.emacs.d/skeletons/generic.el")
 (load "~/.emacs.d/skeletons/haskell-skeleton.el")
 (load "~/.emacs.d/skeletons/java-skeleton.el")
