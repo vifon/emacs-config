@@ -507,6 +507,15 @@ Breadcrumb bookmarks:
   :config (setq uniquify-buffer-name-style 'post-forward-angle-brackets
                 uniquify-strip-common-suffix t))
 
+(use-package deft
+  :defer t
+  :bind (("<f5>" . deft))
+  :config (progn
+            (setq deft-extensions (sort deft-extensions
+                                        (lambda (a b)
+                                          (equal a "md"))))
+            (setq deft-markdown-mode-title-level 1)))
+
 (use-package markdown-mode
   :mode ("\\.md$" . markdown-mode))
 
