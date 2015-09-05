@@ -383,10 +383,6 @@ Breadcrumb bookmarks:
   :defer 5
   :config (progn
             (setq company-idle-delay 0.25)
-            (add-hook 'c++-mode-hook
-                      #'(lambda ()
-                          (make-local-variable 'company-clang-arguments)
-                          (setq company-clang-arguments '("-std=c++11"))))
             (setq company-backends '(company-bbdb
                                      company-nxml
                                      company-css
@@ -410,10 +406,14 @@ Breadcrumb bookmarks:
             (add-hook 'org-mode-hook '(lambda ()
                                         (company-mode 0)))
             (global-company-mode 1))
-  :init (use-package company-clang
-          :bind ("C-c V" . company-clang))
-  :bind ("C-c v" . company-complete)
-  :demand t)
+  :init (progn
+          (use-package company-clang
+            :bind ("C-c V" . company-clang))
+          (add-hook 'c++-mode-hook
+                    #'(lambda ()
+                        (make-local-variable 'company-clang-arguments)
+                        (setq company-clang-arguments '("-std=c++11")))))
+  :bind ("C-c v" . company-complete))
 
 (use-package ggtags
   :demand t        ;bad things happen in the globalized mode otherwise
