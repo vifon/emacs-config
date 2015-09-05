@@ -13,14 +13,14 @@
 ;;; used by yasnippet
 (defun get-c-arg-names (arg-list)
   (mapconcat
-   #'(lambda (arg)
-       (replace-regexp-in-string "^.*?\\(\\w*\\)[[:blank:]]*$" "\\1" arg))
+   (lambda (arg)
+     (replace-regexp-in-string "^.*?\\(\\w*\\)[[:blank:]]*$" "\\1" arg))
    (split-string text ",")
    ", "))
 (defun get-c-arg-types (arg-list)
   (mapconcat
-   #'(lambda (arg)
-       (replace-regexp-in-string "^[[:blank:]]*\\(.*?\\)[[:blank:]]*\\w*[[:blank:]]*$" "\\1" arg))
+   (lambda (arg)
+     (replace-regexp-in-string "^[[:blank:]]*\\(.*?\\)[[:blank:]]*\\w*[[:blank:]]*$" "\\1" arg))
    (split-string text ",")
    ", "))
 

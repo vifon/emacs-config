@@ -3,9 +3,9 @@
             (define-key org-mode-map (kbd "<C-tab>") nil)
             (define-key org-mode-map (kbd "C-c C-x h") 'helm-org-in-buffer-headings)
             (define-key org-mode-map (kbd "C-c C-1")
-              #'(lambda ()
-                  (interactive)
-                  (org-time-stamp-inactive '(16))))))
+              (lambda ()
+                (interactive)
+                (org-time-stamp-inactive '(16))))))
 
 (use-package org-attach
   :commands (org-attach-expand-link org-attach-attach)

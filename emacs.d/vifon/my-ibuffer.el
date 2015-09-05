@@ -14,10 +14,10 @@
                                      ("org" (mode . org-mode)))))
 
 (add-hook 'ibuffer-mode-hook
-          #'(lambda ()
-              (ibuffer-switch-to-saved-filter-groups "vifon")
-              (setq ibuffer-sorting-mode 'filename/process)
-              (push "*emacs*" ibuffer-hidden-filter-groups)))
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "vifon")
+            (setq ibuffer-sorting-mode 'filename/process)
+            (push "*emacs*" ibuffer-hidden-filter-groups)))
 
 (setq ibuffer-show-empty-filter-groups nil)
 (setq ibuffer-expert t)

@@ -214,8 +214,8 @@
 (use-package git-commit-mode
   :defer t
   :config (progn
-           (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
-           (add-hook 'git-commit-mode-hook 'turn-on-orgstruct++)))
+            (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
+            (add-hook 'git-commit-mode-hook 'turn-on-orgstruct++)))
 
 (use-package git-messenger
   :bind ("C-x v p" . git-messenger:popup-message))
@@ -281,8 +281,8 @@ Breadcrumb bookmarks:
 
 (use-package indent-guide
   :defer t
-  :init (add-hook 'LaTeX-mode-hook #'(lambda ()
-                                       (indent-guide-mode 1)))
+  :init (add-hook 'LaTeX-mode-hook (lambda ()
+                                     (indent-guide-mode 1)))
   :config (setq indent-guide-delay nil))
 
 (use-package writeroom-mode
@@ -410,9 +410,9 @@ Breadcrumb bookmarks:
           (use-package company-clang
             :bind ("C-c V" . company-clang))
           (add-hook 'c++-mode-hook
-                    #'(lambda ()
-                        (make-local-variable 'company-clang-arguments)
-                        (setq company-clang-arguments '("-std=c++11")))))
+                    (lambda ()
+                      (make-local-variable 'company-clang-arguments)
+                      (setq company-clang-arguments '("-std=c++11")))))
   :bind ("C-c v" . company-complete))
 
 (use-package ggtags
@@ -591,14 +591,14 @@ Breadcrumb bookmarks:
   :config (progn
             (require 'projectile)
             (defun projectile-helm-ag ()
-             (interactive)
-             (helm-ag (projectile-project-root)))))
+              (interactive)
+              (helm-ag (projectile-project-root)))))
 
 (use-package sane-term
   :init (setq sane-term-shell-command "/bin/zsh")
   :config (add-hook 'term-mode-hook
-                    #'(lambda ()
-                        (yas-minor-mode -1)))
+                    (lambda ()
+                      (yas-minor-mode -1)))
   :bind (("C-x t" . sane-term)
          ("C-x T" . sane-term-create)))
 
@@ -614,13 +614,13 @@ Breadcrumb bookmarks:
   :defer t
   :config (progn
             (define-key image-mode-map (kbd "k")
-              #'(lambda ()
-                  (interactive)
-                  (kill-buffer)))
+              (lambda ()
+                (interactive)
+                (kill-buffer)))
             (define-key image-mode-map (kbd "K")
-              #'(lambda ()
-                  (interactive)
-                  (kill-buffer-and-window)))))
+              (lambda ()
+                (interactive)
+                (kill-buffer-and-window)))))
 
 (use-package slime
   :defer t
@@ -632,11 +632,11 @@ Breadcrumb bookmarks:
 (add-hook 'after-init-hook '(lambda () (interactive) (load-theme 'zenburn)))
 (setq frame-background-mode 'dark)
 (ignore-errors
- (let ((font-name "DejaVu Sans Mono")
-       (font-size "11"))
-   (let ((font (concat font-name "-" font-size)))
-     (add-to-list 'default-frame-alist `(font . ,font))
-     (set-frame-font font nil t))))
+  (let ((font-name "DejaVu Sans Mono")
+        (font-size "11"))
+    (let ((font (concat font-name "-" font-size)))
+      (add-to-list 'default-frame-alist `(font . ,font))
+      (set-frame-font font nil t))))
 
 (use-package my-mu4e
   :if (and (file-directory-p "~/.emacs.d/secret")

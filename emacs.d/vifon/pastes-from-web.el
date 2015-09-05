@@ -95,17 +95,17 @@ narrowed."
         ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
         (t (narrow-to-defun))))
 
-(global-set-key (kbd "C-c l") #'(lambda (arg)
-                                  (interactive "P")
-                                  (if (or arg (fancy-narrow-active-p))
-                                   (letf (((symbol-function 'narrow-to-defun) 'fancy-narrow-to-defun)
-                                          ((symbol-function 'narrow-to-region) 'fancy-narrow-to-region)
-                                          ((symbol-function 'org-narrow-to-subtree) 'org-fancy-narrow-to-subtree)
-                                          ((symbol-function 'widen) 'fancy-widen)
-                                          ((symbol-function 'buffer-narrowed-p) 'fancy-narrow-active-p))
-                                     (narrow-or-widen-dwim nil)
-                                     (diff-hl-update))
-                                   (narrow-or-widen-dwim nil))))
+(global-set-key (kbd "C-c l") (lambda (arg)
+                                (interactive "P")
+                                (if (or arg (fancy-narrow-active-p))
+                                    (letf (((symbol-function 'narrow-to-defun) 'fancy-narrow-to-defun)
+                                           ((symbol-function 'narrow-to-region) 'fancy-narrow-to-region)
+                                           ((symbol-function 'org-narrow-to-subtree) 'org-fancy-narrow-to-subtree)
+                                           ((symbol-function 'widen) 'fancy-widen)
+                                           ((symbol-function 'buffer-narrowed-p) 'fancy-narrow-active-p))
+                                      (narrow-or-widen-dwim nil)
+                                      (diff-hl-update))
+                                    (narrow-or-widen-dwim nil))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -168,12 +168,12 @@ narrowed."
   (interactive)
   (browse-url
    (format "https://github.com/%s/pull/new/%s"
-     (replace-regexp-in-string
-      "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
-      (magit-get "remote"
-                 (magit-get-remote)
-                 "url"))
-     (cdr (magit-get-remote-branch)))))
+           (replace-regexp-in-string
+            "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
+            (magit-get "remote"
+                       (magit-get-remote)
+                       "url"))
+           (cdr (magit-get-remote-branch)))))
 
 ;; (eval-after-load 'magit
 ;;   '(define-key magit-mode-map "V"
