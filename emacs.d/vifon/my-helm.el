@@ -87,7 +87,8 @@
        org-set-tags
        magit-gitignore
        execute-extended-command
-       find-file))
+       find-file
+       ff-find-other-file))
   (add-to-list 'helm-completing-read-handlers-alist
                (cons command nil)))
 
