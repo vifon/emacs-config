@@ -223,11 +223,28 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
 (use-package ob
   :defer t
   :config (progn
+            (setq org-confirm-babel-evaluate nil)
             (org-babel-do-load-languages
              'org-babel-load-languages
              '((sh . t)
+               (awk . t)
+               (sed . t)
+               (makefile . t)
+
                (ditaa . t)
-               (C . t)))
+               (dot . t)
+               (gnuplot . t)
+               (octave . t)
+
+               (sqlite . t)
+
+               (C . t)
+
+               (python . t)
+               (perl . t)
+
+               (java . t)
+               (scala . t)))
             (setq org-babel-C-compiler "gcc -std=c99"
                   org-babel-C++-compiler "g++ -std=c++14")))
 
