@@ -50,6 +50,7 @@
 
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
+(setq org-use-speed-commands t)
 
 (defun my-org-mode-hook ()
   (make-local-variable 'electric-pair-pairs)
