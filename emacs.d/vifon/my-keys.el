@@ -210,27 +210,28 @@ _S_emantic-mode: %-3(bound-and-true-p semantic-mode)"
   (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
 
 
-(defhydra vydra
-  (global-map "C-c e" :color pink)
-  "vi-hydra"
+(global-set-key (kbd "C-c e")
+                (defhydra vydra
+                  (:color pink)
+                  "vi-hydra"
 
-  ("h" backward-char "left")
-  ("j" next-line "down")
-  ("k" previous-line "up")
-  ("l" forward-char "right")
+                  ("h" backward-char "left")
+                  ("j" next-line "down")
+                  ("k" previous-line "up")
+                  ("l" forward-char "right")
 
-  ("f" scroll-up-command "PgDn")
-  ("b" scroll-down-command "PgUp")
+                  ("f" scroll-up-command "PgDn")
+                  ("b" scroll-down-command "PgUp")
 
-  ("v" er/expand-region "select")
+                  ("v" er/expand-region "select")
 
-  ("0" move-beginning-of-line-dwim "BOL")
-  ("a" move-beginning-of-line-dwim "BOL")
-  ("e" move-end-of-line "EOL")
+                  ("0" move-beginning-of-line-dwim "BOL")
+                  ("a" move-beginning-of-line-dwim "BOL")
+                  ("e" move-end-of-line "EOL")
 
-  ("i" nil "quit")
-  ("q" nil "quit")
-  ("SPC" nil "quit"))
+                  ("i" nil "quit")
+                  ("q" nil "quit")
+                  ("SPC" nil "quit")))
 
 
 (provide 'my-keys)
