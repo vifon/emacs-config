@@ -100,6 +100,7 @@
 (depends-on "neotree")
 (depends-on "nlinum")
 (depends-on "org")
+(depends-on "org-bullets")
 (depends-on "ox-ioslide")
 (depends-on "ox-reveal")
 (depends-on "p4")
