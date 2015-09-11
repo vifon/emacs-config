@@ -102,6 +102,7 @@
 (depends-on "org")
 (depends-on "ox-ioslide")
 (depends-on "ox-reveal")
+(depends-on "p4")
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "pandoc-mode")

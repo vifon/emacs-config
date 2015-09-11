@@ -225,6 +225,8 @@
 
 (use-package stgit)
 
+(use-package p4)
+
 (use-package ed
   :commands ed)
 
