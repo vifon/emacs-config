@@ -55,8 +55,6 @@
                 (defhydra text-filter-hydra
                   (:hint nil :color blue)
                   "
- ### Text utils ###
-
  delete-_t_railing-whitespace   delete-_m_atching-lines       _A_lign
  _a_ck                          delete-_n_on-matching-lines   align-_R_egexp
 
