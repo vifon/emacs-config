@@ -9,6 +9,7 @@
 (load "~/.emacs.d/skeletons/makefile-skeleton.el")
 (load "~/.emacs.d/skeletons/markdown-skeleton.el")
 (load "~/.emacs.d/skeletons/org-skeleton.el")
+(load "~/.emacs.d/skeletons/other-skeletons.el")
 (load "~/.emacs.d/skeletons/perl-skeleton.el")
 (load "~/.emacs.d/skeletons/python-skeleton.el")
 (load "~/.emacs.d/skeletons/rust-skeleton.el")
