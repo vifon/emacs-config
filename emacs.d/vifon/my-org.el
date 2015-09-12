@@ -232,6 +232,7 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                (makefile . t)
 
                (ditaa . t)
+               (plantuml . t)
                (dot . t)
                (gnuplot . t)
                (octave . t)
@@ -256,6 +257,14 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                    #'file-exists-p
                    '("/usr/share/ditaa/ditaa.jar"
                      "/usr/share/java/ditaa/ditaa-0_9.jar")))))
+
+(use-package ob-plantuml
+  :defer t
+  :config (unless (file-exists-p org-plantuml-jar-path)
+            (setq org-plantuml-jar-path
+                  (cl-find-if
+                   #'file-exists-p
+                   '("~/.bin/plantuml.jar")))))
 
 
 ;;; https://lists.gnu.org/archive/html/emacs-orgmode/2012-12/msg00231.html
