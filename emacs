@@ -425,7 +425,12 @@ Breadcrumb bookmarks:
               (ggtags-mode 1)))))
 
 (use-package flycheck
-  :defer t)
+  :defer t
+  :init (progn
+          (add-hook 'c-mode-hook (lambda ()
+                                    (setq flycheck-clang-language-standard "c99")))
+          (add-hook 'c++-mode-hook (lambda ()
+                                     (setq flycheck-clang-language-standard "c++11")))))
 
 (use-package cpputils-cmake
   :commands (cppcm-reload-all cppcm-get-exe-path-current-buffer)
