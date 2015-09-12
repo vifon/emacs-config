@@ -7,7 +7,7 @@
   "def main(argv=None):\n    "
   _
   "\n\n"
-  "if __name__ == \"__main__\":\n"
+  "if __name__ == '__main__':\n"
   "    from sys import argv\n"
   "    main(argv)"
   )
