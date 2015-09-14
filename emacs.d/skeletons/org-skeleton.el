@@ -10,3 +10,19 @@
   "#+BEGIN_LATEX\n"
   "\\linespread{1.3}\n"
   "#+END_LATEX\n")
+
+(define-skeleton org-timetable-skeleton
+  "" ""
+  "* Timetable
+
+** Monthly
+   #+BEGIN: clocktable :maxlevel 4 :scope file :block thismonth
+   #+END:
+
+** Weekly
+   #+BEGIN: clocktable :maxlevel 4 :scope file :block thisweek
+   #+END:
+
+** Daily
+   #+BEGIN: clocktable :maxlevel 4 :scope file :block thisweek :step day
+   #+END:")
