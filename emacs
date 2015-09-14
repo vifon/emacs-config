@@ -225,7 +225,8 @@
 
 (use-package stgit)
 
-(use-package p4)
+(use-package p4
+  :if (file-exists-p "~/.p4config"))
 
 (use-package ed
   :commands ed)
