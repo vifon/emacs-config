@@ -94,6 +94,7 @@
  '(italic ((t (:slant italic))))
  '(jabber-chat-prompt-local ((t (:foreground "#4444ff" :weight bold))) t)
  '(jabber-roster-user-online ((t (:foreground "#4444ff" :slant normal :weight bold))) t)
+ '(markdown-inline-code-face ((t (:inherit font-lock-constant-face :foreground "green yellow"))))
  '(minimap-semantic-function-face ((((background dark)) (:inherit (font-lock-function-name-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 3.0))))
  '(org-block-begin-line ((t (:inherit org-meta-line :background "#243A43"))) t)
  '(org-block-end-line ((t (:inherit org-meta-line :background "#243A43"))) t)
