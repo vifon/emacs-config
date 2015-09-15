@@ -52,9 +52,14 @@
 (setq org-special-ctrl-a/e t)
 (setq org-use-speed-commands t)
 
+(defun org-minor-modes (&optional arg)
+  (interactive "P")
+  (org-bullets-mode arg)
+  (hl-line-mode arg))
 (defun my-org-mode-hook ()
   (make-local-variable 'electric-pair-pairs)
-  (add-to-list 'electric-pair-pairs '(?$ . ?$)))
+  (add-to-list 'electric-pair-pairs '(?$ . ?$))
+  (org-minor-modes))
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 (add-hook 'org-mobile-before-process-capture-hook
           (defun my-org-mobile-cleanup ()
