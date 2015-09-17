@@ -630,11 +630,8 @@ Breadcrumb bookmarks:
                 (interactive)
                 (kill-buffer-and-window)))))
 
-(use-package slime
-  :defer t
-  :config (when (file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
-            (load (expand-file-name "~/quicklisp/slime-helper.el"))
-            (setq inferior-lisp-program "sbcl")))
+(use-package slime-autoloads
+  :config (setq inferior-lisp-program "sbcl"))
 
 
 (add-hook 'after-init-hook '(lambda () (interactive) (load-theme 'zenburn)))
