@@ -103,6 +103,8 @@
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
 (setq org-log-into-drawer t)
+(setq org-log-reschedule 'time
+      org-log-redeadline 'time)
 (setq org-hierarchical-todo-statistics nil)
 (setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 
