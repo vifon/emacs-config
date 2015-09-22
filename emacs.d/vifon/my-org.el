@@ -283,15 +283,15 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                          (substring-no-properties path))))
 
 (use-package org-crypt
-  :init (progn
-          (org-crypt-use-before-save-magic)
-          (setq org-tags-exclude-from-inheritance '("crypt"))
-          (setq org-crypt-key "B247B8DE")
-          (define-key org-mode-map (kbd "C-c C-x C-k")
-            (lambda (arg)
-              (interactive "P")
-              (if arg
-                  (org-decrypt-entries)
-                  (org-decrypt-entry))))))
+  :init (define-key org-mode-map (kbd "C-c C-x C-k")
+          (lambda (arg)
+            (interactive "P")
+            (if arg
+                (org-decrypt-entries)
+                (org-decrypt-entry))))
+  :config (progn
+            (org-crypt-use-before-save-magic)
+            (setq org-tags-exclude-from-inheritance '("crypt"))
+            (setq org-crypt-key "B247B8DE")))
 
 (provide 'my-org)
