@@ -508,6 +508,7 @@ Breadcrumb bookmarks:
 (use-package deft
   :defer t
   :bind (("<f5>" . deft))
+  :init (setq deft-auto-save-interval 0)
   :config (progn
             (setq deft-extensions (sort deft-extensions
                                         (lambda (a b)
