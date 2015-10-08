@@ -211,7 +211,7 @@
                  magit-refs-mode-map
                  magit-diff-mode-map)))
 
-(use-package git-commit-mode
+(use-package git-commit
   :defer t
   :config (progn
             (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
