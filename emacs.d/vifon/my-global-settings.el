@@ -65,7 +65,6 @@
 (c-set-offset 'access-label -2)
 (c-set-offset 'innamespace 0)
 
-(put 'if 'lisp-indent-function nil)
 (setq parens-require-spaces nil)
 
 (setq compilation-scroll-output 'first-error
