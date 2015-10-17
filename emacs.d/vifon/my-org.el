@@ -57,8 +57,8 @@
   (org-bullets-mode arg)
   (hl-line-mode arg))
 (defun my-org-mode-hook ()
-  (make-local-variable 'electric-pair-pairs)
-  (add-to-list 'electric-pair-pairs '(?$ . ?$))
+  (add-to-list (make-local-variable 'electric-pair-pairs)
+               '(?$ . ?$))
   (org-minor-modes))
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 (add-hook 'org-mobile-before-process-capture-hook
