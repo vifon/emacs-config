@@ -5,6 +5,34 @@
 (setq-default fill-column 70)
 (setq tags-revert-without-query t)
 (setq initial-major-mode 'org-mode)
+(setq initial-scratch-message
+      "
+* Notes
+
+* Eval
+
+** Elisp
+
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+
+** Python
+
+#+BEGIN_SRC python
+  #!/usr/bin/env python
+
+  from __future__ import print_function
+
+  def main(argv=None):
+      pass
+
+  if __name__ == '__main__':
+      from sys import argv
+      main(argv)
+#+END_SRC
+
+")
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode 1)
 

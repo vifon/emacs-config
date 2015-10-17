@@ -38,7 +38,6 @@
  '(httpd-port 38080)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
- '(initial-scratch-message "")
  '(mouse-autoselect-window nil)
  '(rainbow-x-colors-major-mode-list
    (quote
