@@ -516,7 +516,7 @@ Breadcrumb bookmarks:
             (setq deft-markdown-mode-title-level 1)))
 
 (use-package markdown-mode
-  :mode ("\\.md$" . markdown-mode)
+  :defer t
   :config (add-hook 'markdown-mode-hook
                     (defun my-markdown-mode-hook ()
                       (add-to-list (make-local-variable 'electric-pair-pairs)

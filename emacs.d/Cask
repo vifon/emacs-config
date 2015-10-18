@@ -4,7 +4,6 @@
 (source org)
 
 (depends-on "ace-window")
-(depends-on "avy")
 (depends-on "adaptive-wrap")
 (depends-on "ag")
 (depends-on "aggressive-indent")
@@ -15,6 +14,7 @@
 (depends-on "auto-complete")
 (depends-on "auto-yasnippet")
 (depends-on "autopair")
+(depends-on "avy")
 (depends-on "bbyac")
 (depends-on "bind-key")
 (depends-on "bm")
