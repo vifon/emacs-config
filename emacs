@@ -522,6 +522,15 @@ Breadcrumb bookmarks:
                       (add-to-list (make-local-variable 'electric-pair-pairs)
                                    '(?` . ?`)))))
 
+(use-package yaml-mode
+  :defer t
+  :config (progn
+            (add-hook 'yaml-mode-hook (lambda () (ansible 1)))
+            (add-hook 'yaml-mode-hook
+                      (lambda ()
+                        (add-to-list (make-local-variable 'company-backends)
+                                     'company-ansible)))))
+
 (use-package pod-mode
   :mode ("\\.pod$" . pod-mode))
 
