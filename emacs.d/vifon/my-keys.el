@@ -104,17 +104,6 @@ _S_emantic-mode: %-3(bound-and-true-p semantic-mode)"
   ("s" flyspell-mode)
   ("S" semantic-mode))
 
-(global-set-key (kbd "C-c s") (defun scratch-reset (&optional arg)
-                                (interactive "P")
-                                (switch-to-buffer "*scratch*")
-                                (cd "~/")
-                                (when (or arg (= (point-min) (point-max)))
-                                  (erase-buffer)
-                                  (insert initial-scratch-message)
-                                  (apply initial-major-mode nil)
-                                  (set-buffer-modified-p nil)
-                                  (goto-char (point-min)))))
-
 (global-set-key (kbd "C-c d") 'delete-pair)
 (define-key minibuffer-local-map (kbd "C-c c")
   '(lambda () (interactive) (insert "CMakeLists.txt")))

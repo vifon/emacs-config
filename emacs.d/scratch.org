@@ -1,0 +1,29 @@
+
+* Notes
+
+* Eval
+
+** Elisp
+
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+
+** Python
+
+#+BEGIN_SRC python :results pp
+
+#+END_SRC
+
+** C
+
+#+BEGIN_SRC C :includes <stdio.h> :includes <unistd.h>
+
+#+END_SRC
+
+** C++
+
+#+BEGIN_SRC C++ :includes <iostream>
+
+#+END_SRC
+
