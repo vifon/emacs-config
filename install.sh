@@ -13,7 +13,7 @@ done
 shift $[$OPTIND-1]
 
 
-for f in emacs emacs.d viper abbrev_defs; do
+for f in emacs.d abbrev_defs; do
     OUTPUT=$($=LN -svT $f:A $HOME/.$f 2>&1)
     if [ "$?" = "0" ]; then
         echo "[32;1m$OUTPUT[0m" 1>&2
