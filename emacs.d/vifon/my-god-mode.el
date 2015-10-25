@@ -17,10 +17,7 @@
                                             (er/mark-symbol)
                                             (kill-region (point) (mark))
                                             (god-mode+notify)))
-(global-set-key (kbd "<escape>") '(lambda ()
-                                    (interactive)
-                                    (when (not god-global-mode)
-                                      (god-mode+notify))))
+
 (define-key god-local-mode-map (kbd "i") 'god-mode+notify)
 (define-key god-local-mode-map (kbd "A") "ei")
 (define-key god-local-mode-map (kbd "I") "ai")
