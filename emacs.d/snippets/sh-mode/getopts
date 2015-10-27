@@ -2,8 +2,16 @@
 # --
 while getopts "$1" ${2:ARG}; do
     case "$$2" in
+${1:$(mapconcat #'identity
+             (remove-if #'not
+                        (mapcar (lambda (x)
+                                  (when (not (equal x ?:))
+                                    (concat (byte-to-string x)
+                                            ")\n            ;;")))
+                                yas-text))
+             "\n        ")}
         ?)
             ;;
     esac
 done
-shift $[$OPTIND-1]
+shift $((OPTIND-1))
