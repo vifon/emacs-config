@@ -122,8 +122,7 @@
 (use-package dired
   :defer t
   :config (progn
-            (define-key dired-mode-map (kbd "z") #'dired-subtree-toggle)
-            (define-key dired-mode-map (kbd "Z") #'dired-subtree-only-this-file)))
+            (define-key dired-mode-map (kbd "z") #'dired-subtree-toggle)))
 
 (use-package yasnippet
   :defer 7
