@@ -306,6 +306,9 @@ Breadcrumb bookmarks:
   :diminish volatile-highlights-mode
   :config (volatile-highlights-mode 1))
 
+(use-package beacon
+  :config (beacon-mode 1))
+
 (use-package column-marker
   :bind ("C-c u" . column-marker-1))
 

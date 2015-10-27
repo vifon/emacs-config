@@ -16,6 +16,7 @@
 (depends-on "autopair")
 (depends-on "avy")
 (depends-on "bbyac")
+(depends-on "beacon")
 (depends-on "bind-key")
 (depends-on "bm")
 (depends-on "browse-kill-ring")
