@@ -15,6 +15,12 @@
 
 #+END_SRC
 
+** zsh
+
+#+BEGIN_SRC sh
+
+#+END_SRC
+
 ** C
 
 #+BEGIN_SRC C :includes <stdio.h> :includes <unistd.h>
