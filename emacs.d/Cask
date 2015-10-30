@@ -138,6 +138,7 @@
 (depends-on "srefactor")
 (depends-on "stgit")
 (depends-on "sublimity")
+(depends-on "swiper")
 (depends-on "sx")
 (depends-on "tabbar")
 (depends-on "tiny")

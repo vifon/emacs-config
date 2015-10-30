@@ -124,5 +124,6 @@
         helm-M-x
         mwheel-scroll
         scroll-other-window
+        swiper-mc
         undo-tree-visualizer-quit
         ))

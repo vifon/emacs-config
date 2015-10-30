@@ -360,6 +360,9 @@ Breadcrumb bookmarks:
   :bind ("C-=" . er/expand-region)
   :init (key-chord-define-global "'e" 'er/expand-region))
 
+(use-package swiper
+  :bind ("C-c f" . swiper))
+
 (use-package imenu
   :bind ("C-c k" . helm-semantic-or-imenu)
   :config (add-to-list 'imenu-generic-expression
