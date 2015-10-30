@@ -138,20 +138,6 @@ _S_emantic-mode: %-3(bound-and-true-p semantic-mode)"
           (set-selective-display (current-column)))))
 (global-set-key [remap set-selective-display] 'toggle-selective-display)
 
-(defun ido-insert-path (&optional arg)
-  (interactive "P")
-  (insert
-   (funcall (if (not arg)
-                'file-relative-name
-                '(lambda (path)
-                   (replace-regexp-in-string
-                    (concat
-                     "^" (getenv "HOME") "/")
-                    "~/"
-                    path)))
-            (ido-read-file-name "Path: "))))
-(global-set-key (kbd "C-c f") 'ido-insert-path)
-
 (global-set-key [remap move-beginning-of-line] 'move-beginning-of-line-dwim)
 
 (defun kill-or-yank-whole-lines (&optional arg)
