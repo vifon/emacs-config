@@ -1,5 +1,6 @@
 : ; emacs -Q -l $0 -f profile-dotemacs; exit
 (setq vc-follow-symlinks t)
+(setq profile-dotemacs-file "~/.emacs.d/init.el")
 ;;; profile-dotemacs.el --- Profile your Emacs init file
 
 ;; Copyright (C) 2010, 2012  David Engster
