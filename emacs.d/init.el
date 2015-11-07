@@ -573,17 +573,13 @@ Breadcrumb bookmarks:
   :config (progn
             (define-key jedi-mode-map (kbd "C-<tab>") nil)
             (define-key jedi-mode-map (kbd "C-c v") 'jedi:complete)
-            (if (version<= "25.0" emacs-version)
-                (progn
-                  (define-key jedi-mode-map [remap xref-find-definitions]
-                    'jedi:goto-definition)
-                  (define-key jedi-mode-map [remap xref-pop-marker-stack]
-                    'jedi:goto-definition-pop-marker))
-                (progn
-                  (define-key jedi-mode-map [remap find-tag]
-                    'jedi:goto-definition)
-                  (define-key jedi-mode-map [remap pop-tag-mark]
-                    'jedi:goto-definition-pop-marker)))))
+            (let ((tag-functions (if (version<= "25.0" emacs-version)
+                                     '(xref-find-definitions xref-pop-marker-stack)
+                                   '(find-tag pop-tag-mark))))
+              (define-key jedi-mode-map (vector 'remap (first tag-functions))
+                'jedi:goto-definition)
+              (define-key jedi-mode-map (vector 'remap (second tag-functions))
+                'jedi:goto-definition-pop-marker))))
 
 (use-package scala-mode2
   :config (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
