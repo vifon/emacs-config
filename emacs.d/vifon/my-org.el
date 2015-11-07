@@ -51,6 +51,7 @@
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
 (setq org-use-speed-commands t)
+(setq org-ellipsis "…")
 
 (defun org-minor-modes (&optional arg)
   (interactive "P")
