@@ -11,6 +11,12 @@
 
 ** Python
 
+#+BEGIN_SRC python :results output
+
+#+END_SRC
+
+** Python expression
+
 #+BEGIN_SRC python :results pp
 
 #+END_SRC
@@ -21,15 +27,33 @@
 
 #+END_SRC
 
-** C
+** C function
 
 #+BEGIN_SRC C :includes <stdio.h> :includes <unistd.h>
 
 #+END_SRC
 
-** C++
+** C program
+
+#+BEGIN_SRC C :includes <stdio.h> :includes <unistd.h> :main no
+  int main(int argc, char *argv[])
+  {
+      return 0;
+  }
+#+END_SRC
+
+** C++ function
 
 #+BEGIN_SRC C++ :includes <iostream>
 
+#+END_SRC
+
+** C++ program
+
+#+BEGIN_SRC C++ :includes <iostream> :main no
+  int main(int argc, char *argv[])
+  {
+      return 0;
+  }
 #+END_SRC
 
