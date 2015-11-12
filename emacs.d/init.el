@@ -547,6 +547,7 @@ Breadcrumb bookmarks:
   :defer t
   :config (progn
             (setq haskell-indentation-show-indentations t)
+            (setq haskell-program-name "cabal repl")
             (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
             (add-hook 'haskell-mode-hook #'inf-haskell-mode)))
 
