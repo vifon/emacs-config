@@ -152,7 +152,10 @@
 
 (use-package auctex
   :defer t
-  :init (setq preview-scale-function 2.0))
+  :init (setq preview-scale-function 2.0)
+  :config (defun my-auctex-build-pdf ()
+            (interactive)
+            (TeX-command "LaTeX" 'TeX-master-file)))
 
 (use-package hippie-expand-ido
   :bind ("C-c /" . my-ido-hippie-expand))
