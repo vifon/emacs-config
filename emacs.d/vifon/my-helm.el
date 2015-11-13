@@ -30,11 +30,12 @@
 (global-set-key (kbd "M-s f")    #'helm-swoop)
 (global-set-key [remap find-tag] #'helm-etags-select)
 
-(key-chord-define-global "`h"
-                         (defun my-helm-browse-project--basename (arg)
-                           (interactive "p")
-                           (let ((helm-ff-transformer-show-only-basename t))
-                             (helm-browse-project arg))))
+(defun my-helm-browse-project--basename (arg)
+  (interactive "p")
+  (let ((helm-ff-transformer-show-only-basename t))
+    (helm-browse-project arg)))
+(key-chord-define-global "`h" #'my-helm-browse-project--basename)
+(global-set-key (kbd "C-c H") #'my-helm-browse-project--basename)
 
 (setq helm-etags-execute-action-at-once-if-one nil)
 
