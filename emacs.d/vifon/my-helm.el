@@ -35,7 +35,7 @@
   (let ((helm-ff-transformer-show-only-basename t))
     (helm-browse-project arg)))
 (key-chord-define-global "`h" #'my-helm-browse-project--basename)
-(global-set-key (kbd "C-c H") #'my-helm-browse-project--basename)
+(global-set-key (kbd "C-c h") #'my-helm-browse-project--basename)
 
 (setq helm-etags-execute-action-at-once-if-one nil)
 
