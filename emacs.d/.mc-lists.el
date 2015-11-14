@@ -93,11 +93,13 @@
         paredit-raise-sexp
         paredit-semicolon
         paredit-splice-sexp
+        paredit-split-sexp
         paredit-wrap-round
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         quoted-insert
         reindent-then-newline-and-indent
+        sgml-slash
         sh-assignment
         skeleton-expand-partial-lines
         slime-space
