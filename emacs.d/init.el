@@ -616,7 +616,10 @@ Breadcrumb bookmarks:
             (projectile-global-mode 1)
             (defun my-projectile-show-path (arg)
               (interactive "P")
-              (let ((project-path (file-relative-name buffer-file-name (projectile-project-root))))
+              (let ((project-path (if (projectile-project-p)
+                                      (file-relative-name buffer-file-name
+                                                          (projectile-project-root))
+                                    buffer-file-name)))
                 (when arg
                   (kill-new project-path))
                 (message "%s" project-path)))
