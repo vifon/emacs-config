@@ -599,7 +599,8 @@ Breadcrumb bookmarks:
 (use-package projectile
   :defer 3
   :commands (projectile-global-mode
-             projectile-switch-project)
+             projectile-switch-project
+             my-projectile-show-path)
   :init (progn
           (setq projectile-switch-project-action (lambda ()
                                                    (dired ".")))
@@ -612,7 +613,14 @@ Breadcrumb bookmarks:
                             (projectile-project-name))))
             (define-key projectile-command-map (kbd "C-b") 'helm-projectile-buffers)
             (define-key projectile-command-map [?h] 'helm-browse-project)
-            (projectile-global-mode 1)))
+            (projectile-global-mode 1)
+            (defun my-projectile-show-path (arg)
+              (interactive "P")
+              (let ((project-path (file-relative-name buffer-file-name (projectile-project-root))))
+                (when arg
+                  (kill-new project-path))
+                (message "%s" project-path)))
+            (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)))
 
 (use-package helm-ag
   :bind ("C-c p s S" . projectile-helm-ag)
