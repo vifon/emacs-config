@@ -644,7 +644,9 @@ Breadcrumb bookmarks:
 (use-package diff-hl
   :defer 5
   :init (key-chord-define-global "=f" 'diff-hl-mode)
-  :config (global-diff-hl-mode 1))
+  :bind ("C-x v \\" . diff-hl-amend-mode)
+  :config (progn
+            (global-diff-hl-mode 1)))
 
 (use-package recentf-merge
   :init (setq recentf-max-menu-items 100))
