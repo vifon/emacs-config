@@ -27,33 +27,15 @@
 
 #+END_SRC
 
-** C function
+** C
 
-#+BEGIN_SRC C :includes <stdio.h> :includes <unistd.h>
+#+BEGIN_SRC C :includes <unistd.h>
 
 #+END_SRC
 
-** C program
-
-#+BEGIN_SRC C :includes <stdio.h> :includes <unistd.h> :main no
-  int main(int argc, char *argv[])
-  {
-      return 0;
-  }
-#+END_SRC
-
-** C++ function
+** C++
 
 #+BEGIN_SRC C++ :includes <iostream>
 
-#+END_SRC
-
-** C++ program
-
-#+BEGIN_SRC C++ :includes <iostream> :main no
-  int main(int argc, char *argv[])
-  {
-      return 0;
-  }
 #+END_SRC
 
