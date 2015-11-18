@@ -255,7 +255,8 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                (scala . t)))
             (setq org-babel-C-compiler "gcc -std=c99"
                   org-babel-C++-compiler "g++ -std=c++14"
-                  org-babel-python-command "python3")))
+                  org-babel-python-command "python3"
+                  org-babel-perl-preface "use 5.010;")))
 
 (use-package ob-ditaa
   :defer t
