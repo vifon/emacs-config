@@ -246,6 +246,8 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
 
                (sqlite . t)
 
+               (haskell . t)
+
                (C . t)
 
                (python . t)
