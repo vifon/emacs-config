@@ -298,4 +298,7 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
             (setq org-tags-exclude-from-inheritance '("crypt"))
             (setq org-crypt-key "B247B8DE")))
 
+(use-package steam
+  :config (setq steam-username "vifon"))
+
 (provide 'my-org)
