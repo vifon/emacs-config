@@ -667,7 +667,7 @@ Breadcrumb bookmarks:
   :config (setq inferior-lisp-program "sbcl"))
 
 
-(add-hook 'after-init-hook '(lambda () (interactive) (load-theme 'zenburn)))
+(add-hook 'after-init-hook (lambda () (load-theme 'zenburn)))
 (setq frame-background-mode 'dark)
 (ignore-errors
   (let ((font-name "DejaVu Sans Mono")
