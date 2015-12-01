@@ -21,6 +21,6 @@
 
 (global-set-key (kbd "C-c s") #'scratch-reset)
 
-(scratch-reset-message)
+(scratch-reset)
 
 (provide 'my-scratch)
