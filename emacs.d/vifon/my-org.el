@@ -109,7 +109,8 @@
 (setq org-hierarchical-todo-statistics nil)
 (setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 
-(setq org-agenda-files "~/org/.agenda-files")
+(when (file-exists-p "~/org/.agenda-files")
+  (setq org-agenda-files "~/org/.agenda-files"))
 (when (not org-agenda-files)
   (setq org-agenda-files '("~/org/gtd.org")))
 
