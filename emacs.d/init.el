@@ -364,7 +364,9 @@ Breadcrumb bookmarks:
   :init (key-chord-define-global "'e" 'er/expand-region))
 
 (use-package swiper
-  :bind ("C-c f" . swiper))
+  :bind ("C-c f" . swiper)
+  :commands (swiper-from-isearch)
+  :init (define-key isearch-mode-map (kbd "C-i") #'swiper-from-isearch))
 
 (use-package imenu
   :bind ("C-c k" . helm-semantic-or-imenu)
