@@ -140,7 +140,12 @@
   :config (progn
             (use-package auto-yasnippet
               :bind (("C-c Y" . aya-create)
-                     ("C-c y" . aya-expand)))
+                     ("C-c y" . aya-expand-with-indent))
+              :config (defun aya-expand-with-indent (arg)
+                        (interactive "P")
+                        (aya-expand)
+                        (unless arg
+                          (indent-for-tab-command))))
             (yas-global-mode 1)))
 
 (use-package tiny
