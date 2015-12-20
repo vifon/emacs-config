@@ -369,9 +369,14 @@ Breadcrumb bookmarks:
   :init (key-chord-define-global "'e" 'er/expand-region))
 
 (use-package swiper
-  :bind ("C-c f" . swiper)
+  :bind ("C-c f" . swiper-dwim)
   :commands (swiper-from-isearch)
-  :init (define-key isearch-mode-map (kbd "C-i") #'swiper-from-isearch))
+  :init (define-key isearch-mode-map (kbd "C-i") #'swiper-from-isearch)
+  :config (defun swiper-dwim (arg)
+            (interactive "P")
+            (if arg
+                (ivy-resume)
+                (swiper))))
 
 (use-package imenu
   :bind ("C-c k" . helm-semantic-or-imenu)
