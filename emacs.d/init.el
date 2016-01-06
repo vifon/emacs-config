@@ -431,6 +431,7 @@ Breadcrumb bookmarks:
                                            (company-mode 0)))
             (add-hook 'org-mode-hook '(lambda ()
                                         (company-mode 0)))
+            (add-to-list 'company-backends 'company-tern)
             (global-company-mode 1))
   :init (progn
           (use-package company-clang
@@ -598,6 +599,12 @@ Breadcrumb bookmarks:
                 'jedi:goto-definition)
               (define-key jedi-mode-map (vector 'remap (second tag-functions))
                 'jedi:goto-definition-pop-marker))))
+
+(use-package js-mode
+  :defer t
+  :config (progn
+            (setq js-indent-level 2)
+            (add-hook 'js-mode-hook (lambda () (tern-mode 1)))))
 
 (use-package scala-mode2
   :config (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))

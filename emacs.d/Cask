@@ -30,6 +30,7 @@
 (depends-on "company")
 (depends-on "company-ansible")
 (depends-on "company-c-headers")
+(depends-on "company-tern")
 (depends-on "concurrent")
 (depends-on "corral")
 (depends-on "cperl-mode")
