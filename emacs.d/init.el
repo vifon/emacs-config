@@ -376,7 +376,11 @@ Breadcrumb bookmarks:
             (interactive "P")
             (if arg
                 (ivy-resume)
-                (swiper))))
+              (swiper))))
+
+(use-package counsel
+  :bind (("C-c G" . counsel-git)
+         ("M-X" . counsel-M-x)))
 
 (use-package imenu
   :bind ("C-c k" . helm-semantic-or-imenu)

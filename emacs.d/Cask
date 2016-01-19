@@ -33,6 +33,7 @@
 (depends-on "company-tern")
 (depends-on "concurrent")
 (depends-on "corral")
+(depends-on "counsel")
 (depends-on "cperl-mode")
 (depends-on "cpputils-cmake")
 (depends-on "crontab-mode")

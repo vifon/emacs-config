@@ -21,7 +21,6 @@
       helm-move-to-line-cycle-in-source nil)
 
 (global-set-key (kbd "M-x")      #'helm-M-x)
-(global-set-key (kbd "M-X")      #'execute-extended-command)
 (global-set-key [remap occur]    #'helm-occur)
 (global-set-key [remap yank-pop] #'helm-show-kill-ring)
 (global-set-key (kbd "C-h C-f")  #'helm-apropos)
@@ -34,7 +33,6 @@
   (interactive "p")
   (let ((helm-ff-transformer-show-only-basename t))
     (helm-browse-project arg)))
-(key-chord-define-global "`h" #'my-helm-browse-project--basename)
 (global-set-key (kbd "C-c h") #'my-helm-browse-project--basename)
 
 (setq helm-etags-execute-action-at-once-if-one nil)
