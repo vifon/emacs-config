@@ -1,3 +1,9 @@
+(add-hook 'after-init-hook
+          `(lambda ()
+             (setq gc-cons-threshold ,gc-cons-threshold))
+          'append)
+(setq gc-cons-threshold most-positive-fixnum)
+
 (add-to-list 'load-path "~/.emacs.d/my-fixes")
 (add-to-list 'load-path "~/.emacs.d/vifon")
 (add-to-list 'load-path "~/.emacs.d/modules")
@@ -690,6 +696,15 @@ Breadcrumb bookmarks:
 
 (use-package slime-autoloads
   :config (setq inferior-lisp-program "sbcl"))
+
+
+(defun my-minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+(defun my-minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
+
+(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
 
 (add-hook 'after-init-hook (lambda () (load-theme 'zenburn)))
