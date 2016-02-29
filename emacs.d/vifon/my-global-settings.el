@@ -11,8 +11,8 @@
 (scroll-bar-mode 0)
 (when (version<= "25.0" emacs-version)
   (horizontal-scroll-bar-mode 0))
-(tool-bar-mode 0)
-(menu-bar-mode 0)
+(when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
 (column-number-mode t)
 
 (setq show-paren-delay 0)
