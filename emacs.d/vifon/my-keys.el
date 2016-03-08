@@ -99,10 +99,13 @@ httpd-_s_tart    httpds-_S_top    _i_mpatient-mode"
 ### fly*-mode ###
 
 fly_c_heck-mode: %-3(bound-and-true-p flycheck-mode)    fly_s_pell-mode: %-3(bound-and-true-p flyspell-mode)
-_S_emantic-mode: %-3(bound-and-true-p semantic-mode)"
+se_m_antic-mode: %-3(bound-and-true-p semantic-mode)    fly_S_pell-buffer
+_i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-current-dictionary)"
   ("c" flycheck-mode)
   ("s" flyspell-mode)
-  ("S" semantic-mode))
+  ("S" flyspell-buffer :color blue)
+  ("m" semantic-mode)
+  ("i" ispell-change-dictionary))
 
 (global-set-key (kbd "C-c d") 'delete-pair)
 (define-key minibuffer-local-map (kbd "C-c c")
