@@ -270,7 +270,7 @@
   :bind ("<left-fringe> <mouse-1>" . bm-toggle-mouse))
 
 (use-package breadcrumb
-  :bind (([remap pop-global-mark] . breadcrumb-or-pop))
+  :bind (("C-x C-SPC" . breadcrumb-or-pop))
   :init (progn
           (defhydra hydra-breadcrumb
             (:exit t :hint nil)
@@ -460,6 +460,30 @@ Breadcrumb bookmarks:
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
               (ggtags-mode 1)))))
+
+(use-package rtags
+  :if (file-directory-p "~/local/share/emacs/site-lisp/rtags")
+  :load-path "~/local/share/emacs/site-lisp/rtags"
+  :commands (rtags-minor-mode global-rtags-minor-mode)
+  :defer 5
+  :config (progn
+            (define-minor-mode rtags-minor-mode
+              nil
+              :lighter " RTags"
+              :keymap (let ((m (make-sparse-keymap)))
+                        (rtags-enable-standard-keybindings m (kbd "C-c C-r"))
+                        (define-key m (kbd "M-.") #'rtags-find-symbol-at-point)
+                        (define-key m (kbd "M-,") #'rtags-location-stack-back)
+                        (define-key m (kbd "M-]") #'rtags-find-references-at-point)
+                        m))
+            (define-globalized-minor-mode global-rtags-minor-mode rtags-minor-mode
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode)
+                  (rtags-minor-mode 1))))
+            (require 'company)
+            (push 'company-rtags company-backends)
+            (setq rtags-autostart-diagnostics t)
+            (setq rtags-completions-enabled t)))
 
 (use-package flycheck
   :defer t
