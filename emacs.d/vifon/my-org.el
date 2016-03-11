@@ -289,6 +289,18 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                  (concat "thunderlink:"
                          (substring-no-properties path))))
 
+(org-add-link-type "evince" 'org-evince-open)
+(defun org-evince-open (link)
+  (string-match "\\(.*?\\)\\(?:::\\([0-9]+\\)\\)?$" link)
+  (let ((path (match-string 1 link))
+        (page (and (match-beginning 2)
+                   (match-string 2 link))))
+    (if page
+        (start-process "evince" nil
+                       "evince" path "-i" page)
+      (start-process "evince" nil
+                     "evince" path))))
+
 (use-package org-crypt
   :init (define-key org-mode-map (kbd "C-c C-x C-k")
           (defun org-decrypt-dwim (arg)
