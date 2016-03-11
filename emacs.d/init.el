@@ -686,9 +686,11 @@ Breadcrumb bookmarks:
   :defer t
   :config (progn
             (define-key image-mode-map (kbd "k")
-              (lambda ()
-                (interactive)
-                (kill-buffer)))
+              (lambda (arg)
+                (interactive "P")
+                (if arg
+                    (kill-buffer)
+                  (kill-buffer-and-window))))
             (define-key image-mode-map (kbd "K")
               (lambda ()
                 (interactive)
