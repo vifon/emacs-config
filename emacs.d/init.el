@@ -697,7 +697,7 @@ Breadcrumb bookmarks:
          ("C-x T" . sane-term-create)))
 
 (use-package diff-hl
-  :defer 5
+  :defer 2
   :init (key-chord-define-global "=f" 'diff-hl-mode)
   :bind ("C-x v \\" . diff-hl-amend-mode)
   :config (progn
