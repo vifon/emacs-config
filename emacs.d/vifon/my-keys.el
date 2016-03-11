@@ -34,7 +34,6 @@
 
 (global-set-key (kbd "C-c x") 'run-term)
 (global-set-key (kbd "M-o") 'run-term)
-(global-set-key (kbd "C-c q") 'auto-fill-mode)
 
 (global-set-key (kbd "C-c C-e")
                 (defhydra epa-hydra
