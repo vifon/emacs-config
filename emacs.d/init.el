@@ -733,7 +733,7 @@ Breadcrumb bookmarks:
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
 
-(add-hook 'after-init-hook (lambda () (load-theme 'zenburn)))
+(load-theme 'zenburn 'no-confirm)
 (setq frame-background-mode 'dark)
 (ignore-errors
   (let ((font-name "DejaVu Sans Mono")
