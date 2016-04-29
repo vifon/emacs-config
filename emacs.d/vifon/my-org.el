@@ -78,6 +78,15 @@
             (goto-char (point-max))
             (insert "\n")))
 
+;;; http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
+(font-lock-add-keywords 'org-mode
+                        '(("^ +\\(*\\) "
+                           (0 (prog1 nil
+                                (compose-region (match-beginning 1)
+                                                (match-end 1)
+                                                "•"))))))
+(setq org-hide-emphasis-markers nil)
+
 (setq org-default-notes-file (concat org-directory "/gtd.org"))
 
 (setq org-refile-targets '((org-agenda-files :tag . "PROJECT")
