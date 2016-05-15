@@ -168,9 +168,6 @@
             (interactive)
             (TeX-command "LaTeX" 'TeX-master-file)))
 
-(use-package hippie-expand-ido
-  :bind ("C-c /" . my-ido-hippie-expand))
-
 (use-package legalese
   :config (defun legalese-box (ask)
             (interactive "P")
@@ -452,7 +449,8 @@ Breadcrumb bookmarks:
                     (lambda ()
                       (make-local-variable 'company-clang-arguments)
                       (setq company-clang-arguments '("-std=c++11")))))
-  :bind ("C-c v" . company-complete))
+  :bind (("C-c v" . company-complete)
+         ("C-c /" . company-files)))
 
 (use-package ggtags
   :demand t        ;bad things happen in the globalized mode otherwise
