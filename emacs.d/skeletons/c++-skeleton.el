@@ -1,6 +1,11 @@
+(defun c-c++-skeleton--get-file-comment ()
+  (concat "/**\n"
+          " * @file " (file-name-nondirectory (buffer-file-name)) "\n"
+          " */\n"))
+
 (define-skeleton c++-skeleton
   "" ""
-  "// File: "(file-name-nondirectory (buffer-file-name))"\n"
+  (c-c++-skeleton--get-file-comment)
   (let ((header (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".hpp")))
     (if (file-exists-p header)
         (concat "\n#include \"" header "\"\n\n"
@@ -23,7 +28,7 @@
 
 (define-skeleton c-skeleton
   "" ""
-  "/* File: "(file-name-nondirectory (buffer-file-name))" */\n"
+  (c-c++-skeleton--get-file-comment)
   (let ((header (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".h")))
     (if (file-exists-p header)
         (concat "\n#include \"" header "\"\n\n")
@@ -39,38 +44,28 @@
 
 (define-skeleton c++-header-skeleton
   "" ""
-  "// File: "(file-name-nondirectory (buffer-file-name))"\n"
+  (c-c++-skeleton--get-file-comment)
   (and (setq v1 (skeleton-read "Namespace: ")) nil)
-  (and (setq v2 (upcase
-             (concat
-              (unless (string= "" v1)
-                (concat v1 "_"))
-              (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))))
-       nil)
-  "#ifndef _h_" v2 "_\n"
-  "#define _h_" v2 "_\n\n"
+  "#pragma once\n\n"
   (when (not (string= "" v1))
     (concat "namespace " v1 " {\n\n"))
   _
   (when (not (string= "" v1))
     (concat "\n\n} // namespace " v1))
-  "\n\n"
-  "#endif\n"
+  "\n"
   )
 
 (define-skeleton c-header-skeleton
   "" ""
-  "/* File: "(file-name-nondirectory (buffer-file-name))" */\n"
-  "#ifndef _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n"
-  "#define _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n\n"
+  (c-c++-skeleton--get-file-comment)
+  "#pragma once\n\n"
   _
-  "\n\n"
-  "#endif\n"
+  "\n"
   )
 
 (define-skeleton c++-qt-skeleton
   "" ""
-  "// File: "(file-name-nondirectory (buffer-file-name))"\n"
+  (c-c++-skeleton--get-file-comment)
   "\n#include <QApplication>\n\n"
 
   "int main(int argc, char *argv[])\n"
@@ -83,7 +78,7 @@
 
 (define-skeleton c-ncurses-skeleton
   "" ""
-  "// File: "(file-name-nondirectory (buffer-file-name))"\n"
+  (c-c++-skeleton--get-file-comment)
   "\n#include <ncurses.h>\n\n"
 
   "int main(int argc, char *argv[])\n"
@@ -96,54 +91,6 @@
 
   _
   "\n\n    return endwin();\n"
-  "}\n"
-  )
-
-(define-skeleton c++-cppunit-skeleton
-  "" ""
-  "// File: "(file-name-nondirectory (buffer-file-name))"\n"
-  "#ifndef _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n"
-  "#define _h_" (upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))) "_\n\n"
-  "#include <cppunit/TestFixture.h>\n"
-  "#include <cppunit/extensions/HelperMacros.h>\n\n"
-
-  "class "(capitalize (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))" : public CPPUNIT_NS::TestFixture\n"
-  "{\n"
-  "    CPPUNIT_TEST_SUITE("(capitalize (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))");\n"
-  "    CPPUNIT_TEST_SUITE_END();\n"
-  "  public:\n"
-  "    void setUp();\n"
-  "    void tearDown();\n"
-  "  protected:\n"
-  "  private:\n"
-  "};\n"
-  "\n\n"
-  "#endif\n"
-  )
-
-(define-skeleton c++-cppunit-main-skeleton
-  "" ""
-  "// File: "(file-name-nondirectory (buffer-file-name))"\n"
-  "\n#include <cppunit/CompilerOutputter.h>\n"
-  "#include <cppunit/extensions/TestFactoryRegistry.h>\n"
-  "#include <cppunit/TestResult.h>\n"
-  "#include <cppunit/TestResultCollector.h>\n"
-  "#include <cppunit/TestRunner.h>\n"
-  "#include <cppunit/BriefTestProgressListener.h>\n\n"
-
-  "int main(int argc, char* argv[])\n"
-  "{\n"
-  "    CPPUNIT_NS::TestResult testresult;\n"
-  "    CPPUNIT_NS::TestResultCollector collectedresults;\n"
-  "    testresult.addListener(&collectedresults);\n"
-  "    CPPUNIT_NS::BriefTestProgressListener progress;\n"
-  "    testresult.addListener(&progress);\n"
-  "    CPPUNIT_NS::TestRunner testrunner;\n"
-  "    testrunner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());\n"
-  "    testrunner.run(testresult);\n"
-  "    CPPUNIT_NS::CompilerOutputter compileroutputter(&collectedresults, std::cerr);\n"
-  "    compileroutputter.write();\n"
-  "    return collectedresults.wasSuccessful() ? 0 : 1;\n"
   "}\n"
   )
 
