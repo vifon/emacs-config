@@ -606,6 +606,9 @@ Breadcrumb bookmarks:
             (setq haskell-program-name "cabal repl")
             (add-hook 'haskell-mode-hook #'interactive-haskell-mode)))
 
+(use-package prolog-mode
+  :mode ("\\.pro\\'" . prolog-mode))
+
 (use-package cperl-mode
   :commands cperl-mode
   :init (defalias 'perl-mode 'cperl-mode)
