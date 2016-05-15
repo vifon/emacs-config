@@ -168,6 +168,11 @@
             (interactive)
             (TeX-command "LaTeX" 'TeX-master-file)))
 
+(use-package web-mode
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.css\\'" . web-mode))
+  :config (setq web-mode-markup-indent-offset 2))
+
 (use-package legalese
   :config (defun legalese-box (ask)
             (interactive "P")
