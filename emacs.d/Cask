@@ -92,6 +92,7 @@
 (depends-on "iedit")
 (depends-on "impatient-mode")
 (depends-on "indent-guide")
+(depends-on "interleave")
 (depends-on "jedi")
 (depends-on "jedi-core")
 (depends-on "key-chord")
