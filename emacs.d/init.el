@@ -377,7 +377,8 @@ Breadcrumb bookmarks:
   :config (global-set-key (kbd "C-M-<tab>") 'vcursor-swap-point))
 
 (use-package expand-region
-  :bind ("C-=" . er/expand-region)
+  :bind (("C-=" . er/expand-region)
+         ("M-S-<SPC>" . er/expand-region))
   :init (key-chord-define-global "'e" 'er/expand-region))
 
 (use-package swiper
