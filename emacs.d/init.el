@@ -243,8 +243,6 @@
 
 (use-package stgit)
 
-(use-package quilt)
-
 (use-package p4
   :if (file-exists-p "~/.p4config"))
 
