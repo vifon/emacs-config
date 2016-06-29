@@ -22,12 +22,24 @@
 
 (global-set-key (kbd "M-x")      #'helm-M-x)
 (global-set-key [remap occur]    #'helm-occur)
-(global-set-key [remap yank-pop] #'helm-show-kill-ring)
 (global-set-key (kbd "C-h C-f")  #'helm-apropos)
 (global-set-key (kbd "C-x C-f")  #'helm-find-files)
-(global-set-key (kbd "C-x b")    #'helm-buffers-list)
 (global-set-key (kbd "M-s f")    #'helm-swoop)
 (global-set-key [remap find-tag] #'helm-etags-select)
+
+(global-set-key (kbd "C-x b") (lambda (arg)
+                                (interactive "P")
+                                (if arg
+                                    (ivy-switch-buffer)
+                                  (helm-buffers-list))))
+
+(defun yank-pop-dwim (arg)
+  (interactive "P")
+  (if (or (equal last-command 'yank)
+          (equal last-command 'yank-pop-dwim))
+      (yank-pop arg)
+    (helm-show-kill-ring)))
+(global-set-key (kbd "M-y") #'yank-pop-dwim)
 
 (defun my-helm-browse-project--basename (arg)
   (interactive "p")
