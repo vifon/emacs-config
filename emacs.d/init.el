@@ -575,11 +575,11 @@ Breadcrumb bookmarks:
   :defer t
   :bind (("<f5>" . deft))
   :init (setq deft-auto-save-interval 0)
-  :config (progn
-            (setq deft-extensions (sort deft-extensions
-                                        (lambda (a b)
-                                          (equal a "md"))))
-            (setq deft-markdown-mode-title-level 1)))
+  :config (setq deft-extensions (sort deft-extensions
+                                      (lambda (a b)
+                                        (equal a "md")))
+                deft-default-extension "md"
+                deft-markdown-mode-title-level 1))
 
 (use-package markdown-mode
   :defer t
