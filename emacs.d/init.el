@@ -90,7 +90,7 @@
               (interactive "P")
               (if (consp arg)
                   (paredit-kill)
-                  (kill-line arg))))
+                (kill-line arg))))
   :bind (([remap kill-line] . paredit-kill-maybe)))
 
 (use-package autopair
@@ -117,7 +117,7 @@
               (around yafolding-python-fix activate)
             (if (eq major-mode 'python-mode)
                 (python-nav-backward-up-list)
-                ad-do-it)))
+              ad-do-it)))
 
 (use-package hideshow-org
   :commands hs-org/minor-mode)
@@ -189,7 +189,7 @@
                      (get-buffer minimap-bufname)
                      (get-buffer-window (get-buffer minimap-bufname)))
                 (minimap-kill)
-                (minimap-create))))
+              (minimap-create))))
 
 (use-package transpose-frame
   :bind (("C-x 4 t" . transpose-frame)
@@ -207,7 +207,7 @@
           (interactive "P")
           (if arg
               (evilnc-comment-or-uncomment-lines arg)
-              (call-interactively 'comment-dwim)))
+            (call-interactively 'comment-dwim)))
   :bind (([remap comment-dwim] . evil-nerd-commenter-dwim)))
 
 (use-package neotree
@@ -298,7 +298,7 @@ Breadcrumb bookmarks:
             (interactive "P")
             (if arg
                 (call-interactively 'pop-global-mark)
-                (call-interactively 'hydra-breadcrumb/body)))))
+              (call-interactively 'hydra-breadcrumb/body)))))
 
 (use-package indent-guide
   :defer t
@@ -353,12 +353,12 @@ Breadcrumb bookmarks:
                         (interactive "P")
                         (if arg
                             (phi-search)
-                            (call-interactively 'isearch-forward)))
+                          (call-interactively 'isearch-forward)))
                       (defun phi-search-backward-dwim (arg)
                         (interactive "P")
                         (if arg
                             (phi-search-backward)
-                            (call-interactively 'isearch-backward))))))
+                          (call-interactively 'isearch-backward))))))
   :config (progn
             (define-key mc/keymap (kbd "C-s") 'phi-search)
             (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))
@@ -493,7 +493,7 @@ Breadcrumb bookmarks:
   :defer t
   :init (progn
           (add-hook 'c-mode-hook (lambda ()
-                                    (setq flycheck-clang-language-standard "c99")))
+                                   (setq flycheck-clang-language-standard "c99")))
           (add-hook 'c++-mode-hook (lambda ()
                                      (setq flycheck-clang-language-standard "c++11")))))
 
