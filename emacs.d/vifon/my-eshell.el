@@ -12,15 +12,20 @@
        (defun ted-eshell-ls-find-file-at-point (point)
          "RET on Eshell's `ls' output to open files."
          (interactive "d")
-         (find-file (buffer-substring-no-properties
-                     (save-excursion
-                       (goto-char (previous-single-property-change point 'help-echo))
-                       (skip-chars-forward " ")
-                       (point))
-                     (save-excursion
-                       (goto-char (next-single-property-change point 'help-echo))
-                       (skip-chars-backward " ")
-                       (point)))))
+         (let ((filename (buffer-substring-no-properties
+                          (save-excursion
+                            (goto-char (previous-single-property-change point 'help-echo))
+                            (skip-chars-forward " ")
+                            (point))
+                          (save-excursion
+                            (goto-char (next-single-property-change point 'help-echo))
+                            (skip-chars-backward " ")
+                            (point)))))
+           (if (file-directory-p filename)
+               (progn
+                 (eshell/cd filename)
+                 (eshell-reset))
+             (find-file filename))))
 
        (defun pat-eshell-ls-find-file-at-mouse-click (event)
          "Middle click on Eshell's `ls' output to open files.
