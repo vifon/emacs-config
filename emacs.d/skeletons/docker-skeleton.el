@@ -1,13 +1,16 @@
 (define-skeleton docker-skeleton
   "" ""
-  "FROM ubuntu\n"
+  "FROM alpine\n"
   "\n"
-  "ENV DEBIAN_FRONTEND noninteractive\n"
+  "RUN apk --no-cache add " _ "\n"
   "\n"
-  "RUN apt-get -y update && apt-get -y install " _ "\n"
+  "RUN adduser -D app"
+  "USER app\n"
+  "WORKDIR /home/app\n"
   "\n"
-  "RUN adduser --gecos '' developer\n"
-  "USER developer\n"
+  "EXPOSE 5000\n"
+  "\n"
+  "CMD [\"/bin/sh\"]\n"
   )
 
 (define-auto-insert "/Dockerfile$" 'docker-skeleton)
