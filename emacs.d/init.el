@@ -612,7 +612,13 @@ Breadcrumb bookmarks:
 
 (use-package cperl-mode
   :commands cperl-mode
-  :init (defalias 'perl-mode 'cperl-mode)
+  :init (progn
+          (defalias 'perl-mode 'cperl-mode)
+          (setq cperl-indent-level 4
+                cperl-close-paren-offset -4
+                cperl-continued-statement-offset 4
+                cperl-indent-parens-as-block t
+                cperl-tab-always-indent t))
   :config (load "~/.emacs.d/my-fixes/cperl-lineup.el"))
 
 (use-package python
