@@ -344,22 +344,9 @@ Breadcrumb bookmarks:
   :init (progn
           (global-unset-key (kbd "M-<down-mouse-1>"))
           (key-chord-define-global "[e" 'mc/mark-previous-like-this)
-          (key-chord-define-global "]e" 'mc/mark-next-like-this)
-          (use-package phi-search
-            :bind (("C-s" . phi-search-dwim)
-                   ("C-r" . phi-search-backward-dwim))
-            :config (progn
-                      (defun phi-search-dwim (arg)
-                        (interactive "P")
-                        (if arg
-                            (phi-search)
-                          (call-interactively 'isearch-forward)))
-                      (defun phi-search-backward-dwim (arg)
-                        (interactive "P")
-                        (if arg
-                            (phi-search-backward)
-                          (call-interactively 'isearch-backward))))))
+          (key-chord-define-global "]e" 'mc/mark-next-like-this))
   :config (progn
+            (use-package phi-search)
             (define-key mc/keymap (kbd "C-s") 'phi-search)
             (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))
 
