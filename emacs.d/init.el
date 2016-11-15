@@ -500,10 +500,9 @@ Breadcrumb bookmarks:
   :config (setq cppcm-write-flymake-makefile nil))
 
 (use-package racer
-  :if (file-directory-p "~/src/racer/editors")
-  :load-path "~/src/racer/editors"
+  :if (file-exists-p "~/.cargo/bin/racer")
   :config (progn
-            (setq racer-rust-src-path "/home/vifon/src/rust/src")
+            (setq racer-rust-src-path "~/src/rustc/src")
             (setq racer-cmd "racer")
             (eval-after-load "rust-mode" '(require 'racer))))
 
