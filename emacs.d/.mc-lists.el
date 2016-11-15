@@ -6,6 +6,8 @@
         *table--cell-kill-region
         *table--cell-yank
         LaTeX-babel-insert-hyphen
+        LaTeX-insert-left-brace
+        TeX-font
         TeX-insert-backslash
         TeX-insert-sub-or-superscript
         align-regexp
@@ -42,6 +44,7 @@
         downcase-region
         duplicate-line
         electric-newline-and-maybe-indent
+        electric-pair-delete-pair
         end-of-visual-line
         eval-last-sexp
         evil-nerd-commenter-dwim
@@ -71,6 +74,7 @@
         org-kill-line
         org-return-indent
         org-self-insert-command
+        paredit-backslash
         paredit-backward
         paredit-backward-barf-sexp
         paredit-backward-delete
