@@ -588,6 +588,10 @@ Breadcrumb bookmarks:
 (use-package crontab-mode
   :mode ("^/tmp/crontab\\..*" . crontab-mode))
 
+(use-package dumb-jump
+  :defer t
+  :config (setq dumb-jump-selector 'ivy))
+
 (use-package haskell-mode
   :defer t
   :config (progn
