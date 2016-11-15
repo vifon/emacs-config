@@ -339,6 +339,7 @@ Breadcrumb bookmarks:
          ("C-c H r"     . mc/reverse-regions)
          ("C-c H C-SPC" . set-rectangular-region-anchor)
          ("C-*"         . mc/mark-all-like-this-dwim)
+         ("C-M-;"       . mc/mark-all-like-this-dwim)
          ("C-c H e"     . mc/mark-more-like-this-extended)
          ("M-<mouse-1>" . mc/add-cursor-on-click))
   :init (progn
