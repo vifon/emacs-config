@@ -673,6 +673,7 @@ Breadcrumb bookmarks:
                             (projectile-project-name))))
             (define-key projectile-command-map (kbd "C-b") 'helm-projectile-buffers)
             (define-key projectile-command-map [?h] 'helm-browse-project)
+            (define-key projectile-command-map (kbd "C-g") 'helm-projectile-grep)
             (projectile-global-mode 1)
             (defun my-projectile-show-path (arg)
               (interactive "P")
