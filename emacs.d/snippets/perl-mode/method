@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: method
+# key: met
+# --
+sub ${1:method_name} {
+    my $self = shift;
+    $0
+}
