@@ -575,6 +575,7 @@ Breadcrumb bookmarks:
 
 (use-package yaml-mode
   :defer t
+  :mode ("\\.sls\\'" . yaml-mode)
   :config (progn
             (add-hook 'yaml-mode-hook (lambda () (ansible 1)))
             (add-hook 'yaml-mode-hook
