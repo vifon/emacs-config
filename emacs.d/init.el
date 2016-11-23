@@ -611,7 +611,10 @@ Breadcrumb bookmarks:
                 cperl-continued-statement-offset 4
                 cperl-indent-parens-as-block t
                 cperl-tab-always-indent t))
-  :config (load "~/.emacs.d/my-fixes/cperl-lineup.el"))
+  :config (progn
+            (load "~/.emacs.d/my-fixes/cperl-lineup.el")
+            (require 'perltidy)
+            (define-key cperl-mode-map (kbd "C-c C-i") #'perltidy-dwim-safe)))
 
 (use-package python
   :defer t
