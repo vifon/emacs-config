@@ -110,6 +110,7 @@
 (setq org-todo-keyword-faces '(("NEXT" . "Tomato")))
 (setq org-enforce-todo-dependencies t)
 (setq org-clock-into-drawer t)
+(setq org-time-clocksum-use-effort-durations t)
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
 (setq org-log-into-drawer t)
