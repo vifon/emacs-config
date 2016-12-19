@@ -15,6 +15,13 @@
 
 (global-set-key (kbd "C-c o") 'find-file-at-point)
 
+(global-set-key [remap kill-buffer]
+                (lambda (arg)
+                  (interactive "P")
+                  (if arg
+                      (call-interactively 'kill-buffer)
+                    (call-interactively 'kill-this-buffer))))
+
 (defun run-term (&optional arg)
   (interactive "P")
   (let ((default-directory default-directory))
