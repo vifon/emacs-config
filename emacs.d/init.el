@@ -218,7 +218,8 @@
   :bind (("C-c g" . magit-status))
   :init (progn
           (key-chord-define-global "`m" 'magit-status)
-          (setq magit-last-seen-setup-instructions "1.4.0"))
+          (setq magit-last-seen-setup-instructions "1.4.0")
+          (setq magit-diff-refine-hunk t))
   :config (mapcar
            (lambda (keymap)
              (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
