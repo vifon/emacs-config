@@ -611,9 +611,24 @@ Breadcrumb bookmarks:
                 cperl-close-paren-offset -4
                 cperl-continued-statement-offset 4
                 cperl-indent-parens-as-block t
-                cperl-tab-always-indent t))
+                cperl-tab-always-indent t)
+          (defun perl-method-call-dwim (arg)
+            (interactive "P")
+            (let ((inside-comment-or-string-p
+                   (lambda () (nth 8 (syntax-ppss))))
+                  (cursor-not-after-word-p
+                   (lambda ()
+                     (save-excursion
+                       (backward-char)
+                       (not (looking-at "[])}[:alpha:]]"))))))
+             (if (or arg
+                     (funcall inside-comment-or-string-p)
+                     (funcall cursor-not-after-word-p))
+                 (self-insert-command 1)
+               (insert "->")))))
   :config (progn
             (load "~/.emacs.d/my-fixes/cperl-lineup.el")
+            (define-key cperl-mode-map (kbd ".") #'perl-method-call-dwim)
             (require 'perltidy)
             (define-key cperl-mode-map (kbd "C-c C-i") #'perltidy-dwim-safe)))
 
