@@ -1,0 +1,11 @@
+# key: class
+# name: class
+# --
+package ${1:ClassName};
+
+use Moose$2;
+use namespace::autoclean;
+
+$0
+
+${3:__PACKAGE__->meta->make_immutable};
