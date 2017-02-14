@@ -37,7 +37,7 @@
   (setq x-select-enable-primary t
         select-active-regions nil
         mouse-drag-copy-region t
-        x-select-enable-clipboard nil))
+        x-select-enable-clipboard t))
 
 (setq iswitchb-default-method 'samewindow)
 
