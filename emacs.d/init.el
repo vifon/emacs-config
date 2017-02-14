@@ -635,7 +635,8 @@ Breadcrumb bookmarks:
             (add-hook 'python-mode-hook 'my-python-hook)
             (if (file-exists-p "~/.emacs.d/.python-environments")
                 (add-hook 'python-mode-hook 'jedi:setup))
-            (setq jedi:complete-on-dot t)))
+            (setq jedi:complete-on-dot t)
+            (setq flycheck-python-pylint-executable "pylint3")))
 
 (use-package jedi
   :defer t
