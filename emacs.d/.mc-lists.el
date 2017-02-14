@@ -55,6 +55,7 @@
         forward-sexp
         handle-switch-frame
         haskell-indentation-delete-char
+        hydra-org-template/lambda-v-and-exit
         indent-for-tab-command
         indent-region
         indent-relative
@@ -74,6 +75,9 @@
         org-kill-line
         org-return-indent
         org-self-insert-command
+        orgtbl-hijacker-command-102
+        orgtbl-hijacker-command-107
+        orgtbl-self-insert-command
         paredit-backslash
         paredit-backward
         paredit-backward-barf-sexp
@@ -99,6 +103,7 @@
         paredit-splice-sexp
         paredit-split-sexp
         paredit-wrap-round
+        perl-method-call-dwim
         python-indent-dedent-line-backspace
         python-indent-electric-colon
         quoted-insert
@@ -118,6 +123,8 @@
         wdired-downcase-word
         wdired-finish-edit
         whitespace-mode
+        yaml-electric-backspace
+        yank-pop-dwim
         yas-expand
         yas/expand
         zap-up-to-char
@@ -129,6 +136,7 @@
         haskell-indentation-delete-backward-char
         helm-M-x
         mwheel-scroll
+        orgtbl-hijacker-command-109
         scroll-other-window
         swiper-mc
         undo-tree-visualizer-quit
