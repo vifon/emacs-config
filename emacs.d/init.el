@@ -182,14 +182,7 @@
               (legalese ask))))
 
 (use-package minimap
-  :bind ("C-c n" . minimap-toggle)
-  :config (defun minimap-toggle ()
-            (interactive)
-            (if (and minimap-bufname
-                     (get-buffer minimap-bufname)
-                     (get-buffer-window (get-buffer minimap-bufname)))
-                (minimap-kill)
-              (minimap-create))))
+  :bind ("C-c n" . minimap-mode))
 
 (use-package transpose-frame
   :bind (("C-x 4 t" . transpose-frame)

@@ -102,6 +102,7 @@
 (depends-on "lua-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")
+(depends-on "minimap")
 (depends-on "monokai-theme")
 (depends-on "multifiles")
 (depends-on "multiple-cursors")
