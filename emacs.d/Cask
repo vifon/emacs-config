@@ -125,6 +125,7 @@
 (depends-on "pretty-lambdada")
 (depends-on "projectile")
 (depends-on "python-environment")
+(depends-on "qml-mode")
 (depends-on "quack")
 (depends-on "racer")
 (depends-on "rainbow-blocks")
