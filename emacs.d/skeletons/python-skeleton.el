@@ -1,6 +1,7 @@
 (define-skeleton python-skeleton
   "" ""
-  "#!/usr/bin/env python\n\n"
+  "#!/usr/bin/env python\n"
+  "# -*- coding: utf-8 -*-\n\n"
 
   "from __future__ import print_function\n\n"
 
