@@ -312,12 +312,6 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                      "evince" path))))
 
 (use-package org-crypt
-  :init (define-key org-mode-map (kbd "C-c C-x C-k")
-          (defun org-decrypt-dwim (arg)
-            (interactive "P")
-            (if arg
-                (org-decrypt-entries)
-              (org-decrypt-entry))))
   :config (progn
             (org-crypt-use-before-save-magic)
             (setq org-tags-exclude-from-inheritance '("crypt"))
