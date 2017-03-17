@@ -476,7 +476,7 @@ Breadcrumb bookmarks:
 (use-package racer
   :if (file-exists-p "~/.cargo/bin/racer")
   :config (progn
-            (setq racer-rust-src-path "~/src/rustc/src")
+            (setq racer-rust-src-path "~/src/rust/src")
             (setq racer-cmd "racer")
             (eval-after-load "rust-mode" '(require 'racer))))
 
