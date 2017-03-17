@@ -15,9 +15,7 @@
 
 (add-hook 'ibuffer-mode-hook
           (lambda ()
-            (ibuffer-switch-to-saved-filter-groups "vifon")
-            (setq ibuffer-sorting-mode 'filename/process)
-            (push "*emacs*" ibuffer-hidden-filter-groups)))
+            (setq ibuffer-sorting-mode 'filename/process)))
 
 (setq ibuffer-show-empty-filter-groups nil)
 (setq ibuffer-expert t)
@@ -32,7 +30,7 @@
                               (name 32 -1)
                               " " filename)))
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") #'ibuffer)
 
 (use-package ibuffer
   :config (progn
