@@ -20,32 +20,16 @@
       helm-buffers-fuzzy-matching t
       helm-move-to-line-cycle-in-source nil)
 
-(global-set-key (kbd "M-x")      #'helm-M-x)
-(global-set-key [remap occur]    #'helm-occur)
+(global-set-key (kbd "M-X")      #'helm-M-x)
 (global-set-key (kbd "C-h C-f")  #'helm-apropos)
-(global-set-key (kbd "C-x C-f")  #'helm-find-files)
 (global-set-key (kbd "M-s f")    #'helm-swoop)
 (global-set-key [remap find-tag] #'helm-etags-select)
-
-(global-set-key (kbd "C-x b") (lambda (arg)
-                                (interactive "P")
-                                (if arg
-                                    (ivy-switch-buffer)
-                                  (helm-buffers-list))))
-
-(defun yank-pop-dwim (arg)
-  (interactive "P")
-  (if (or (equal last-command 'yank)
-          (equal last-command 'yank-pop-dwim))
-      (yank-pop arg)
-    (helm-show-kill-ring)))
-(global-set-key (kbd "M-y") #'yank-pop-dwim)
 
 (defun my-helm-browse-project--basename (arg)
   (interactive "p")
   (let ((helm-ff-transformer-show-only-basename t))
     (helm-browse-project arg)))
-(global-set-key (kbd "C-c h") #'my-helm-browse-project--basename)
+(global-set-key (kbd "C-c H H") #'my-helm-browse-project--basename)
 
 (setq helm-etags-execute-action-at-once-if-one nil)
 
@@ -57,7 +41,8 @@
                          helm-source-buffers-list
                          helm-source-buffer-not-found)
                        "*helm custom*")))
-(define-key helm-command-map (kbd ";") 'helm-custom)
+(eval-after-load "helm.el"
+  '(define-key helm-command-map (kbd ";") 'helm-custom))
 
 (use-package helm-projectile
   :commands (helm-browse-project helm-projectile-buffers)
@@ -70,7 +55,7 @@
             ;; to prevent overwriting
             (define-key projectile-command-map [?h] 'helm-browse-project)))
 
-(helm-mode 1)
+;; (helm-mode 1)
 
 ;;; Do not remove, used for the interactive evaluation!
 ;; (setq helm-completing-read-handlers-alist nil)

@@ -94,6 +94,7 @@
 (depends-on "impatient-mode")
 (depends-on "indent-guide")
 (depends-on "interleave")
+(depends-on "ivy-hydra")
 (depends-on "jedi")
 (depends-on "jedi-core")
 (depends-on "key-chord")

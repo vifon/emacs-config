@@ -47,7 +47,6 @@
 
 (global-set-key (kbd "C-c =") 'diff-buffer-with-file)
 
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "M-C-?") 'hippie-expand)
 
 (global-set-key (kbd "C-c t")

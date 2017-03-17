@@ -40,6 +40,7 @@
 (require 'my-fun)
 (require 'my-keys)
 (require 'my-god-mode)
+(require 'my-ivy)
 (require 'my-helm)
 (require 'my-ibuffer)
 (require 'my-org)
@@ -326,14 +327,8 @@ Breadcrumb bookmarks:
   :bind (("C-<"         . mc/mark-previous-like-this)
          ("C->"         . mc/mark-next-like-this)
          ("C-+"         . mc/mark-next-like-this)
-         ("C-c H h"     . mc/edit-lines)
-         ("C-c H C-e"   . mc/edit-ends-of-lines)
-         ("C-c H C-a"   . mc/edit-beginnings-of-lines)
-         ("C-c H r"     . mc/reverse-regions)
-         ("C-c H C-SPC" . set-rectangular-region-anchor)
          ("C-*"         . mc/mark-all-like-this-dwim)
          ("C-M-;"       . mc/mark-all-like-this-dwim)
-         ("C-c H e"     . mc/mark-more-like-this-extended)
          ("M-<mouse-1>" . mc/add-cursor-on-click))
   :init (progn
           (global-unset-key (kbd "M-<down-mouse-1>"))
@@ -359,20 +354,6 @@ Breadcrumb bookmarks:
   :bind (("C-=" . er/expand-region)
          ("M-S-<SPC>" . er/expand-region))
   :init (key-chord-define-global "'e" 'er/expand-region))
-
-(use-package swiper
-  :bind ("C-c f" . swiper-dwim)
-  :commands (swiper-from-isearch)
-  :init (define-key isearch-mode-map (kbd "C-i") #'swiper-from-isearch)
-  :config (defun swiper-dwim (arg)
-            (interactive "P")
-            (if arg
-                (ivy-resume)
-              (swiper))))
-
-(use-package counsel
-  :bind (("C-c G" . counsel-git)
-         ("M-X" . counsel-M-x)))
 
 (use-package imenu
   :bind ("C-c k" . helm-semantic-or-imenu)
