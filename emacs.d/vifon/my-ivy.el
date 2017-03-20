@@ -1,6 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
 (defun yank-pop-dwim (fun)
+  "Return a function calling `fun' unless the last command was
+`yank'. If the last command was `yank', it will call `yank-pop'
+instead to emulate the default Emacs behavior."
   (lambda (arg)
     (interactive "P")
     (if (equal last-command 'yank)
