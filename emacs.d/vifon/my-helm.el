@@ -4,35 +4,7 @@
          ("C-;" . helm-execute-persistent-action)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action))
-  :diminish helm-mode
-  :config (progn
-            ;; use ido instead of helm
-            (dolist (command
-                     '(switch-to-buffer
-                       c-set-offset
-                       unload-feature
-                       org-agenda-filter-by-tag
-                       org-match-sparse-tree))
-              (add-to-list 'helm-completing-read-handlers-alist
-                           (cons command 'ido)))
-
-            ;; use completing-read instead of helm
-            (dolist
-                (command
-                 '(TeX-command-master
-                   LaTeX-section
-                   LaTeX-environment
-                   insert-char
-                   sql-get-login
-                   find-file-at-point
-                   highlight-regexp
-                   org-set-tags
-                   magit-gitignore
-                   execute-extended-command
-                   find-file
-                   ff-find-other-file))
-              (add-to-list 'helm-completing-read-handlers-alist
-                           (cons command nil)))))
+  :diminish helm-mode)
 (use-package helm-ls-git
   :defer t)
 (require 'helm-help)
