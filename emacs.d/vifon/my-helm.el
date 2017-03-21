@@ -1,11 +1,40 @@
 (require 'helm-config)
 (use-package helm-mode
+  :bind (:map helm-map
+         ("C-;" . helm-execute-persistent-action)
+         ("C-i" . helm-execute-persistent-action)
+         ("C-z" . helm-select-action))
   :diminish helm-mode
   :config (progn
-            (define-key helm-map (kbd "C-;") 'helm-execute-persistent-action)
-            (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-            (define-key helm-map (kbd "C-z") 'helm-select-action)))
-(require 'helm-ls-git)
+            ;; use ido instead of helm
+            (dolist (command
+                     '(switch-to-buffer
+                       c-set-offset
+                       unload-feature
+                       org-agenda-filter-by-tag
+                       org-match-sparse-tree))
+              (add-to-list 'helm-completing-read-handlers-alist
+                           (cons command 'ido)))
+
+            ;; use completing-read instead of helm
+            (dolist
+                (command
+                 '(TeX-command-master
+                   LaTeX-section
+                   LaTeX-environment
+                   insert-char
+                   sql-get-login
+                   find-file-at-point
+                   highlight-regexp
+                   org-set-tags
+                   magit-gitignore
+                   execute-extended-command
+                   find-file
+                   ff-find-other-file))
+              (add-to-list 'helm-completing-read-handlers-alist
+                           (cons command nil)))))
+(use-package helm-ls-git
+  :defer t)
 (require 'helm-help)
 
 (use-package helm-swoop
@@ -59,33 +88,5 @@
 
 ;;; Do not remove, used for the interactive evaluation!
 ;; (setq helm-completing-read-handlers-alist nil)
-
-;;; use ido instead of helm
-(dolist (command
-         '(switch-to-buffer
-           c-set-offset
-           unload-feature
-           org-agenda-filter-by-tag
-           org-match-sparse-tree))
-  (add-to-list 'helm-completing-read-handlers-alist
-               (cons command 'ido)))
-
-;;; use completing-read instead of helm
-(dolist
-    (command
-     '(TeX-command-master
-       LaTeX-section
-       LaTeX-environment
-       insert-char
-       sql-get-login
-       find-file-at-point
-       highlight-regexp
-       org-set-tags
-       magit-gitignore
-       execute-extended-command
-       find-file
-       ff-find-other-file))
-  (add-to-list 'helm-completing-read-handlers-alist
-               (cons command nil)))
 
 (provide 'my-helm)
