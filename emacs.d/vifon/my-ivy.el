@@ -13,8 +13,7 @@ instead to emulate the default Emacs behavior."
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-c h h" . counsel-git)
-         ("C-c h H" . counsel-ag)
+         ("C-c h" . counsel-hydra/body)
          ("M-y" . counsel-yank-pop-dwim))
   :init (fset 'counsel-yank-pop-dwim
               (yank-pop-dwim #'counsel-yank-pop)))
@@ -42,5 +41,11 @@ instead to emulate the default Emacs behavior."
          :map isearch-mode-map
          ("C-i" . swiper-from-isearch))
   :commands (swiper-from-isearch))
+
+(defhydra counsel-hydra
+            (:color blue)
+            ("h" counsel-git "git-files")
+            ("H" counsel-ag "ag")
+            ("r" ivy-recentf "recentf"))
 
 (provide 'my-ivy)
