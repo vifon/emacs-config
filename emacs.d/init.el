@@ -213,7 +213,8 @@
   :init (progn
           (key-chord-define-global "`m" 'magit-status)
           (setq magit-last-seen-setup-instructions "1.4.0")
-          (setq magit-diff-refine-hunk t))
+          (setq magit-diff-refine-hunk t)
+          (setq magit-completing-read-function #'ivy-completing-read))
   :config (mapcar
            (lambda (keymap)
              (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
@@ -677,7 +678,8 @@ Breadcrumb bookmarks:
                 (when arg
                   (kill-new project-path))
                 (message "%s" project-path)))
-            (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)))
+            (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)
+            (setq projectile-completion-system 'ivy)))
 
 (use-package helm-ag
   :bind ("C-c p s S" . projectile-helm-ag)
