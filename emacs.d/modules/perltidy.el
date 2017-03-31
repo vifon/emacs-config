@@ -111,7 +111,10 @@
     (let ((old-perltidy-env (getenv "PERLTIDY"))
           (remote? (tramp-tramp-file-p buffer-file-name))
           (perltidyrc (expand-file-name
-                       (perltidy-find-perltidyrc buffer-file-truename)))
+                       (perltidy-find-perltidyrc
+                        (with-current-buffer (or (buffer-base-buffer)
+                                                 (current-buffer))
+                          buffer-file-truename))))
           (pertidyrc-remote (expand-file-name "perltidyrc-remote" temporary-file-directory))
           (perltidy-run-list perltidy-program-params)
           )
