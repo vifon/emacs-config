@@ -19,6 +19,7 @@ instead to emulate the default Emacs behavior."
               (yank-pop-dwim #'counsel-yank-pop)))
 
 (use-package ivy
+  :diminish ivy-mode
   :bind (("C-x C-r" . ivy-resume)
          ("C-x M-r" . ivy-recentf)
          :map ivy-minibuffer-map
