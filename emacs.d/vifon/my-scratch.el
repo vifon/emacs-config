@@ -21,6 +21,7 @@
 
 (global-set-key (kbd "C-c s") #'scratch-reset)
 
-(scratch-reset)
+(add-hook 'after-init-hook
+          #'scratch-reset)
 
 (provide 'my-scratch)
