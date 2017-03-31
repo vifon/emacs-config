@@ -327,8 +327,7 @@ Breadcrumb bookmarks:
 (use-package multiple-cursors
   :demand t                             ;C-v/M-v don't work otherwise
   :bind (("C-<"         . mc/mark-previous-like-this)
-         ("C->"         . mc/mark-next-like-this)
-         ("C-+"         . mc/mark-next-like-this)
+         ("C->"         . mc/mark-more-like-this-extended)
          ("C-*"         . mc/mark-all-like-this-dwim)
          ("C-M-;"       . mc/mark-all-like-this-dwim)
          ("M-<mouse-1>" . mc/add-cursor-on-click))
