@@ -244,7 +244,7 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
             (setq org-confirm-babel-evaluate nil)
             (org-babel-do-load-languages
              'org-babel-load-languages
-             '((sh . t)
+             '((shell . t)
                (awk . t)
                (sed . t)
                (makefile . t)
