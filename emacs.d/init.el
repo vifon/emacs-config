@@ -485,8 +485,8 @@ Breadcrumb bookmarks:
   :diminish bbyac-mode
   :config (progn
             (bbyac-global-mode 1)
-            (define-key bbyac-mode-map (kbd "M-?") 'bbyac-expand-partial-lines)
-            (define-key bbyac-mode-map (kbd "C-M-/") 'bbyac-expand-symbols)))
+            (define-key bbyac-mode-map (kbd "M-?") #'bbyac-expand-substring)
+            (define-key bbyac-mode-map (kbd "C-M-/") #'bbyac-expand-symbols)))
 
 (use-package sx
   :defer t
