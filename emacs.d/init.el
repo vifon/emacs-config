@@ -170,10 +170,18 @@
 
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)
-         ("\\.css\\'" . web-mode))
-  :config (setq web-mode-markup-indent-offset 2
-                web-mode-css-indent-offset 2
-                web-mode-code-indent-offset 2))
+         ("\\.css\\'" . web-mode)
+         ("\\.scss\\'" . web-mode))
+  :config (progn
+            (setq web-mode-markup-indent-offset 2
+                  web-mode-css-indent-offset 2
+                  web-mode-code-indent-offset 2)
+            (define-abbrev web-mode-abbrev-table "divc"
+              ""
+              (define-skeleton html-div-skeleton
+                "A <div></div> tag pair with a class."
+                "Class: "
+                "<div class=\""str"\">" _ "</div>"))))
 
 (use-package legalese
   :config (defun legalese-box (ask)
