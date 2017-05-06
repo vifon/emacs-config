@@ -41,7 +41,7 @@
     (save-excursion
       (insert "\n")
       (indent-for-tab-command)
-      (org-time-stamp-inactive (quote (16)))
+      (org-time-stamp-inactive '(16))
       (insert "\n")
       (indent-for-tab-command)
       (insert "Follow-up of: " link))))
