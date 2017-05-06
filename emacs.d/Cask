@@ -50,7 +50,6 @@
 (depends-on "dpaste")
 (depends-on "drag-stuff")
 (depends-on "dumb-jump")
-(depends-on "ensime")
 (depends-on "epc")
 (depends-on "epl")
 (depends-on "ess")

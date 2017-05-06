@@ -639,17 +639,6 @@ Breadcrumb bookmarks:
             (setq js-indent-level 2)
             (add-hook 'js-mode-hook (lambda () (tern-mode 1)))))
 
-(use-package scala-mode2
-  :config (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
-
-(use-package ensime
-  :defer t
-  :config (progn
-            (define-key ensime-mode-map (kbd "M-n") nil)
-            (define-key ensime-mode-map (kbd "M-p") nil)
-            (define-key ensime-mode-map [remap next-error] #'ensime-forward-note)
-            (define-key ensime-mode-map [remap previous-error] #'ensime-backward-note)))
-
 (use-package projectile
   :defer 3
   :commands (projectile-global-mode
