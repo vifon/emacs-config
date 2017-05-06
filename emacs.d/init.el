@@ -135,8 +135,7 @@
   :defer 7
   :diminish yas-minor-mode
   :commands yas-global-mode
-  :init (progn (setq yas-trigger-key "TAB"
-                     yas-snippet-dirs '("~/.emacs.d/snippets")
+  :init (progn (setq yas-snippet-dirs '("~/.emacs.d/snippets")
                      yas-prompt-functions '(yas/dropdown-prompt
                                             yas/ido-prompt
                                             yas/x-prompt
