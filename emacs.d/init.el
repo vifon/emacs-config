@@ -694,7 +694,7 @@ Breadcrumb bookmarks:
             (global-diff-hl-mode 1)))
 
 (use-package recentf-merge
-  :init (setq recentf-max-menu-items 100))
+  :init (setq recentf-max-menu-items 10000))
 
 (use-package image-mode
   :defer t
