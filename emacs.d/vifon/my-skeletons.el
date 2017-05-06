@@ -14,6 +14,7 @@
 (load "~/.emacs.d/skeletons/python-skeleton.el")
 (load "~/.emacs.d/skeletons/rust-skeleton.el")
 (load "~/.emacs.d/skeletons/tex-skeleton.el")
+(load "~/.emacs.d/skeletons/web-skeleton.el")
 
 (use-package skeletor
   :defer t
