@@ -635,9 +635,9 @@ Breadcrumb bookmarks:
 
 (use-package js-mode
   :defer t
-  :config (progn
-            (setq js-indent-level 2)
-            (add-hook 'js-mode-hook (lambda () (tern-mode 1)))))
+  :init (progn
+          (setq-default js-indent-level 2)
+          (add-hook 'js-mode-hook (lambda () (tern-mode 1)))))
 
 (use-package projectile
   :defer 3
