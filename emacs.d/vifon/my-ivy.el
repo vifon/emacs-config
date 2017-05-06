@@ -13,6 +13,7 @@ instead to emulate the default Emacs behavior."
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
+         ("C-x C-r" . counsel-recentf)
          ("C-c h" . counsel-hydra/body)
          ("M-y" . counsel-yank-pop-dwim))
   :init (fset 'counsel-yank-pop-dwim
@@ -20,8 +21,7 @@ instead to emulate the default Emacs behavior."
 
 (use-package ivy
   :diminish ivy-mode
-  :bind (("C-x C-r" . ivy-resume)
-         ("C-x M-r" . ivy-recentf)
+  :bind (("C-x M-r" . ivy-resume)
          :map ivy-minibuffer-map
          ("C-c C-f" . ivy-toggle-calling)
          ("C-c C-m" . ivy-toggle-fuzzy)
