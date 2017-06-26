@@ -8,6 +8,8 @@
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode 1)
 
+(setq bidi-display-reordering nil)
+
 (scroll-bar-mode 0)
 (when (version<= "25.0" emacs-version)
   (horizontal-scroll-bar-mode 0))
