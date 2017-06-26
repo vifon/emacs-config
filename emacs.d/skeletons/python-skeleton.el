@@ -1,4 +1,4 @@
-(define-skeleton python-skeleton
+(define-skeleton python2-skeleton
   "" ""
   "#!/usr/bin/env python\n"
   "# -*- coding: utf-8 -*-\n\n"
@@ -7,6 +7,18 @@
 
   "def main(argv=None):\n    "
   _
+  "\n\n"
+  "if __name__ == '__main__':\n"
+  "    from sys import argv\n"
+  "    main(argv)"
+  )
+
+(define-skeleton python3-skeleton
+  "" ""
+  "#!/usr/bin/env python3\n"
+  "\n\n"
+  "def main(argv=None):\n"
+  "    " _ "\n"
   "\n\n"
   "if __name__ == '__main__':\n"
   "    from sys import argv\n"
@@ -36,5 +48,5 @@
   "    )\n"
   )
 
-(define-auto-insert "\\.py$" 'python-skeleton)
-(define-auto-insert "/setup.py$" 'python-skeleton)
+(define-auto-insert "\\.py$" 'python3-skeleton)
+(define-auto-insert "/setup.py$" 'python-setup-skeleton)
