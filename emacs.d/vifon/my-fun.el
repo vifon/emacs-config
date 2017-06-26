@@ -54,10 +54,6 @@ Prefix argument initializes the Git repository."
     (when (= old-point (point))
       (move-beginning-of-line arg))))
 
-(defmacro eval-for-each (func &rest arg-lists)
-  `(progn ,@(loop for arg-list in arg-lists collecting
-                  `(,@func ,@arg-list))))
-
 (defun cc-extract ()
   "Save the full function body to the kill-ring and replace it with a declaration."
   (interactive)
