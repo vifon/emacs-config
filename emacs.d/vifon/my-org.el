@@ -5,7 +5,9 @@
             (define-key org-mode-map (kbd "C-c C-1")
               (lambda ()
                 (interactive)
-                (org-time-stamp-inactive '(16))))))
+                (org-time-stamp-inactive '(16))))
+            (advice-add #'org-goto :around
+                        #'call-with-default-completing-read)))
 
 (use-package org-attach
   :commands (org-attach-expand-link org-attach-attach)

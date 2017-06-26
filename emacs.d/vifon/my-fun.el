@@ -54,6 +54,15 @@ Prefix argument initializes the Git repository."
     (when (= old-point (point))
       (move-beginning-of-line arg))))
 
+(defun call-with-default-completing-read (oldfun &rest args)
+  "Call `oldfun' with a `completing-read-function' set to `completing-read-default'.
+
+`ivy-completing-read' and possibly other custom
+`completing-read-function' values do interfere with some
+commands."
+  (let ((completing-read-function #'completing-read-default))
+    (apply oldfun args)))
+
 (defun cc-extract ()
   "Save the full function body to the kill-ring and replace it with a declaration."
   (interactive)
