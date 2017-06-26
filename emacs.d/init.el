@@ -315,6 +315,7 @@ Breadcrumb bookmarks:
                         writeroom-global-effects)))
 
 (use-package visual-regexp-steroids
+  :after visual-regexp
   :bind (([remap query-replace-regexp] . vr/query-replace)))
 
 (use-package flx-isearch
