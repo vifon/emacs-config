@@ -162,7 +162,8 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
         (kill-line arg)
         (goto-char saved-point)
         (unless (equal saved-line (line-number-at-pos))
-          (goto-line saved-line)
+          (goto-char (point-min))
+          (forward-line (1- saved-line))
           (end-of-line)))))
 (global-set-key [remap kill-sentence] #'kill-or-yank-whole-lines)
 
