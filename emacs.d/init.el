@@ -159,7 +159,9 @@
 
 (use-package undo-tree
   :diminish undo-tree-mode
-  :config (global-undo-tree-mode 1))
+  :config (progn
+            (global-undo-tree-mode 1)
+            (setq undo-tree-enable-undo-in-region nil)))
 
 (use-package auctex
   :defer t
