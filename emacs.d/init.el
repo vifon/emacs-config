@@ -500,6 +500,12 @@ Breadcrumb bookmarks:
             (setq racer-cmd "racer")
             (eval-after-load "rust-mode" '(require 'racer))))
 
+(use-package ess
+  :defer t
+  :config (setq ess-keep-dump-files nil
+                ess-delete-dump-files t
+                ess-history-file nil))
+
 (use-package bbyac
   :diminish bbyac-mode
   :config (progn
