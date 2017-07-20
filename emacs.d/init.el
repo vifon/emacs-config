@@ -172,12 +172,18 @@
 
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)
+         ("\\.html\\.j2\\'" . web-mode)
          ("\\.css\\'" . web-mode)
          ("\\.scss\\'" . web-mode))
   :config (progn
             (setq web-mode-markup-indent-offset 2
                   web-mode-css-indent-offset 2
                   web-mode-code-indent-offset 2)
+            (setq web-mode-engines-alist
+                  '(("jinja" . "\\.j2\\'")
+                    ("jinja" . "\\.html\\'")))
+            ;; Fix Jinja2 autopairing; was producing: "{{  }}}}".
+            (setq web-mode-enable-auto-pairing nil)
             (define-abbrev web-mode-abbrev-table "divc"
               ""
               (define-skeleton html-div-skeleton
