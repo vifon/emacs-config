@@ -13,6 +13,7 @@
 (load "~/.emacs.d/skeletons/perl-skeleton.el")
 (load "~/.emacs.d/skeletons/python-skeleton.el")
 (load "~/.emacs.d/skeletons/rust-skeleton.el")
+(load "~/.emacs.d/skeletons/shell-skeleton.el")
 (load "~/.emacs.d/skeletons/tex-skeleton.el")
 (load "~/.emacs.d/skeletons/web-skeleton.el")
 
