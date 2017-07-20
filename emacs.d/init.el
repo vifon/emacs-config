@@ -303,7 +303,10 @@ Breadcrumb bookmarks:
             ("q" nil nil)
             ("S" (lambda ()
                    (interactive)
-                   (bc-bookmarks-save))))
+                   (bc-bookmarks-save)))
+            ("L" (lambda ()
+                   (interactive)
+                   (bc-bookmarks-restore))))
           (defun breadcrumb-or-pop (arg)
             (interactive "P")
             (if arg
