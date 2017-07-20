@@ -167,7 +167,8 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
           (goto-char (point-min))
           (forward-line (1- saved-line))
           (end-of-line)))))
-(global-set-key [remap kill-sentence] #'kill-or-yank-whole-lines)
+(global-set-key (kbd "M-k") #'kill-or-yank-whole-lines)
+(global-set-key (kbd "M-K") (lambda () (interactive) (kill-or-yank-whole-lines '(4))))
 
 (global-set-key (kbd "M-# q") 'quick-calc)
 (global-set-key (kbd "M-# M-#") 'calc)
