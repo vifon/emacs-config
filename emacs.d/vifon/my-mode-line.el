@@ -42,6 +42,21 @@
                 "-%-"
                 ))
 
+(defun vifon--truncate-org-mode-line ()
+  (let* ((heading-text (nth 4 (org-heading-components)))
+         (text-without-links
+          (if (string-prefix-p "[[" heading-text)
+              (replace-regexp-in-string ".*\\]\\[\\(.*\\)\\]"
+                                        "\\1" heading-text)
+            heading-text))
+         (max-length 10))
+    (replace-regexp-in-string (concat "\\(.\\{"
+                                      (number-to-string max-length)
+                                      "\\}[^[:space:]]*\\).*")
+                              "\\1…" text-without-links)))
+
+(setq org-clock-heading-function #'vifon--truncate-org-mode-line)
+
 (setq mode-line-misc-info (delete '(global-mode-string
                                     ("" global-mode-string " "))
                                   mode-line-misc-info))
