@@ -91,7 +91,7 @@
   (setq browse-url-browser-function #'browse-url-generic)
   (setq shr-external-browser 'browse-url-generic)
   (setq eww-download-directory "~/dl"))
-(setq browse-url-generic-program "chromium")
+(setq browse-url-generic-program "webbroboard")
 
 (setf (cdr (assoc "\\.pdf\\'"
                   org-file-apps))
