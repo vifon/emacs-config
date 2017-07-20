@@ -57,7 +57,8 @@
  _a_ck                          delete-_n_on-matching-lines   align-_R_egexp
 
  _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
- _w_riteroom-mode: %-3(bound-and-true-p writeroom-mode)     variable-_p_itch-mode           _s_ort-lines
+ _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)
+ _W_riteroom-mode: %-3(bound-and-true-p writeroom-mode)     variable-_p_itch-mode           _s_ort-lines
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
 
  _h_ttpd settings    fly_c_heck-mode etc."
@@ -72,7 +73,8 @@
                   ("r" toggle-truncate-lines :color red)
                   ("f" auto-fill-mode :color red)
                   ("i" aggressive-indent-mode :color red)
-                  ("w" writeroom-mode :color red)
+                  ("w" whitespace-mode :color red)
+                  ("W" writeroom-mode :color red)
                   ("s" sort-lines :color red)
                   ("p" variable-pitch-mode :color red)
                   ("g" indent-guide-mode :color red)
