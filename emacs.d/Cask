@@ -152,6 +152,7 @@
 (depends-on "tiny")
 (depends-on "transpose-frame")
 (depends-on "transpose-mark")
+(depends-on "typescript-mode")
 (depends-on "undo-tree")
 (depends-on "use-package")
 (depends-on "visual-ascii-mode")
