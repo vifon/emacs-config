@@ -29,11 +29,17 @@
                                                    (org-attach-dir)))))
                   org-stored-links))))
 
-(defadvice org-insert-heading-respect-content
-    (after org-insert-heading-respect-content-with-empty-lines activate)
+(defun org-insert-heading-empty-line-fix ()
+  "Correctly surround the new org headings with empty lines.
+By default the empty line after the new heading is not inserted
+when using the `*-respect-content' commands."
   (save-excursion
     (when (org-previous-line-empty-p)
       (insert "\n"))))
+(advice-add #'org-insert-heading-respect-content :after
+            #'org-insert-heading-empty-line-fix)
+(advice-add #'org-insert-todo-heading-respect-content :after
+            #'org-insert-heading-empty-line-fix)
 
 (defun org-followup ()
   (interactive)
