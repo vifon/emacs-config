@@ -168,7 +168,7 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
                               "\n")
                        (insert "\n"))
                      (point)))))
-(global-set-key (kbd "M-k") #'smart-kill-yank-whole-lines)
+(global-set-key (kbd "M-k") #'smart-kill-whole-lines)
 (global-set-key (kbd "M-K") #'smart-yank-whole-lines)
 
 (global-set-key (kbd "M-# q") 'quick-calc)
