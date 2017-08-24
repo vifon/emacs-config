@@ -25,7 +25,7 @@
    ", "))
 
 (defun scratch-dir-path (name)
-  (concat "~/tmp/scratch-"
+  (concat "~/scratch.d/scratch-"
           (format-time-string "%s_%Y-%m-%d")
           (when (not (string= name ""))
             (concat "--" name))
