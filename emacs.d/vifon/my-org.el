@@ -170,10 +170,10 @@ when using the `*-respect-content' commands."
         ("p" "project" entry (file+headline "projects.org" "Ongoing")
          "* %? [/] :PROJECT:\n  %U\n" :empty-lines 1)
 
-        ("j" "journal" entry (file+datetree "journal.org.gpg")
+        ("j" "journal + prompt" entry (file+datetree+prompt "journal.org.gpg")
          "* %?" :empty-lines 0)
 
-        ("J" "journal + prompt" entry (file+datetree+prompt "journal.org.gpg")
+        ("J" "journal" entry (file+datetree "journal.org.gpg")
          "* %?" :empty-lines 0)))
 
 (setq org-stuck-projects
