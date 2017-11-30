@@ -160,6 +160,7 @@
 (depends-on "visual-regexp")
 (depends-on "visual-regexp-steroids")
 (depends-on "volatile-highlights")
+(depends-on "web-beautify")
 (depends-on "web-mode")
 (depends-on "wgrep")
 (depends-on "wgrep-ack")
