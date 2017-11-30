@@ -1,4 +1,4 @@
-(set-register ?p `(file . ,(concat org-directory "/projects.org")))
-(set-register ?k `(file . ,org-default-notes-file))
+(set-register ?P `(file . ,(concat org-directory "/projects.org")))
+(set-register ?K `(file . ,org-default-notes-file))
 
 (provide 'my-registers)
