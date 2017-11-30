@@ -20,7 +20,7 @@
 (use-package skeletor
   :defer t
   :config (progn
-            (setq skeletor-project-directory "~/new-projects/")
+            (setq skeletor-project-directory "~/new/")
             (skeletor-define-template "c++-project"
               :title "C++ Project")
             (skeletor-define-template "interactive-c"
