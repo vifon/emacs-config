@@ -29,6 +29,7 @@
         c-electric-slash
         c-electric-star
         comment-dwim
+        counsel-yank-pop-dwim
         cperl-electric-backspace
         cperl-electric-brace
         cperl-electric-lbrace
@@ -46,6 +47,8 @@
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         end-of-visual-line
+        ess-smart-comma
+        ess-yank
         eval-last-sexp
         evil-nerd-commenter-dwim
         exchange-point-and-mark
@@ -54,8 +57,10 @@
         folding-forward-char
         forward-sexp
         handle-switch-frame
+        haskell-indentation-common-electric-command
         haskell-indentation-delete-char
         hydra-org-template/lambda-v-and-exit
+        hydra-org-template/self-insert-command-and-exit
         indent-for-tab-command
         indent-region
         indent-relative
@@ -75,6 +80,7 @@
         org-kill-line
         org-return-indent
         org-self-insert-command
+        org-yank
         orgtbl-hijacker-command-102
         orgtbl-hijacker-command-107
         orgtbl-self-insert-command
@@ -118,12 +124,16 @@
         table-forward-cell
         transpose-sexps
         transpose-words
+        typescript-insert-and-indent
         upcase-region
         wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
+        web-mode-element-content-select
+        web-mode-element-wrap
         whitespace-mode
         yaml-electric-backspace
+        yaml-electric-dash-and-dot
         yank-pop-dwim
         yas-expand
         yas/expand
@@ -132,9 +142,11 @@
 
 (setq mc/cmds-to-run-once
       '(
+        counsel-M-x
         god-mode-all
         haskell-indentation-delete-backward-char
         helm-M-x
+        iedit-switch-to-mc-mode
         mwheel-scroll
         orgtbl-hijacker-command-109
         scroll-other-window
