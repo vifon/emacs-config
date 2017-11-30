@@ -33,6 +33,9 @@
               :after-creation
               (lambda (dir)
                 (skeletor-async-shell-command "sbt gen-ensime")
-                (find-file "src/main/scala/Main.scala")))))
+                (find-file "src/main/scala/Main.scala")))
+            (skeletor-define-template "web-frontend-project"
+              :title "Web Frontend Project"
+              :requires-executables '(("npm" . "https://www.npmjs.com/")))))
 
 (provide 'my-skeletons)
