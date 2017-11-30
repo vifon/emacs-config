@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: =
+# key: =
+# expand-env: ((yas-indent-line 'fixed))
+# --
+${1:2+2} = ${1:$(calc-eval
+   (replace-regexp-in-string "p" "perm"
+                 (replace-regexp-in-string "c" "choose"
+                                   yas-text)))}$0
