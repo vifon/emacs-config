@@ -224,7 +224,8 @@
          ("C-c B" . neotree-find)))
 
 (use-package magit
-  :bind (("C-c g" . magit-status))
+  :bind (("C-c g" . magit-status)
+         ("C-c G" . magit-file-popup))
   :init (progn
           (key-chord-define-global "`m" 'magit-status)
           (setq magit-last-seen-setup-instructions "1.4.0")
