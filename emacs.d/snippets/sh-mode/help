@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: help
+# key: help
+# --
+help() {
+    cat <<EOF
+$1 -- $2
+
+Usage:
+  \$0 $3
+EOF
+}
+
+while [ -n "\$1" ]; do
+    case "\$1" in
+        --help|-h)
+            help
+            exit
+            ;;
+        --)
+            shift
+            ;&
+        *)
+            break
+            ;;
+    esac
+    shift
+done
