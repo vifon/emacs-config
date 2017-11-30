@@ -271,7 +271,9 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                (python . t)
                (perl . t)
 
-               (java . t)))
+               (java . t)
+
+               (js . t)))
             (setq org-babel-C-compiler "gcc -std=c99"
                   org-babel-C++-compiler "g++ -std=c++14"
                   org-babel-python-command "python3"

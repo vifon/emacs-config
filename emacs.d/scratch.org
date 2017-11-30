@@ -51,3 +51,9 @@
 
 #+END_SRC
 
+** JavaScript
+
+#+BEGIN_SRC js
+
+#+END_SRC
+
