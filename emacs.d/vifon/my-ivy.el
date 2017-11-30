@@ -46,7 +46,7 @@ instead to emulate the default Emacs behavior."
 (defhydra counsel-hydra
             (:color blue)
             ("h" counsel-git "git-files")
-            ("H" counsel-ag "ag")
+            ("H" counsel-rg "ripgrep")
             ("r" ivy-recentf "recentf"))
 
 (provide 'my-ivy)
