@@ -29,7 +29,7 @@
 
 ** zsh
 
-#+BEGIN_SRC sh
+#+BEGIN_SRC shell
 
 #+END_SRC
 
