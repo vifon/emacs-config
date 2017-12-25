@@ -17,7 +17,8 @@ instead to emulate the default Emacs behavior."
          ("C-c h" . counsel-hydra/body)
          ("M-y" . counsel-yank-pop-dwim))
   :init (fset 'counsel-yank-pop-dwim
-              (yank-pop-dwim #'counsel-yank-pop)))
+              (yank-pop-dwim #'counsel-yank-pop))
+  :config (setq ivy-use-selectable-prompt t))
 
 (use-package ivy
   :diminish ivy-mode
