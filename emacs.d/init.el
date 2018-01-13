@@ -594,6 +594,9 @@ Breadcrumb bookmarks:
 
 (use-package dumb-jump
   :defer t
+  :bind ((:map dumb-jump-mode-map
+          ("C-M-p" . nil)
+          ("C-M-S-g" . dumb-jump-back)))
   :config (setq dumb-jump-selector 'ivy))
 
 (use-package haskell-mode
