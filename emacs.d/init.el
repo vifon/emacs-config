@@ -343,9 +343,6 @@ Breadcrumb bookmarks:
 (use-package beacon
   :config (beacon-mode 1))
 
-(use-package column-marker
-  :bind ("C-c u" . column-marker-1))
-
 (use-package multiple-cursors
   :demand t                             ;C-v/M-v don't work otherwise
   :bind (("C-<"         . mc/mark-previous-like-this)
@@ -588,9 +585,6 @@ Breadcrumb bookmarks:
 
 (use-package pod-mode
   :mode ("\\.pod$" . pod-mode))
-
-(use-package crontab-mode
-  :mode ("^/tmp/crontab\\..*" . crontab-mode))
 
 (use-package dumb-jump
   :defer t

@@ -175,7 +175,6 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
 (global-set-key (kbd "M-# M-#") 'calc)
 
 (global-set-key (kbd "<f9>")  'menu-bar-open)
-(global-set-key [remap tmm-menubar] 'lacarte-execute-command)
 
 (windmove-default-keybindings)
 
