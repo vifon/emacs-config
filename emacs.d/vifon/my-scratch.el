@@ -1,4 +1,5 @@
-(setq initial-major-mode 'org-mode)
+(when (featurep 'org)
+  (setq initial-major-mode 'org-mode))
 
 (defun scratch-reset-message ()
   (setq initial-scratch-message

@@ -10,7 +10,9 @@ instead to emulate the default Emacs behavior."
         (yank-pop arg)
       (funcall fun))))
 
+(use-package smex :ensure t :defer t)
 (use-package counsel
+  :ensure t
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-x C-r" . counsel-recentf)
@@ -20,7 +22,9 @@ instead to emulate the default Emacs behavior."
               (yank-pop-dwim #'counsel-yank-pop))
   :config (setq ivy-use-selectable-prompt t))
 
+(use-package ivy-hydra :ensure t :defer t)
 (use-package ivy
+  :ensure t
   :diminish ivy-mode
   :bind (("C-x M-r" . ivy-resume)
          :map ivy-minibuffer-map
@@ -39,10 +43,15 @@ instead to emulate the default Emacs behavior."
             (ivy-done))))
 
 (use-package swiper
+  :ensure t
   :bind (("C-c f" . swiper)
+         ("M-s f" . swiper-symbol-at-point)
          :map isearch-mode-map
          ("C-i" . swiper-from-isearch))
-  :commands (swiper-from-isearch))
+  :commands (swiper-from-isearch)
+  :init (defun swiper-symbol-at-point ()
+          (interactive)
+          (swiper (thing-at-point 'symbol 'no-properties))))
 
 (defhydra counsel-hydra
             (:color blue)

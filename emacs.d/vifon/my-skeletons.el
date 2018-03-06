@@ -18,6 +18,7 @@
 (load "~/.emacs.d/skeletons/web-skeleton.el")
 
 (use-package skeletor
+  :ensure t
   :defer t
   :config (progn
             (setq skeletor-project-directory "~/new/")

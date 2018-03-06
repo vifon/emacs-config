@@ -21,7 +21,3 @@ for f in emacs.d abbrev_defs; do
         echo "[31;1m$OUTPUT[0m" 1>&2
     fi
 done
-
-if [ ! -d $HOME/.cask ]; then
-    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python # sorry, future me
-fi

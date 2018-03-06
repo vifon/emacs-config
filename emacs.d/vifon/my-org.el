@@ -1,4 +1,6 @@
 (use-package org
+  :ensure org-plus-contrib
+  :pin org
   :config (progn
             (define-key org-mode-map (kbd "<C-tab>") nil)
             (define-key org-mode-map (kbd "C-c C-x h") 'helm-org-in-buffer-headings)
@@ -13,6 +15,7 @@
                   "evince %s")))
 
 (use-package org-attach
+  :after org
   :commands (org-attach-expand-link org-attach-attach)
   :init (defun org-attach-scrot ()
           (interactive)
@@ -57,13 +60,14 @@ when using the `*-respect-content' commands."
       (indent-for-tab-command)
       (insert "Follow-up of: " link))))
 
-(use-package org-protocol)
+(require 'org-protocol)
 
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
 (setq org-use-speed-commands t)
 (setq org-ellipsis "…")
 
+(use-package org-bullets :ensure t :defer t)
 (defun org-minor-modes (&optional arg)
   (interactive "P")
   (org-bullets-mode arg)
@@ -240,17 +244,9 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
         (hydra-org-template/body)
         (self-insert-command 1))))
 
-
-(use-package ox
-  :defer t
-  :config (progn
-            (use-package ox-reveal
-              :load-path "~/.emacs.d/modules/org-reveal")
-            (use-package ox-ioslide)))
-(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
-
 (use-package ob
   :defer t
+  :after org
   :config (progn
             (setq org-confirm-babel-evaluate nil)
             (org-babel-do-load-languages
@@ -282,24 +278,6 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                   org-babel-python-command "python3"
                   org-babel-perl-preface "use 5.010;")))
 
-(use-package ob-ditaa
-  :defer t
-  :config (unless (file-exists-p org-ditaa-jar-path)
-            (setq org-ditaa-jar-path
-                  (cl-find-if
-                   #'file-exists-p
-                   '("/usr/share/ditaa/ditaa.jar"
-                     "/usr/share/java/ditaa/ditaa-0_9.jar")))))
-
-(use-package ob-plantuml
-  :defer t
-  :config (unless (file-exists-p org-plantuml-jar-path)
-            (setq org-plantuml-jar-path
-                  (cl-find-if
-                   #'file-exists-p
-                   '("~/.bin/plantuml.jar")))))
-
-
 ;;; https://lists.gnu.org/archive/html/emacs-orgmode/2012-12/msg00231.html
 (org-add-link-type "thunderlink" 'org-thunderlink-open)
 (defun org-thunderlink-open (path)
@@ -323,6 +301,7 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                      "evince" path))))
 
 (use-package org-crypt
+  :after org
   :config (progn
             (org-crypt-use-before-save-magic)
             (setq org-tags-exclude-from-inheritance '("crypt"))

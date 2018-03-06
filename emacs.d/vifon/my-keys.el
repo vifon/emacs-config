@@ -126,8 +126,6 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
             (copy-from-above-command (if (consp arg)
                                          nil
                                          (or arg 1)))))
-(use-package zop-to-char
-  :bind (("M-Z" . zop-up-to-char)))
 
 (global-set-key (kbd "C-x M-!") 'find-file-path)
 (global-set-key (kbd "C-x M-j") 'dired-jump)
@@ -179,17 +177,6 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
 
 (windmove-default-keybindings)
 
-
-(key-chord-define-global "=w" 'whitespace-mode)
-(key-chord-define-global "=d" 'dired-jump)
-(key-chord-define-global "=g" 'vc-diff)
-(key-chord-define-global "=f" 'diff-hl-margin-mode)
-(key-chord-define-global "=q" 'nlinum-mode)
-(key-chord-define-global "`\\" 'delete-frame)
-(key-chord-define-global "[s" 'toggle-selective-display)
-(key-chord-define-global "=t" 'ispell-change-dictionary)
-(key-chord-define-global "=v" 'visual-line-mode)
-(key-chord-define-global "=a" 'shrink-all-windows-if-larger-than-buffer)
 
 (defun shrink-all-windows-if-larger-than-buffer ()
   (interactive)
