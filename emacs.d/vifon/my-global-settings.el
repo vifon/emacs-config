@@ -95,10 +95,6 @@
   (setq eww-download-directory "~/dl"))
 (setq browse-url-generic-program "webbroboard")
 
-(setf (cdr (assoc "\\.pdf\\'"
-                  org-file-apps))
-      "evince %s")
-
 (add-to-list 'auto-mode-alist '("^/tmp/mutt.*" . mail-mode))
 (add-to-list 'auto-mode-alist '("\\.claws-mail/tmp/tmpmsg\\.0x.*" . mail-mode))
 

@@ -7,7 +7,10 @@
                 (interactive)
                 (org-time-stamp-inactive '(16))))
             (advice-add #'org-goto :around
-                        #'call-with-default-completing-read)))
+                        #'call-with-default-completing-read)
+            (setf (cdr (assoc "\\.pdf\\'"
+                              org-file-apps))
+                  "evince %s")))
 
 (use-package org-attach
   :commands (org-attach-expand-link org-attach-attach)
