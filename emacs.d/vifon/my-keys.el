@@ -198,26 +198,29 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
 
 (global-set-key (kbd "C-c e")
                 (defhydra vydra
-                  (:color pink)
-                  "vi-hydra"
+                  (:hint nil :color pink)
+                  "
+^↑^_b_↑  ^ ^_k_^ ^  ↔_v_↔
+_0__a_↤  _h__i__l_  ↦_e_
+^↓^_f_↓  ^ ^_j_^ ^   ^ ^
+"
+                  ("h" backward-char)
+                  ("j" next-line)
+                  ("k" previous-line)
+                  ("l" forward-char)
 
-                  ("h" backward-char "left")
-                  ("j" next-line "down")
-                  ("k" previous-line "up")
-                  ("l" forward-char "right")
+                  ("f" scroll-up-command)
+                  ("b" scroll-down-command)
 
-                  ("f" scroll-up-command "PgDn")
-                  ("b" scroll-down-command "PgUp")
+                  ("v" er/expand-region)
 
-                  ("v" er/expand-region "select")
+                  ("0" move-beginning-of-line-dwim)
+                  ("a" move-beginning-of-line-dwim)
+                  ("e" move-end-of-line)
 
-                  ("0" move-beginning-of-line-dwim "BOL")
-                  ("a" move-beginning-of-line-dwim "BOL")
-                  ("e" move-end-of-line "EOL")
-
-                  ("i" nil "quit")
-                  ("q" nil "quit")
-                  ("SPC" nil "quit")))
+                  ("i" nil)
+                  ("q" nil)
+                  ("SPC" nil)))
 
 
 ;;; From https://www.emacswiki.org/emacs/ZapToISearch
