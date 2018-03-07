@@ -31,7 +31,6 @@
 (add-to-list 'load-path "~/.emacs.d/modules")
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
-(require 'my-compat)
 
 (use-package hydra :ensure t :defer t)
 
