@@ -37,6 +37,23 @@
 
 (use-package hydra :ensure t :defer t)
 
+(use-package paredit
+  :ensure t
+  :diminish "[()]"
+  :commands paredit-mode
+  :init (setq paredit-space-for-delimiter-predicates
+              '((lambda (endp delimiter) nil)))
+  :config (progn
+            (define-key paredit-mode-map (kbd "M-s") nil)
+            (define-key paredit-mode-map (kbd "M-s M-s") 'paredit-splice-sexp)
+
+            (defun paredit-kill-maybe (arg)
+              (interactive "P")
+              (if (consp arg)
+                  (paredit-kill)
+                (kill-line arg))))
+  :bind (([remap kill-line] . paredit-kill-maybe)))
+
 (require 'my-hooks)
 (require 'my-skeletons)
 (require 'my-mode-line)
@@ -55,23 +72,6 @@
 
 (use-package globalff
   :commands globalff)
-
-(use-package paredit
-  :ensure t
-  :diminish "[()]"
-  :commands paredit-mode
-  :init (setq paredit-space-for-delimiter-predicates
-              '((lambda (endp delimiter) nil)))
-  :config (progn
-            (define-key paredit-mode-map (kbd "M-s") nil)
-            (define-key paredit-mode-map (kbd "M-s M-s") 'paredit-splice-sexp)
-
-            (defun paredit-kill-maybe (arg)
-              (interactive "P")
-              (if (consp arg)
-                  (paredit-kill)
-                (kill-line arg))))
-  :bind (([remap kill-line] . paredit-kill-maybe)))
 
 (use-package autopair
   :ensure t
