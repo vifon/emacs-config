@@ -37,8 +37,7 @@
   :commands ibuffer-vc-set-filter-groups-by-vc-root)
 
 (use-package ibuffer
-  :config (progn
-            (define-key ibuffer-mode-map
-              (kbd "/ V") #'ibuffer-vc-set-filter-groups-by-vc-root)))
+  :config (define-key ibuffer-mode-map
+            (kbd "/ V") #'ibuffer-vc-set-filter-groups-by-vc-root))
 
 (provide 'my-ibuffer)

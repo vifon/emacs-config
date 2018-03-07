@@ -325,17 +325,22 @@
                                  '("Used Packages"
                                    "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)))))
 
+(use-package semantic/decorate/mode
+  :defer t
+  :config (setq-default semantic-decoration-styles
+                        '(("semantic-decoration-on-includes" . t))))
+
 (use-package semantic
   :defer t
-  :config (progn
-            (setq semantic-default-submodes
-                  '(global-semantic-idle-scheduler-mode
-                    global-semanticdb-minor-mode
-                    global-semantic-decoration-mode
-                    global-semantic-stickyfunc-mode))
-            (use-package semantic/decorate/mode
-              :config (setq-default semantic-decoration-styles
-                                    '(("semantic-decoration-on-includes" . t))))))
+  :config (setq semantic-default-submodes
+                '(global-semantic-idle-scheduler-mode
+                  global-semanticdb-minor-mode
+                  global-semantic-decoration-mode
+                  global-semantic-stickyfunc-mode)))
+
+(use-package company-clang
+  :after company
+  :bind ("C-c V" . company-clang))
 
 (use-package company
   :ensure t
@@ -365,13 +370,10 @@
             (add-hook 'org-mode-hook '(lambda ()
                                         (company-mode 0)))
             (global-company-mode 1))
-  :init (progn
-          (use-package company-clang
-            :bind ("C-c V" . company-clang))
-          (add-hook 'c++-mode-hook
-                    (lambda ()
-                      (make-local-variable 'company-clang-arguments)
-                      (setq company-clang-arguments '("-std=c++11")))))
+  :init (add-hook 'c++-mode-hook
+                  (lambda ()
+                    (make-local-variable 'company-clang-arguments)
+                    (setq company-clang-arguments '("-std=c++11"))))
   :bind (("C-c v" . company-complete)
          ("C-c /" . company-files)))
 
