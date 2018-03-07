@@ -37,6 +37,7 @@
 
 (use-package hydra :ensure t :defer t)
 
+(use-package s :ensure t :defer t)
 (use-package paredit
   :ensure t
   :diminish "[()]"
