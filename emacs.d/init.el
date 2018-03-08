@@ -29,7 +29,6 @@
 (bootstrap-use-package)
 
 
-(add-to-list 'load-path "~/.emacs.d/my-fixes")
 (add-to-list 'load-path "~/.emacs.d/vifon")
 (add-to-list 'load-path "~/.emacs.d/modules")
 (setq custom-file "~/.emacs.d/custom.el")
@@ -64,7 +63,6 @@
 (require 'my-ibuffer)
 (require 'my-org)
 (require 'my-eshell)
-(require 'my-fixes)
 (require 'my-registers)
 (require 'my-global-settings)
 (require 'my-scratch)
@@ -535,7 +533,6 @@
                  (self-insert-command 1)
                (insert "->")))))
   :config (progn
-            (load "~/.emacs.d/my-fixes/cperl-lineup.el")
             (define-key cperl-mode-map (kbd ".") #'perl-method-call-dwim)
             (require 'perltidy)
             (define-key cperl-mode-map (kbd "C-c C-i") #'perltidy-dwim-safe)))

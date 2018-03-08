@@ -28,7 +28,12 @@
 (transient-mark-mode 1)
 
 (setq cua-enable-cua-keys nil)
-(require 'cualess-global-mark)
+(global-set-key (kbd "C-S-SPC") '(lambda ()
+                                   (interactive)
+                                   (cua-mode 1)
+                                   (call-interactively 'cua-toggle-global-mark)))
+(defadvice cua--deactivate-global-mark (after cua--deactivate-global-mark-and-cua-mode activate)
+  (cua-mode 0))
 (setq cua-global-mark-keep-visible nil)
 
 (setq backup-directory-alist '(("." . "~/.emacs_saves"))
@@ -100,6 +105,12 @@
 
 (setq epa-file-name-regexp "\\.gpg\\(~\\|\\.~[0-9]+~\\)?\\'\\|\\.asc")
 (epa-file-name-regexp-update)
+
+;; My window managers usually don't play nice with iconifying Emacs.
+;; Let's disable it but save the original function under a different
+;; name.
+(fset 'iconify-orig (symbol-function 'iconify-frame))
+(defalias 'iconify-frame 'ignore)
 
 (defalias 'elpa 'list-packages)
 (defalias 'repl 'ielm)
