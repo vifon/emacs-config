@@ -540,30 +540,20 @@
 (use-package python
   :defer t
   :config (progn
-            (defun my-python-hook ()
-              (company-mode 0)
-              (setq tab-width 4
-                    python-indent 4
-                    py-indent-offset 4))
-            (add-hook 'python-mode-hook 'my-python-hook)
-            (if (file-exists-p "~/.emacs.d/.python-environments")
-                (add-hook 'python-mode-hook 'jedi:setup))
-            (setq jedi:complete-on-dot t)
+            (add-hook 'python-mode-hook
+                      (defun my-python-hook ()
+                        (setq tab-width 4
+                              python-indent 4
+                              py-indent-offset 4)))
             (setq flycheck-python-pylint-executable "pylint3")))
 
-(use-package jedi
+(use-package anaconda-mode
   :ensure t
-  :defer t
-  :config (progn
-            (define-key jedi-mode-map (kbd "C-<tab>") nil)
-            (define-key jedi-mode-map (kbd "C-c v") 'jedi:complete)
-            (let ((tag-functions (if (version<= "25.0" emacs-version)
-                                     '(xref-find-definitions xref-pop-marker-stack)
-                                   '(find-tag pop-tag-mark))))
-              (define-key jedi-mode-map (vector 'remap (first tag-functions))
-                'jedi:goto-definition)
-              (define-key jedi-mode-map (vector 'remap (second tag-functions))
-                'jedi:goto-definition-pop-marker))))
+  :commands (anaconda-mode
+             anaconda-eldoc-mode)
+  :init (progn
+          (add-hook 'python-mode-hook #'anaconda-mode)
+          (add-hook 'python-mode-hook #'anaconda-eldoc-mode)))
 
 (use-package js-mode
   :defer t
