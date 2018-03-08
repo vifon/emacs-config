@@ -427,13 +427,6 @@
   :ensure t
   :defer t)
 
-(use-package ess
-  :ensure t
-  :defer t
-  :config (setq ess-keep-dump-files nil
-                ess-delete-dump-files t
-                ess-history-file nil))
-
 (use-package avy
   :ensure t
   :bind ("C-c j" . avy-dwim)
@@ -678,3 +671,13 @@
 (use-package rainbow-mode :ensure t :defer t)
 (use-package restclient :ensure t :defer t)
 (use-package web-beautify :ensure t :defer t)
+
+;;; Needs to be the last one because otherwise during the installation
+;;; (via :ensure) it prompts whether to save ~/.abbrev_defs making it
+;;; no longer fully automated. Sadly I've got no idea why it happens.
+(use-package ess
+  :ensure t
+  :defer t
+  :config (setq ess-keep-dump-files nil
+                ess-delete-dump-files t
+                ess-history-file nil))
