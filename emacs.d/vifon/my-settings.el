@@ -119,4 +119,4 @@
 (setq desktop-load-locked-desktop t)
 
 
-(provide 'my-global-settings)
+(provide 'my-settings)

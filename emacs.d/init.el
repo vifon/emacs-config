@@ -64,7 +64,7 @@
 (require 'my-org)
 (require 'my-eshell)
 (require 'my-registers)
-(require 'my-global-settings)
+(require 'my-settings)
 (require 'my-scratch)
 
 (require 'pastes-from-web)
