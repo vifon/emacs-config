@@ -227,6 +227,7 @@
            (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
 (use-package git-commit
+  :ensure t
   :config (progn
             (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
             (add-hook 'git-commit-mode-hook 'turn-on-orgstruct++)))
