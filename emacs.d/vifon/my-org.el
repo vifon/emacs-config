@@ -14,7 +14,6 @@
                   "evince %s")))
 
 (use-package org-attach
-  :after org
   :commands (org-attach-expand-link org-attach-attach)
   :init (defun org-attach-scrot ()
           (interactive)
@@ -245,7 +244,6 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
 
 (use-package ob
   :defer t
-  :after org
   :config (progn
             (setq org-confirm-babel-evaluate nil)
             (org-babel-do-load-languages
@@ -300,7 +298,6 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
                      "evince" path))))
 
 (use-package org-crypt
-  :after org
   :config (progn
             (org-crypt-use-before-save-magic)
             (setq org-tags-exclude-from-inheritance '("crypt"))
