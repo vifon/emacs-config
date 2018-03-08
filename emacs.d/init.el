@@ -9,6 +9,9 @@
   (if (locate-library "package")
       (progn
         (require 'package)
+        (setq package-user-dir (concat
+                                (file-name-as-directory package-user-dir)
+                                emacs-version))
         (setq package-archives
               '(("gnu"       . "https://elpa.gnu.org/packages/")
                 ("marmalade" . "https://marmalade-repo.org/packages/")
