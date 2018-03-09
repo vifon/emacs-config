@@ -455,6 +455,12 @@
   :bind ("C-x o" . win-switch-dispatch)
   :config (setq win-switch-window-threshold 0))
 
+(use-package winner
+  :bind (("C-c z" . winner-undo)
+         :map winner-mode-map
+         ("<XF86Back>"    . winner-undo)
+         ("<XF86Forward>" . winner-redo)))
+
 (use-package c-c++-header
   :mode ("\\.h\\'" . c-c++-header)
   :init (defalias 'h++-mode 'c++-mode))

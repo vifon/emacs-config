@@ -50,7 +50,7 @@
 (global-set-key (kbd "M-C-?") 'hippie-expand)
 
 (global-set-key (kbd "C-c t")
-                (defhydra text-filter-hydra
+                (defhydra my-hydra
                   (:hint nil :color blue)
                   "
  delete-_t_railing-whitespace   delete-_m_atching-lines       _A_lign
@@ -109,14 +109,10 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
   ("i" ispell-change-dictionary))
 
 (global-set-key (kbd "C-c d") 'delete-pair)
-(define-key minibuffer-local-map (kbd "C-c c")
-  '(lambda () (interactive) (insert "CMakeLists.txt")))
 
-(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
-(defun conditionally-enable-paredit-mode ()
-  "enable paredit-mode during eval-expression"
-  (if (eq this-command 'eval-expression)
-      (paredit-mode 1)))
+(add-hook 'minibuffer-setup-hook
+          (lambda () (if (eq this-command 'eval-expression)
+                         (paredit-mode 1))))
 
 (use-package misc
   :bind (("M-z" . zap-up-to-char)
@@ -127,8 +123,20 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
                                          nil
                                          (or arg 1)))))
 
-(global-set-key (kbd "C-x M-!") 'find-file-path)
-(global-set-key (kbd "C-x M-j") 'dired-jump)
+(global-set-key (kbd "C-x M-!") #'find-file-path)
+(autoload 's-trim "s")
+(defun find-file-path ()
+  "Find file using the PATH env var."
+  (interactive)
+  (let* ((program (read-shell-command "Program name: "))
+         (path (executable-find (s-trim program))))
+    (if path
+        (let ((path (read-from-minibuffer "Find file: " path)))
+          (when (and path (stringp path))
+            (find-file path)))
+      (error "No such program"))))
+
+(global-set-key (kbd "C-x M-j") #'dired-jump)
 
 (defun toggle-selective-display (arg)
   (interactive "P")
@@ -138,11 +146,18 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
                  selective-display)
           (set-selective-display 0)
           (set-selective-display (current-column)))))
-(global-set-key [remap set-selective-display] 'toggle-selective-display)
+(global-set-key [remap set-selective-display] #'toggle-selective-display)
 
-(global-set-key [remap move-beginning-of-line] 'move-beginning-of-line-dwim)
+(global-set-key [remap move-beginning-of-line]
+                (defun move-beginning-of-line-dwim (arg)
+                  (interactive "^p")
+                  (let ((old-point (point)))
+                    (back-to-indentation)
+                    (when (= old-point (point))
+                      (move-beginning-of-line arg)))))
 
 (defun smart-kill-whole-lines (&optional arg)
+  "Kill the whole line while keeping the point in place."
   (interactive "P")
   (let ((kill-whole-line t)
         (saved-point (point))
@@ -155,6 +170,8 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
       (forward-line (1- saved-line))
       (end-of-line))))
 (defun smart-yank-whole-lines ()
+  "Yank and reindent the yanked text. Ensures the yanked text
+ends with a newline."
   (interactive)
   (save-excursion
     (beginning-of-line)
@@ -170,10 +187,10 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
 (global-set-key (kbd "M-k") #'smart-kill-whole-lines)
 (global-set-key (kbd "M-K") #'smart-yank-whole-lines)
 
-(global-set-key (kbd "M-# q") 'quick-calc)
-(global-set-key (kbd "M-# M-#") 'calc)
+(global-set-key (kbd "M-# q") #'quick-calc)
+(global-set-key (kbd "M-# M-#") #'calc)
 
-(global-set-key (kbd "<f9>")  'menu-bar-open)
+(global-set-key (kbd "<f9>") #'menu-bar-open)
 
 (windmove-default-keybindings)
 
@@ -217,7 +234,7 @@ _0__a_↤  _h__i__l_  ↦_e_
   (interactive "r")
   (isearch-exit)
   (goto-char isearch-other-end))
-(define-key isearch-mode-map [(control return)] 'isearch-exit-other-end)
+(define-key isearch-mode-map [(control return)] #'isearch-exit-other-end)
 
 
 (provide 'my-keys)

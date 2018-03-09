@@ -3,7 +3,8 @@
             (add-hook (funcall (or modifier
                                    'identity)
                                mode)
-                      hook)) modes))
+                      hook))
+          modes))
 
 
 (add-hook 'c-mode-common-hook
@@ -81,12 +82,6 @@
                                   (show-paren-mode 1)
                                   (makunbound 'htmlize--show-paren-disabled))))
 
-
-(use-package winner
-  :defer t
-  :config (progn
-            (define-key winner-mode-map (kbd "<XF86Back>")    'winner-undo)
-            (define-key winner-mode-map (kbd "<XF86Forward>") 'winner-redo)))
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 

@@ -1,15 +1,3 @@
-(require 's)
-(defun find-file-path ()
-  "Find file using the PATH env var."
-  (interactive)
-  (let* ((program (read-shell-command "Program name: "))
-         (path (executable-find (s-trim program))))
-    (if path
-        (let ((path (read-from-minibuffer "Find file: " path)))
-          (when (and path (stringp path))
-            (find-file path)))
-        (error "No such program"))))
-
 ;;; used by yasnippet
 (defun get-c-arg-names (arg-list)
   (mapconcat
@@ -46,13 +34,6 @@ Prefix argument initializes the Git repository."
       (let ((default-directory directory))
         (vc-git-create-repo)))
     (find-file directory)))
-
-(defun move-beginning-of-line-dwim (arg)
-  (interactive "^p")
-  (let ((old-point (point)))
-    (back-to-indentation)
-    (when (= old-point (point))
-      (move-beginning-of-line arg))))
 
 (defun call-with-default-completing-read (oldfun &rest args)
   "Call `oldfun' with a `completing-read-function' set to `completing-read-default'.
