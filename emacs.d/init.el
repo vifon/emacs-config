@@ -80,9 +80,6 @@
 
 (require 'pastes-from-web)
 
-(use-package globalff
-  :commands globalff)
-
 (use-package autopair
   :ensure t
   :commands autopair-mode)
