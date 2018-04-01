@@ -115,14 +115,8 @@
   :defer 7
   :diminish yas-minor-mode
   :commands yas-global-mode
-  :init (progn (setq yas-snippet-dirs '("~/.emacs.d/snippets")
-                     yas-prompt-functions '(yas/dropdown-prompt
-                                            yas/ido-prompt
-                                            yas/x-prompt
-                                            yas/completing-prompt
-                                            yas/no-prompt)
-                     auto-mode-alist (cons '("emacs\.d/snippets/" . snippet-mode)
-                                           auto-mode-alist)))
+  :mode ("emacs\.d/snippets/" . snippet-mode)
+  :init (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   :config (yas-global-mode 1))
 
 (use-package auto-yasnippet
