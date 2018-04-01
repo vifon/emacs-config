@@ -105,6 +105,12 @@
   :ensure t
   :commands dired-subtree-toggle)
 
+(use-package dired-filter
+  :ensure t)
+
+(use-package dired-collapse
+  :ensure t)
+
 (use-package dired
   :defer t
   :config (progn
