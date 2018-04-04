@@ -42,8 +42,6 @@
      (eval flyspell-buffer))))
  '(sentence-end-double-space nil)
  '(server-raise-frame nil)
- '(viper-toggle-key [(control 96)])
- '(viper-want-ctl-h-help t)
  '(winner-mode t)
  '(woman-fill-column 80))
 
@@ -94,9 +92,6 @@
  '(term-color-magenta ((t (:background "#95709b" :foreground "#95709b"))))
  '(term-color-red ((t (:background "#dc0000" :foreground "#dc0000"))))
  '(term-color-yellow ((t (:background "#c4a000" :foreground "#c4a000"))))
- '(viper-minibuffer-emacs ((t nil)) t)
- '(viper-minibuffer-insert ((t nil)) t)
- '(viper-minibuffer-vi ((t nil)) t)
  '(warning ((t (:foreground "yellow" :underline (:color foreground-color :style wave) :weight bold))))
  '(woman-bold ((t (:inherit bold :foreground "red"))) t)
  '(woman-italic ((t (:inherit (italic bold) :foreground "green"))) t))
