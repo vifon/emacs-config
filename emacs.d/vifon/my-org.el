@@ -279,11 +279,11 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
 (org-add-link-type "thunderlink" 'org-thunderlink-open)
 (defun org-thunderlink-open (path)
   "Opens a specified email in Thunderbird with the help of the add-on ThunderLink."
-  (start-process "thunderlink" nil
-                 "thunderbird"
-                 "-thunderlink"
-                 (concat "thunderlink:"
-                         (substring-no-properties path))))
+  (call-process "thunderlink" nil nil nil
+                "thunderbird"
+                "-thunderlink"
+                (concat "thunderlink:"
+                        (substring-no-properties path))))
 
 (org-add-link-type "evince" 'org-evince-open)
 (defun org-evince-open (link)
@@ -292,10 +292,10 @@ _h_tml    ^ ^         _S_hell         _A_SCII:
         (page (and (match-beginning 2)
                    (match-string 2 link))))
     (if page
-        (start-process "evince" nil
-                       "evince" path "-i" page)
-      (start-process "evince" nil
-                     "evince" path))))
+        (call-process "evince" nil nil nil
+                      "evince" path "-i" page)
+      (call-process "evince" nil nil nil
+                    "evince" path))))
 
 (use-package org-crypt
   :config (progn

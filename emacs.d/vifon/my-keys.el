@@ -28,9 +28,9 @@
                  (when (file-directory-p "build")
                    (cd "build"))))))
     (if (window-system)
-        (start-process "my-urxvt" nil "urxvtcd")
-        (start-process "my-tmux" nil
-                       "tmux" "split-window" "-h"))))
+        (call-process "urxvtcd")
+      (call-process "tmux" nil nil nil
+                    "split-window" "-h"))))
 
 (global-set-key (kbd "C-c x") 'run-term)
 (global-set-key (kbd "M-o") 'run-term)
