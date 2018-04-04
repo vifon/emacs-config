@@ -17,7 +17,9 @@ instead to emulate the default Emacs behavior."
          ("C-x C-f" . counsel-find-file)
          ("C-x C-r" . counsel-recentf)
          ("C-c h" . counsel-hydra/body)
-         ("M-y" . counsel-yank-pop-dwim))
+         ("M-y" . counsel-yank-pop-dwim)
+         ([remap describe-function] . counsel-describe-function)
+         ([remap describe-variable] . counsel-describe-variable))
   :init (fset 'counsel-yank-pop-dwim
               (yank-pop-dwim #'counsel-yank-pop))
   :config (setq ivy-use-selectable-prompt t))
