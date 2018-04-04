@@ -116,7 +116,10 @@
   :defer t
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle))
-  :config (setq dired-dwim-target t))
+  :config (setq dired-dwim-target t
+                dired-listing-switches "-alhv --group-directories-first"
+                dired-ls-F-marks-symlinks t
+                dired-isearch-filenames 'dwim))
 
 (use-package yasnippet
   :ensure t

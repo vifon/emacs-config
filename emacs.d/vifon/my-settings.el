@@ -81,10 +81,6 @@
       compilation-read-command nil)
 
 (setq shell-file-name "/bin/sh")
-(setq dired-listing-switches "-alhv --group-directories-first")
-(setq dired-ls-F-marks-symlinks t)
-(setq dired-omit-files "^\\.?#\\|^\\.[^\\.].*")
-(setq dired-isearch-filenames 'dwim)
 
 (setq find-file-existing-other-name nil)
 (setq require-final-newline t)
