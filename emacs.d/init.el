@@ -114,7 +114,8 @@
 (use-package dired
   :defer t
   :bind (:map dired-mode-map
-         ("z" . dired-subtree-toggle)))
+         ("z" . dired-subtree-toggle))
+  :config (setq dired-dwim-target t))
 
 (use-package yasnippet
   :ensure t

@@ -22,7 +22,6 @@
  '(cc-search-directories
    (quote
     ("." "/usr/include" "/usr/local/include/*" "/home/vifon/local/include")))
- '(dired-dwim-target t)
  '(ediff-grab-mouse nil)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(flymake-gui-warnings-enabled t)
