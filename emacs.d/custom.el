@@ -41,14 +41,14 @@
      (eval flyspell-buffer))))
  '(sentence-end-double-space nil)
  '(server-raise-frame nil)
- '(winner-mode t)
- '(woman-fill-column 80))
+ '(winner-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(diff-added ((((background dark)) (:foreground "green"))))
  '(diff-changed ((((background dark)) (:foreground "yellow"))))
  '(diff-context ((((background dark)) (:foreground "White")) (t (:foreground "Black"))))
@@ -91,9 +91,7 @@
  '(term-color-magenta ((t (:background "#95709b" :foreground "#95709b"))))
  '(term-color-red ((t (:background "#dc0000" :foreground "#dc0000"))))
  '(term-color-yellow ((t (:background "#c4a000" :foreground "#c4a000"))))
- '(warning ((t (:foreground "yellow" :underline (:color foreground-color :style wave) :weight bold))))
- '(woman-bold ((t (:inherit bold :foreground "red"))) t)
- '(woman-italic ((t (:inherit (italic bold) :foreground "green"))) t))
+ '(warning ((t (:foreground "yellow" :underline (:color foreground-color :style wave) :weight bold)))))
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
