@@ -106,7 +106,8 @@
   :commands dired-subtree-toggle)
 
 (use-package dired-filter
-  :ensure t)
+  :ensure t
+  :config (setq-default dired-filter-stack '()))
 
 (use-package dired-collapse
   :ensure t)
