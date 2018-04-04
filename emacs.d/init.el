@@ -114,6 +114,7 @@
 
 (use-package dired-async
   :ensure async
+  :commands dired-async-mode
   :config (setq dired-async-message-function
                 (lambda (text face &rest args)
                   (call-process "notify-send" nil nil nil
