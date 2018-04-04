@@ -112,6 +112,15 @@
 (use-package dired-collapse
   :ensure t)
 
+(use-package dired-async
+  :ensure async
+  :config (setq dired-async-message-function
+                (lambda (text face &rest args)
+                  (call-process "notify-send" nil nil nil
+                                "Emacs: dired-async"
+                                (apply #'format text args))
+                  (apply #'dired-async-mode-line-message text face args))))
+
 (use-package dired
   :defer t
   :bind (:map dired-mode-map
