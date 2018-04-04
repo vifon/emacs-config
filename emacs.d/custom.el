@@ -42,7 +42,6 @@
      (eval flyspell-buffer))))
  '(sentence-end-double-space nil)
  '(server-raise-frame nil)
- '(tramp-default-method "scp")
  '(viper-toggle-key [(control 96)])
  '(viper-want-ctl-h-help t)
  '(winner-mode t)
