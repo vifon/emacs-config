@@ -66,8 +66,6 @@
  '(diff-refine-added ((t (:inherit diff-added :background "green4"))))
  '(diff-refine-removed ((t (:inherit diff-removed :background "red4"))))
  '(diff-removed ((((background dark)) (:foreground "red"))))
- '(dired-marked ((t (:inherit font-lock-warning-face :foreground "tomato"))))
- '(dired-warning ((t (:inherit font-lock-warning-face))))
  '(error ((t (:foreground "red" :underline (:color foreground-color :style wave) :weight bold))))
  '(font-lock-preprocessor-face ((t (:inherit font-lock-builtin-face))))
  '(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "Red" :weight bold))))
