@@ -125,7 +125,8 @@
 (use-package dired
   :defer t
   :bind (:map dired-mode-map
-         ("z" . dired-subtree-toggle))
+         ("z" . dired-subtree-toggle)
+         ("C-c D" . dired-submodes-hydra/body))
   :config (setq dired-dwim-target t
                 dired-listing-switches "-alhv --group-directories-first"
                 dired-ls-F-marks-symlinks t

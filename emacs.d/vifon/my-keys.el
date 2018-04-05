@@ -108,6 +108,16 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
   ("m" semantic-mode)
   ("i" ispell-change-dictionary))
 
+(defhydra dired-submodes-hydra
+  (:hint nil :color red)
+  "
+### dired submodes ###
+
+dired-_a_sync-mode:    %-3(bound-and-true-p dired-async-mode)
+dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)"
+  ("c" dired-collapse-mode)
+  ("a" dired-async-mode))
+
 (global-set-key (kbd "C-c d") 'delete-pair)
 
 (add-hook 'minibuffer-setup-hook
