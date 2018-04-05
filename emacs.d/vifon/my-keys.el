@@ -136,8 +136,6 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
             (find-file path)))
       (error "No such program"))))
 
-(global-set-key (kbd "C-x M-j") #'dired-jump)
-
 (defun toggle-selective-display (arg)
   (interactive "P")
   (if arg
