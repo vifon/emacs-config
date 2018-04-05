@@ -131,7 +131,7 @@ dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)"
             (interactive "P")
             (copy-from-above-command (if (consp arg)
                                          nil
-                                         (or arg 1)))))
+                                       (or arg 1)))))
 
 (global-set-key (kbd "C-x M-!") #'find-file-path)
 (autoload 's-trim "s")
@@ -150,10 +150,10 @@ dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)"
   (interactive "P")
   (if arg
       (set-selective-display arg)
-      (if (equal (current-column)
-                 selective-display)
-          (set-selective-display 0)
-          (set-selective-display (current-column)))))
+    (if (equal (current-column)
+               selective-display)
+        (set-selective-display 0)
+      (set-selective-display (current-column)))))
 (global-set-key [remap set-selective-display] #'toggle-selective-display)
 
 (global-set-key [remap move-beginning-of-line]
