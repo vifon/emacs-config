@@ -82,10 +82,6 @@
             (define-key paredit-mode-map (kbd "M-s M-s") 'paredit-splice-sexp))
   :bind (([remap kill-line] . paredit-kill-maybe)))
 
-(use-package autopair
-  :ensure t
-  :commands autopair-mode)
-
 (use-package yafolding
   :ensure t
   :defer t
