@@ -170,10 +170,10 @@
 
 (use-package web-mode
   :ensure t
-  :mode (("\\.html\\'" . web-mode)
+  :mode (("\\.html\\'"      . web-mode)
          ("\\.html\\.j2\\'" . web-mode)
-         ("\\.css\\'" . web-mode)
-         ("\\.scss\\'" . web-mode))
+         ("\\.css\\'"       . web-mode)
+         ("\\.scss\\'"      . web-mode))
   :config (progn
             (setq web-mode-markup-indent-offset 2
                   web-mode-css-indent-offset 2
