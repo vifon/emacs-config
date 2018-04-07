@@ -190,6 +190,17 @@
                 "Class: "
                 "<div class=\""str"\">" _ "</div>"))))
 
+(use-package emmet-mode
+  :ensure t
+  :pin melpa
+  :commands emmet-mode
+  :init (mapc (lambda (mode)
+                (add-hook mode  #'emmet-mode))
+              '(web-mode-hook
+                html-mode-hook
+                css-mode-hook))
+  :config (setq emmet-self-closing-tag-style " /"))
+
 (use-package legalese
   :ensure t
   :commands legalese
