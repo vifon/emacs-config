@@ -247,6 +247,7 @@
 
 (use-package git-commit
   :ensure t
+  :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
   :config (progn
             (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
             (add-hook 'git-commit-mode-hook 'turn-on-orgstruct++)))
