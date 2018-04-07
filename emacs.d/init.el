@@ -693,7 +693,6 @@
 (use-package color-identifiers-mode :ensure t :defer t)
 (use-package dockerfile-mode :ensure t :defer t)
 (use-package dpaste :ensure t :defer t)
-(use-package esup :ensure t :defer t)   ;Startup profiler
 (use-package focus-autosave-mode :ensure t :defer t)
 (use-package hl-sexp :ensure t :defer t)
 (use-package impatient-mode :ensure t :defer t)
