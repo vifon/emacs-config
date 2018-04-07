@@ -298,6 +298,10 @@
                 (delete 'writeroom-toggle-fullscreen
                         writeroom-global-effects)))
 
+(use-package highlight-defined
+  :ensure t
+  :commands highlight-defined-mode)
+
 (use-package visual-regexp :ensure t :defer t)
 (use-package visual-regexp-steroids
   :ensure t
