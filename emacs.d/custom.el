@@ -25,12 +25,10 @@
  '(ediff-grab-mouse nil)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(flymake-gui-warnings-enabled t)
- '(focus-follows-mouse t)
  '(glasses-separate-parentheses-p nil)
  '(httpd-port 38080)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
- '(mouse-autoselect-window nil)
  '(rainbow-x-colors-major-mode-list
    (quote
     (emacs-lisp-mode lisp-interaction-mode c-mode c++-mode java-mode sh-mode)))
