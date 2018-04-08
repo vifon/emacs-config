@@ -59,6 +59,7 @@
 (require 'my-registers)
 (require 'my-settings)
 (require 'my-scratch)
+;; (require 'my-exwm)
 
 (require 'pastes-from-web)
 
