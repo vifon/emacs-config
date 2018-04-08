@@ -429,7 +429,6 @@
   :if (file-directory-p "~/local/share/emacs/site-lisp/rtags")
   :load-path "~/local/share/emacs/site-lisp/rtags"
   :commands (rtags-minor-mode global-rtags-minor-mode)
-  :defer 5
   :config (progn
             (define-minor-mode rtags-minor-mode
               nil
