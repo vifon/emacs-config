@@ -56,18 +56,10 @@
 	  	                      (interactive (list (read-shell-command "$ ")))
 	  	                      (start-process-shell-command command nil command)))))
 
-            ;; To add a key binding only available in line-mode, simply define it in
-            ;; `exwm-mode-map'.  The following example shortens 'C-c q' to 'C-q'.
             (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
 
-            ;; The following example demonstrates how to use simulation keys to mimic
-            ;; the behavior of Emacs.  The value of `exwm-input-simulation-keys` is a
-            ;; list of cons cells (SRC . DEST), where SRC is the key sequence you press
-            ;; and DEST is what EXWM actually sends to application.  Note that both SRC
-            ;; and DEST should be key sequences (vector or string).
             (setq exwm-input-simulation-keys
-                  `(
-                    ;; movement
+                  `(;; movement
                     ([?\C-b] . [left])
                     ([?\M-b] . [C-left])
                     ([?\C-f] . [right])
@@ -87,12 +79,6 @@
                     ;; search
                     ([?\C-s] . [?\C-f])))
 
-            ;; You can hide the minibuffer and echo area when they're not used, by
-            ;; uncommenting the following line.
-            ;(setq exwm-workspace-minibuffer-position 'bottom)
-
-            ;; Do not forget to enable EXWM. It will start by itself when things are
-            ;; ready.  You can put it _anywhere_ in your configuration.
             (exwm-enable)))
 
 (provide 'my-exwm)
