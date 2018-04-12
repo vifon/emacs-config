@@ -121,14 +121,14 @@
                   (apply #'dired-async-mode-line-message text face args))))
 
 (use-package dired
-  :defer t
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
          ("C-c D" . dired-submodes-hydra/body))
   :config (setq dired-dwim-target nil
                 dired-listing-switches "-alhv --group-directories-first"
                 dired-ls-F-marks-symlinks t
-                dired-isearch-filenames 'dwim))
+                dired-isearch-filenames 'dwim
+                dired-omit-files "^\\.?#\\|^\\.[^\\.].*\\|^\\.\\...*"))
 
 (use-package yasnippet
   :ensure t
