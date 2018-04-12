@@ -16,6 +16,7 @@
   (horizontal-scroll-bar-mode 0))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
+(when (fboundp 'tooltip-mode) (tooltip-mode 0))
 (column-number-mode t)
 
 (setq show-paren-delay 0)
