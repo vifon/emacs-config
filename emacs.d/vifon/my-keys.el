@@ -49,6 +49,13 @@
 
 (global-set-key (kbd "M-C-?") 'hippie-expand)
 
+(defun display-line-numbers-best ()
+  (interactive)
+  (call-interactively
+   (if (fboundp #'display-line-numbers-mode)
+       #'display-line-numbers-mode
+     #'nlinum-mode)))
+
 (global-set-key (kbd "C-c t")
                 (defhydra my-hydra
                   (:hint nil :color blue)
@@ -69,7 +76,7 @@
                   ("A" align)
                   ("R" align-regexp)
                   ("v" visual-line-mode :color red)
-                  ("l" nlinum-mode :color red)
+                  ("l" display-line-numbers-best :color red)
                   ("L" hl-line-mode :color red)
                   ("r" toggle-truncate-lines :color red)
                   ("f" auto-fill-mode :color red)

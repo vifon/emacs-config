@@ -699,6 +699,11 @@
   :if (file-directory-p "~/.emacs.d/secret")
   :load-path ("~/.emacs.d/secret"))
 
+(use-package nlinum
+  :ensure t
+  :defer t
+  :if (not (fboundp #'display-line-numbers-mode)))
+
 (use-package aggressive-indent :ensure t :defer t)
 (use-package color-identifiers-mode :ensure t :defer t)
 (use-package dockerfile-mode :ensure t :defer t)
@@ -706,7 +711,6 @@
 (use-package focus-autosave-mode :ensure t :defer t)
 (use-package hl-sexp :ensure t :defer t)
 (use-package impatient-mode :ensure t :defer t)
-(use-package nlinum :ensure t :defer t)
 (use-package rainbow-mode :ensure t :defer t)
 (use-package restclient :ensure t :defer t)
 (use-package web-beautify :ensure t :defer t)
