@@ -195,9 +195,6 @@ ends with a newline."
 (global-set-key (kbd "M-k") #'smart-kill-whole-lines)
 (global-set-key (kbd "M-K") #'smart-yank-whole-lines)
 
-(global-set-key (kbd "M-# q") #'quick-calc)
-(global-set-key (kbd "M-# M-#") #'calc)
-
 (global-set-key (kbd "<f9>") #'menu-bar-open)
 
 (windmove-default-keybindings)
