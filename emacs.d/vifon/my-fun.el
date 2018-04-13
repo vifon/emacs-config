@@ -24,7 +24,7 @@
 
 Prefix argument initializes the Git repository."
   (interactive "P\nMName: ")
-  (let ((directory (scratch-dir-path name)))
+  (let ((directory (expand-file-name (scratch-dir-path name))))
     (make-directory directory t)
     (when (file-symlink-p "~/scratch")
       (delete-file "~/scratch"))
