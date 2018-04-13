@@ -128,7 +128,7 @@
                 dired-listing-switches "-alhv --group-directories-first"
                 dired-ls-F-marks-symlinks t
                 dired-isearch-filenames 'dwim
-                dired-omit-files "^\\.?#\\|^\\.[^\\.].*\\|^\\.\\...*"))
+                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."))
 
 (use-package yasnippet
   :ensure t
