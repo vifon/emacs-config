@@ -129,7 +129,8 @@
                 dired-free-space-args "-Pkh"
                 dired-ls-F-marks-symlinks t
                 dired-isearch-filenames 'dwim
-                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."))
+                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
+                wdired-allow-to-change-permissions t))
 
 (use-package yasnippet
   :ensure t
