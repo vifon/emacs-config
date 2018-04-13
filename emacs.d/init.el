@@ -535,7 +535,6 @@
 
 (use-package dumb-jump
   :ensure t
-  :defer t
   :bind ((:map dumb-jump-mode-map
           ("C-M-p" . nil)
           ("C-M-S-g" . dumb-jump-back)))
