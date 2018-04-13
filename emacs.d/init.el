@@ -126,6 +126,7 @@
          ("C-c D" . dired-submodes-hydra/body))
   :config (setq dired-dwim-target nil
                 dired-listing-switches "-alhv --group-directories-first"
+                dired-free-space-args "-Pkh"
                 dired-ls-F-marks-symlinks t
                 dired-isearch-filenames 'dwim
                 dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."))
