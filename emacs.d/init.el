@@ -263,7 +263,10 @@
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
   :config (progn
             (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
-            (add-hook 'git-commit-mode-hook 'turn-on-orgstruct++)))
+            (add-hook 'git-commit-mode-hook #'turn-on-orgstruct++)
+            (add-hook 'git-commit-mode-hook (defun turn-on-flyspell ()
+                                              (interactive)
+                                              (flyspell-mode 1)))))
 
 (use-package git-messenger
   :ensure t
