@@ -174,9 +174,10 @@
   :ensure t
   :mode (("\\.html\\'"      . web-mode)
          ("\\.html\\.j2\\'" . web-mode)
-         ("\\.css\\'"       . web-mode)
-         ("\\.scss\\'"      . web-mode))
+         ("\\.css\\'"       . web-css-mode)
+         ("\\.scss\\'"      . web-css-mode))
   :config (progn
+            (define-derived-mode web-css-mode web-mode "WebCSS")
             (setq web-mode-markup-indent-offset 2
                   web-mode-css-indent-offset 2
                   web-mode-code-indent-offset 2)
@@ -195,7 +196,9 @@
               '(web-mode-hook
                 html-mode-hook
                 css-mode-hook))
-  :config (setq emmet-self-closing-tag-style " /"))
+  :config (progn
+            (setq emmet-self-closing-tag-style " /")
+            (add-to-list 'emmet-css-major-modes 'web-css-mode)))
 
 (use-package legalese
   :ensure t
