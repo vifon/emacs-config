@@ -184,13 +184,7 @@
                   '(("jinja" . "\\.j2\\'")
                     ("jinja" . "\\.html\\'")))
             ;; Fix Jinja2 autopairing; was producing: "{{  }}}}".
-            (setq web-mode-enable-auto-pairing nil)
-            (define-abbrev web-mode-abbrev-table "divc"
-              ""
-              (define-skeleton html-div-skeleton
-                "A <div></div> tag pair with a class."
-                "Class: "
-                "<div class=\""str"\">" _ "</div>"))))
+            (setq web-mode-enable-auto-pairing nil)))
 
 (use-package emmet-mode
   :ensure t
