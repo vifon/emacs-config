@@ -63,7 +63,8 @@
                               (number-sequence 0 9))
                     (,(kbd "s-r") . (lambda (command)
 	  	                      (interactive (list (read-shell-command "$ ")))
-	  	                      (start-process-shell-command command nil command)))))
+	  	                      (start-process-shell-command command nil command)))
+                    (,(kbd "s-R") . counsel-linux-app)))
 
             (define-key exwm-mode-map (kbd "C-q")
               (lambda ()
