@@ -57,8 +57,9 @@
 (require 'my-registers)
 (require 'my-settings)
 (require 'my-scratch)
-(when (equal (getenv "SESSION") "emacs")
-  (require 'my-exwm))
+(when (getenv "START_EXWM")
+  (require 'my-exwm)
+  (setenv "START_EXWM"))
 
 (require 'pastes-from-web)
 
