@@ -97,6 +97,18 @@
   :ensure t
   :commands hs-org/minor-mode)
 
+(use-package dired
+  :bind (:map dired-mode-map
+         ("z" . dired-subtree-toggle)
+         ("C-c D" . dired-submodes-hydra/body))
+  :config (setq dired-dwim-target nil
+                dired-listing-switches "-alhv --group-directories-first"
+                dired-free-space-args "-Pkh"
+                dired-ls-F-marks-symlinks t
+                dired-isearch-filenames 'dwim
+                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
+                wdired-allow-to-change-permissions t))
+
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
 
@@ -120,18 +132,6 @@
                                 "Emacs: dired-async"
                                 (apply #'format text args))
                   (apply #'dired-async-mode-line-message text face args))))
-
-(use-package dired
-  :bind (:map dired-mode-map
-         ("z" . dired-subtree-toggle)
-         ("C-c D" . dired-submodes-hydra/body))
-  :config (setq dired-dwim-target nil
-                dired-listing-switches "-alhv --group-directories-first"
-                dired-free-space-args "-Pkh"
-                dired-ls-F-marks-symlinks t
-                dired-isearch-filenames 'dwim
-                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
-                wdired-allow-to-change-permissions t))
 
 (use-package yasnippet
   :ensure t
