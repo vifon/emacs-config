@@ -99,7 +99,7 @@ narrowed."
                "emacs --batch --eval \"
 (condition-case e
     (progn
-      (load \\\"~/.emacs\\\")
+      (load \\\"~/.emacs.d/init.el\\\")
       (message \\\"-OK-\\\"))
   (error
    (message \\\"ERROR!\\\")
