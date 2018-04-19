@@ -144,15 +144,16 @@
             (setq ibuffer-show-empty-filter-groups nil)
             (setq ibuffer-expert t)
             (setq ibuffer-formats
-                  `((mark ,@(if (version<= "26.1" emacs-version)
-                                '(modified read-only locked)
-                              '(modified read-only)) " "
-                              (name 32 32 :left :elide)
-                              " "
-                              (size 9 -1 :right)
-                              " "
-                              (mode 16 64 :left :elide)
-                              " " filename-and-process)
+                  `((mark modified read-only
+                          ,@(when (version<= "26.1" emacs-version)
+                              '(locked))
+                          " "
+                          (name 32 32 :left :elide)
+                          " "
+                          (size 9 -1 :right)
+                          " "
+                          (mode 16 64 :left :elide)
+                          " " filename-and-process)
                     (mark " "
                           (name 32 -1)
                           " " filename)))))
