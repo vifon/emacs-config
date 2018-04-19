@@ -2,7 +2,6 @@
 (electric-pair-mode 1)
 (electric-indent-mode 1)
 
-(setq-default fill-column 70)
 (setq tags-revert-without-query t)
 
 (setq enable-recursive-minibuffers t)
