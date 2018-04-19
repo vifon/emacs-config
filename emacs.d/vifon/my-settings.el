@@ -51,8 +51,6 @@
 
 (setq iswitchb-default-method 'samewindow)
 
-(setq epa-armor t)
-
 (setq compile-command "make -k -C .")
 (setq gud-gdb-command-name "gdb -q -i=mi")
 
