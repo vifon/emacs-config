@@ -8,7 +8,9 @@
                         (setq ibuffer-sorting-mode 'filename/process)))
             (setq ibuffer-show-empty-filter-groups nil)
             (setq ibuffer-expert t)
-            (setq ibuffer-formats '((mark modified read-only " "
+            (setq ibuffer-formats `((mark ,@(if (version<= "26.1" emacs-version)
+                                                '(modified read-only locked)
+                                              '(modified read-only)) " "
                                           (name 32 32 :left :elide)
                                           " "
                                           (size 9 -1 :right)
