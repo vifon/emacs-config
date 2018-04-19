@@ -2,7 +2,8 @@
 (electric-pair-mode 1)
 (electric-indent-mode 1)
 
-(setq tags-revert-without-query t)
+(setq tags-revert-without-query t
+      tags-add-tables nil)
 
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode 1)
