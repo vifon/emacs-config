@@ -38,7 +38,8 @@
   (cua-mode 0))
 (setq cua-global-mark-keep-visible nil)
 
-(setq backup-directory-alist '(("." . "~/.emacs_saves"))
+(setq backup-directory-alist '(("^/media/" . ".")
+                               ("." . "~/.emacs_saves"))
       backup-by-copying t)
 
 (setq vc-follow-symlinks t)
