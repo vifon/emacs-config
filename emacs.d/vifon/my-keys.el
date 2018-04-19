@@ -35,16 +35,6 @@
 (global-set-key (kbd "C-c x") 'run-term)
 (global-set-key (kbd "M-o") 'run-term)
 
-(global-set-key (kbd "C-c C-e")
-                (defhydra epa-hydra
-                  (:color blue)
-                  ("e" epa-encrypt-region "epa-encrypt-region")
-                  ("d" epa-decrypt-region "epa-decrypt-region")
-                  ("s" epa-sign-region "epa-sign-region")
-                  ("v" epa-verify-region "epa-verify-region")))
-(eval-after-load "epa-mail"
-  '(define-key epa-mail-mode-map (kbd "C-c C-e") 'epa-hydra/body))
-
 (global-set-key (kbd "C-c =") 'diff-buffer-with-file)
 
 (global-set-key (kbd "M-C-?") 'hippie-expand)
