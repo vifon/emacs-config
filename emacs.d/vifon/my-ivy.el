@@ -29,6 +29,7 @@ instead to emulate the default Emacs behavior."
   :ensure t
   :diminish ivy-mode
   :bind (("C-x M-r" . ivy-resume)
+         ("C-x M-f" . find-file-default)
          :map ivy-minibuffer-map
          ("C-c C-f" . ivy-toggle-calling)
          ("C-c C-m" . ivy-toggle-fuzzy)
@@ -42,7 +43,13 @@ instead to emulate the default Emacs behavior."
                        (other-window-action-tuple (assoc "j" actions))
                        (other-window-action (second other-window-action-tuple)))
                 (ivy-set-action other-window-action))
-            (ivy-done))))
+            (ivy-done))
+          (defun find-file-default ()
+            "Call find-file with the default completion system."
+            (interactive)
+            (let ((completing-read-function #'completing-read-default)
+                  (completion-in-region-function #'completion--in-region))
+              (call-interactively #'find-file)))))
 
 (use-package swiper
   :ensure t
