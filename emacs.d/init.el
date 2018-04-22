@@ -107,7 +107,8 @@
                 dired-ls-F-marks-symlinks t
                 dired-isearch-filenames 'dwim
                 dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
-                wdired-allow-to-change-permissions t))
+                wdired-allow-to-change-permissions t
+                image-dired-external-viewer "sxiv"))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
