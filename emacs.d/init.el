@@ -135,10 +135,14 @@
                   (apply #'dired-async-mode-line-message text face args))))
 
 (use-package ibuffer
-  :bind (("C-x C-b" . ibuffer)
-         :map ibuffer-mode-map
+  :bind (:map ibuffer-mode-map
          ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root))
   :config (progn
+            (global-set-key (kbd "C-x C-b")
+                            (if (fboundp #'ibuffer-jump)
+                                #'ibuffer-jump
+                              #'ibuffer))
+
             (add-hook 'ibuffer-mode-hook
                       (lambda ()
                         (setq ibuffer-sorting-mode 'filename/process)))
