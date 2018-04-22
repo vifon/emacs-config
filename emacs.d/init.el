@@ -102,7 +102,7 @@
          ("z" . dired-subtree-toggle)
          ("C-c D" . dired-submodes-hydra/body))
   :config (setq dired-dwim-target nil
-                dired-listing-switches "-alhv --group-directories-first"
+                dired-listing-switches "--group-directories-first -alhv"
                 dired-free-space-args "-Pkh"
                 dired-ls-F-marks-symlinks t
                 dired-isearch-filenames 'dwim
