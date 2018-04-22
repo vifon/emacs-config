@@ -32,18 +32,10 @@ instead to emulate the default Emacs behavior."
          ("C-x M-f" . find-file-default)
          :map ivy-minibuffer-map
          ("C-c C-f" . ivy-toggle-calling)
-         ("C-c C-m" . ivy-toggle-fuzzy)
-         ("C-c o" . ivy-done-other-window))
+         ("C-c C-m" . ivy-toggle-fuzzy))
   :init (progn
           (ivy-mode 1)
           (require 'ivy-hydra)
-          (defun ivy-done-other-window ()
-            (interactive)
-            (-if-let* ((actions (ivy-state-action ivy-last))
-                       (other-window-action-tuple (assoc "j" actions))
-                       (other-window-action (second other-window-action-tuple)))
-                (ivy-set-action other-window-action))
-            (ivy-done))
           (defun find-file-default ()
             "Call find-file with the default completion system."
             (interactive)
