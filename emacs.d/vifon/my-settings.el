@@ -29,15 +29,6 @@
 (mouse-avoidance-mode 'none)
 (transient-mark-mode 1)
 
-(setq cua-enable-cua-keys nil)
-(global-set-key (kbd "C-S-SPC") (defun cualess-global-mark ()
-                                  (interactive)
-                                  (cua-mode 1)
-                                  (call-interactively 'cua-toggle-global-mark)))
-(defadvice cua--deactivate-global-mark (after cua--deactivate-global-mark-and-cua-mode activate)
-  (cua-mode 0))
-(setq cua-global-mark-keep-visible nil)
-
 (setq backup-directory-alist '(("^/media/" . ".")
                                ("." . "~/.emacs_saves"))
       backup-by-copying t)

@@ -704,6 +704,12 @@
                 (interactive)
                 (kill-buffer-and-window)))))
 
+(use-package cua-base
+  :init (progn
+          (cua-selection-mode 1)
+          (delete-selection-mode 0)
+          (setq cua-global-mark-keep-visible nil)))
+
 (use-package slime :ensure t :defer t)
 (use-package slime-autoloads
   :config (setq inferior-lisp-program "sbcl"))
