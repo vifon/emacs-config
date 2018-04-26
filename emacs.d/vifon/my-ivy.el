@@ -36,6 +36,7 @@ instead to emulate the default Emacs behavior."
   :init (progn
           (ivy-mode 1)
           (require 'ivy-hydra)
+          (setq ivy-use-virtual-buffers t)
           (defun find-file-default ()
             "Call find-file with the default completion system."
             (interactive)
