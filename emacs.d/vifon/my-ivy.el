@@ -19,7 +19,8 @@ instead to emulate the default Emacs behavior."
          ("C-c h" . counsel-hydra/body)
          ("M-y" . counsel-yank-pop-dwim)
          ([remap describe-function] . counsel-describe-function)
-         ([remap describe-variable] . counsel-describe-variable))
+         ([remap describe-variable] . counsel-describe-variable)
+         ("C-x 8 C-<return>" . counsel-unicode-char))
   :init (fset 'counsel-yank-pop-dwim
               (yank-pop-dwim #'counsel-yank-pop))
   :config (setq ivy-use-selectable-prompt t))
