@@ -15,14 +15,22 @@ instead to emulate the default Emacs behavior."
   :ensure t
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
+         ("C-x M-f" . find-file-default)
          ("C-x C-r" . counsel-recentf)
          ("C-c h" . counsel-hydra/body)
          ("M-y" . counsel-yank-pop-dwim)
          ([remap describe-function] . counsel-describe-function)
          ([remap describe-variable] . counsel-describe-variable)
          ("C-x 8 C-<return>" . counsel-unicode-char))
-  :init (fset 'counsel-yank-pop-dwim
-              (yank-pop-dwim #'counsel-yank-pop))
+  :init (progn
+          (fset 'counsel-yank-pop-dwim
+                (yank-pop-dwim #'counsel-yank-pop))
+          (defun find-file-default ()
+            "Call find-file with the default completion system."
+            (interactive)
+            (let ((completing-read-function #'completing-read-default)
+                  (completion-in-region-function #'completion--in-region))
+              (call-interactively #'find-file))))
   :config (setq ivy-use-selectable-prompt t))
 
 (use-package ivy-hydra :ensure t :defer t)
@@ -30,20 +38,13 @@ instead to emulate the default Emacs behavior."
   :ensure t
   :diminish ivy-mode
   :bind (("C-x M-r" . ivy-resume)
-         ("C-x M-f" . find-file-default)
          :map ivy-minibuffer-map
          ("C-c C-f" . ivy-toggle-calling)
          ("C-c C-m" . ivy-toggle-fuzzy))
   :init (progn
           (ivy-mode 1)
           (require 'ivy-hydra)
-          (setq ivy-use-virtual-buffers t)
-          (defun find-file-default ()
-            "Call find-file with the default completion system."
-            (interactive)
-            (let ((completing-read-function #'completing-read-default)
-                  (completion-in-region-function #'completion--in-region))
-              (call-interactively #'find-file)))))
+          (setq ivy-use-virtual-buffers t)))
 
 (use-package swiper
   :ensure t
