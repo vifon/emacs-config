@@ -346,6 +346,10 @@
                 (delete 'writeroom-toggle-fullscreen
                         writeroom-global-effects)))
 
+(use-package presentation
+  :ensure t
+  :commands presentation-mode)
+
 (use-package highlight-defined
   :ensure t
   :commands highlight-defined-mode)
