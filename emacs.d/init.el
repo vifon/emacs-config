@@ -705,6 +705,7 @@
                 (kill-buffer-and-window)))))
 
 (use-package cua-base
+  :if (version<= "24.4" emacs-version)
   :init (progn
           (cua-selection-mode 1)
           (delete-selection-mode 0)
