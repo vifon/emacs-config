@@ -423,24 +423,6 @@
   :defer 5
   :config (progn
             (setq company-idle-delay 0.25)
-            (setq company-backends '(company-bbdb
-                                     company-nxml
-                                     company-css
-                                     company-eclim
-                                     company-semantic
-                                     ;; company-clang
-                                     company-xcode
-                                     company-cmake
-                                     company-capf
-                                     (company-gtags
-                                      company-etags
-                                      :with
-                                      company-keywords
-                                      company-dabbrev-code)
-                                     company-clang ; moved down
-                                     company-oddmuse
-                                     company-files
-                                     company-dabbrev))
             (add-hook 'eshell-mode-hook (lambda ()
                                           (company-mode 0)))
             (add-hook 'org-mode-hook (lambda ()
