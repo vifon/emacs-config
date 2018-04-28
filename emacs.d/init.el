@@ -414,10 +414,6 @@
                   global-semantic-decoration-mode
                   global-semantic-stickyfunc-mode)))
 
-(use-package company-clang
-  :after company
-  :bind ("C-c V" . company-clang))
-
 (use-package company
   :ensure t
   :defer 5
@@ -434,6 +430,10 @@
                     (setq company-clang-arguments '("-std=c++11"))))
   :bind (("C-c v" . company-complete)
          ("C-c /" . company-files)))
+
+(use-package company-clang
+  :after company
+  :bind ("C-c V" . company-clang))
 
 (use-package ggtags
   :ensure t
