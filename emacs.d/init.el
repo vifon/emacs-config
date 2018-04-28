@@ -441,10 +441,10 @@
                                      company-oddmuse
                                      company-files
                                      company-dabbrev))
-            (add-hook 'eshell-mode-hook '(lambda ()
-                                           (company-mode 0)))
-            (add-hook 'org-mode-hook '(lambda ()
-                                        (company-mode 0)))
+            (add-hook 'eshell-mode-hook (lambda ()
+                                          (company-mode 0)))
+            (add-hook 'org-mode-hook (lambda ()
+                                       (company-mode 0)))
             (global-company-mode 1))
   :init (add-hook 'c++-mode-hook
                   (lambda ()
