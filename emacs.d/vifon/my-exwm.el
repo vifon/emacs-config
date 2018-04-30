@@ -14,9 +14,7 @@
                                    (string-prefix-p "sun-awt-X11-" exwm-instance-name)
                                    (string= "gimp" exwm-instance-name)
                                    (string= "Firefox" exwm-class-name))
-                               (exwm-workspace-rename-buffer exwm-title))
-                              ((string= "URxvt" exwm-class-name)
-                               (exwm-workspace-rename-buffer (concat "URxvt: " exwm-title))))))
+                               (exwm-workspace-rename-buffer exwm-title)))))
 
             (setq exwm-workspace-show-all-buffers nil
                   exwm-layout-show-all-buffers nil)
