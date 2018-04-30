@@ -13,18 +13,11 @@
 
 (add-hook 'prog-mode-hook (lambda ()
                             (setq show-trailing-whitespace t)))
-(add-hook 'mail-mode-hook (lambda ()
-                            (setq show-trailing-whitespace t)))
 
 (add-hook 'semantic-symref-results-mode-hook
           (lambda () (toggle-read-only 1)))
 
 (add-hook 'log-edit-mode-hook (lambda () (ispell-change-dictionary "english")))
-
-(add-hook 'mail-mode-hook (lambda ()
-                            (ispell-change-dictionary "polish")
-                            (flyspell-mode)))
-
 
 (mapc (lambda (mode)
         (add-hook mode (lambda ()
