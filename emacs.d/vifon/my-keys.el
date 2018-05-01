@@ -51,16 +51,16 @@
                   (:hint nil :color blue)
                   "
  delete-_t_railing-whitespace   delete-_m_atching-lines       _A_lign
- _a_ck                          delete-_n_on-matching-lines   align-_R_egexp
+ r_G_                           delete-_n_on-matching-lines   align-_R_egexp
 
  _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
  _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)    hl-_L_ine-mode
- _W_riteroom-mode: %-3(bound-and-true-p writeroom-mode)     variable-_p_itch-mode           _s_ort-lines
+ _h_ighlight-defined-mode: %-3(bound-and-true-p highlight-defined-mode)                           _s_ort-lines
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
 
- _h_ttpd settings    fly_c_heck-mode etc."
+ _H_ttpd settings    fly_c_heck-mode etc."
                   ("t" delete-trailing-whitespace)
-                  ("a" ack-and-a-half-same)
+                  ("G" rg)
                   ("m" delete-matching-lines)
                   ("n" delete-non-matching-lines)
                   ("A" align)
@@ -72,11 +72,10 @@
                   ("f" auto-fill-mode :color red)
                   ("i" aggressive-indent-mode :color red)
                   ("w" whitespace-mode :color red)
-                  ("W" writeroom-mode :color red)
                   ("s" sort-lines :color red)
-                  ("p" variable-pitch-mode :color red)
                   ("g" indent-guide-mode :color red)
-                  ("h" httpd-hydra/body :color blue)
+                  ("h" highlight-defined-mode :color red)
+                  ("H" httpd-hydra/body :color blue)
                   ("c" fly*-hydra/body :color blue)
                   ("SPC" vydra/body)
                   ("q" nil)))
