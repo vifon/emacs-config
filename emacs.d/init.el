@@ -628,9 +628,9 @@
   :bind ("C-c p p" . projectile-switch-project)
   :config (progn
             (setq projectile-mode-line
-                  '(:eval
-                    (format " Pro[%s]"
-                            (projectile-project-name))))
+                  '(:eval (if (file-remote-p default-directory)
+                              " Pro"
+                            (format " Pro[%s]" (projectile-project-name)))))
             (projectile-global-mode 1)
             (defun my-projectile-show-path (arg)
               (interactive "P")
