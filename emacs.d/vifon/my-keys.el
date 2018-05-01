@@ -55,7 +55,7 @@
 
  _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
  _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)    hl-_L_ine-mode
- _h_ighlight-defined-mode: %-3(bound-and-true-p highlight-defined-mode)                           _s_ort-lines
+ _h_l-defined-mode: %-3(bound-and-true-p highlight-defined-mode)    _s_ort-lines
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
 
  _H_ttpd settings    fly_c_heck-mode etc."
