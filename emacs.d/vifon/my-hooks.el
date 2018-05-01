@@ -4,8 +4,7 @@
             (hs-minor-mode 1)))
 (add-hook 'c++-mode-hook
           (lambda ()
-            (make-local-variable 'c-macro-cppflags)
-            (setq c-macro-cppflags "-x c++")))
+            (setq-local c-macro-cppflags "-x c++")))
 
 
 (add-hook 'gud-mode-hook (lambda () (setq tab-width 8)))
