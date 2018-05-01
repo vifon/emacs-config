@@ -23,6 +23,8 @@
             (exwm-systemtray-enable)
 
             (window-divider-mode 1)
+            (display-battery-mode 1)
+            (display-time-mode 1)
 
             (setq exwm-input-global-keys
                   `((,(kbd "s-M") . (lambda () (interactive)
