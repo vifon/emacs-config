@@ -44,7 +44,8 @@ instead to emulate the default Emacs behavior."
   :init (progn
           (ivy-mode 1)
           (require 'ivy-hydra)
-          (setq ivy-use-virtual-buffers t)))
+          (setq ivy-use-virtual-buffers t))
+  :config (setq ivy-do-completion-in-region nil))
 
 (use-package swiper
   :ensure t
