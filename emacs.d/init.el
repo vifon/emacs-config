@@ -461,7 +461,7 @@
                 (when (derived-mode-p 'c-mode 'c++-mode)
                   (rtags-minor-mode 1))))
             (require 'company)
-            (push 'company-rtags company-backends)
+            (add-to-list 'company-backends 'company-rtags)
             (setq rtags-autostart-diagnostics t)
             (setq rtags-completions-enabled t)))
 
