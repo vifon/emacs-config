@@ -686,11 +686,29 @@
                 (kill-buffer-and-window)))))
 
 (use-package cua-base
-  :if (version<= "24.4" emacs-version)
+  :defer t
   :init (progn
-          (cua-selection-mode 1)
-          (delete-selection-mode 0)
-          (setq cua-global-mark-keep-visible nil)))
+          ;; Disabling `cua-global-mark-keep-visible' improves
+          ;; performance when typing characters with global-mark
+          ;; enabled.
+          (setq cua-global-mark-keep-visible nil)
+
+          ;; Do not enable more cua keys than necessary.
+          (setq cua-enable-cua-keys nil)
+
+          ;; Using `cua-selection-mode' alone is not enough. It still
+          ;; binds C-RET and overrides this keybinding for instance in
+          ;; org-mode. I'd rather keep using my hack.
+          (global-set-key (kbd "C-S-SPC")
+                          (defun cualess-global-mark ()
+                            (interactive)
+                            (if (version<= "24.4" emacs-version)
+                                (cua-selection-mode 1)
+                              (cua-mode 1))
+                            (call-interactively 'cua-toggle-global-mark)))
+          (defadvice cua--deactivate-global-mark
+              (after cua--deactivate-global-mark-and-cua-mode activate)
+            (cua-mode 0))))
 
 (use-package slime :ensure t :defer t)
 (use-package slime-autoloads
