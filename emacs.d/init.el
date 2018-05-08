@@ -426,7 +426,7 @@
             (global-company-mode 1))
   :init (add-hook 'c++-mode-hook
                   (lambda ()
-                    (setq-local company-clang-arguments '("-std=c++11"))))
+                    (setq-local company-clang-arguments '("-std=c++14"))))
   :bind (("C-c v" . company-complete)
          ("C-c /" . company-files)))
 
