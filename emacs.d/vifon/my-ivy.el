@@ -1,15 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(defun yank-pop-dwim (fun)
-  "Return a function calling `fun' unless the last command was
-`yank'. If the last command was `yank', it will call `yank-pop'
-instead to emulate the default Emacs behavior."
-  (lambda (arg)
-    (interactive "P")
-    (if (equal last-command 'yank)
-        (yank-pop arg)
-      (funcall fun))))
-
 (use-package smex :ensure t :defer t)
 (use-package counsel
   :ensure t
@@ -23,8 +13,12 @@ instead to emulate the default Emacs behavior."
          ([remap describe-variable] . counsel-describe-variable)
          ("C-x 8 C-<return>" . counsel-unicode-char))
   :init (progn
-          (fset 'counsel-yank-pop-dwim
-                (yank-pop-dwim #'counsel-yank-pop))
+          (defun counsel-yank-pop-dwim (arg)
+            "Emulate the original `yank-pop' behavior."
+            (interactive "P")
+            (if (equal last-command 'yank)
+                (yank-pop arg)
+              (counsel-yank-pop)))
           (defun find-file-default ()
             "Call find-file with the default completion system."
             (interactive)
