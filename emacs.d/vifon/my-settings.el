@@ -1,4 +1,5 @@
 (global-subword-mode 1)
+(diminish 'subword-mode)
 (electric-pair-mode 1)
 (electric-indent-mode 1)
 

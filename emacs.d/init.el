@@ -367,6 +367,7 @@
 
 (use-package beacon
   :ensure t
+  :diminish beacon-mode
   :config (beacon-mode 1))
 
 (use-package phi-search
