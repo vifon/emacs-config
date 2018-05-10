@@ -109,10 +109,14 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
   "
 ### dired submodes ###
 
-dired-_a_sync-mode:    %-3(bound-and-true-p dired-async-mode)
-dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)"
+dired-_a_sync-mode:    %-3(bound-and-true-p dired-async-mode)^^^   _f_ind-^d^ired
+dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)   _F_ind-^n^ame-dired
+      ^ ^                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^f^ind-_g_rep-dired"
   ("c" dired-collapse-mode)
-  ("a" dired-async-mode))
+  ("a" dired-async-mode)
+  ("f" find-dired :color blue)
+  ("F" find-name-dired :color blue)
+  ("g" find-grep-dired :color blue))
 
 (global-set-key (kbd "C-c d") 'delete-pair)
 
