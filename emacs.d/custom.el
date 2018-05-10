@@ -47,6 +47,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
+ '(circe-highlight-nick-face ((t (:foreground "#93E0E3" :inverse-video t :weight bold))))
+ '(circe-my-message-face ((t (:foreground "light sky blue"))))
  '(diff-added ((((background dark)) (:foreground "green"))))
  '(diff-changed ((((background dark)) (:foreground "yellow"))))
  '(diff-context ((((background dark)) (:foreground "White")) (t (:foreground "Black"))))

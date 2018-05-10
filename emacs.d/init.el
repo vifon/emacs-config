@@ -701,6 +701,33 @@
                 (interactive)
                 (kill-buffer-and-window)))))
 
+(use-package circe
+  :ensure t
+  :defer t
+  :if (file-directory-p "~/.password-store/emacs/circe")
+  :bind (:map lui-mode-map
+         ("C-c C-w" . lui-track-bar-move))
+  :config (progn
+            (setq circe-server-buffer-name "Circe:{network}")
+            (let ((servers (eval (read (shell-command-to-string
+                                        "pass emacs/circe/servers.el")))))
+              (setq circe-network-options servers))
+
+            (setq circe-reduce-lurker-spam t
+                  circe-active-users-timeout 300)
+
+            (setq circe-use-cycle-completion t)
+
+            (setq circe-format-server-topic
+                  (replace-regexp-in-string "{new-topic}"
+                                            "{topic-diff}"
+                                            circe-format-server-topic))
+
+            (enable-circe-color-nicks)
+            (setq circe-color-nicks-everywhere t)
+
+            (enable-lui-track-bar)))
+
 (use-package cua-base
   :defer t
   :init (progn
