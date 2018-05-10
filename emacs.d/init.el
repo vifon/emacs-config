@@ -435,6 +435,21 @@
   :after company
   :bind ("C-c V" . company-clang))
 
+(use-package company-tern
+  :ensure t
+  :commands company-tern
+  :init (add-hook 'js-mode-hook
+                  (lambda ()
+                    (require 'company)
+                    (add-to-list (make-local-variable 'company-backends)
+                                 'company-tern))))
+
+(use-package tern
+  :ensure t
+  :commands tern-mode
+  :init (add-hook 'js-mode-hook (lambda () (tern-mode 1)))
+  :config (setq tern-command (append tern-command '("--no-port-file"))))
+
 (use-package ggtags
   :ensure t
   :demand t        ;bad things happen in the globalized mode otherwise
