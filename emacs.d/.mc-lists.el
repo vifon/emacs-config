@@ -37,6 +37,7 @@
         cperl-electric-rparen
         cperl-electric-semi
         cperl-electric-terminator
+        cua-copy-to-global-mark
         cua-cut-region
         dabbrev-expand
         delete-horizontal-space
@@ -129,6 +130,9 @@
         wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
+        wdired-next-line
+        wdired-previous-line
+        wdired-toggle-bit
         web-mode-element-content-select
         web-mode-element-wrap
         whitespace-mode
