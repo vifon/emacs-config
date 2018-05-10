@@ -36,10 +36,11 @@
          ("C-c C-f" . ivy-toggle-calling)
          ("C-c C-m" . ivy-toggle-fuzzy))
   :init (progn
+          (setq ivy-do-completion-in-region nil)
           (ivy-mode 1)
+
           (require 'ivy-hydra)
-          (setq ivy-use-virtual-buffers t))
-  :config (setq ivy-do-completion-in-region nil))
+          (setq ivy-use-virtual-buffers t)))
 
 (use-package swiper
   :ensure t
