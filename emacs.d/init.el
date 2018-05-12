@@ -486,9 +486,9 @@
   :defer t
   :init (progn
           (add-hook 'c-mode-hook (lambda ()
-                                   (setq flycheck-clang-language-standard "c99")))
+                                   (setq flycheck-clang-language-standard "c14")))
           (add-hook 'c++-mode-hook (lambda ()
-                                     (setq flycheck-clang-language-standard "c++11")))))
+                                     (setq flycheck-clang-language-standard "c++14")))))
 
 (use-package cmake-mode
   :ensure t
