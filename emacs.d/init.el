@@ -518,7 +518,8 @@
   :bind (("C-c z" . winner-undo)
          :map winner-mode-map
          ("<XF86Back>"    . winner-undo)
-         ("<XF86Forward>" . winner-redo)))
+         ("<XF86Forward>" . winner-redo))
+  :init (winner-mode 1))
 
 (use-package c-c++-header
   :mode ("\\.h\\'" . c-c++-header)

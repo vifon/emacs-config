@@ -39,7 +39,6 @@
      (eval flyspell-buffer))))
  '(sentence-end-double-space nil)
  '(server-raise-frame nil)
- '(winner-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
