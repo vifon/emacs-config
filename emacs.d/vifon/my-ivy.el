@@ -57,6 +57,7 @@
             (:color blue)
             ("h" counsel-git "git-files")
             ("H" counsel-rg "ripgrep")
+            ("l" counsel-locate "locate")
             ("r" ivy-recentf "recentf"))
 
 (provide 'my-ivy)
