@@ -25,6 +25,7 @@
 (show-paren-mode t)
 
 (blink-cursor-mode 0)
+(setq visible-cursor nil)
 (setq scroll-step 10
       next-screen-context-lines 10)
 (mouse-avoidance-mode 'none)
