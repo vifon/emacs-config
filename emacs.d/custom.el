@@ -37,8 +37,7 @@
    (quote
     ((eval ispell-change-dictionary "pl")
      (eval flyspell-buffer))))
- '(sentence-end-double-space nil)
- '(server-raise-frame nil)
+ '(server-raise-frame nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
