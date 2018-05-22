@@ -28,7 +28,4 @@
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-(eval-after-load "asm-mode"
-  '(require 'my-asm-hooks))
-
 (provide 'my-hooks)
