@@ -100,7 +100,7 @@
 (use-package dired
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
-         ("<tab>" . dired-submodes-hydra/body))
+         ("TAB" . dired-submodes-hydra/body))
   :config (setq dired-dwim-target nil
                 dired-listing-switches "--group-directories-first -alhv"
                 dired-free-space-args "-Pkh"
