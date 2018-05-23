@@ -714,8 +714,7 @@
                                         "pass emacs/circe/servers.el")))))
               (setq circe-network-options servers))
 
-            (setq circe-reduce-lurker-spam t
-                  circe-active-users-timeout 300)
+            (setq circe-reduce-lurker-spam t)
 
             (setq circe-use-cycle-completion t)
 
