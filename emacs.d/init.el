@@ -798,6 +798,7 @@
 (use-package rainbow-mode :ensure t :defer t)
 (use-package restclient :ensure t :defer t)
 (use-package web-beautify :ensure t :defer t)
+(use-package wgrep :ensure t :defer t)
 
 ;;; Needs to be the last one because otherwise during the installation
 ;;; (via :ensure) it prompts whether to save ~/.abbrev_defs making it
