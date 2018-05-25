@@ -97,6 +97,12 @@
   :ensure t
   :commands hs-org/minor-mode)
 
+(use-package folding
+  :ensure t
+  :commands folding-mode
+  :config (folding-add-to-marks-list 'cperl-mode
+                                     "=over" "=back"))
+
 (use-package dired
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
