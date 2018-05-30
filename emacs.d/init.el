@@ -30,6 +30,7 @@
         (unless (package-installed-p 'use-package)
           (package-refresh-contents)
           (package-install 'use-package))
+        (setq use-package-enable-imenu-support t)
         (require 'use-package))
     (message "WARNING: Ancient emacs! No advice-add, package.el")
     (defmacro advice-add (&rest body))
@@ -400,13 +401,6 @@
   :ensure t
   :bind (("C-=" . er/expand-region)
          ("M-S-<SPC>" . er/expand-region)))
-
-(use-package imenu
-  :init (add-hook 'emacs-lisp-mode-hook
-                  (lambda ()
-                    (add-to-list 'imenu-generic-expression
-                                 '("Used Packages"
-                                   "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)))))
 
 (use-package semantic/decorate/mode
   :defer t
