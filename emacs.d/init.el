@@ -88,11 +88,11 @@
   :ensure t
   :defer t
   :init (add-hook 'prog-mode-hook #'yafolding-mode)
-  :config (defadvice yafolding-go-parent-element
-              (around yafolding-python-fix activate)
-            (if (eq major-mode 'python-mode)
-                (python-nav-backward-up-list)
-              ad-do-it)))
+  :config (advice-add 'yafolding-go-parent-element :around
+                      (defun yafolding-python-fix (orig-fun &rest args)
+                        (if (eq major-mode 'python-mode)
+                            (python-nav-backward-up-list)
+                          (apply orig-fun args)))))
 
 (use-package hideshow-org
   :ensure t
@@ -749,9 +749,10 @@
                                 (cua-selection-mode 1)
                               (cua-mode 1))
                             (call-interactively 'cua-toggle-global-mark)))
-          (defadvice cua--deactivate-global-mark
-              (after cua--deactivate-global-mark-and-cua-mode activate)
-            (cua-mode 0))))
+          (advice-add 'cua--deactivate-global-mark :after
+                      (lambda (ret-value)
+                        (cua-mode 0)
+                        ret-value))))
 
 (use-package slime :ensure t :defer t)
 (use-package slime-autoloads
