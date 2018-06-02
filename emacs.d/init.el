@@ -728,6 +728,62 @@
 
             (enable-lui-track-bar)))
 
+(use-package notmuch
+  :ensure t
+  :if (and (file-directory-p "~/Mail")
+           (file-regular-p   "~/.emacs.d/secret/notmuch-fcc"))
+  :bind (("<f7>" . notmuch))
+  :config (progn
+            (setq notmuch-fcc-dirs
+                  (let ((tags "-new -unread -inbox +sent"))
+                    (mapcar
+                     (lambda (rule)
+                       (let ((account (car rule))
+                             (folder  (cdr rule)))
+                         (cons account (format "\"%s/%s\" %s"
+                                               account folder tags))))
+                     (with-temp-buffer
+                       (insert-file-contents "~/.emacs.d/secret/notmuch-fcc")
+                       ;; Format:
+                       ;;   (("me@example.com"   . "Sent")
+                       ;;    ("alsome@gmail.com" . "Sent Mail"))
+                       (goto-char (point-min))
+                       (read (current-buffer))))))
+            (setq message-signature
+                  (lambda ()
+                    (let* ((signature-override
+                            (concat (file-name-as-directory "~/.signature.d")
+                                    (message-sendmail-envelope-from)))
+                           (signature-file
+                            (if (file-readable-p signature-override)
+                                signature-override
+                              "~/.signature")))
+                      (when (file-readable-p signature-file)
+                        (with-temp-buffer
+                          (insert-file-contents signature-file)
+                          (buffer-string))))))
+
+            (setq message-sendmail-envelope-from 'header)
+
+            (setq notmuch-wash-signature-lines-max 3)
+
+            (require 'org-notmuch)
+
+            (dolist (map '(notmuch-hello-mode-map
+                           notmuch-show-mode-map))
+              (define-key map (kbd "<C-tab>") nil))
+            (dolist (map '(notmuch-hello-mode-map
+                           notmuch-show-mode-map
+                           notmuch-search-mode-map))
+              (define-key map (kbd "g") #'notmuch-refresh-this-buffer))
+
+            (advice-add 'notmuch-poll :around
+                        (defun notmuch-poll-message (orig-fun &rest args)
+                          (message "Fetching mail...")
+                          (apply orig-fun args)
+                          (call-process "notify-send" nil nil nil
+                                        "Emacs: notmuch synced")))))
+
 (use-package cua-base
   :defer t
   :init (progn
