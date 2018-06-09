@@ -702,6 +702,12 @@
                 (interactive)
                 (kill-buffer-and-window)))))
 
+(use-package ledger-mode
+  :ensure t
+  :defer t
+  :bind (:map ledger-mode-map
+         ("<C-tab>" . nil)))
+
 (use-package circe
   :ensure t
   :defer t
