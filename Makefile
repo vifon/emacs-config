@@ -1,9 +1,6 @@
 LN=ln -sfrT
 
-all: ~/.emacs.d ~/.abbrev_defs
+all: ~/.emacs.d
 
 ~/.emacs.d: emacs.d
-	$(LN) $< $@
-
-~/.abbrev_defs: abbrev_defs
 	$(LN) $< $@
