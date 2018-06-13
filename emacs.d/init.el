@@ -706,7 +706,11 @@
   :ensure t
   :defer t
   :bind (:map ledger-mode-map
-         ("<C-tab>" . nil)))
+         ("<C-tab>" . nil))
+  :config (setq ledger-clear-whole-transactions t
+                ledger-highlight-xact-under-point nil
+                ledger-use-iso-dates t
+                ledger-reconcile-default-commodity "PLN"))
 
 (use-package circe
   :ensure t
