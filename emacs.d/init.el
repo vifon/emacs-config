@@ -745,7 +745,7 @@
 
 (use-package notmuch
   :ensure t
-  :if (and (file-directory-p "~/Mail")
+  :if (and (file-directory-p "~/Mail/.notmuch")
            (file-regular-p   "~/.emacs.d/secret/notmuch-fcc"))
   :bind (("<f7>" . notmuch))
   :config (progn
