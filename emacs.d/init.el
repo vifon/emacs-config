@@ -736,7 +736,12 @@
             (enable-circe-color-nicks)
             (setq circe-color-nicks-everywhere t)
 
-            (enable-lui-track-bar)))
+            (enable-lui-track-bar)
+
+            (define-key lui-mode-map (kbd "C-c C-o")
+              (lambda ()
+                (interactive)
+                (ffap-next-url t)))))
 
 (use-package notmuch
   :ensure t
