@@ -792,12 +792,6 @@
                            notmuch-search-mode-map))
               (define-key map (kbd "g") #'notmuch-refresh-this-buffer))
 
-            (advice-add 'notmuch-poll :around
-                        (defun notmuch-poll-message (orig-fun &rest args)
-                          (message "Fetching mail...")
-                          (apply orig-fun args)
-                          (call-process "notify-send" nil nil nil
-                                        "Emacs: notmuch synced")))
             (defun notmuch-clear-search-history ()
               (interactive)
               (when (y-or-n-p "Clear the notmuch search history? ")
