@@ -792,7 +792,15 @@
                           (message "Fetching mail...")
                           (apply orig-fun args)
                           (call-process "notify-send" nil nil nil
-                                        "Emacs: notmuch synced")))))
+                                        "Emacs: notmuch synced")))
+            (defun notmuch-clear-search-history ()
+              (interactive)
+              (when (y-or-n-p "Clear the notmuch search history? ")
+                (setq notmuch-search-history nil)))
+            (define-key notmuch-hello-mode-map
+              (kbd "D") #'notmuch-clear-search-history)
+            (define-key notmuch-show-mode-map
+              (kbd "C-c C-o") #'ffap-next-url)))
 
 (use-package cua-base
   :defer t
