@@ -816,8 +816,12 @@
                 (notmuch-refresh-this-buffer)))
             (define-key notmuch-hello-mode-map
               (kbd "D") #'notmuch-clear-search-history)
-            (define-key notmuch-show-mode-map
-              (kbd "C-c C-o") #'ffap-next-url)))
+            (define-key notmuch-show-mode-map (kbd "C-c C-o")
+              (lambda (arg)
+                (interactive "P")
+                (if arg
+                    (shr-next-link)
+                  (ffap-next-url))))))
 
 (use-package cua-base
   :defer t
