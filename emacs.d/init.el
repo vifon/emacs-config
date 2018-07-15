@@ -669,7 +669,8 @@
 
 (use-package rg
   :ensure t
-  :commands rg)
+  :commands rg
+  :bind ("M-s ," . rg-dwim))
 
 (use-package sane-term
   :ensure t
