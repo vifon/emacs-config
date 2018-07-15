@@ -280,7 +280,8 @@
 (use-package magit
   :ensure t
   :bind (("C-c g" . magit-status)
-         ("C-c G" . magit-file-popup))
+         ("C-x M-g" . magit-dispatch-popup)
+         ("C-c M-g" . magit-file-popup))
   :init (progn
           (setq magit-last-seen-setup-instructions "1.4.0")
           (setq magit-diff-refine-hunk t)
