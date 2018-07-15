@@ -217,8 +217,7 @@ when using the `*-respect-content' commands."
 (org-add-link-type "thunderlink" 'org-thunderlink-open)
 (defun org-thunderlink-open (path)
   "Opens a specified email in Thunderbird with the help of the add-on ThunderLink."
-  (call-process "thunderlink" nil nil nil
-                "thunderbird"
+  (call-process "thunderbird" nil 0 nil
                 "-thunderlink"
                 (concat "thunderlink:"
                         (substring-no-properties path))))
@@ -230,10 +229,10 @@ when using the `*-respect-content' commands."
         (page (and (match-beginning 2)
                    (match-string 2 link))))
     (if page
-        (call-process "evince" nil nil nil
-                      "evince" path "-i" page)
-      (call-process "evince" nil nil nil
-                    "evince" path))))
+        (call-process "evince" nil 0 nil
+                      path "-i" page)
+      (call-process "evince" nil 0 nil
+                    path))))
 
 (use-package org-crypt
   :config (progn

@@ -29,7 +29,7 @@
                    (cd "build"))))))
     (if (window-system)
         (call-process "urxvtcd")
-      (call-process "tmux" nil nil nil
+      (call-process "tmux" nil 0 nil
                     "split-window" "-h"))))
 
 (global-set-key (kbd "C-c x") 'run-term)

@@ -136,7 +136,7 @@
   :commands dired-async-mode
   :config (setq dired-async-message-function
                 (lambda (text face &rest args)
-                  (call-process "notify-send" nil nil nil
+                  (call-process "notify-send" nil 0 nil
                                 "Emacs: dired-async"
                                 (apply #'format text args))
                   (apply #'dired-async-mode-line-message text face args))))
