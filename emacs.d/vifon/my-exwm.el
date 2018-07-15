@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package exwm
   :ensure t
   :demand t
@@ -26,15 +28,44 @@
             (display-battery-mode 1)
             (display-time-mode 1)
 
+            (defun my-exwm-mediaplayer ()
+              (interactive)
+              (require 'sane-term)    ;load the ansi-term improvements
+              (ansi-term "ncmpcpp-run"))
+
+            (defun my-exwm-next-workspace (arg)
+              (interactive "p")
+              (let* ((next-idx (+ exwm-workspace-current-index
+                                  arg)))
+                (exwm-workspace-switch next-idx)))
+            (defun my-exwm-prev-workspace (arg)
+              (interactive "p")
+              (my-exwm-next-workspace (- arg)))
+
+            (defun my-exwm-ibuffer (arg)
+              (interactive "P")
+              (ibuffer nil
+                       "*exwm-ibuffer*"
+                       '((mode . exwm-mode))
+                       nil nil nil
+                       '((mark " " name))))
+
+            (defun my-exwm-launch (command)
+              (lambda ()
+                (interactive)
+	        (start-process-shell-command
+                 command nil command)))
+
             (setq exwm-input-global-keys
-                  `((,(kbd "s-M") . (lambda () (interactive)
-                                      (start-process-shell-command
-                                       "ncmpcpp" nil
-                                       "urxvtcd -e ncmpcpp-run")))
+                  `((,(kbd "s-M")        . my-exwm-mediaplayer)
+                    (,(kbd "<s-escape>") . my-exwm-mediaplayer)
                     (,(kbd "s-d") . exwm-reset)
                     (,(kbd "s-c") . exwm-input-release-keyboard)
                     (,(kbd "s-w") . exwm-workspace-switch)
                     (,(kbd "s-b") . exwm-workspace-switch-to-buffer)
+                    (,(kbd "s-x") . my-exwm-next-workspace)
+                    (,(kbd "s-z") . my-exwm-prev-workspace)
+                    (,(kbd "<s-tab>") . my-exwm-ibuffer)
                     (,(kbd "s-f") . exwm-layout-toggle-fullscreen)
                     ,@(mapcar (lambda (arg)
                                 (let ((key (car arg))
@@ -64,7 +95,10 @@
                     (,(kbd "s-r") . (lambda (command)
 	  	                      (interactive (list (read-shell-command "$ ")))
 	  	                      (start-process-shell-command command nil command)))
-                    (,(kbd "s-R") . counsel-linux-app)))
+                    (,(kbd "s-R") . counsel-linux-app)
+                    (,(kbd "s-' s") . ,(my-exwm-launch "signal-desktop"))
+                    (,(kbd "s-' t") . ,(my-exwm-launch "telegram"))
+                    (,(kbd "s-' m") . ,(my-exwm-launch "notmuch-sync"))))
 
             (define-key exwm-mode-map (kbd "C-q")
               (lambda ()
