@@ -316,6 +316,11 @@
   :ensure t
   :bind ("C-x v t" . git-timemachine))
 
+(use-package git-link
+  :ensure t
+  :bind ("C-x v w" . git-link)
+  :config (setq git-link-default-branch "master"))
+
 (use-package goto-last-change
   :ensure t
   :demand t
