@@ -812,7 +812,8 @@
             (defun notmuch-clear-search-history ()
               (interactive)
               (when (y-or-n-p "Clear the notmuch search history? ")
-                (setq notmuch-search-history nil)))
+                (setq notmuch-search-history nil)
+                (notmuch-refresh-this-buffer)))
             (define-key notmuch-hello-mode-map
               (kbd "D") #'notmuch-clear-search-history)
             (define-key notmuch-show-mode-map
