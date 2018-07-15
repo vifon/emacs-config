@@ -791,13 +791,23 @@
 
             (require 'org-notmuch)
 
+            (when (file-executable-p "~/.bin/notmuch-sync")
+              (defun my-notmuch-poll-and-refresh-this-buffer ()
+                (interactive)
+                (call-process
+                 "notmuch-sync" nil 0 nil
+                 (buffer-name (current-buffer)))))
+
             (dolist (map '(notmuch-hello-mode-map
                            notmuch-show-mode-map))
               (define-key map (kbd "<C-tab>") nil))
             (dolist (map '(notmuch-hello-mode-map
                            notmuch-show-mode-map
                            notmuch-search-mode-map))
-              (define-key map (kbd "g") #'notmuch-refresh-this-buffer))
+              (define-key map (kbd "g") #'notmuch-refresh-this-buffer)
+              (when (file-executable-p "~/.bin/notmuch-sync")
+                (define-key map (kbd "G") #'my-notmuch-poll-and-refresh-this-buffer)))
+
 
             (defun notmuch-clear-search-history ()
               (interactive)
