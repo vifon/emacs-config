@@ -11,7 +11,7 @@
                         (propertize "**" 'face 'mode-line-modified-face))
                        (t "--")))
                 mode-line-remote mode-line-frame-identification
-                (:propertize "%b"
+                (:propertize mode-line-buffer-identification
                              face mode-line-filename-face)
                 " "
                 "("
