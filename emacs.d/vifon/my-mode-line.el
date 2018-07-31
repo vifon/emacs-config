@@ -1,6 +1,6 @@
 (setq-default mode-line-format
               '("%e"
-                "-"
+                mode-line-front-space
                 mode-line-mule-info mode-line-client
                 (:eval
                  (cond ((and (buffer-modified-p) buffer-read-only)
@@ -30,9 +30,8 @@
                 mode-line-modes
                 (which-funcion-mode
                  ("" which-func-format "--"))
-                "---"
                 mode-line-misc-info
-                "-%-"))
+                mode-line-end-spaces))
 
 (defun vifon--truncate-org-mode-line ()
   (let* ((heading-text (nth 4 (org-heading-components)))
