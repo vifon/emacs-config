@@ -674,7 +674,7 @@
 
 (use-package sane-term
   :ensure t
-  :init (setq sane-term-shell-command "/bin/zsh")
+  :init (setq sane-term-shell-command (getenv "SHELL"))
   :config (add-hook 'term-mode-hook
                     (lambda ()
                       (yas-minor-mode -1)))
