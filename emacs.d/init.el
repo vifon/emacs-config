@@ -295,6 +295,7 @@
                   magit-reflog-mode-map
                   magit-refs-mode-map
                   magit-diff-mode-map))
+           (magit-define-popup-switch 'magit-log-popup ?F "first parent" "--first-parent")
            (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
 (use-package git-commit
