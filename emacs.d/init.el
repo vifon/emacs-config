@@ -250,7 +250,8 @@
 
 (use-package minimap
   :ensure t
-  :bind ("C-c n" . minimap-mode))
+  :bind ("C-c n" . minimap-mode)
+  :config (setq minimap-window-location 'right))
 
 (use-package transpose-frame
   :ensure t
