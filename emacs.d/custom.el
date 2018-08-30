@@ -33,6 +33,8 @@
    (quote
     (emacs-lisp-mode lisp-interaction-mode c-mode c++-mode java-mode sh-mode)))
  '(recentf-exclude (quote ("^/media/" "COMMIT_EDITMSG$" "^mutt-")))
+ '(recentf-max-menu-items 10000)
+ '(recentf-max-saved-items 1000)
  '(safe-local-variable-values
    (quote
     ((eval ispell-change-dictionary "pl")
