@@ -143,7 +143,8 @@
 
 (use-package ibuffer
   :bind (:map ibuffer-mode-map
-         ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root))
+         ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)
+         ("/ T" . ibuffer-tramp-set-filter-groups-by-tramp-connection))
   :config (progn
             (global-set-key (kbd "C-x C-b")
                             (if (fboundp #'ibuffer-jump)
@@ -173,6 +174,10 @@
 (use-package ibuffer-vc
   :ensure t
   :commands ibuffer-vc-set-filter-groups-by-vc-root)
+
+(use-package ibuffer-tramp
+  :ensure t
+  :commands ibuffer-tramp-set-filter-groups-by-tramp-connection)
 
 (use-package yasnippet
   :ensure t
