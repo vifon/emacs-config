@@ -202,13 +202,6 @@
   :ensure t
   :bind ("C-c M-y" . tiny-expand))
 
-(use-package undo-tree
-  :ensure t
-  :diminish undo-tree-mode
-  :config (progn
-            (global-undo-tree-mode 1)
-            (setq undo-tree-enable-undo-in-region nil)))
-
 (use-package auctex
   :ensure t
   :defer t
