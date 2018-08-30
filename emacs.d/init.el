@@ -578,6 +578,10 @@
           ("C-M-S-g" . dumb-jump-back)))
   :config (setq dumb-jump-selector 'ivy))
 
+(use-package vlf
+  :ensure t
+  :init (require 'vlf-setup))
+
 (use-package haskell-mode
   :ensure t
   :defer t
