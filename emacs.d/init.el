@@ -652,7 +652,8 @@
   :init (progn
           (setq projectile-switch-project-action (lambda ()
                                                    (dired "."))))
-  :bind ("C-c p p" . projectile-switch-project)
+  :bind (("C-c p p" . projectile-switch-project)
+         ("C-c p s r" . rg))
   :config (progn
             (setq projectile-mode-line
                   '(:eval (if (file-remote-p default-directory)
