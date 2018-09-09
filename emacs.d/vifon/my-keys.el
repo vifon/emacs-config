@@ -120,9 +120,13 @@ dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)   _F_ind-^n^ame
 
 (global-set-key (kbd "C-c d") 'delete-pair)
 
-(add-hook 'minibuffer-setup-hook
-          (lambda () (if (eq this-command 'eval-expression)
-                         (paredit-mode 1))))
+(if (version<= "24.4" emacs-version)
+    ;; DEPRECATION
+    (add-hook 'minibuffer-setup-hook
+              (lambda () (if (eq this-command 'eval-expression)
+                             (paredit-mode 1))))
+  (add-hook 'eval-expression-minibuffer-setup-hook
+            #'paredit-mode))
 
 (use-package misc
   :bind (("M-z" . zap-up-to-char)
