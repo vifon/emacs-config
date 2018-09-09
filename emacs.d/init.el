@@ -356,6 +356,10 @@
   :ensure t
   :defer t)
 
+(use-package olivetti
+  :ensure t
+  :defer t)
+
 (use-package presentation
   :ensure t
   :commands presentation-mode)
