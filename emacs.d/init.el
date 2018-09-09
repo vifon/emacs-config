@@ -789,6 +789,7 @@
                           (buffer-string))))))
 
             (setq message-sendmail-envelope-from 'header)
+            (setq notmuch-always-prompt-for-sender t)
 
             (setq notmuch-wash-signature-lines-max 3)
 
