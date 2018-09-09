@@ -354,10 +354,7 @@
 
 (use-package writeroom-mode
   :ensure t
-  :defer t
-  :config (setq writeroom-global-effects
-                (delete 'writeroom-toggle-fullscreen
-                        writeroom-global-effects)))
+  :defer t)
 
 (use-package presentation
   :ensure t
