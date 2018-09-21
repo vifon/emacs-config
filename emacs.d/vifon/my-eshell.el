@@ -1,8 +1,3 @@
-(defun eshell/clear ()
-    "04Dec2001 - sailor, to clear the eshell buffer."
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)))
 (defun eshell-hooks ()
   (add-to-list 'eshell-visual-commands "vim")
   (define-key eshell-mode-map (kbd "C-z") 'bury-buffer))
