@@ -663,9 +663,16 @@
          ("C-c p s r" . rg))
   :config (progn
             (setq projectile-mode-line
-                  '(:eval (if (file-remote-p default-directory)
-                              " Pro"
-                            (format " Pro[%s]" (projectile-project-name)))))
+                  (cl-labels ((deep-replace (x)
+                                            (cond
+                                             ((listp x)
+                                              (mapcar #'deep-replace x))
+                                             ((stringp x)
+                                              (replace-regexp-in-string
+                                               "Projectile" "Pro" x))
+                                             (t x))))
+                    (mapcar #'deep-replace
+                            projectile-mode-line)))
             (projectile-global-mode 1)
             (defun my-projectile-show-path (arg)
               (interactive "P")
