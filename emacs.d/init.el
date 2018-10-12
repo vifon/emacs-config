@@ -128,6 +128,9 @@
   :ensure t
   :config (setq-default dired-filter-stack '()))
 
+(use-package dired-rifle
+  :ensure t)
+
 (use-package dired-collapse
   :ensure t)
 
