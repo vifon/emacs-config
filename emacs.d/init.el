@@ -632,8 +632,7 @@
                       (defun my-python-hook ()
                         (setq tab-width 4
                               python-indent 4
-                              py-indent-offset 4)))
-            (setq flycheck-python-pylint-executable "pylint3")))
+                              py-indent-offset 4)))))
 
 (use-package anaconda-mode
   :ensure t
