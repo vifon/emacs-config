@@ -47,6 +47,7 @@
 
 (use-package hydra :ensure t :defer t)
 
+(require 'my-el-patch)
 (require 'my-hooks)
 (require 'my-skeletons)
 (require 'my-mode-line)
