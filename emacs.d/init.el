@@ -886,8 +886,8 @@
             (load-theme 'zenburn 'no-confirm)
             (setq frame-background-mode 'dark)
             (ignore-errors
-              (let ((font-name "DejaVu Sans Mono")
-                    (font-size "11"))
+              (let ((font-name "Inconsolata")
+                    (font-size "14"))
                 (let ((font (concat font-name "-" font-size)))
                   (add-to-list 'default-frame-alist `(font . ,font))
                   (set-frame-font font nil t))))))
