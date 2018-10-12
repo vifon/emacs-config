@@ -400,7 +400,7 @@
   :bind (("C-<"         . mc/mark-previous-like-this)
          ("C->"         . mc/mark-more-like-this-extended)
          ("C-*"         . mc/mark-all-like-this-dwim)
-         ("C-M-;"       . mc/mark-all-like-this-dwim)
+         ("C-;"         . mc/mark-all-like-this-dwim)
          ("M-<mouse-1>" . mc/add-cursor-on-click))
   :init (global-unset-key (kbd "M-<down-mouse-1>"))
   :config (progn
@@ -409,7 +409,7 @@
 
 (use-package iedit
   :ensure t
-  :bind ("C-;" . iedit-mode))
+  :bind ("C-M-;" . iedit-mode))
 
 (use-package expand-region
   :ensure t
