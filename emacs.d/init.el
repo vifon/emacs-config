@@ -109,14 +109,18 @@
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
          ("TAB" . dired-submodes-hydra/body))
-  :config (setq dired-dwim-target nil
-                dired-listing-switches "--group-directories-first -alhv"
-                dired-free-space-args "-Pkh"
-                dired-ls-F-marks-symlinks t
-                dired-isearch-filenames 'dwim
-                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
-                wdired-allow-to-change-permissions t
-                image-dired-external-viewer "sxiv"))
+  :config (progn
+            (setq dired-dwim-target nil
+                  dired-free-space-args "-Pkh"
+                  dired-ls-F-marks-symlinks t
+                  dired-isearch-filenames 'dwim
+                  dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
+                  wdired-allow-to-change-permissions t
+                  image-dired-external-viewer "sxiv")
+            (setq dired-listing-switches
+                  (flags-nonportable "-alh" "ls"
+                                   "--group-directories-first"
+                                   "-v"))))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
@@ -654,6 +658,7 @@
 (use-package projectile
   :ensure t
   :defer 3
+  :diminish "Pro"
   :commands (projectile-global-mode
              projectile-switch-project
              my-projectile-show-path)
@@ -663,17 +668,6 @@
   :bind (("C-c p p" . projectile-switch-project)
          ("C-c p s r" . rg))
   :config (progn
-            (setq projectile-mode-line
-                  (cl-labels ((deep-replace (x)
-                                            (cond
-                                             ((listp x)
-                                              (mapcar #'deep-replace x))
-                                             ((stringp x)
-                                              (replace-regexp-in-string
-                                               "Projectile" "Pro" x))
-                                             (t x))))
-                    (mapcar #'deep-replace
-                            projectile-mode-line)))
             (projectile-global-mode 1)
             (defun my-projectile-show-path (arg)
               (interactive "P")
