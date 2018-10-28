@@ -31,8 +31,8 @@
 
             (defun my-exwm-mediaplayer ()
               (interactive)
-              (require 'sane-term)    ;load the ansi-term improvements
-              (ansi-term "ncmpcpp-run"))
+              (start-process-shell-command
+               "ncmpcpp" nil "urxvtcd -e ncmpcpp-run"))
 
             (defun my-exwm-next-workspace (arg)
               (interactive "p")
