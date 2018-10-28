@@ -1,6 +1,6 @@
-LN=ln -sfrT
-
 all: ~/.emacs.d
 
 ~/.emacs.d: emacs.d
-	$(LN) $< $@
+	emacs -Q --batch --eval " \
+	(progn (require 'dired-x) \
+	       (dired-make-relative-symlink \"$<\" \"$@\"))"
