@@ -94,4 +94,33 @@ commands."
           (kill-new function-header)
           (message "Header copied: %s" function-header))))))
 
+(defun flags-if-supported (command &rest flags)
+  "Return each flag in FLAGS unchanged if COMMAND supports it
+according to the manpage, otherwise return nil in its place.
+
+The flag is considered supported if it appears anywhere in the
+manpage."
+  (with-temp-buffer
+    (process-file "man" nil t nil command)
+    (mapcar (lambda (flag)
+              (goto-char (point-min))
+              (when (re-search-forward (concat "\\_<"
+                                               (regexp-quote flag)
+                                               "\\_>")
+                                       nil t)
+                flag))
+            flags)))
+
+(defun flags-nonportable (portable-flags command &rest nonportable-flags)
+  "Combine PORTABLE-FLAGS and the supported NONPORTABLE-FLAGS
+into a single string with `combine-and-quote-strings'.
+
+See also: `flags-if-supported'."
+  (combine-and-quote-strings
+   (delete-if
+    nil (cons portable-flags
+              (apply #'flags-if-supported
+                     command
+                     nonportable-flags)))))
+
 (provide 'my-fun)
