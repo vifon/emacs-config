@@ -20,6 +20,9 @@
 (when (fboundp 'tooltip-mode) (tooltip-mode 0))
 (column-number-mode t)
 
+(when (version<= "26.1" emacs-version)
+  (setq auto-hscroll-mode 'current-line))
+
 (when (boundp 'async-shell-command-display-buffer)
   (setq async-shell-command-display-buffer nil))
 
