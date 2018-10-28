@@ -97,6 +97,7 @@
                                       (split-window-right)
                                       (other-window 1)))
                     (,(kbd "S-s-<return>") . exwm-floating-toggle-floating)
+                    (,(kbd "s-Q") . (lambda () (interactive) (kill-buffer)))
                     ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
                     ,@(mapcar (lambda (i)
                                 `(,(kbd (format "s-%d" i)) .
