@@ -29,6 +29,16 @@
             (display-battery-mode 1)
             (display-time-mode 1)
 
+            (defvar vifon/exwm-last-workspace-index nil)
+            (advice-add 'exwm-workspace-switch :before
+                        (defun vifon/exwm-save-last-workspace (&rest args)
+                          (setq vifon/exwm-last-workspace-index
+                                exwm-workspace-current-index)))
+            (defun vifon/exwm-last-workspace ()
+              (interactive)
+              (exwm-workspace-switch (or vifon/exwm-last-workspace-index
+                                         exwm-workspace-current-index)))
+
             (defun my-exwm-mediaplayer ()
               (interactive)
               (start-process-shell-command
@@ -66,6 +76,7 @@
                     (,(kbd "s-b") . exwm-workspace-switch-to-buffer)
                     (,(kbd "s-x") . my-exwm-next-workspace)
                     (,(kbd "s-z") . my-exwm-prev-workspace)
+                    (,(kbd "s-q") . vifon/exwm-last-workspace)
                     (,(kbd "<s-tab>") . my-exwm-ibuffer)
                     (,(kbd "s-f") . exwm-layout-toggle-fullscreen)
                     ,@(mapcar (lambda (arg)
