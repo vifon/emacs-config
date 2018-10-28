@@ -101,6 +101,8 @@
 (add-to-list 'auto-mode-alist '("^/tmp/mutt.*" . mail-mode))
 (add-to-list 'auto-mode-alist '("\\.claws-mail/tmp/tmpmsg\\.0x.*" . mail-mode))
 
+(add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
+
 (setq epa-file-name-regexp "\\.gpg\\(~\\|\\.~[0-9]+~\\)?\\'\\|\\.asc")
 (epa-file-name-regexp-update)
 
