@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (add-hook 'after-init-hook
           `(lambda ()
              (setq gc-cons-threshold ,gc-cons-threshold))
