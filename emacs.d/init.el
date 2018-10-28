@@ -208,7 +208,7 @@
   :defer 7
   :diminish yas-minor-mode
   :commands yas-global-mode
-  :mode ("emacs\.d/snippets/" . snippet-mode)
+  :mode ("emacs\\.d/snippets/" . snippet-mode)
   :init (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   :config (yas-global-mode 1))
 
