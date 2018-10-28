@@ -670,7 +670,7 @@
 (use-package projectile
   :ensure t
   :defer 3
-  :diminish "Pro"
+  :diminish projectile-mode
   :commands (projectile-global-mode
              projectile-switch-project
              my-projectile-show-path)
