@@ -8,7 +8,8 @@
             (add-hook 'exwm-update-class-hook
                       (defun my-exwm-update-class-hook ()
                         (unless (or (string-prefix-p "sun-awt-X11-" exwm-instance-name)
-                                    (string= "gimp" exwm-instance-name))
+                                    (string= "gimp" exwm-instance-name)
+                                    (string= "Firefox" exwm-class-name))
                           (exwm-workspace-rename-buffer exwm-class-name))))
             (add-hook 'exwm-update-title-hook
                       (defun my-exwm-update-title-hook ()
