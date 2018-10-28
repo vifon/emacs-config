@@ -50,24 +50,23 @@
                 (defhydra my-hydra
                   (:hint nil :color blue)
                   "
- delete-_t_railing-whitespace   delete-_m_atching-lines       _A_lign
- r_G_                           delete-_n_on-matching-lines   align-_R_egexp
+ delete-_t_railing-whitespace    _A_lign
+ r_G_                            align-_R_egexp
 
  _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
- _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)    hl-_L_ine-mode
+ _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)    hl-_L_ine-mode                  _d_umb-jump-mode: %-3(bound-and-true-p dumb-jump-mode)
  _h_l-defined-mode: %-3(bound-and-true-p highlight-defined-mode)    _s_ort-lines
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
 
  _H_ttpd settings    fly_c_heck-mode etc."
                   ("t" delete-trailing-whitespace)
                   ("G" rg)
-                  ("m" delete-matching-lines)
-                  ("n" delete-non-matching-lines)
                   ("A" align)
                   ("R" align-regexp)
                   ("v" visual-line-mode :color red)
                   ("l" display-line-numbers-best :color red)
                   ("L" hl-line-mode :color red)
+                  ("d" dumb-jump-mode :color red)
                   ("r" toggle-truncate-lines :color red)
                   ("f" auto-fill-mode :color red)
                   ("i" aggressive-indent-mode :color red)
@@ -77,6 +76,7 @@
                   ("h" highlight-defined-mode :color red)
                   ("H" httpd-hydra/body :color blue)
                   ("c" fly*-hydra/body :color blue)
+                  ("C" ispell-change-dictionary :color blue)
                   ("SPC" vydra/body)
                   ("q" nil)))
 
