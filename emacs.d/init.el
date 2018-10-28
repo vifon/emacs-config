@@ -747,7 +747,9 @@
   :defer t
   :if (file-directory-p "~/.password-store/emacs/circe")
   :bind (:map lui-mode-map
-         ("C-c C-w" . lui-track-bar-move))
+         ("C-c C-w" . lui-track-bar-move)
+         :map circe-mode-map
+         ("C-c C-q". bury-buffer))
   :config (progn
             (setq circe-server-buffer-name "Circe:{network}")
             (let ((servers (eval (read (shell-command-to-string
