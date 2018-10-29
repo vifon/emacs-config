@@ -34,6 +34,16 @@
                         (defun vifon/exwm-save-last-workspace (&rest args)
                           (setq vifon/exwm-last-workspace-index
                                 exwm-workspace-current-index)))
+            (advice-add 'exwm-workspace-switch :around
+                        (defun vifon/exwm-workspace-switch-or-last (super new-index &rest r)
+                          "If switching to the current workspace, switch to the last one instead"
+                          (apply super
+                                 (if (and vifon/exwm-last-workspace-index
+                                          (equal exwm-workspace-current-index
+                                                 new-index))
+                                     vifon/exwm-last-workspace-index
+                                   new-index)
+                                 r)))
             (defun vifon/exwm-last-workspace ()
               (interactive)
               (exwm-workspace-switch (or vifon/exwm-last-workspace-index
