@@ -175,6 +175,10 @@
                                          ?\C-k
                                          ?\C-u)))))))
 
+            (add-hook 'exwm-manage-finish-hook
+                      (defun exwm--set-cwd ()
+                        (cd (getenv "HOME"))))
+
             (exwm-enable)))
 
 (provide 'my-exwm)
