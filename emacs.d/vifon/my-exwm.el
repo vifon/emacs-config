@@ -147,6 +147,7 @@
                     ([?\C-k] . [S-end delete])
                     ([?\M-h] . [?\C-a])
                     ;; cut/paste.
+                    ([?\C-w] . [?\C-x])
                     ([?\M-w] . [?\C-c])
                     ([?\C-y] . [?\C-v])
                     ;; search
@@ -154,26 +155,33 @@
 
             (add-hook 'exwm-manage-finish-hook
                       (defun my-exwm-urxvt-simulation-keys ()
-                        (when (and exwm-class-name
-                                   (string= exwm-class-name "URxvt"))
-                          (exwm-input-set-local-simulation-keys
-                           `(,@(mapcar (lambda (key)
-                                         `([,key] . [,key]))
-                                       '(?\C-d
-                                         ?\C-a
-                                         ?\C-e
-                                         ?\M-w
-                                         ?\C-f
-                                         ?\C-b
-                                         ?\C-n
-                                         ?\C-p
-                                         ?\M-b
-                                         ?\M-f
-                                         ?\M-h
-                                         ?\C-y
-                                         ?\C-s
-                                         ?\C-k
-                                         ?\C-u)))))))
+                        (when exwm-class-name
+                          (cond
+                           ((string= exwm-class-name "URxvt")
+                            (exwm-input-set-local-simulation-keys
+                             `(,@(mapcar (lambda (key)
+                                           `([,key] . [,key]))
+                                         '(?\C-d
+                                           ?\C-a
+                                           ?\C-e
+                                           ?\C-w
+                                           ?\M-w
+                                           ?\C-f
+                                           ?\C-b
+                                           ?\C-n
+                                           ?\C-p
+                                           ?\M-b
+                                           ?\M-f
+                                           ?\M-h
+                                           ?\C-y
+                                           ?\C-s
+                                           ?\C-k
+                                           ?\C-u)))))
+                           ((string= exwm-class-name "Firefox")
+                            (exwm-input-set-local-simulation-keys
+                             `(,@(mapcar (lambda (key)
+                                           `([,key] . [,key]))
+                                         '(?\C-w)))))))))
 
             (add-hook 'exwm-manage-finish-hook
                       (defun exwm--set-cwd ()
