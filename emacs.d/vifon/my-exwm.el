@@ -88,6 +88,7 @@
                     (,(kbd "s-z") . my-exwm-prev-workspace)
                     (,(kbd "s-q") . vifon/exwm-last-workspace)
                     (,(kbd "<s-tab>") . my-exwm-ibuffer)
+                    (,(kbd "s-SPC") . (lambda () (interactive) (call-process "urxvtcd")))
                     (,(kbd "s-f") . exwm-layout-toggle-fullscreen)
                     ,@(mapcar (lambda (arg)
                                 (let ((key (car arg))
