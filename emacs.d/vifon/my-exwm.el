@@ -159,29 +159,31 @@
                           (cond
                            ((string= exwm-class-name "URxvt")
                             (exwm-input-set-local-simulation-keys
-                             `(,@(mapcar (lambda (key)
-                                           `([,key] . [,key]))
-                                         '(?\C-d
-                                           ?\C-a
-                                           ?\C-e
-                                           ?\C-w
-                                           ?\M-w
-                                           ?\C-f
-                                           ?\C-b
-                                           ?\C-n
-                                           ?\C-p
-                                           ?\M-b
-                                           ?\M-f
-                                           ?\M-h
-                                           ?\C-y
-                                           ?\C-s
-                                           ?\C-k
-                                           ?\C-u)))))
+                             (mapcar (lambda (key)
+                                       `([,key] . [,key]))
+                                     '(?\C-d
+                                       ?\C-a
+                                       ?\C-e
+                                       ?\C-w
+                                       ?\M-w
+                                       ?\C-f
+                                       ?\C-b
+                                       ?\C-n
+                                       ?\C-p
+                                       ?\M-b
+                                       ?\M-f
+                                       ?\M-h
+                                       ?\C-y
+                                       ?\C-s
+                                       ?\C-k
+                                       ?\C-u))))
                            ((string= exwm-class-name "Firefox")
                             (exwm-input-set-local-simulation-keys
-                             `(,@(mapcar (lambda (key)
-                                           `([,key] . [,key]))
-                                         '(?\C-w)))))))))
+                             ;; TODO: Why is
+                             ;; exwm-input-simulation-keys needed here
+                             ;; but not for urxvt?
+                             `(,@exwm-input-simulation-keys
+                               ([?\C-w] . [?\C-w]))))))))
 
             (add-hook 'exwm-manage-finish-hook
                       (defun exwm--set-cwd ()
