@@ -29,6 +29,18 @@
             (display-battery-mode 1)
             (display-time-mode 1)
 
+            ;; A dirty hack to display the current workspace on the
+            ;; mode-line.  I prefer it to adding a new item to
+            ;; global-mode-string due to a different placement on the
+            ;; mode-line.  Semantically the meaning is close enough to
+            ;; the original meaning of this variable, so I'll leave it
+            ;; this way.
+            (setq mode-line-frame-identification
+                  '(:eval (propertize
+                           (format "X:%d "
+                                   exwm-workspace-current-index)
+                           'face 'bold)))
+
             (defvar vifon/exwm-last-workspace-index nil)
             (advice-add 'exwm-workspace-switch :before
                         (defun vifon/exwm-save-last-workspace (&rest args)
