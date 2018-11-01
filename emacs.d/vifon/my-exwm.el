@@ -64,13 +64,15 @@
               (interactive "p")
               (my-exwm-next-workspace (- arg)))
 
-            (defun my-exwm-ibuffer (arg)
+            (defun vifon/exwm-ibuffer (&optional other-window)
               (interactive "P")
-              (ibuffer nil
-                       "*exwm-ibuffer*"
-                       '((mode . exwm-mode))
-                       nil nil nil
-                       '((mark " " name))))
+              (let ((name (buffer-name)))
+                (ibuffer other-window
+                         "*exwm-ibuffer*"
+                         '((mode . exwm-mode))
+                         nil nil nil
+                         '((mark " " name)))
+                (ignore-errors (ibuffer-jump-to-buffer name))))
 
             (defun my-exwm-launch (command)
               (lambda ()
@@ -88,7 +90,7 @@
                     (,(kbd "s-x") . my-exwm-next-workspace)
                     (,(kbd "s-z") . my-exwm-prev-workspace)
                     (,(kbd "s-q") . vifon/exwm-last-workspace)
-                    (,(kbd "<s-tab>") . my-exwm-ibuffer)
+                    (,(kbd "<s-tab>") . vifon/exwm-ibuffer)
                     (,(kbd "s-SPC") . (lambda () (interactive) (call-process "urxvtcd")))
                     (,(kbd "s-f") . exwm-layout-toggle-fullscreen)
                     ,@(mapcar (lambda (arg)
