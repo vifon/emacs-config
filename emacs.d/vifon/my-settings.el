@@ -79,8 +79,6 @@
 (setq compilation-scroll-output 'first-error
       compilation-read-command nil)
 
-(setq shell-file-name "/bin/sh")
-
 (setq find-file-existing-other-name nil)
 (setq require-final-newline t)
 (setq-default indicate-buffer-boundaries 'left)
