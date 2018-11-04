@@ -145,6 +145,14 @@
                 ;; Swallow the prefix argument to prevent happy accidents.
                 (exwm-input-send-next-key 1)))
 
+            ;; The regular C-x 4 0 doesn't work in exwm-mode, let's do
+            ;; it manually.
+            (define-key exwm-mode-map (kbd "C-x 4 0")
+              (lambda ()
+                (interactive)
+                (kill-buffer)
+                (delete-window)))
+
             (setq exwm-input-simulation-keys
                   `(;; movement
                     ([?\C-b] . [left])
