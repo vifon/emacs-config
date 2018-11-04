@@ -4,7 +4,7 @@
   :ensure t
   :demand t
   :config (progn
-            (setq exwm-workspace-number 4)
+            (setq exwm-workspace-number 5)
             (add-hook 'exwm-update-class-hook
                       (defun my-exwm-update-class-hook ()
                         (unless (or (string-prefix-p "sun-awt-X11-" exwm-instance-name)
