@@ -19,8 +19,8 @@
                                    (string= "Firefox" exwm-class-name))
                                (exwm-workspace-rename-buffer exwm-title)))))
 
-            (setq exwm-workspace-show-all-buffers nil
-                  exwm-layout-show-all-buffers nil)
+            (setq exwm-workspace-show-all-buffers t
+                  exwm-layout-show-all-buffers t)
 
             (require 'exwm-systemtray)
             (exwm-systemtray-enable)
@@ -116,7 +116,6 @@
                     (,(kbd "s-d") . exwm-reset)
                     (,(kbd "s-c") . exwm-input-release-keyboard)
                     (,(kbd "s-w") . exwm-workspace-switch)
-                    (,(kbd "s-b") . exwm-workspace-switch-to-buffer)
                     (,(kbd "s-x") . my-exwm-next-workspace)
                     (,(kbd "s-z") . my-exwm-prev-workspace)
                     (,(kbd "s-q") . vifon/exwm-last-workspace)
