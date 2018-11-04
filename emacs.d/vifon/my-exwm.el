@@ -135,6 +135,7 @@
 	  	                      (interactive (list (read-shell-command "$ ")))
 	  	                      (start-process-shell-command command nil command)))
                     (,(kbd "s-e") . counsel-linux-app)
+                    (,(kbd "s-R") . rename-buffer)
                     (,(kbd "s-' s") . ,(my-exwm-launch "signal-desktop"))
                     (,(kbd "s-' t") . ,(my-exwm-launch "telegram"))
                     (,(kbd "s-' m") . ,(my-exwm-launch "notmuch-sync"))))
