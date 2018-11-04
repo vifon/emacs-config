@@ -17,20 +17,10 @@
 
 (defun run-term (&optional arg)
   (interactive "P")
-  (let ((default-directory default-directory))
-    (when arg
-      (cond ((bound-and-true-p cppcm-build-dir)
-             (cd cppcm-build-dir))
-            ((vc-root-dir)
-             (cd (vc-root-dir)))
-            (t (when (string-match "^.*/src/$" default-directory)
-                 (cd "../")
-                 (when (file-directory-p "build")
-                   (cd "build"))))))
-    (if (window-system)
-        (call-process "urxvtcd")
-      (call-process "tmux" nil 0 nil
-                    "split-window" "-h"))))
+  (if (window-system)
+      (call-process "urxvtcd")
+    (call-process "tmux" nil 0 nil
+                  "split-window" "-h")))
 
 (global-set-key (kbd "C-c x") 'run-term)
 (global-set-key (kbd "M-o") 'run-term)
