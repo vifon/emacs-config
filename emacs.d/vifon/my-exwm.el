@@ -37,8 +37,9 @@
             ;; this way.
             (setq mode-line-frame-identification
                   '(:eval (propertize
-                           (format "X:%d "
-                                   exwm-workspace-current-index)
+                           (format "X%s "
+                                   (funcall exwm-workspace-index-map
+                                            exwm-workspace-current-index))
                            'face 'bold)))
 
             (defvar vifon/exwm-last-workspace-index nil)
