@@ -76,6 +76,16 @@
               (interactive "p")
               (my-exwm-next-workspace (- arg)))
 
+
+            (define-ibuffer-column exwm-class (:name "Class")
+              (if (bound-and-true-p exwm-class-name)
+                  exwm-class-name
+                ""))
+            (define-ibuffer-column exwm-instance (:name "Instance")
+              (if (bound-and-true-p exwm-instance-name)
+                  exwm-instance-name
+                ""))
+
             (defun vifon/exwm-ibuffer (&optional other-window)
               (interactive "P")
               (let ((name (buffer-name)))
@@ -83,8 +93,15 @@
                          "*exwm-ibuffer*"
                          '((mode . exwm-mode))
                          nil nil nil
-                         '((mark " " name)))
+                         '((mark
+                            " "
+                            (name 64 64 :left :elide)
+                            " "
+                            (exwm-class 10 -1 :left)
+                            " "
+                            (exwm-instance 10 -1 :left))))
                 (ignore-errors (ibuffer-jump-to-buffer name))))
+
 
             (defun my-exwm-launch (command)
               (lambda ()
