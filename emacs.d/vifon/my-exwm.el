@@ -86,6 +86,10 @@
               (if (bound-and-true-p exwm-instance-name)
                   exwm-instance-name
                 ""))
+            (define-ibuffer-column exwm-urgent (:name "U")
+              (if (bound-and-true-p exwm--hints-urgency)
+                  "U"
+                " "))
 
             (defun vifon/exwm-ibuffer (&optional other-window)
               (interactive "P")
@@ -94,7 +98,7 @@
                          "*exwm-ibuffer*"
                          '((mode . exwm-mode))
                          nil nil nil
-                         '((mark
+                         '((mark exwm-urgent
                             " "
                             (name 64 64 :left :elide)
                             " "
@@ -102,6 +106,13 @@
                             " "
                             (exwm-instance 10 -1 :left))))
                 (ignore-errors (ibuffer-jump-to-buffer name))))
+
+            (add-hook 'buffer-list-update-hook
+                      (defun vifon/exwm-remove-urgency ()
+                        (when (and (eq major-mode 'exwm-mode)
+                                   (eq (current-buffer) (window-buffer))
+                                   exwm--hints-urgency)
+                          (setf exwm--hints-urgency nil))))
 
 
             (defun my-exwm-launch (command)
