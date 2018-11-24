@@ -879,7 +879,11 @@
                         (cua-mode 0)
                         ret-value))))
 
-(use-package slime :ensure t :defer t)
+(use-package slime
+  :ensure t
+  :defer t
+  :config (when (file-readable-p "~/quicklisp/slime-helper.el")
+            (load "~/quicklisp/slime-helper.el")))
 (use-package slime-autoloads
   :config (setq inferior-lisp-program "sbcl"))
 
