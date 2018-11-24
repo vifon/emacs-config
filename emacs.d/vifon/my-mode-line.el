@@ -48,9 +48,14 @@
 
 (setq org-clock-heading-function #'vifon--truncate-org-mode-line)
 
-(setq mode-line-misc-info (delete '(global-mode-string
-                                    ("" global-mode-string " "))
-                                  mode-line-misc-info))
+(setq mode-line-misc-info
+      (let ((new-value (delete '(global-mode-string
+                                 ("" global-mode-string " "))
+                               mode-line-misc-info)))
+        ;; Some packages (eyebrowse!) expect it to be a non-empty list.
+        (if new-value
+            new-value
+          (list ""))))
 
 ;; Extra mode line faces
 (make-face 'mode-line-read-only-face)
