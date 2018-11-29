@@ -1,4 +1,4 @@
-(dolist (skeleton-file (directory-files "~/.emacs.d/skeletons/" t ".elc?$"))
+(dolist (skeleton-file (directory-files "~/.emacs.d/skeletons/" t "\\.elc?$"))
   (load skeleton-file))
 
 (use-package skeletor
