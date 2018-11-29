@@ -632,11 +632,11 @@
                      (save-excursion
                        (backward-char)
                        (not (looking-at "[])}[:alpha:]]"))))))
-             (if (or arg
-                     (funcall inside-comment-or-string-p)
-                     (funcall cursor-not-after-word-p))
-                 (self-insert-command 1)
-               (insert "->")))))
+              (if (or arg
+                      (funcall inside-comment-or-string-p)
+                      (funcall cursor-not-after-word-p))
+                  (self-insert-command 1)
+                (insert "->")))))
   :config (progn
             (define-key cperl-mode-map (kbd ".") #'perl-method-call-dwim)
             (require 'perltidy)
