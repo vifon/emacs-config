@@ -17,10 +17,13 @@
 
 (defun run-term (&optional arg)
   (interactive "P")
-  (if (window-system)
-      (call-process "urxvtcd")
-    (call-process "tmux" nil 0 nil
-                  "split-window" "-h")))
+  (let ((default-directory (if (derived-mode-p 'dired-mode)
+                               (dired-current-directory)
+                             default-directory)))
+    (if (window-system)
+        (call-process "urxvtcd")
+      (call-process "tmux" nil 0 nil
+                    "split-window" "-h"))))
 
 (global-set-key (kbd "C-c x") 'run-term)
 (global-set-key (kbd "M-o") 'run-term)

@@ -121,6 +121,13 @@
 	        (start-process-shell-command
                  command nil command)))
 
+            (defun vifon/exwm-terminal ()
+              (interactive)
+              (let ((default-directory (if (derived-mode-p 'dired-mode)
+                                           (dired-current-directory)
+                                         default-directory)))
+                (call-process "urxvtcd")))
+
             (setq exwm-input-global-keys
                   `((,(kbd "s-M")        . my-exwm-mediaplayer)
                     (,(kbd "<s-escape>") . my-exwm-mediaplayer)
@@ -131,7 +138,7 @@
                     (,(kbd "s-z") . my-exwm-prev-workspace)
                     (,(kbd "s-q") . vifon/exwm-last-workspace)
                     (,(kbd "<s-tab>") . vifon/exwm-ibuffer)
-                    (,(kbd "s-SPC") . (lambda () (interactive) (call-process "urxvtcd")))
+                    (,(kbd "s-SPC") . vifon/exwm-terminal)
                     (,(kbd "s-f") . exwm-layout-toggle-fullscreen)
                     ,@(mapcar (lambda (arg)
                                 (let ((key (car arg))
