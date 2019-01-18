@@ -132,7 +132,11 @@
               (defun vifon/dired-switches-compat ()
                 (interactive)
                 (setq dired-listing-switches portable)))
-            (vifon/dired-switches-default)))
+            (vifon/dired-switches-default)
+            (add-hook 'dired-mode-hook
+                      (defun vifon/dired-mode-header ()
+                        (setq header-line-format
+                              '(:eval (dired-current-directory)))))))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
