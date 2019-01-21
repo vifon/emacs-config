@@ -331,9 +331,9 @@
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
   :config (progn
             (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
-            (add-hook 'git-commit-mode-hook #'turn-on-orgstruct++)
+            (add-hook 'git-commit-mode-hook (defun turn-on-orgalist ()
+                                              (orgalist-mode 1)))
             (add-hook 'git-commit-mode-hook (defun turn-on-flyspell ()
-                                              (interactive)
                                               (flyspell-mode 1)))))
 
 (use-package git-messenger
@@ -954,6 +954,7 @@
 (use-package web-beautify :ensure t :defer t)
 (use-package wgrep :ensure t :defer t)
 (use-package fish-mode :ensure t :defer t)
+(use-package orgalist :ensure t :defer t)
 
 ;;; Needs to be the last one because otherwise during the installation
 ;;; (via :ensure) it prompts whether to save ~/.abbrev_defs making it
