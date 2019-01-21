@@ -745,10 +745,22 @@
   :defer t
   :bind (:map ledger-mode-map
          ("<C-tab>" . nil))
-  :config (setq ledger-clear-whole-transactions t
-                ledger-highlight-xact-under-point nil
-                ledger-use-iso-dates t
-                ledger-reconcile-default-commodity "PLN"))
+  :config (progn
+            (setq ledger-clear-whole-transactions t
+                  ledger-highlight-xact-under-point nil
+                  ledger-use-iso-dates t
+                  ledger-reconcile-default-commodity "PLN")
+            (defun vifon/delete-blank-lines (&rest ignored)
+              "Same as `delete-blank-lines' but accept (and
+ignore) any passed arguments to work as an advice."
+              (let ((point (point)))
+                (goto-char (point-max))
+                (delete-blank-lines)
+                (goto-char point)))
+            (advice-add #'ledger-add-transaction :after
+                        #'vifon/delete-blank-lines)
+            (advice-add #'ledger-fully-complete-xact :after
+                        #'vifon/delete-blank-lines)))
 
 (use-package circe
   :ensure t
