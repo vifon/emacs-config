@@ -241,6 +241,8 @@ when using the `*-respect-content' commands."
             (setq org-crypt-key "B247B8DE")))
 
 (use-package steam
+  :ensure t
+  :defer t
   :config (setq steam-username "vifon"))
 
 (provide 'my-org)
