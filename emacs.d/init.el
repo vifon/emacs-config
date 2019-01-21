@@ -314,17 +314,17 @@
           (setq magit-diff-refine-hunk t)
           (setq magit-completing-read-function #'ivy-completing-read))
   :config (progn
-           (mapcar
-            (lambda (keymap)
-              (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
-              (define-key keymap (kbd "C-<tab>") nil))
-            (list magit-status-mode-map
-                  magit-log-mode-map
-                  magit-reflog-mode-map
-                  magit-refs-mode-map
-                  magit-diff-mode-map))
-           (magit-define-popup-switch 'magit-log-popup ?F "first parent" "--first-parent")
-           (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
+            (mapcar
+             (lambda (keymap)
+               (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
+               (define-key keymap (kbd "C-<tab>") nil))
+             (list magit-status-mode-map
+                   magit-log-mode-map
+                   magit-reflog-mode-map
+                   magit-refs-mode-map
+                   magit-diff-mode-map))
+            (magit-define-popup-switch 'magit-log-popup ?F "first parent" "--first-parent")
+            (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
 (use-package git-commit
   :ensure t
