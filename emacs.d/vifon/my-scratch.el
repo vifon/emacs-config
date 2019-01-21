@@ -13,12 +13,22 @@
   (interactive "P")
   (switch-to-buffer "*scratch*")
   (cd "~/")
-  (when (or arg (= (point-min) (point-max)))
+  (cond
+   ((equal arg '(16))
+    ;; Emacs Lisp scratchpad.
+    (erase-buffer)
+    (insert "()")
+    (lisp-interaction-mode)
+    (set-buffer-modified-p nil)
+    (goto-char (1+ (point-min))))
+   ((or (equal arg '(4))
+        (= (point-min) (point-max)))
+    ;; General purpose org-mode scratchpad.
     (erase-buffer)
     (insert (scratch-reset-message))
-    (apply initial-major-mode nil)
+    (funcall initial-major-mode)
     (set-buffer-modified-p nil)
-    (goto-char (point-min))))
+    (goto-char (point-min)))))
 
 (global-set-key (kbd "C-c s") #'scratch-reset)
 
