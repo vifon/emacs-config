@@ -678,10 +678,12 @@
   :init (progn
           (setq projectile-switch-project-action (lambda ()
                                                    (dired "."))))
-  :bind (("C-c p p" . projectile-switch-project)
-         ("C-c p s r" . rg))
+  :bind (:map projectile-command-map
+         ("p" . projectile-switch-project)
+         ("s r" . rg))
+  :bind-keymap ("C-c p" . projectile-command-map)
   :config (progn
-            (projectile-global-mode 1)
+            (projectile-mode 1)
             (defun my-projectile-show-path (arg)
               (interactive "P")
               (let ((project-path (if (projectile-project-p)
