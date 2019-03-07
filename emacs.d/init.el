@@ -145,6 +145,10 @@
   :ensure t
   :commands dired-subtree-toggle)
 
+(use-package dired-sidebar
+  :ensure t
+  :bind ("C-c b" . dired-sidebar-toggle-sidebar))
+
 (use-package dired-filter
   :ensure t
   :config (setq-default dired-filter-stack '()))
@@ -298,11 +302,6 @@
               (evilnc-comment-or-uncomment-lines arg)
             (call-interactively 'comment-dwim)))
   :bind (([remap comment-dwim] . evil-nerd-commenter-dwim)))
-
-(use-package neotree
-  :ensure t
-  :bind (("C-c b" . neotree-toggle)
-         ("C-c B" . neotree-find)))
 
 (use-package magit
   :ensure t
