@@ -97,16 +97,18 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
   ("m" semantic-mode)
   ("i" ispell-change-dictionary))
 
+(autoload 'gnus-dired-mode "gnus-dired" nil t)
 (defhydra dired-submodes-hydra
   (:hint nil :color red)
   "
 ### dired submodes ###
 
-dired-_a_sync-mode:    %-3(bound-and-true-p dired-async-mode)^^^   _f_ind-^d^ired
-dired-_c_ollapse-mode: %-3(bound-and-true-p dired-collapse-mode)   _F_ind-^n^ame-dired
-      ^ ^                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ^f^ind-_g_rep-dired"
+dired-_a_sync^-^mode:    %-3(bound-and-true-p dired-async-mode)^^^   _f_ind-^d^ired
+dired-_c_olla^p^se-mode: %-3(bound-and-true-p dired-collapse-mode)   _F_ind-^n^ame-dired
+gnus-d^i^red-_m_ode:     %-3(bound-and-true-p gnus-dired-mode)^^^^   ^f^ind-_g_rep-dired"
   ("c" dired-collapse-mode)
   ("a" dired-async-mode)
+  ("m" gnus-dired-mode)
   ("f" find-dired :color blue)
   ("F" find-name-dired :color blue)
   ("g" find-grep-dired :color blue))
