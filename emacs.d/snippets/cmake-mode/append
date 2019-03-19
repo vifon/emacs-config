@@ -1,5 +1,0 @@
-#name : LIST( APPEND var ... )
-# --
-LIST( APPEND ${1:var}
-  $0
-  )

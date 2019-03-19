@@ -220,6 +220,10 @@
   :init (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   :config (yas-global-mode 1))
 
+(use-package yasnippet-snippets
+  :ensure t
+  :after yasnippet)
+
 (use-package auto-yasnippet
   :ensure t
   :bind (("C-c Y" . aya-create)

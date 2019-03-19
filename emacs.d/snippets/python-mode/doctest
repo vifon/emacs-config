@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: doctest
+# key: doctest
+# --
+import doctest
+import sys
+sys.exit(doctest.testmod()[0])

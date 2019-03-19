@@ -1,6 +1,0 @@
-#name : fork
-# --
-if (!fork()) {
-    $0
-    exit(0);
-}
