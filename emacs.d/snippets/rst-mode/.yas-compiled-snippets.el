@@ -7,4 +7,4 @@
                        ("chap" "${1:Chapter}\n${1:$(make-string (string-width yas-text) ?\\=)}\n\n$0" "Chapter title" nil nil nil "/home/vifon/.emacs.d/snippets/rst-mode/chap" nil nil)))
 
 
-;;; Do not edit! File generated at Tue Mar 19 01:02:14 2019
+;;; Do not edit! File generated at Thu Apr 25 00:56:12 2019
