@@ -241,6 +241,12 @@ when using the `*-respect-content' commands."
             (setq org-tags-exclude-from-inheritance '("crypt"))
             (setq org-crypt-key "B247B8DE")))
 
+(use-package org-habit
+  :after org-agenda
+  :config (setq org-habit-show-habits-only-for-today nil
+                org-habit-show-all-today nil
+                org-agenda-show-future-repeats 'next))
+
 (use-package steam
   :ensure t
   :defer t
