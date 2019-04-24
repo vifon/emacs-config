@@ -116,6 +116,7 @@ when using the `*-respect-content' commands."
 (setq org-icalendar-combined-agenda-file "~/org/org.ics"
       org-icalendar-use-deadline '(event-if-todo)
       org-icalendar-use-scheduled '(event-if-todo)
+      org-icalendar-timezone "Europe/Warsaw"
       org-export-with-tasks 'todo)
 (setq org-use-tag-inheritance nil)
 (setq org-export-with-toc nil)
