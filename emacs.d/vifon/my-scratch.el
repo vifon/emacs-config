@@ -12,6 +12,7 @@
 (defun scratch-reset (&optional arg)
   (interactive "P")
   (switch-to-buffer "*scratch*")
+  (emacs-lock-mode 'kill)
   (cd "~/")
   (cond
    ((equal arg '(16))
