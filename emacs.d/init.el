@@ -305,10 +305,12 @@
             (call-interactively 'comment-dwim)))
   :bind (([remap comment-dwim] . evil-nerd-commenter-dwim)))
 
-(use-package neotree
+(use-package treemacs
   :ensure t
-  :bind (("C-c b" . neotree-toggle)
-         ("C-c B" . neotree-find)))
+  :bind (("C-c b" . treemacs)
+         :map treemacs-mode-map
+         ("j" . treemacs-next-line)
+         ("k" . treemacs-previous-line)))
 
 (use-package magit
   :ensure t
