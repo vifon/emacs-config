@@ -877,7 +877,14 @@ ignore) any passed arguments to work as an advice."
                 (interactive "P")
                 (if arg
                     (shr-next-link)
-                  (ffap-next-url))))))
+                  (ffap-next-url))))
+
+            (define-key notmuch-hello-mode-map
+              (kbd "O") (lambda () (interactive)
+                          (setq notmuch-search-oldest-first
+                                (not notmuch-search-oldest-first))
+                          (message "Notmuch search oldest first: %s"
+                                   notmuch-search-oldest-first)))))
 
 (use-package cua-base
   :defer t
