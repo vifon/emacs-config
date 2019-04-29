@@ -247,6 +247,7 @@
   :mode (("\\.html\\'"      . web-mode)
          ("\\.html\\.j2\\'" . web-mode)
          ("\\.tt\\'"        . web-mode)
+         ("\\.vue\\'"       . web-mode)
          ("\\.css\\'"       . web-css-mode)
          ("\\.scss\\'"      . web-css-mode))
   :config (progn
