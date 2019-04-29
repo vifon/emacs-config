@@ -666,6 +666,11 @@
           (add-hook 'python-mode-hook #'anaconda-mode)
           (add-hook 'python-mode-hook #'anaconda-eldoc-mode)))
 
+(use-package company-anaconda
+  :ensure t
+  :after company
+  :init (add-to-list 'company-backends 'company-anaconda))
+
 (use-package js-mode
   :defer t
   :init (setq-default js-indent-level 2))
