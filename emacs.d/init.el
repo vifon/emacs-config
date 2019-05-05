@@ -362,19 +362,15 @@
   :demand t
   :bind ("C-x C-\\" . goto-last-change))
 
-(use-package highlight-symbol
+(use-package symbol-overlay
   :ensure t
-  :demand t
-  :bind (("<f10>"   . highlight-symbol-at-point)
-         ("<C-f10>" . highlight-symbol-reset)
-         ("<f11>"   . highlight-symbol-prev)
-         ("M-p"     . highlight-symbol-prev)
-         ("<f12>"   . highlight-symbol-next)
-         ("M-n"     . highlight-symbol-next))
-  :config (defun highlight-symbol-reset ()
-            (interactive)
-            (highlight-symbol-remove-all)
-            (setq highlight-symbol-color-index 0)))
+  :bind (("M-p" . symbol-overlay-jump-prev)
+         ("M-n" . symbol-overlay-jump-next)
+         ("C-M-;" . symbol-overlay-put)
+         ("<f10>" . symbol-overlay-remove-all)
+         :map symbol-overlay-map
+         ("b" . symbol-overlay-switch-backward)
+         ("f" . symbol-overlay-switch-forward)))
 
 (use-package bm
   :ensure t
@@ -435,10 +431,6 @@
   :config (progn
             (define-key mc/keymap (kbd "C-s") 'phi-search)
             (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))
-
-(use-package iedit
-  :ensure t
-  :bind ("C-M-;" . iedit-mode))
 
 (use-package expand-region
   :ensure t
