@@ -46,7 +46,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-(use-package hydra :ensure t :defer t)
+(use-package hydra :pin melpa :ensure t :defer t)
 
 (require 'my-el-patch)
 (require 'my-hooks)
