@@ -232,7 +232,7 @@
 
 (use-package tiny
   :ensure t
-  :bind ("C-c M-y" . tiny-expand))
+  :bind ("C-:" . tiny-expand))
 
 (use-package auctex
   :ensure t
