@@ -360,6 +360,7 @@
 
 (use-package symbol-overlay
   :ensure t
+  :pin melpa
   :bind (("M-p" . symbol-overlay-jump-prev)
          ("M-n" . symbol-overlay-jump-next)
          ("C-;" . symbol-overlay-put)
