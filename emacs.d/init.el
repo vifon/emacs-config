@@ -255,7 +255,8 @@
                   '(("jinja" . "\\.j2\\'")
                     ("jinja" . "\\.html\\'")))
             ;; Fix Jinja2 autopairing; was producing: "{{  }}}}".
-            (setq web-mode-enable-auto-pairing nil)))
+            (setq web-mode-enable-auto-pairing nil)
+            (add-to-list 'company-backends 'company-css)))
 
 (use-package emmet-mode
   :ensure t
