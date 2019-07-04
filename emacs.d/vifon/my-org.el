@@ -132,6 +132,7 @@ when using the `*-respect-content' commands."
       org-log-redeadline 'time)
 (setq org-hierarchical-todo-statistics nil)
 (setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
+(setq org-catch-invisible-edits 'error)
 
 (when (file-exists-p "~/org/.agenda-files")
   (setq org-agenda-files "~/org/.agenda-files"))
