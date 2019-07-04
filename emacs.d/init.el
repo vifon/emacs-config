@@ -965,6 +965,10 @@ ignore) any passed arguments to work as an advice."
   :defer t
   :if (not (fboundp #'display-line-numbers-mode)))
 
+(use-package midnight
+  :defer 13
+  :config (midnight-mode 1))
+
 (use-package aggressive-indent :ensure t :defer t)
 (use-package color-identifiers-mode :ensure t :defer t)
 (use-package dockerfile-mode :ensure t :defer t)
