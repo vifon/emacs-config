@@ -15,6 +15,8 @@
 
 (global-set-key (kbd "C-c o") 'find-file-at-point)
 
+(global-set-key [remap just-one-space] #'cycle-spacing)
+
 (defun run-term (&optional arg)
   (interactive "P")
   (let ((default-directory (if (derived-mode-p 'dired-mode)
