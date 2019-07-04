@@ -4,7 +4,7 @@
   "\n"
   "RUN apk --no-cache add " _ "\n"
   "\n"
-  "RUN adduser -D app"
+  "RUN adduser -D app\n"
   "USER app\n"
   "WORKDIR /home/app\n"
   "\n"
