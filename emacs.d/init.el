@@ -307,7 +307,8 @@
   :bind (("C-c b" . treemacs)
          :map treemacs-mode-map
          ("j" . treemacs-next-line)
-         ("k" . treemacs-previous-line)))
+         ("k" . treemacs-previous-line)
+         ("W" . treemacs-switch-workspace)))
 
 (use-package magit
   :ensure t
