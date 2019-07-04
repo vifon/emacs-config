@@ -531,6 +531,7 @@
 (use-package avy
   :ensure t
   :bind ("C-c j" . avy-dwim)
+  :config (setq avy-single-candidate-jump nil)
   :init (progn
           (avy-setup-default)
           (defun avy-dwim (arg)
