@@ -210,7 +210,7 @@ when using the `*-respect-content' commands."
 (use-package org-crypt
   :config (progn
             (org-crypt-use-before-save-magic)
-            (setq org-tags-exclude-from-inheritance '("crypt"))
+            (add-to-list 'org-tags-exclude-from-inheritance "crypt")
             (setq org-crypt-key "B247B8DE")))
 
 (use-package org-habit
