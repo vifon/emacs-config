@@ -397,11 +397,13 @@
   :ensure t
   :commands highlight-defined-mode)
 
-(use-package visual-regexp :ensure t :defer t)
+(use-package visual-regexp
+  :ensure t
+  :defer t
+  :bind (([remap query-replace-regexp] . vr/query-replace)))
 (use-package visual-regexp-steroids
   :ensure t
-  :after visual-regexp
-  :bind (([remap query-replace-regexp] . vr/query-replace)))
+  :after visual-regexp)
 
 (use-package volatile-highlights
   :ensure t
