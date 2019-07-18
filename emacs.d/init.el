@@ -369,11 +369,6 @@
          ("b" . symbol-overlay-switch-backward)
          ("f" . symbol-overlay-switch-forward)))
 
-(use-package bm
-  :ensure t
-  :commands (bm-load-and-restore)
-  :bind ("<left-fringe> <mouse-1>" . bm-toggle-mouse))
-
 (use-package indent-guide
   :ensure t
   :defer t
