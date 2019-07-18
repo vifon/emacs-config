@@ -7,8 +7,6 @@
               (lambda ()
                 (interactive)
                 (org-time-stamp-inactive '(16))))
-            (advice-add #'org-goto :around
-                        #'call-with-default-completing-read)
             (setf (cdr (assoc "\\.pdf\\'"
                               org-file-apps))
                   "evince %s")))
