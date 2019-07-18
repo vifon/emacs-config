@@ -141,9 +141,15 @@
                                          default-directory)))
                 (call-process "urxvtcd")))
 
+            (defun vifon/switch-to-last-buffer ()
+              (interactive)
+              (switch-to-buffer (other-buffer (current-buffer) 1)))
+
             (setq exwm-input-global-keys
                   `((,(kbd "s-M")        . my-exwm-mediaplayer)
                     (,(kbd "<s-escape>") . my-exwm-mediaplayer)
+                    (,(kbd "C-c <C-tab>") . vifon/switch-to-last-buffer)
+                    (,(kbd "<C-s-tab>") . vifon/switch-to-last-buffer)
                     (,(kbd "s-d") . exwm-reset)
                     (,(kbd "s-c") . exwm-input-release-keyboard)
                     (,(kbd "s-w") . exwm-workspace-switch)
@@ -165,13 +171,11 @@
                     (,(kbd "s-u") . (lambda ()
                                       (interactive)
                                       (split-window-below)
-                                      (other-window 1)
-                                      (vifon/exwm-ibuffer)))
+                                      (other-window 1)))
                     (,(kbd "s-o") . (lambda ()
                                       (interactive)
                                       (split-window-right)
-                                      (other-window 1)
-                                      (vifon/exwm-ibuffer)))
+                                      (other-window 1)))
                     (,(kbd "S-s-<return>") . exwm-floating-toggle-floating)
                     (,(kbd "s-Q") . (lambda () (interactive) (kill-buffer)))
                     ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
