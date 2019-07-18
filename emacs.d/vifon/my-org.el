@@ -136,35 +136,26 @@ when using the `*-respect-content' commands."
                         (find-file (concat (vc-root-dir) "todo.org"))))
 
 (setq org-capture-templates
-      '(("t" "todo" entry (file+headline "" "Tasks")
-         "* TODO %?\n  %U\n  %a\n" :empty-lines 1)
+      '(("t" "todo" entry (file+headline "" "Index")
+         "* TODO %?\n  %U\n  %a\n")
 
         ("T" "sub-todo" entry (clock)
-         "* TODO %?\n  %U\n  %a\n" :empty-lines 1)
+         "* TODO %?\n  %U\n  %a\n")
 
         ("b" "issue" entry (file+headline
                             (concat (or (vc-root-dir)
                                         (projectile-project-root)
                                         default-directory) "todo.org") "Issues")
-         "* TODO %?\n  %U\n  %a\n" :empty-lines 1)
-
-        ("s" "sub-task" item (clock)
-         "- [ ] %?\n")
-
-        ("S" "sub-task + link" item (clock)
-         "- [ ] %?\n  %a\n")
+         "* TODO %?\n  %U\n  %a\n")
 
         ("n" "note" entry (file "notes.org")
-         "* %? :NOTE:\n  %U\n  %a\n" :empty-lines 1)
-
-        ("p" "project" entry (file+headline "projects.org" "Ongoing")
-         "* %? [/] :PROJECT:\n  %U\n" :empty-lines 1)
+         "* %? :NOTE:\n  %U\n  %a\n")
 
         ("j" "journal + prompt" entry (file+datetree+prompt "journal.org.gpg")
-         "* %?" :empty-lines 0)
+         "* %?")
 
         ("J" "journal" entry (file+datetree "journal.org.gpg")
-         "* %?" :empty-lines 0)))
+         "* %?")))
 
 (setq org-stuck-projects
       '("PROJECT" ("TODO") ("IGNORE") nil))
