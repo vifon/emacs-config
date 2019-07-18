@@ -73,22 +73,7 @@ when using the `*-respect-content' commands."
   (add-to-list (make-local-variable 'electric-pair-pairs)
                '(?$ . ?$))
   (org-minor-modes))
-(add-hook 'org-mode-hook 'my-org-mode-hook)
-(add-hook 'org-mobile-before-process-capture-hook
-          (defun my-org-mobile-cleanup ()
-            (interactive)
-            (delete-blank-lines)
-            (indent-region (point-min)
-                           (point-max))
-            (delete-trailing-whitespace (point-min)
-                                        (point-max))
-            (replace-regexp "\n+\\(\\*+ \\)"
-                            "\n\n\\1"
-                            nil
-                            (point-min)
-                            (point-max))
-            (goto-char (point-max))
-            (insert "\n")))
+(add-hook 'org-mode-hook #'my-org-mode-hook)
 
 ;;; http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
 (font-lock-add-keywords 'org-mode
