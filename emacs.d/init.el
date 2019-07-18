@@ -837,8 +837,6 @@ ignore) any passed arguments to work as an advice."
 
             (setq notmuch-wash-signature-lines-max 3)
 
-            (require 'org-notmuch)
-
             (when (file-executable-p "~/.bin/notmuch-sync")
               (defun my-notmuch-poll-and-refresh-this-buffer ()
                 (interactive)

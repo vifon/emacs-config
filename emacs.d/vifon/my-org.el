@@ -59,6 +59,7 @@ when using the `*-respect-content' commands."
       (insert "Follow-up of: " link))))
 
 (require 'org-protocol)
+(require 'org-notmuch)
 
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
