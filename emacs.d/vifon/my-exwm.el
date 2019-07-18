@@ -4,7 +4,7 @@
   :ensure t
   :demand t
   :config (progn
-            (setq exwm-workspace-number 5)
+            (setq exwm-workspace-number 6)
             (add-hook 'exwm-update-class-hook
                       (defun my-exwm-update-class-hook ()
                         (unless (or (string-prefix-p "sun-awt-X11-" exwm-instance-name)
@@ -41,6 +41,19 @@
                                    (funcall exwm-workspace-index-map
                                             exwm-workspace-current-index))
                            'face 'bold)))
+
+            (require 'exwm-randr)
+            (defvar vifon/exwm-workspace->display '(1 3 5))
+            (defun vifon/exwm-randr-workspace-output-plist-update ()
+              (setq exwm-randr-workspace-output-plist
+                    (mapcan (lambda (n)
+                              (list n "DP-1-2"))
+                            vifon/exwm-workspace->display)))
+            (defun vifon/exwm-randr-refresh ()
+              (vifon/exwm-randr-workspace-output-plist-update)
+              (exwm-randr-refresh))
+            (vifon/exwm-randr-workspace-output-plist-update)
+            (exwm-randr-enable)
 
             (defvar vifon/exwm-last-workspace-index nil)
             (advice-add 'exwm-workspace-switch :before
@@ -190,6 +203,8 @@
                 (interactive)
                 (kill-buffer)
                 (delete-window)))
+
+            (define-key exwm-mode-map (kbd "C-c C-M-m") #'exwm-workspace-move)
 
             (setq exwm-input-simulation-keys
                   `(;; movement
