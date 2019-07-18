@@ -195,15 +195,6 @@ when using the `*-respect-content' commands."
                   org-babel-python-command "python3"
                   org-babel-perl-preface "use 5.010;")))
 
-;;; https://lists.gnu.org/archive/html/emacs-orgmode/2012-12/msg00231.html
-(org-add-link-type "thunderlink" 'org-thunderlink-open)
-(defun org-thunderlink-open (path)
-  "Opens a specified email in Thunderbird with the help of the add-on ThunderLink."
-  (call-process "thunderbird" nil 0 nil
-                "-thunderlink"
-                (concat "thunderlink:"
-                        (substring-no-properties path))))
-
 (org-add-link-type "evince" 'org-evince-open)
 (defun org-evince-open (link)
   (string-match "\\(.*?\\)\\(?:::\\([0-9]+\\)\\)?$" link)
