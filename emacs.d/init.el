@@ -332,10 +332,7 @@
             (magit-define-popup-switch 'magit-log-popup ?F "first parent" "--first-parent")
             (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
-(use-package magit-todos
-  :ensure t
-  :after magit
-  :config (magit-todos-mode 1))
+(use-package magit-todos :ensure t :defer t)
 
 (use-package git-commit
   :ensure t
