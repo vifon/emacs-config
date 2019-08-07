@@ -312,6 +312,7 @@
 
 (use-package magit
   :ensure t
+  :commands magit-process-file
   :bind (("C-c g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup)
          ("C-c M-g" . magit-file-popup))
