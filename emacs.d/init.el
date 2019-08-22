@@ -885,7 +885,12 @@ ignore) any passed arguments to work as an advice."
                           (setq notmuch-search-oldest-first
                                 (not notmuch-search-oldest-first))
                           (message "Notmuch search oldest first: %s"
-                                   notmuch-search-oldest-first)))))
+                                   notmuch-search-oldest-first)))
+
+            (defun notmuch-fcc-replace ()
+              (interactive)
+              (message-remove-header "Fcc")
+              (notmuch-fcc-header-setup))))
 
 (use-package cua-base
   :defer t
