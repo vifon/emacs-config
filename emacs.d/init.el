@@ -854,6 +854,17 @@ ignore) any passed arguments to work as an advice."
               (when (file-executable-p "~/.bin/notmuch-sync")
                 (define-key map (kbd "G") #'my-notmuch-poll-and-refresh-this-buffer)))
 
+            (define-key notmuch-search-mode-map (kbd "A")
+              (lambda ()
+                (interactive)
+                (when (y-or-n-p "Archive all?")
+                  (notmuch-search-tag-all '("-unread" "-inbox")))))
+            (define-key notmuch-search-mode-map (kbd "D")
+              (lambda ()
+                (interactive)
+                (when (y-or-n-p "Delete all?")
+                  (notmuch-search-tag-all '("-unread" "-inbox" "+deleted")))))
+
 
             (defun notmuch-clear-search-history ()
               (interactive)
