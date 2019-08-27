@@ -118,6 +118,8 @@ when using the `*-respect-content' commands."
 (setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 (setq org-catch-invisible-edits 'error)
 
+(setq org-confirm-elisp-link-function #'y-or-n-p)
+
 (when (file-exists-p "~/org/.agenda-files")
   (setq org-agenda-files "~/org/.agenda-files"))
 (when (not org-agenda-files)
