@@ -218,7 +218,8 @@ when using the `*-respect-content' commands."
   :after org-agenda
   :config (setq org-habit-show-habits-only-for-today nil
                 org-habit-show-all-today nil
-                org-agenda-show-future-repeats 'next))
+                org-agenda-show-future-repeats 'next
+                org-habit-show-habits nil))
 
 (use-package steam
   :ensure t
