@@ -156,7 +156,10 @@ when using the `*-respect-content' commands."
       '(("z" . org-kill-note-or-show-branches)))
 
 (setq org-stuck-projects
-      '("PROJECT" ("TODO") ("IGNORE") nil))
+      '("PROJECT/-MAYBE-DONE"
+        ("NEXT")
+        ("RECURRING")
+        "\\<IGNORE\\>"))
 
 (plist-put org-format-latex-options :scale 2.0)
 
