@@ -64,15 +64,9 @@ when using the `*-respect-content' commands."
 (setq org-use-speed-commands t)
 (setq org-ellipsis "[…]")
 
-(use-package org-bullets :ensure t :defer t)
-(defun org-minor-modes (&optional arg)
-  (interactive "P")
-  (org-bullets-mode arg)
-  (hl-line-mode arg))
 (defun my-org-mode-hook ()
   (add-to-list (make-local-variable 'electric-pair-pairs)
-               '(?$ . ?$))
-  (org-minor-modes))
+               '(?$ . ?$)))
 (add-hook 'org-mode-hook #'my-org-mode-hook)
 
 ;;; http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
