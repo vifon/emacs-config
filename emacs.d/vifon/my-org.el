@@ -110,6 +110,7 @@ when using the `*-respect-content' commands."
                            ("y" . ,(* 60 8 5 4 10))))
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
+(setq org-archive-location ".archive/%s_archive::")
 (setq org-log-into-drawer t)
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
