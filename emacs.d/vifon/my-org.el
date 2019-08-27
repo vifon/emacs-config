@@ -63,6 +63,7 @@ when using the `*-respect-content' commands."
 (setq org-special-ctrl-a/e t)
 (setq org-use-speed-commands t)
 (setq org-ellipsis "[…]")
+(setq org-indent-mode-turns-off-org-adapt-indentation nil)
 
 (defun my-org-mode-hook ()
   (add-to-list (make-local-variable 'electric-pair-pairs)
