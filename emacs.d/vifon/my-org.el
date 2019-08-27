@@ -62,7 +62,7 @@ when using the `*-respect-content' commands."
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
 (setq org-use-speed-commands t)
-(setq org-ellipsis "…")
+(setq org-ellipsis "[…]")
 
 (use-package org-bullets :ensure t :defer t)
 (defun org-minor-modes (&optional arg)
