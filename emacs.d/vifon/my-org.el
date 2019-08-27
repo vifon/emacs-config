@@ -152,6 +152,9 @@ when using the `*-respect-content' commands."
         ("p" "purchase" entry (file "purchases.org")
          "* %?\n  %U\n")))
 
+(setq org-speed-commands-user
+      '(("z" . org-kill-note-or-show-branches)))
+
 (setq org-stuck-projects
       '("PROJECT" ("TODO") ("IGNORE") nil))
 
