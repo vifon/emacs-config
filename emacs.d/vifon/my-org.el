@@ -131,7 +131,7 @@ when using the `*-respect-content' commands."
                         (find-file (concat (vc-root-dir) "todo.org"))))
 
 (setq org-capture-templates
-      '(("t" "todo" entry (file+headline "" "Index")
+      '(("t" "todo" entry (file+headline "" "Inbox")
          "* TODO %?\n  %U\n  %a\n")
 
         ("T" "sub-todo" entry (clock)
@@ -146,11 +146,11 @@ when using the `*-respect-content' commands."
         ("n" "note" entry (file "notes.org")
          "* %? :NOTE:\n  %U\n  %a\n")
 
-        ("j" "journal + prompt" entry (file+datetree+prompt "journal.org.gpg")
+        ("j" "journal" entry (file+datetree+prompt "journal.org.gpg")
          "* %?")
 
-        ("J" "journal" entry (file+datetree "journal.org.gpg")
-         "* %?")))
+        ("p" "purchase" entry (file "purchases.org")
+         "* %?\n  %U\n")))
 
 (setq org-stuck-projects
       '("PROJECT" ("TODO") ("IGNORE") nil))
