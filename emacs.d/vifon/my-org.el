@@ -90,7 +90,7 @@ when using the `*-respect-content' commands."
                            (nil :level . 1)))
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
-      org-agenda-skip-timestamp-if-done t)
+      org-agenda-skip-timestamp-if-done nil)
 (setq org-log-done 'time)
 (setq org-icalendar-combined-agenda-file "~/org/org.ics"
       org-icalendar-use-deadline '(event-if-todo)
