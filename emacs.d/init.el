@@ -109,7 +109,8 @@
 (use-package dired
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
-         ("TAB" . dired-submodes-hydra/body))
+         ("TAB" . dired-submodes-hydra/body)
+         ("K" . vifon/dired-subdir-toggle))
   :config (progn
             (setq dired-dwim-target nil
                   dired-free-space-args "-Pkh"
@@ -132,7 +133,15 @@
               (defun vifon/dired-switches-compat ()
                 (interactive)
                 (setq dired-listing-switches portable)))
-            (vifon/dired-switches-default)))
+            (vifon/dired-switches-default)
+
+            (defun vifon/dired-subdir-toggle ()
+              (interactive)
+              (if (equal (dired-current-directory)
+                         (expand-file-name default-directory))
+                  (call-interactively #'dired-maybe-insert-subdir)
+                (dired-kill-subdir)
+                (pop-to-mark-command)))))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
