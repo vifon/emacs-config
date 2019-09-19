@@ -58,6 +58,7 @@ when using the `*-respect-content' commands."
 
 (require 'org-protocol)
 (require 'org-notmuch)
+(require 'org-inlinetask)
 
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
