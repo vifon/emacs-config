@@ -139,10 +139,10 @@ See also: `flags-if-supported'."
     (save-excursion
       (goto-char (point-min))
       (while (not (eobp))
-        (when-let ((file (dired-get-filename nil t))
-                   (tag (cdr (assoc file ranger-tags))))
-          (let ((dired-marker-char tag))
-            (dired-mark nil)))
-        (forward-line 1)))))
+        (if-let ((file (dired-get-filename nil t))
+                 (tag (cdr (assoc file ranger-tags))))
+            (let ((dired-marker-char tag))
+              (dired-mark nil))
+          (forward-line 1))))))
 
 (provide 'my-fun)
