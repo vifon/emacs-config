@@ -108,13 +108,15 @@ _i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-cu
 
 dired-_a_sync^-^mode:    %-3(bound-and-true-p dired-async-mode)^^^   _f_ind-^d^ired
 dired-_c_olla^p^se-mode: %-3(bound-and-true-p dired-collapse-mode)   _F_ind-^n^ame-dired
-gnus-d^i^red-_m_ode:     %-3(bound-and-true-p gnus-dired-mode)^^^^   ^f^ind-_g_rep-dired"
+gnus-d^i^red-_m_ode:     %-3(bound-and-true-p gnus-dired-mode)^^^^   ^f^ind-_G_rep-dired
+_v_c status: %-3(bound-and-true-p diff-hl-dired-mode)"
   ("c" dired-collapse-mode)
   ("a" dired-async-mode)
   ("m" gnus-dired-mode)
   ("f" find-dired :color blue)
   ("F" find-name-dired :color blue)
-  ("g" find-grep-dired :color blue))
+  ("G" find-grep-dired :color blue)
+  ("v" diff-hl-dired-mode :color red))
 
 (global-set-key (kbd "C-c d") 'delete-pair)
 
