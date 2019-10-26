@@ -25,7 +25,10 @@
             (let ((completing-read-function #'completing-read-default)
                   (completion-in-region-function #'completion--in-region))
               (call-interactively #'find-file))))
-  :config (setq ivy-use-selectable-prompt t))
+  :config (progn
+            (setq ivy-use-selectable-prompt t)
+            (add-to-list 'ivy-completing-read-handlers-alist
+                         '(dired-diff . completing-read-default))))
 
 (use-package ivy-hydra :ensure t :defer t)
 (use-package ivy
