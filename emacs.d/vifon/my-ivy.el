@@ -24,11 +24,7 @@
             (interactive)
             (let ((completing-read-function #'completing-read-default)
                   (completion-in-region-function #'completion--in-region))
-              (call-interactively #'find-file))))
-  :config (progn
-            (setq ivy-use-selectable-prompt t)
-            (add-to-list 'ivy-completing-read-handlers-alist
-                         '(dired-diff . completing-read-default))))
+              (call-interactively #'find-file)))))
 
 (use-package ivy-hydra :ensure t :defer t)
 (use-package ivy
@@ -43,7 +39,11 @@
           (ivy-mode 1)
 
           (require 'ivy-hydra)
-          (setq ivy-use-virtual-buffers t)))
+          (setq ivy-use-virtual-buffers t))
+  :config (progn
+            (setq ivy-use-selectable-prompt t)
+            (add-to-list 'ivy-completing-read-handlers-alist
+                         '(dired-diff . completing-read-default))))
 
 (use-package swiper
   :ensure t
