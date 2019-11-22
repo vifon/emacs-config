@@ -755,7 +755,8 @@
   :ensure t
   :defer t
   :bind (:map ledger-mode-map
-         ("<C-tab>" . nil))
+         ("<C-tab>" . nil)
+         ("C-M-i" . completion-at-point))
   :config (progn
             (setq ledger-clear-whole-transactions t
                   ledger-highlight-xact-under-point nil
