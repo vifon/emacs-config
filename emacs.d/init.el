@@ -759,7 +759,7 @@
   :config (progn
             (setq ledger-clear-whole-transactions t
                   ledger-highlight-xact-under-point nil
-                  ledger-use-iso-dates t
+                  ledger-default-date-format ledger-iso-date-format
                   ledger-reconcile-default-commodity "PLN")
             (defun vifon/delete-blank-lines (&rest ignored)
               "Same as `delete-blank-lines' but accept (and
