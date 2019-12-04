@@ -56,8 +56,8 @@ when using the `*-respect-content' commands."
       (indent-for-tab-command)
       (insert "Follow-up of: " link))))
 
+(require 'ol-notmuch)
 (require 'org-protocol)
-(require 'org-notmuch)
 (require 'org-inlinetask)
 
 (setq org-hide-leading-stars nil)
@@ -117,7 +117,6 @@ when using the `*-respect-content' commands."
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
 (setq org-hierarchical-todo-statistics nil)
-(setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 (setq org-catch-invisible-edits 'error)
 
 (setq org-confirm-elisp-link-function #'y-or-n-p)
