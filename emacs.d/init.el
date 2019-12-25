@@ -820,13 +820,13 @@ ignore) any passed arguments to work as an advice."
                      (lambda (rule)
                        (let ((account (car rule))
                              (folder  (cdr rule)))
-                         (cons account (format "\"%s/%s\" %s"
-                                               account folder tags))))
+                         (cons account (format "\"%s\" %s"
+                                               folder tags))))
                      (with-temp-buffer
                        (insert-file-contents "~/.emacs.d/secret/notmuch-fcc")
                        ;; Format:
-                       ;;   (("me@example.com"   . "Sent")
-                       ;;    ("alsome@gmail.com" . "Sent Mail"))
+                       ;;   (("me@example.com"   . "me@example.com/Sent")
+                       ;;    ("alsome@gmail.com" . "alsome@gmail.com/Sent Mail"))
                        (goto-char (point-min))
                        (read (current-buffer))))))
             (setq message-signature
