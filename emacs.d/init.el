@@ -250,7 +250,7 @@
 (use-package web-mode
   :ensure t
   :mode (("\\.html\\'"      . web-mode)
-         ("\\.html\\.j2\\'" . web-mode)
+         ("\\.html\\.[^.]+\\'" . web-mode)
          ("\\.tt\\'"        . web-mode)
          ("\\.vue\\'"       . web-mode)
          ("\\.css\\'"       . web-css-mode)
