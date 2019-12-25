@@ -761,7 +761,8 @@
             (setq ledger-clear-whole-transactions t
                   ledger-highlight-xact-under-point nil
                   ledger-default-date-format ledger-iso-date-format
-                  ledger-reconcile-default-commodity "PLN")
+                  ledger-reconcile-default-commodity "PLN"
+                  ledger-post-amount-alignment-at :end)
             (defun vifon/delete-blank-lines (&rest ignored)
               "Same as `delete-blank-lines' but accept (and
 ignore) any passed arguments to work as an advice."
