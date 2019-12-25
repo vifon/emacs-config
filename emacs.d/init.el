@@ -888,7 +888,10 @@ ignore) any passed arguments to work as an advice."
               (lambda (arg)
                 (interactive "P")
                 (if arg
-                    (shr-next-link)
+                    (progn
+                      (require 'shr)
+                      (shr-next-link))
+                  (require 'ffap)
                   (ffap-next-url))))
 
             (define-key notmuch-hello-mode-map
