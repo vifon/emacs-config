@@ -110,7 +110,8 @@
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
          ("TAB" . dired-submodes-hydra/body)
-         ("K" . vifon/dired-subdir-toggle))
+         ("K" . vifon/dired-subdir-toggle)
+         ("* C" . vifon/dired-change-marks*))
   :config (progn
             (setq dired-dwim-target nil
                   dired-free-space-args "-Pkh"
@@ -141,7 +142,15 @@
                          (expand-file-name default-directory))
                   (call-interactively #'dired-maybe-insert-subdir)
                 (dired-kill-subdir)
-                (pop-to-mark-command)))))
+                (pop-to-mark-command)))
+
+            (defun vifon/dired-change-marks* (&optional new)
+              (interactive
+               (let* ((cursor-in-echo-area t)
+                      (new (progn (message "Change * marks to (new mark): ")
+                                  (read-char))))
+                 (list new)))
+              (dired-change-marks ?* new))))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
