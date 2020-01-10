@@ -107,7 +107,7 @@ when using the `*-respect-content' commands."
 (setq org-clock-into-drawer t
       org-clock-out-remove-zero-time-clocks t)
 (setq org-cycle-open-archived-trees nil)
-(setq org-archive-default-command 'org-toggle-archive-tag)
+(setq org-archive-default-command 'org-archive-to-archive-sibling)
 (setq org-archive-location ".archive/%s_archive::")
 (setq org-log-into-drawer t)
 (setq org-log-reschedule 'time
