@@ -104,12 +104,6 @@ when using the `*-respect-content' commands."
 (setq org-todo-keyword-faces '(("NEXT" . "Tomato")))
 (setq org-enforce-todo-dependencies t)
 (setq org-clock-into-drawer t)
-(setq org-duration-units `(("min" . 1)
-                           ("h" . 60)
-                           ("d" . ,(* 60 8))
-                           ("w" . ,(* 60 8 5))
-                           ("m" . ,(* 60 8 5 4))
-                           ("y" . ,(* 60 8 5 4 10))))
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
 (setq org-archive-location ".archive/%s_archive::")
@@ -223,6 +217,16 @@ when using the `*-respect-content' commands."
                 org-habit-show-all-today nil
                 org-agenda-show-future-repeats 'next
                 org-habit-show-habits nil))
+
+
+(use-package org-duration
+  :config (customize-set-variable
+           'org-duration-units `(("min" . 1)
+                                 ("h" . 60)
+                                 ("d" . ,(* 60 8))
+                                 ("w" . ,(* 60 8 5))
+                                 ("m" . ,(* 60 8 5 4))
+                                 ("y" . ,(* 60 8 5 4 11)))))
 
 (use-package steam
   :ensure t
