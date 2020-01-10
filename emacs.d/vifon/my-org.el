@@ -112,7 +112,6 @@ when using the `*-respect-content' commands."
 (setq org-log-into-drawer t)
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
-(setq org-hierarchical-todo-statistics nil)
 (setq org-catch-invisible-edits 'error)
 
 (setq org-confirm-elisp-link-function #'y-or-n-p)
