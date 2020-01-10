@@ -104,7 +104,8 @@ when using the `*-respect-content' commands."
 (setq org-tags-exclude-from-inheritance '("PROJECT" "ATTACH"))
 (setq org-todo-keyword-faces '(("NEXT" . "Tomato")))
 (setq org-enforce-todo-dependencies t)
-(setq org-clock-into-drawer t)
+(setq org-clock-into-drawer t
+      org-clock-out-remove-zero-time-clocks t)
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
 (setq org-archive-location ".archive/%s_archive::")
