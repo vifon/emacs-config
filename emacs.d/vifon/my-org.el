@@ -89,7 +89,8 @@ when using the `*-respect-content' commands."
                            (nil :tag . "PROJECT")
                            (nil :tag . "CATEGORY")
                            (nil :tag . "GROUP")
-                           (nil :level . 1)))
+                           (nil :level . 1)
+                           (nil :maxlevel . 2)))
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
       org-agenda-skip-timestamp-if-done nil)
