@@ -113,6 +113,8 @@ when using the `*-respect-content' commands."
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
 (setq org-catch-invisible-edits 'error)
+(setq org-outline-path-complete-in-steps nil
+      org-refile-use-outline-path t)
 
 (setq org-confirm-elisp-link-function #'y-or-n-p)
 
