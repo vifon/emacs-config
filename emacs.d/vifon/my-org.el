@@ -224,13 +224,12 @@ when using the `*-respect-content' commands."
 
 
 (use-package org-duration
-  :config (customize-set-variable
-           'org-duration-units `(("min" . 1)
-                                 ("h" . 60)
-                                 ("d" . ,(* 60 8))
-                                 ("w" . ,(* 60 8 5))
-                                 ("m" . ,(* 60 8 5 4))
-                                 ("y" . ,(* 60 8 5 4 11)))))
+  :config (setq org-duration-units `(("min" . 1)
+                                     ("h" . 60)
+                                     ("d" . ,(* 60 8))
+                                     ("w" . ,(* 60 8 5))
+                                     ("m" . ,(* 60 8 5 4))
+                                     ("y" . ,(* 60 8 5 4 11)))))
 
 (use-package steam
   :ensure t
