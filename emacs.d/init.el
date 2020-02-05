@@ -336,7 +336,6 @@
          ("C-x M-g" . magit-dispatch-popup)
          ("C-c M-g" . magit-file-popup))
   :init (progn
-          (setq magit-last-seen-setup-instructions "1.4.0")
           (setq magit-diff-refine-hunk t)
           (setq magit-completing-read-function #'ivy-completing-read))
   :config (progn
