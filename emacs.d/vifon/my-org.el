@@ -29,7 +29,9 @@
                                 (file-relative-name
                                  (expand-file-name basename
                                                    (org-attach-dir)))))
-                  org-stored-links))))
+                  org-stored-links)))
+  :config (setq org-attach-use-inheritance t
+                org-attach-preferred-new-method 'ask))
 
 (defun org-insert-heading-empty-line-fix ()
   "Correctly surround the new org headings with empty lines.
