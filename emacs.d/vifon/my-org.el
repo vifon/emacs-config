@@ -141,6 +141,9 @@ when using the `*-respect-content' commands."
         ("T" "sub-todo" entry (clock)
          "* TODO %?\n  %U\n  %a\n")
 
+        ("f" "follow-up" entry (file+headline "" "Inbox")
+         "* TODO %?\n  %U\n  Follow-up of: %a\n")
+
         ("b" "issue" entry (file+headline
                             (concat (or (vc-root-dir)
                                         (projectile-project-root)
