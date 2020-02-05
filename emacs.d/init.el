@@ -598,7 +598,11 @@
                       (add-to-list (make-local-variable 'electric-pair-pairs)
                                    '(?` . ?`)))))
 
-(use-package ansible :ensure t :defer t)
+(use-package ansible
+  :ensure t
+  :defer t
+  :mode (("/roles/.*\\.yml\\'" . ansible)
+         ("/main\\.yml\\'" . ansible)))
 (use-package ansible-doc :ensure t :defer t)
 (use-package company-ansible :ensure t :defer t)
 
@@ -607,7 +611,6 @@
   :defer t
   :mode ("\\.sls\\'" . yaml-mode)       ;Saltstack files
   :config (progn
-            (add-hook 'yaml-mode-hook (lambda () (ansible 1)))
             (add-hook 'yaml-mode-hook
                       (lambda ()
                         (add-to-list (make-local-variable 'company-backends)
