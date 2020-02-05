@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: super
+# key: super
+# group: object oriented
+# --
+super().`(replace-regexp-in-string ".*\\." "" (python-info-current-defun))`($1)
+$0

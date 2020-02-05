@@ -10,4 +10,4 @@
                        ("column" "	,	${1:Name}		${2:Type}			${3:NOT NULL}" ", ColumnName ColumnType NOT NULL..." nil nil nil "/home/vifon/.emacs.d/snippets/sql-mode/column" nil nil)))
 
 
-;;; Do not edit! File generated at Thu Apr 25 00:56:12 2019
+;;; Do not edit! File generated at Thu Jan 23 18:55:15 2020

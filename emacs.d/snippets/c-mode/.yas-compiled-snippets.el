@@ -19,4 +19,4 @@
                        ("ass" "#include <assert.h>\n$0" "assert" nil nil nil "/home/vifon/.emacs.d/snippets/c-mode/assert" nil nil)))
 
 
-;;; Do not edit! File generated at Thu Apr 25 00:56:11 2019
+;;; Do not edit! File generated at Thu Jan 23 18:55:15 2020

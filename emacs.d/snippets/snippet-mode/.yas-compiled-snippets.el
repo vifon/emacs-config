@@ -7,4 +7,4 @@
                        ("field" "\\${${1:${2:n}:}$3${4:\\$(${5:lisp-fn})}\\}$0" "${ ...  } field" nil nil nil "/home/vifon/.emacs.d/snippets/snippet-mode/field" nil nil)))
 
 
-;;; Do not edit! File generated at Thu Apr 25 00:56:12 2019
+;;; Do not edit! File generated at Thu Jan 23 18:55:15 2020

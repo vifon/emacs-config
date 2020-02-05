@@ -8,4 +8,4 @@
                        ("getopts" "while getopts \"$1\" ${2:ARG}; do\n    case \"$$2\" in\n${1:$(mapconcat #'identity\n             (remove-if #'not\n                        (mapcar (lambda (x)\n                                  (when (not (equal x ?:))\n                                    (concat (byte-to-string x)\n                                            \")\\n            ;;\")))\n                                yas-text))\n             \"\\n        \")}\n        ?)\n            ;;\n    esac\ndone\nshift $((OPTIND-1))\n" "getopts" nil nil nil "/home/vifon/.emacs.d/snippets/sh-mode/getopts" nil nil)))
 
 
-;;; Do not edit! File generated at Thu Apr 25 00:56:12 2019
+;;; Do not edit! File generated at Thu Jan 23 18:55:15 2020
