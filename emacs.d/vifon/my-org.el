@@ -102,7 +102,8 @@ when using the `*-respect-content' commands."
       org-icalendar-use-scheduled '(event-if-todo)
       org-icalendar-timezone "Europe/Warsaw"
       org-export-with-tasks 'todo)
-(setq org-export-with-toc nil)
+(setq org-export-with-toc nil
+      org-html-validation-link nil)
 (setq org-tags-exclude-from-inheritance '("PROJECT" "ATTACH"))
 (setq org-todo-keyword-faces '(("NEXT" . "Tomato")))
 (setq org-enforce-todo-dependencies t)
