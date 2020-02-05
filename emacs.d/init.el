@@ -14,6 +14,7 @@
                                 (concat
                                  (file-name-as-directory "elpa")
                                  emacs-version)))
+        (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
         (setq package-archives
               '(("gnu"          . "https://elpa.gnu.org/packages/")
                 ("marmalade"    . "https://marmalade-repo.org/packages/")
