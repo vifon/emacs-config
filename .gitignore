@@ -15,4 +15,5 @@
 /emacs.d/smex-items
 /emacs.d/tramp
 /emacs.d/url/
+/emacs.d/snippets/*/.yas-compiled-snippets.el
 /todo.org
