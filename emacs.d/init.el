@@ -331,10 +331,9 @@
 
 (use-package magit
   :ensure t
+  :pin melpa
   :commands magit-process-file
-  :bind (("C-c g" . magit-status)
-         ("C-x M-g" . magit-dispatch-popup)
-         ("C-c M-g" . magit-file-popup))
+  :bind ("C-c g" . magit-status)
   :init (progn
           (setq magit-diff-refine-hunk t)
           (setq magit-completing-read-function #'ivy-completing-read))
@@ -348,7 +347,8 @@
                    magit-reflog-mode-map
                    magit-refs-mode-map
                    magit-diff-mode-map))
-            (magit-define-popup-switch 'magit-log-popup ?F "first parent" "--first-parent")
+            (transient-append-suffix 'magit-log "-f"
+              '("-1" "First parent" "--first-parent"))
             (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
 (use-package magit-todos :ensure t :defer t)
