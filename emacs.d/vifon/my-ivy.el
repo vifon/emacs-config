@@ -32,8 +32,7 @@
   :diminish ivy-mode
   :bind (("C-x M-r" . ivy-resume)
          :map ivy-minibuffer-map
-         ("C-c C-f" . ivy-toggle-calling)
-         ("C-c C-m" . ivy-toggle-fuzzy))
+         ("C-c C-f" . ivy-toggle-fuzzy))
   :init (progn
           (setq ivy-do-completion-in-region nil)
           (ivy-mode 1)
