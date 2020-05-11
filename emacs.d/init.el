@@ -984,8 +984,8 @@ ignore) any passed arguments to work as an advice."
             (load-theme 'zenburn 'no-confirm)
             (setq frame-background-mode 'dark)
             (ignore-errors
-              (let ((font-name "Inconsolata")
-                    (font-size "14"))
+              (let ((font-name "JetBrains Mono")
+                    (font-size "13"))
                 (let ((font (concat font-name "-" font-size)))
                   (add-to-list 'default-frame-alist `(font . ,font))
                   (set-frame-font font nil t))))))
