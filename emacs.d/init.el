@@ -978,17 +978,39 @@ ignore) any passed arguments to work as an advice."
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
 
-(use-package zenburn-theme
+(use-package solarized-theme
   :ensure t
   :config (progn
-            (load-theme 'zenburn 'no-confirm)
-            (setq frame-background-mode 'dark)
-            (ignore-errors
-              (let ((font-name "JetBrains Mono")
-                    (font-size "13"))
-                (let ((font (concat font-name "-" font-size)))
-                  (add-to-list 'default-frame-alist `(font . ,font))
-                  (set-frame-font font nil t))))))
+            (setq vifon/theme-light 'solarized-light
+                  vifon/theme-dark 'solarized-dark)
+
+            (defun vifon/theme-light ()
+              (interactive)
+              (disable-theme vifon/theme-dark)
+              (setq frame-background-mode 'light)
+              (load-theme vifon/theme-light 'no-confirm))
+            (defun vifon/theme-dark ()
+              (interactive)
+              (disable-theme vifon/theme-light)
+              (setq frame-background-mode 'dark)
+              (load-theme vifon/theme-dark 'no-confirm))
+
+            (setq solarized-scale-org-headlines nil
+                  solarized-scale-outline-headlines nil
+                  solarized-use-variable-pitch nil)
+            (setq frame-background-mode 'light)
+            (load-theme vifon/theme-light 'no-confirm)
+
+            (global-set-key (kbd "C-M-s-<") #'vifon/theme-light)
+            (global-set-key (kbd "C-M-s->") #'vifon/theme-dark)))
+
+(ignore-errors
+  (let* ((font-name "JetBrains Mono")
+         (font-size "13")
+         (font (concat font-name "-" font-size)))
+    (add-to-list 'default-frame-alist `(font . ,font))
+    (set-frame-font font nil t)))
+
 
 ;;; DEPRECATION: replaced by "~/.emacs.d/local.el"
 (use-package my-secret
