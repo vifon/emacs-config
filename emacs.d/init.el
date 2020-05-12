@@ -992,15 +992,23 @@ ignore) any passed arguments to work as an advice."
   :config (let ((vifon/theme-light 'solarized-light)
                 (vifon/theme-dark 'solarized-dark))
 
-            (defun vifon/theme-light ()
-              (interactive)
-              (disable-theme vifon/theme-dark)
+            (defun vifon/theme-light (&optional no-disable)
+              "Enable the preferred light theme.
+
+Unless the prefix argument was passed, disable the current one beforehand."
+              (interactive "P")
+              (unless no-disable
+                (disable-theme vifon/theme-dark))
               (setq frame-background-mode 'light)
               (load-theme vifon/theme-light 'no-confirm)
               (vifon/set-font))
-            (defun vifon/theme-dark ()
-              (interactive)
-              (disable-theme vifon/theme-light)
+            (defun vifon/theme-dark (&optional no-disable)
+              "Enable the preferred dark theme.
+
+Unless the prefix argument was passed, disable the current one beforehand."
+              (interactive "P")
+              (unless no-disable
+                (disable-theme vifon/theme-light))
               (setq frame-background-mode 'dark)
               (load-theme vifon/theme-dark 'no-confirm)
               (vifon/set-font))
