@@ -57,36 +57,40 @@
             new-value
           (list ""))))
 
-;; Extra mode line faces
-(make-face 'mode-line-read-only-face)
-(make-face 'mode-line-modified-face)
-(make-face 'mode-line-filename-face)
-(make-face 'mode-line-vposition-face)
-(make-face 'mode-line-position-face)
-(make-face 'mode-line-80col-face)
-(make-face 'mode-line-narrow-face)
+(defface mode-line-read-only-face
+  '((t :inherit mode-line-face
+       :foreground "#60a5ff"
+       :box (:line-width 2 :color "#60a5ff")))
+  nil)
+(defface mode-line-modified-face
+  '((t :inherit mode-line-face
+       :foreground "#c82829"
+       :box (:line-width 2 :color "#c82829")))
+  nil)
+(defface mode-line-filename-face
+  '((((background dark))
+     :inherit mode-line-face
+     :foreground "#eab700"
+     :weight bold)
+    (((background light))
+     :inherit mode-line-face
+     :foreground "#a98400"
+     :weight bold))
+  nil)
+(defface mode-line-vposition-face
+  '((t :inherit mode-line-face
+       :weight bold))
+  nil)
+(defface mode-line-position-face
+  '((t :inherit mode-line-face))
+  nil)
+(defface mode-line-80col-face
+  '((t :inherit mode-line-position-face
+       :foreground "black" :background "#eab700"))
+  nil)
+(defface mode-line-narrow-face
+  '((t :inherit mode-line-face
+       :foreground "red"))
+  nil)
 
-(set-face-attribute 'mode-line-read-only-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#60a5ff"
-                    :box '(:line-width 2 :color "#60a5ff"))
-(set-face-attribute 'mode-line-modified-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#c82829"
-                    :box '(:line-width 2 :color "#c82829"))
-(set-face-attribute 'mode-line-filename-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#eab700"
-                    :weight 'bold)
-(set-face-attribute 'mode-line-vposition-face nil
-                    :inherit 'mode-line-face
-                    :weight 'bold)
-(set-face-attribute 'mode-line-position-face nil
-                    :inherit 'mode-line-face)
-(set-face-attribute 'mode-line-80col-face nil
-                    :inherit 'mode-line-position-face
-                    :foreground "black" :background "#eab700")
-(set-face-attribute 'mode-line-narrow-face nil
-                    :inherit 'mode-line-face
-                    :foreground "red")
 (provide 'my-mode-line)
