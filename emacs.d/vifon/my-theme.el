@@ -9,6 +9,16 @@
       (add-to-list 'default-frame-alist `(font . ,font))
       (set-frame-font font nil t))))
 
+(defun vifon/switch-theme (background-mode new-theme &optional old-theme)
+  "Change the current theme to NEW-THEME, disabling OLD-THEME.
+
+BACKGROUND-MODE should be either `dark' or `light'."
+  (when old-theme
+    (disable-theme old-theme))
+  (setq frame-background-mode background-mode)
+  (load-theme new-theme 'no-confirm)
+  (vifon/set-font))
+
 (let ((vifon/theme-light 'solarized-light)
       (vifon/theme-dark  'solarized-dark))
   (defun vifon/theme-light (&optional no-disable)
@@ -16,22 +26,20 @@
 
 Unless the prefix argument was passed, disable the current one beforehand."
     (interactive "P")
-    (unless no-disable
-      (disable-theme vifon/theme-dark))
-    (setq frame-background-mode 'light)
-    (load-theme vifon/theme-light 'no-confirm)
-    (vifon/set-font))
+    (vifon/switch-theme 'light
+                        vifon/theme-light
+                        (unless no-disable
+                          vifon/theme-dark)))
 
   (defun vifon/theme-dark (&optional no-disable)
     "Enable the preferred dark theme.
 
 Unless the prefix argument was passed, disable the current one beforehand."
     (interactive "P")
-    (unless no-disable
-      (disable-theme vifon/theme-light))
-    (setq frame-background-mode 'dark)
-    (load-theme vifon/theme-dark 'no-confirm)
-    (vifon/set-font)))
+    (vifon/switch-theme 'dark
+                        vifon/theme-dark
+                        (unless no-disable
+                          vifon/theme-light))))
 
 (global-set-key (kbd "C-M-s-<") #'vifon/theme-light)
 (global-set-key (kbd "C-M-s->") #'vifon/theme-dark)
