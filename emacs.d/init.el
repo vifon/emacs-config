@@ -980,9 +980,8 @@ ignore) any passed arguments to work as an advice."
 
 (use-package solarized-theme
   :ensure t
-  :config (progn
-            (setq vifon/theme-light 'solarized-light
-                  vifon/theme-dark 'solarized-dark)
+  :config (let ((vifon/theme-light 'solarized-light)
+                (vifon/theme-dark 'solarized-dark))
 
             (defun vifon/theme-light ()
               (interactive)
