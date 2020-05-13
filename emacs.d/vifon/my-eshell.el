@@ -52,4 +52,6 @@
                                      (other-window 1)
                                      (eshell arg)))
 
+(setq eshell-hist-ignoredups t)
+
 (provide 'my-eshell)
