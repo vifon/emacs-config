@@ -51,7 +51,7 @@ Unless the prefix argument was passed, disable the current one beforehand."
                 solarized-use-variable-pitch nil))
 
 
-(defun vifon/daytime-p ()
+(defun vifon/daytime-solar-p ()
   (require 'cl-lib)
   (require 'seq)
   (require 'solar)
@@ -68,6 +68,12 @@ Unless the prefix argument was passed, disable the current one beforehand."
     (< (+ sunrise 200)
        now
        sunset)))
+
+(defun vifon/daytime-p ()
+  (let ((now (string-to-number (format-time-string "%H%M"))))
+    (< 0800
+       now
+       1600)))
 
 (defun vifon/theme-dwim (&optional no-disable)
   (interactive "P")
