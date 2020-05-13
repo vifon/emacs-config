@@ -50,6 +50,17 @@ Unless the prefix argument was passed, disable the current one beforehand."
                 solarized-scale-outline-headlines nil
                 solarized-use-variable-pitch nil))
 
-(vifon/theme-light 'no-disable)
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (defun vifon/theme-init-daemon (frame)
+                (with-selected-frame frame
+                  (vifon/theme-light 'no-disable))
+                ;; Run this hook only once.
+                (remove-hook 'after-make-frame-functions
+                             #'vifon/theme-init-daemon)
+                (fmakunbound 'vifon/theme-init-daemon)))
+  (vifon/theme-light 'no-disable))
+
 
 (provide 'my-theme)
