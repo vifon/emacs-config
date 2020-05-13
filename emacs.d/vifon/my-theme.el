@@ -51,16 +51,42 @@ Unless the prefix argument was passed, disable the current one beforehand."
                 solarized-use-variable-pitch nil))
 
 
+(defun vifon/daytime-p ()
+  (require 'cl-lib)
+  (require 'seq)
+  (require 'solar)
+  (let* ((sunrise-sunset
+          (mapcar (lambda (time)
+                    (string-to-number
+                     (let ((calendar-time-display-form '(24-hours minutes)))
+                       (apply #'solar-time-string time))))
+                  (seq-take (solar-sunrise-sunset (calendar-current-date))
+                            2)))
+         (sunrise (cl-first sunrise-sunset))
+         (sunset (cl-second sunrise-sunset))
+         (now (string-to-number (format-time-string "%H%M"))))
+    (< (+ sunrise 200)
+       now
+       sunset)))
+
+(defun vifon/theme-dwim (&optional no-disable)
+  (interactive "P")
+  (if (vifon/daytime-p)
+      (vifon/theme-light no-disable)
+    (vifon/theme-dark no-disable)))
+
+(global-set-key (kbd "C-M-s-?") #'vifon/theme-dwim)
+
 (if (daemonp)
     (add-hook 'after-make-frame-functions
               (defun vifon/theme-init-daemon (frame)
                 (with-selected-frame frame
-                  (vifon/theme-light 'no-disable))
+                  (vifon/theme-dwim 'no-disable))
                 ;; Run this hook only once.
                 (remove-hook 'after-make-frame-functions
                              #'vifon/theme-init-daemon)
                 (fmakunbound 'vifon/theme-init-daemon)))
-  (vifon/theme-light 'no-disable))
+  (vifon/theme-dwim 'no-disable))
 
 
 (provide 'my-theme)
