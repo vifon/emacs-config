@@ -38,7 +38,9 @@
 (transient-mark-mode 1)
 
 (setq backup-directory-alist '(("^/media/" . ".")
+                               ("^/run/media/" . ".")
                                ("." . "~/.emacs_saves"))
+      tramp-backup-directory-alist '(("." . "."))
       backup-by-copying t)
 
 (setq vc-follow-symlinks t)
