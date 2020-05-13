@@ -22,6 +22,8 @@
             (setq exwm-workspace-show-all-buffers t
                   exwm-layout-show-all-buffers t)
 
+            (setq epa-pinentry-mode 'loopback)
+
             (require 'exwm-systemtray)
             (exwm-systemtray-enable)
 
