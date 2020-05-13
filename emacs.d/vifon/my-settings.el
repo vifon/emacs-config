@@ -89,8 +89,8 @@
 
 (setq password-cache-expiry 300)
 
-(require 'cl)
-(setq tab-stop-list (loop for i from 4 to 480 by 4 collecting i))
+(require 'cl-lib)
+(setq tab-stop-list (cl-loop for i from 4 to 480 by 4 collecting i))
 
 (when (version<= "24.4" emacs-version)
   (setq browse-url-browser-function #'browse-url-generic)

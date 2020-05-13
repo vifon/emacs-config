@@ -111,13 +111,14 @@ manpage."
                 flag))
             flags)))
 
+(require 'cl-lib)
 (defun flags-nonportable (portable-flags command &rest nonportable-flags)
   "Combine PORTABLE-FLAGS and the supported NONPORTABLE-FLAGS
 into a single string with `combine-and-quote-strings'.
 
 See also: `flags-if-supported'."
   (combine-and-quote-strings
-   (delete-if
+   (cl-delete-if
     nil (cons portable-flags
               (apply #'flags-if-supported
                      command
