@@ -154,9 +154,8 @@ _v_c status: %-3(bound-and-true-p diff-hl-dired-mode)"
   (interactive "P")
   (if arg
       (set-selective-display arg)
-    (if (equal (current-column)
-               selective-display)
-        (set-selective-display 0)
+    (if (not (zerop (or selective-display 0)))
+        (set-selective-display nil)
       (set-selective-display (current-column)))))
 (global-set-key [remap set-selective-display] #'toggle-selective-display)
 
