@@ -115,7 +115,7 @@ when using the `*-respect-content' commands."
 (setq org-log-into-drawer t)
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
-(setq org-catch-invisible-edits 'error)
+(setq org-catch-invisible-edits 'smart)
 (setq org-outline-path-complete-in-steps nil
       org-refile-use-outline-path t)
 (setq org-id-link-to-org-use-id 'use-existing)
