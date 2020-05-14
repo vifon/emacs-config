@@ -65,7 +65,7 @@ Unless the prefix argument was passed, disable the current one beforehand."
          (sunrise (cl-first sunrise-sunset))
          (sunset (cl-second sunrise-sunset))
          (now (string-to-number (format-time-string "%H%M"))))
-    (< (+ sunrise 200)
+    (< sunrise
        now
        sunset)))
 
