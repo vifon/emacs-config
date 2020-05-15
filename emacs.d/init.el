@@ -990,6 +990,7 @@ ignore) any passed arguments to work as an advice."
 (use-package restclient :ensure t :defer t)
 (use-package web-beautify :ensure t :defer t)
 (use-package wgrep :ensure t :defer t)
+(use-package ripgrep :ensure t :defer t)
 (use-package fish-mode :ensure t :defer t)
 (use-package orgalist :ensure t :defer t)
 
