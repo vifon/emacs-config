@@ -991,6 +991,7 @@ ignore) any passed arguments to work as an advice."
 (use-package web-beautify :ensure t :defer t)
 (use-package wgrep :ensure t :defer t)
 (use-package fish-mode :ensure t :defer t)
+(use-package orgalist :ensure t :defer t)
 
 ;;; Needs to be the last one because otherwise during the installation
 ;;; (via :ensure) it prompts whether to save ~/.abbrev_defs making it
