@@ -94,7 +94,9 @@
 
 (when (version<= "24.4" emacs-version)
   (setq browse-url-browser-function #'browse-url-generic)
-  (setq shr-external-browser 'browse-url-generic)
+  (if (version<= "27.0" emacs-version)
+      (setq browse-url-secondary-browser-function 'browse-url-generic)
+    (setq shr-external-browser 'browse-url-generic))
   (setq eww-download-directory "~/dl"))
 (setq browse-url-generic-program "webbroboard")
 
