@@ -724,10 +724,6 @@
                       (yas-minor-mode -1)))
   :bind ("C-x T" . sane-term))
 
-(use-package zop-to-char
-  :ensure t
-  :bind (("M-Z" . zop-up-to-char)))
-
 (use-package diff-hl
   :ensure t
   :defer 2
