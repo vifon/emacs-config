@@ -145,7 +145,7 @@
 
             (defun vifon/switch-to-last-buffer ()
               (interactive)
-              (switch-to-buffer (other-buffer (current-buffer) 1)))
+              (switch-to-buffer (other-buffer (current-buffer) t)))
 
             (setq exwm-input-global-keys
                   `((,(kbd "s-M")        . my-exwm-mediaplayer)
