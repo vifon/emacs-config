@@ -40,8 +40,8 @@
             (setq mode-line-frame-identification
                   '(:eval (propertize
                            (format "X%s "
-                                   (funcall exwm-workspace-index-map
-                                            exwm-workspace-current-index))
+                                   (exwm-workspace--position
+                                    (selected-frame)))
                            'face 'bold)))
 
             (require 'exwm-randr)
