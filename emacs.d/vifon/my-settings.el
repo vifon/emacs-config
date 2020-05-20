@@ -52,8 +52,6 @@
 
 (setq iswitchb-default-method 'samewindow)
 
-(setq gud-gdb-command-name "gdb -q -i=mi")
-
 (setq inferior-octave-startup-args '("-q"))
 
 (setq tramp-default-method "sshx")
