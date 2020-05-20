@@ -4,6 +4,8 @@
   :ensure t
   :demand t
   :config (progn
+            (require 'cl-lib)
+
             (setq exwm-workspace-number 6)
             (add-hook 'exwm-update-class-hook
                       (defun my-exwm-update-class-hook ()
@@ -227,6 +229,15 @@
                 (delete-window)))
 
             (define-key exwm-mode-map (kbd "C-c C-M-m") #'exwm-workspace-move)
+
+            (cl-mapcar (lambda (c n)
+                         (define-key exwm-mode-map (kbd (format "s-%c" c))
+                           (lambda ()
+                             (interactive)
+                             (exwm-workspace-move-window n)
+                             (exwm-workspace-switch n))))
+                       '(?\) ?! ?@ ?# ?$ ?% ?^ ?& ?* ?\()
+                       (number-sequence 0 9))
 
             (setq exwm-input-simulation-keys
                   `(;; movement
