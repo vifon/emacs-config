@@ -45,12 +45,12 @@
                            'face 'bold)))
 
             (require 'exwm-randr)
-            (defvar vifon/exwm-workspace->display '(1 3 5))
-            (defun vifon/exwm-randr-workspace-output-plist-update ()
-              (setq exwm-randr-workspace-output-plist
-                    (mapcan (lambda (n)
-                              (list n "DP-1-2"))
-                            vifon/exwm-workspace->display)))
+            (let ((vifon/exwm-workspace->display '(3 4 5)))
+              (defun vifon/exwm-randr-workspace-output-plist-update ()
+                (setq exwm-randr-workspace-output-plist
+                      (mapcan (lambda (n)
+                                (list n "DP-1-2"))
+                              vifon/exwm-workspace->display))))
             (defun vifon/exwm-randr-refresh ()
               (vifon/exwm-randr-workspace-output-plist-update)
               (exwm-randr-refresh))
