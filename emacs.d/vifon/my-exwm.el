@@ -147,6 +147,28 @@
               (interactive)
               (switch-to-buffer (other-buffer (current-buffer) t)))
 
+            (defun vifon/exwm-split (split-fun)
+              (funcall split-fun)
+              (other-window 1)
+              (when (eq major-mode 'exwm-mode)
+                ;; Needed for the original window's buffer to not get
+                ;; auto-switched.  If there are two windows with the
+                ;; same EXWM buffer at the end of a command, one of
+                ;; them gets its buffer buried.  A few EXWM versions
+                ;; ago it happened to be the one we wanted, but this
+                ;; is no longer the case.  This should take care of it
+                ;; and it should no longer be dependent on the
+                ;; EXWM internals.
+                (switch-to-buffer (other-buffer (current-buffer) t))))
+
+            (defun vifon/exwm-split-below ()
+              (interactive)
+              (vifon/exwm-split #'split-window-below))
+
+            (defun vifon/exwm-split-right ()
+              (interactive)
+              (vifon/exwm-split #'split-window-right))
+
             (setq exwm-input-global-keys
                   `((,(kbd "s-M")        . my-exwm-mediaplayer)
                     (,(kbd "<s-escape>") . my-exwm-mediaplayer)
@@ -170,14 +192,8 @@
                                 ("j" "down")
                                 ("k" "up")
                                 ("l" "right")))
-                    (,(kbd "s-u") . (lambda ()
-                                      (interactive)
-                                      (split-window-below)
-                                      (other-window 1)))
-                    (,(kbd "s-o") . (lambda ()
-                                      (interactive)
-                                      (split-window-right)
-                                      (other-window 1)))
+                    (,(kbd "s-u") . vifon/exwm-split-below)
+                    (,(kbd "s-o") . vifon/exwm-split-right)
                     (,(kbd "S-s-<return>") . exwm-floating-toggle-floating)
                     (,(kbd "s-Q") . (lambda () (interactive) (kill-buffer)))
                     ;; Bind "s-0" to "s-9" to switch to a workspace by its index.
