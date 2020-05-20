@@ -52,7 +52,6 @@
 
 (setq iswitchb-default-method 'samewindow)
 
-(setq compile-command "make -k -C .")
 (setq gud-gdb-command-name "gdb -q -i=mi")
 
 (setq inferior-octave-startup-args '("-q"))
@@ -77,9 +76,6 @@
 (c-set-offset 'innamespace 0)
 
 (setq parens-require-spaces nil)
-
-(setq compilation-scroll-output 'first-error
-      compilation-read-command nil)
 
 (setq find-file-existing-other-name nil)
 (setq require-final-newline t)
