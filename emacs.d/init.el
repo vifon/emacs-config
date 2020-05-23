@@ -113,7 +113,8 @@
          ("z" . dired-subtree-toggle)
          ("TAB" . dired-submodes-hydra/body)
          ("K" . vifon/dired-subdir-toggle)
-         ("* C" . vifon/dired-change-marks*))
+         ("* C" . vifon/dired-change-marks*)
+         ("E" . vifon/dired-dragon))
   :config (progn
             (setq dired-dwim-target nil
                   dired-free-space-args "-Pkh"
@@ -152,7 +153,13 @@
                       (new (progn (message "Change * marks to (new mark): ")
                                   (read-char))))
                  (list new)))
-              (dired-change-marks ?* new))))
+              (dired-change-marks ?* new))
+
+            (defun vifon/dired-dragon ()
+              (interactive)
+              (dired-do-shell-command "dragon -a -x *"
+                                      nil
+                                      (dired-get-marked-files)))))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
