@@ -591,7 +591,36 @@
             (defun deft-index ()
               (interactive)
               (bury-buffer "*Deft*")
-              (deft-find-file "index.org"))))
+              (deft-find-file "index.org"))
+
+            (defun deft-insert (file-name)
+              "Insert a link to another org file, possibly creating a new file.
+
+If the region is active, use the selected text.
+Otherwise interactively ask for a file to link to.
+
+If the file doesn't exist, create it, add a title to it and focus
+it in a new window.  Otherwise just display it in the
+other window."
+              (interactive
+               (list (if (region-active-p)
+                         (buffer-substring-no-properties
+                          (point) (mark))
+                       (file-name-sans-extension
+                        (completing-read "Target: "
+                                         (deft-find-all-files-no-prefix))))))
+              (let* ((title (file-name-sans-extension file-name))
+                     (file-name (deft-absolute-filename file-name))
+                     (link (concat "file:" file-name)))
+                (let ((org-link-file-type 'relative))
+                  (org-insert-link nil link title))
+                (if (file-exists-p file-name)
+                    (display-buffer (find-file-noselect file-name))
+                  (with-temp-file file-name
+                    (insert "#+TITLE: " title "\n\n"))
+                  (find-file-other-window file-name)
+                  (with-current-buffer (get-file-buffer file-name)
+                    (goto-char (point-max))))))))
 
 (use-package markdown-mode
   :ensure t
