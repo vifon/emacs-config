@@ -649,7 +649,7 @@ other window."
                                      'company-ansible)))))
 
 (use-package pod-mode
-  :mode ("\\.pod$" . pod-mode))
+  :mode ("\\.pod\\'" . pod-mode))
 
 (use-package dumb-jump
   :ensure t
