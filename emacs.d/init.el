@@ -363,6 +363,11 @@
 
 (use-package magit-todos :ensure t :defer t)
 
+(use-package forge
+  :ensure t
+  :pin melpa
+  :after magit)
+
 (use-package git-commit
   :ensure t
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
