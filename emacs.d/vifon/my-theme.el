@@ -73,7 +73,7 @@ Unless the prefix argument was passed, disable the current one beforehand."
   (let ((now (string-to-number (format-time-string "%H%M"))))
     (< 0800
        now
-       1600)))
+       1800)))
 
 (defun vifon/theme-dwim (&optional no-disable)
   (interactive "P")
