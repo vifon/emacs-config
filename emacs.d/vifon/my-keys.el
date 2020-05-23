@@ -235,6 +235,7 @@ _0__a_↤  _h__i__l_  ↦_e_
                   ("SPC" nil)))
 
 
+(define-key isearch-mode-map (kbd "C-M-r") #'isearch-query-replace)
 
 
 (provide 'my-keys)
