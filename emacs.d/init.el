@@ -584,11 +584,11 @@
   :ensure t
   :bind (("<f5>" . deft))
   :init (setq deft-auto-save-interval 0)
-  :config (setq deft-extensions (sort deft-extensions
-                                      (lambda (a b)
-                                        (equal a "md")))
-                deft-default-extension "md"
-                deft-markdown-mode-title-level 1))
+  :config (setq deft-default-extension "org"
+                deft-use-filter-string-for-filename t
+                deft-file-naming-rules '((noslash . "-")
+                                         (nospace . "-")
+                                         (case-fn . downcase))))
 
 (use-package markdown-mode
   :ensure t
