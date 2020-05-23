@@ -130,9 +130,6 @@ when using the `*-respect-content' commands."
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c S") 'org-store-link)
-(global-set-key [f8] '(lambda ()
-                        (interactive)
-                        (find-file (concat (vc-root-dir) "todo.org"))))
 
 (setq org-capture-templates
       '(("t" "todo" entry (file+headline "" "Inbox")
