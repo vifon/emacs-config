@@ -109,11 +109,7 @@
 (fset 'iconify-orig (symbol-function 'iconify-frame))
 (defalias 'iconify-frame 'ignore)
 
-(defalias 'elpa 'list-packages)
-(defalias 'repl 'ielm)
-(defalias 'colors 'list-colors-display)
-(defalias 'desktop-load 'desktop-change-dir)
-(setq desktop-load-locked-desktop t)
+(defalias 'elpa 'package-list-packages)
 
 
 (provide 'my-settings)
