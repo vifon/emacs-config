@@ -572,23 +572,26 @@
          ("<XF86Forward>" . winner-redo))
   :init (winner-mode 1))
 
-(use-package c-c++-header
-  :mode ("\\.h\\'" . c-c++-header)
-  :init (defalias 'h++-mode 'c++-mode))
-
 (use-package uniquify
   :config (setq uniquify-buffer-name-style 'post-forward-angle-brackets
                 uniquify-strip-common-suffix t))
 
 (use-package deft
   :ensure t
-  :bind (("<f5>" . deft))
+  :bind (("<f5>" . deft)
+         :map deft-mode-map
+         ("<f5>" . deft-index))
   :init (setq deft-auto-save-interval 0)
-  :config (setq deft-default-extension "org"
-                deft-use-filter-string-for-filename t
-                deft-file-naming-rules '((noslash . "-")
-                                         (nospace . "-")
-                                         (case-fn . downcase))))
+  :config (progn
+            (setq deft-default-extension "org"
+                  deft-use-filter-string-for-filename t
+                  deft-file-naming-rules '((noslash . "-")
+                                           (nospace . "-")
+                                           (case-fn . downcase)))
+            (defun deft-index ()
+              (interactive)
+              (bury-buffer "*Deft*")
+              (deft-find-file "index.org"))))
 
 (use-package markdown-mode
   :ensure t
