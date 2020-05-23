@@ -1023,6 +1023,10 @@ ignore) any passed arguments to work as an advice."
   :defer 13
   :config (midnight-mode 1))
 
+(use-package hyperlist-mode
+  :ensure t
+  :mode ("\\.hl\\'" . hyperlist-mode))
+
 (use-package aggressive-indent :ensure t :defer t)
 (use-package color-identifiers-mode :ensure t :defer t)
 (use-package dockerfile-mode :ensure t :defer t)
