@@ -11,13 +11,15 @@
 
 (setq bidi-display-reordering nil)
 
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode 0))
-(when (fboundp 'horizontal-scroll-bar-mode)
-  (horizontal-scroll-bar-mode 0))
-(when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
-(when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
-(when (fboundp 'tooltip-mode) (tooltip-mode 0))
+(when (< emacs-major-version 27)
+ (dolist (mode '(scroll-bar-mode
+                 horizontal-scroll-bar-mode
+                 menu-bar-mode
+                 tool-bar-mode
+                 tooltip-mode))
+   (when (fboundp mode)
+     (funcall mode 0))))
+
 (column-number-mode t)
 
 (when (version<= "26.1" emacs-version)

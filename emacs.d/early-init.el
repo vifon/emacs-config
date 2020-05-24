@@ -40,3 +40,11 @@
   (use-package diminish :ensure t :defer t)
   (use-package bind-key :ensure t :defer t))
 (bootstrap-use-package)
+
+(dolist (mode '(scroll-bar-mode
+                horizontal-scroll-bar-mode
+                menu-bar-mode
+                tool-bar-mode
+                tooltip-mode))
+  (when (fboundp mode)
+    (funcall mode 0)))
