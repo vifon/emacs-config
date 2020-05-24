@@ -9,7 +9,8 @@
                 (org-time-stamp-inactive '(16))))
             (setf (cdr (assoc "\\.pdf\\'"
                               org-file-apps))
-                  "evince %s")))
+                  "evince %s")
+            (add-to-list 'org-file-apps '(directory . emacs))))
 
 (use-package org-attach
   :commands (org-attach-expand-link org-attach-attach)
