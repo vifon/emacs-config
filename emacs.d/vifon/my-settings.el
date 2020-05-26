@@ -15,10 +15,11 @@
  (dolist (mode '(scroll-bar-mode
                  horizontal-scroll-bar-mode
                  menu-bar-mode
-                 tool-bar-mode
-                 tooltip-mode))
+                 tool-bar-mode))
    (when (fboundp mode)
      (funcall mode 0))))
+
+(tooltip-mode 0)
 
 (column-number-mode t)
 
