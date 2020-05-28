@@ -676,18 +676,10 @@
                               python-indent 4
                               py-indent-offset 4)))))
 
-(use-package anaconda-mode
+(use-package eglot
   :ensure t
-  :commands (anaconda-mode
-             anaconda-eldoc-mode)
-  :init (progn
-          (add-hook 'python-mode-hook #'anaconda-mode)
-          (add-hook 'python-mode-hook #'anaconda-eldoc-mode)))
-
-(use-package company-anaconda
-  :ensure t
-  :after company
-  :init (add-to-list 'company-backends 'company-anaconda))
+  :defer t
+  :init (add-hook 'python-mode-hook #'eglot-ensure))
 
 (use-package js-mode
   :defer t
