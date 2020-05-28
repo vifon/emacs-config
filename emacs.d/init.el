@@ -343,7 +343,8 @@
   :pin melpa
   :commands magit-process-file
   :bind (("C-c g" . magit-status)
-         ("C-x M-g" . magit-dispatch))
+         ("C-x M-g" . magit-dispatch)
+         ("C-c M-g" . magit-file-dispatch))
   :init (progn
           (setq magit-diff-refine-hunk t)
           (setq magit-completing-read-function #'ivy-completing-read))
