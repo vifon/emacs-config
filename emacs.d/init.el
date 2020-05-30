@@ -591,9 +591,11 @@
                                            (case-fn . downcase)))
             (defun deft-index ()
               (interactive)
-              (deft-find-file "index.org"))
+              (deft-find-file "index.org"))))
 
-            (require 'zettel-mode nil 'noerror)))
+(use-package zettel-mode
+  :if (file-readable-p "~/.emacs.d/modules/zettel-mode.el")
+  :mode ("/\\.deft/.*\\.org\\'" . zettel-mode))
 
 (use-package markdown-mode
   :ensure t
