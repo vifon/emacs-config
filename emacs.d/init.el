@@ -608,20 +608,20 @@
 (use-package ansible
   :ensure t
   :defer t
-  :mode (("/roles/.*\\.yml\\'" . ansible)
-         ("/main\\.yml\\'" . ansible)))
+  :init (add-hook 'yaml-mode-hook
+                  (defun ansible-maybe (&optional arg)
+                    (interactive "P")
+                    (require 'yasnippet) ;Load ansible-specific snippets.
+                    (when (or (string-match-p "/roles/.*\\.yml\\'" (buffer-file-name))
+                              (string-match-p "/main\\.yml\\'" (buffer-file-name)))
+                      (ansible arg)))))
 (use-package ansible-doc :ensure t :defer t)
-(use-package company-ansible :ensure t :defer t)
 
 (use-package yaml-mode
   :ensure t
   :defer t
   :mode ("\\.sls\\'" . yaml-mode)       ;Saltstack files
-  :config (progn
-            (add-hook 'yaml-mode-hook
-                      (lambda ()
-                        (add-to-list (make-local-variable 'company-backends)
-                                     'company-ansible)))))
+)
 
 (use-package pod-mode
   :mode ("\\.pod\\'" . pod-mode))
