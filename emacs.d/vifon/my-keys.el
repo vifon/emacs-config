@@ -23,7 +23,7 @@
                                (dired-current-directory)
                              default-directory)))
     (if (window-system)
-        (call-process "urxvtcd")
+        (start-process "alacritty" nil "alacritty")
       (call-process "tmux" nil 0 nil
                     "split-window" "-h"))))
 

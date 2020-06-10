@@ -82,8 +82,7 @@
 
             (defun my-exwm-mediaplayer ()
               (interactive)
-              (start-process-shell-command
-               "ncmpcpp" nil "urxvtcd -e ncmpcpp-run"))
+              (start-process "alacritty" nil "alacritty" "-e" "ncmpcpp-run"))
 
             (defun my-exwm-next-workspace (arg)
               (interactive "p")
@@ -143,7 +142,7 @@
               (let ((default-directory (if (derived-mode-p 'dired-mode)
                                            (dired-current-directory)
                                          default-directory)))
-                (call-process "urxvtcd")))
+                (start-process "alacritty" nil "alacritty")))
 
             (defun vifon/switch-to-last-buffer ()
               (interactive)
@@ -262,10 +261,11 @@
                     ([?\C-s] . [?\C-f])))
 
             (add-hook 'exwm-manage-finish-hook
-                      (defun my-exwm-urxvt-simulation-keys ()
+                      (defun my-exwm-term-simulation-keys ()
                         (when exwm-class-name
                           (cond
-                           ((string= exwm-class-name "URxvt")
+                           ((or (string= exwm-class-name "URxvt")
+                                (string= exwm-class-name "Alacritty"))
                             (exwm-input-set-local-simulation-keys
                              (mapcar (lambda (key)
                                        `([,key] . [,key]))
