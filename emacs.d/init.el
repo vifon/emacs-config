@@ -673,6 +673,11 @@
   :hook ((python-mode . lsp))
   :init (setq lsp-keymap-prefix "C-M-s-l"))
 
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :init (setq lsp-ui-doc-enable nil))
+
 (use-package company-lsp
   :ensure t
   :after lsp-mode
