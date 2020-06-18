@@ -916,7 +916,12 @@ ignore) any passed arguments to work as an advice."
             (defun notmuch-fcc-replace ()
               (interactive)
               (message-remove-header "Fcc")
-              (notmuch-fcc-header-setup))))
+              (notmuch-fcc-header-setup))
+
+            (setq mm-tmp-directory (file-name-as-directory
+                                    (concat
+                                     "/tmp/mml-" (user-login-name))))
+            (make-directory mm-tmp-directory t)))
 
 (use-package cua-base
   :defer t
