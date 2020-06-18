@@ -953,20 +953,6 @@ ignore) any passed arguments to work as an advice."
   :config (setq inferior-lisp-program "sbcl"))
 
 (use-package rust-mode :ensure t :defer t)
-(use-package racer
-  :if (file-exists-p "~/.cargo/bin/racer")
-  :ensure t
-  :after rust-mode
-  :init (progn
-          (add-hook 'rust-mode-hook #'racer-mode)
-          (add-hook 'racer-mode-hook #'eldoc-mode))
-  :config (setq racer-rust-src-path
-                (concat (file-name-as-directory
-                         (substring
-                          (shell-command-to-string "rustc --print sysroot")
-                          0 -1))
-                        "lib/rustlib/src/rust/src")))
-
 
 (defun my-minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
