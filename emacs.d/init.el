@@ -548,19 +548,7 @@
 
 (use-package avy
   :ensure t
-  :bind ("C-c j" . avy-dwim)
-  :config (setq avy-single-candidate-jump nil)
-  :init (progn
-          (avy-setup-default)
-          (defun avy-dwim (arg)
-            (interactive "P")
-            (cond ((not arg)
-                   (call-interactively #'avy-goto-word-1))
-                  ((equal arg '(4))
-                   (call-interactively #'avy-goto-char))
-                  ((equal arg '(16))
-                   (avy-goto-line))
-                  (t nil)))))
+  :bind ("C-c j" . avy-goto-char-timer))
 
 (use-package win-switch
   :ensure t
