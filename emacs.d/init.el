@@ -681,7 +681,7 @@
 (use-package eglot
   :ensure t
   :defer t
-  :init (add-hook 'python-mode-hook #'eglot-ensure))
+  :hook ((python-mode . eglot-ensure)))
 
 (use-package js-mode
   :defer t
