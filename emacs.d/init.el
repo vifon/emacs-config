@@ -534,6 +534,7 @@
 
 (use-package flycheck
   :ensure t
+  :pin melpa
   :defer t
   :init (progn
           (add-hook 'c-mode-hook (lambda ()
@@ -678,10 +679,16 @@
                               python-indent 4
                               py-indent-offset 4)))))
 
-(use-package eglot
+(use-package lsp-mode
   :ensure t
   :defer t
-  :hook ((python-mode . eglot-ensure)))
+  :hook ((python-mode . lsp))
+  :init (setq lsp-keymap-prefix "C-M-s-l"))
+
+(use-package company-lsp
+  :ensure t
+  :after lsp-mode
+  :config (push 'company-lsp company-backends))
 
 (use-package js-mode
   :defer t
