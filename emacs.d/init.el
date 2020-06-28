@@ -276,9 +276,6 @@
          ("C-x 4 i" . flop-frame)
          ("C-x 4 I" . flip-frame)))
 
-(use-package vim-line-open
-  :bind ("C-o" . open-next-line-dwim))
-
 (use-package evil-nerd-commenter
   :ensure t
   :init (defun evil-nerd-commenter-dwim (arg)
