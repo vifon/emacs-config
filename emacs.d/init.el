@@ -116,9 +116,9 @@
 
             (defun vifon/dired-dragon ()
               (interactive)
-              (dired-do-shell-command "dragon -a -x *"
-                                      nil
-                                      (dired-get-marked-files)))))
+              (dired-do-async-shell-command "dragon -a -x *"
+                                            nil
+                                            (dired-get-marked-files)))))
 
 (use-package dired-x
   :init (setq dired-x-hands-off-my-keys t))
