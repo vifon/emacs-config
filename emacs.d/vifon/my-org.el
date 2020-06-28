@@ -124,6 +124,8 @@ when using the `*-respect-content' commands."
       org-refile-use-outline-path t)
 (setq org-id-link-to-org-use-id 'use-existing)
 
+(setq org-image-actual-width nil)
+
 (setq org-confirm-elisp-link-function #'y-or-n-p)
 
 (when (file-exists-p "~/org/.agenda-files")
