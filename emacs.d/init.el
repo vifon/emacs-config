@@ -634,11 +634,6 @@
   :after lsp-mode
   :init (setq lsp-ui-doc-enable nil))
 
-(use-package company-lsp
-  :ensure t
-  :after lsp-mode
-  :config (push 'company-lsp company-backends))
-
 (use-package js-mode
   :defer t
   :init (setq-default js-indent-level 2))
