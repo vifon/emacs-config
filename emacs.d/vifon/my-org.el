@@ -193,7 +193,8 @@ when using the `*-respect-content' commands."
 (use-package ob
   :defer t
   :config (progn
-            (setq org-confirm-babel-evaluate nil)
+            (setq org-confirm-babel-evaluate nil
+                  org-export-use-babel nil)
             (org-babel-do-load-languages
              'org-babel-load-languages
              '((shell . t)
