@@ -47,3 +47,5 @@
                 tool-bar-mode))
   (when (fboundp mode)
     (funcall mode 0)))
+
+(provide 'early-init)

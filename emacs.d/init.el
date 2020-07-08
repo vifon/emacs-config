@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
-(when (< emacs-major-version 27)
-  (load-file "~/.emacs.d/early-init.el"))
+(require 'early-init "~/.emacs.d/early-init.el")
 
 (add-to-list 'load-path "~/.emacs.d/vifon")
 (add-to-list 'load-path "~/.emacs.d/modules")
