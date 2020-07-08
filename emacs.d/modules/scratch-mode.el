@@ -42,7 +42,7 @@
     "J"
     "s")
   "The keymap hints to show in `scratch-mode'."
-  :type '(list key-sequence))
+  :type '(repeat string))
 
 (define-derived-mode scratch-mode special-mode "scratch"
   "A dedicated scratch buffer mode with commonly used commands bound."
