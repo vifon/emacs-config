@@ -4,41 +4,38 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-PDF-mode t)
- '(TeX-view-program-list (quote (("Evince" "evince %o") ("Zathura" "zathura %o"))))
+ '(TeX-view-program-list '(("Evince" "evince %o") ("Zathura" "zathura %o")))
  '(TeX-view-program-selection
-   (quote
-    (((output-dvi style-pstricks)
+   '(((output-dvi style-pstricks)
       "dvips and gv")
      (output-dvi "xdvi")
      (output-pdf "Evince")
-     (output-html "xdg-open"))))
+     (output-html "xdg-open")))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
- '(calendar-date-style (quote european))
+ '(calendar-date-style 'european)
  '(calendar-latitude 52.26)
  '(calendar-longitude 21.02)
  '(calendar-mark-diary-entries-flag nil)
  '(calendar-mark-holidays-flag nil)
  '(calendar-week-start-day 1)
- '(cc-search-directories
-   (quote
-    ("." "/usr/include" "/usr/local/include/*" "/home/vifon/local/include")))
  '(ediff-grab-mouse nil)
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(flymake-gui-warnings-enabled t)
  '(glasses-separate-parentheses-p nil)
  '(httpd-port 38080)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
+ '(message-auto-save-directory nil)
+ '(message-confirm-send t)
+ '(message-sendmail-envelope-from 'header)
  '(rainbow-x-colors-major-mode-list
-   (quote
-    (emacs-lisp-mode lisp-interaction-mode c-mode c++-mode java-mode sh-mode)))
- '(recentf-exclude (quote ("^/media/" "COMMIT_EDITMSG$" "^mutt-")))
+   '(emacs-lisp-mode lisp-interaction-mode c-mode c++-mode java-mode sh-mode))
+ '(recentf-exclude '("^/media/" "COMMIT_EDITMSG$" "^mutt-"))
  '(recentf-max-menu-items 10000)
  '(recentf-max-saved-items 1000)
  '(safe-local-variable-values
-   (quote
-    ((eval ispell-change-dictionary "pl")
-     (eval flyspell-buffer))))
+   '((eval ispell-change-dictionary "pl")
+     (eval flyspell-buffer)))
  '(server-raise-frame nil))
 
 (custom-set-faces
