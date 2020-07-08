@@ -269,6 +269,14 @@
   :bind ("C-c n" . minimap-mode)
   :config (setq minimap-window-location 'right))
 
+(use-package doom-modeline
+  :ensure t
+  :init (progn
+          (setq doom-modeline-env-version nil
+                doom-modeline-icon (or (display-graphic-p)
+                                       (daemonp)))
+          (doom-modeline-mode 1)))
+
 (use-package transpose-frame
   :ensure t
   :bind (("C-x 4 t" . transpose-frame)
