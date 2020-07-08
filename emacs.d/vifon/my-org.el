@@ -155,8 +155,9 @@ when using the `*-respect-content' commands."
         ("n" "note" entry (file "notes.org")
          "* %? :NOTE:\n  %U\n  %a\n")
 
-        ("j" "journal" entry (file+datetree+prompt "journal.org.gpg")
-         "* %?")
+        ("j" "journal" entry (file+olp+datetree "journal.org.gpg")
+         "* %?"
+         :time-prompt t)
 
         ("p" "purchase" entry (file "purchases.org")
          "* %?\n  %U\n")))
