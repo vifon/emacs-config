@@ -264,11 +264,6 @@
           (let ((comment-style 'box))
             (legalese ask))))
 
-(use-package minimap
-  :ensure t
-  :bind ("C-c n" . minimap-mode)
-  :config (setq minimap-window-location 'right))
-
 (use-package doom-modeline
   :ensure t
   :init (progn
