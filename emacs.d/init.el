@@ -443,7 +443,6 @@
   :ensure t
   :defer 5
   :config (progn
-            (setq company-idle-delay 0.25)
             (add-hook 'eshell-mode-hook (lambda ()
                                           (company-mode 0)))
             (add-hook 'org-mode-hook (lambda ()
