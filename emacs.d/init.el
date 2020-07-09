@@ -6,7 +6,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-(use-package hydra :pin melpa :ensure t :defer t)
+(use-package hydra :ensure t :defer t)
 
 (require 'my-el-patch)
 (require 'my-hooks)
@@ -270,7 +270,6 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package emmet-mode
   :ensure t
-  :pin melpa
   :commands emmet-mode
   :init (mapc (lambda (mode)
                 (add-hook mode  #'emmet-mode))
@@ -323,7 +322,6 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package magit
   :ensure t
-  :pin melpa
   :commands magit-process-file
   :bind (("C-c g" . magit-status)
          ("C-x M-g" . magit-dispatch)
@@ -349,7 +347,6 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package forge
   :ensure t
-  :pin melpa
   :after magit)
 
 (use-package git-commit
@@ -380,7 +377,6 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package symbol-overlay
   :ensure t
-  :pin melpa
   :bind (("M-p" . symbol-overlay-jump-prev)
          ("M-n" . symbol-overlay-jump-next)
          ("C-;" . symbol-overlay-put)
@@ -515,7 +511,6 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package flycheck
   :ensure t
-  :pin melpa
   :defer t
   :init (progn
           (add-hook 'c-mode-hook (lambda ()

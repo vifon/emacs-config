@@ -23,9 +23,9 @@
                 ("org"          . "https://orgmode.org/elpa/"))
               package-archive-priorities
               '(("org"          . 20)
-                ("melpa-stable" . 15)
+                ("melpa"        . 15)
                 ("gnu"          . 10)
-                ("melpa"        . 5)
+                ("melpa-stable" . 5)
                 ("marmalade"    . 0)))
         (setq package-enable-at-startup nil)
         (package-initialize)
