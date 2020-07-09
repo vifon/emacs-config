@@ -55,10 +55,10 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Set the tab width
-(setq default-tab-width 4
-      tab-width 4
-      c-basic-indent 4
-      c-basic-offset 4)
+(setq-default default-tab-width 4
+              tab-width 4
+              c-basic-indent 4
+              c-basic-offset 4)
 (use-package cc-vars
   :defer t
   :config (setf (cdr (assoc 'other
@@ -77,9 +77,6 @@
 (setq reb-re-syntax 'string)
 
 (setq password-cache-expiry 300)
-
-(require 'cl-lib)
-(setq tab-stop-list (cl-loop for i from 4 to 480 by 4 collecting i))
 
 (when (version<= "24.4" emacs-version)
   (setq browse-url-browser-function #'browse-url-generic)
