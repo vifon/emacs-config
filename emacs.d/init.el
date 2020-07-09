@@ -897,7 +897,9 @@ ignore) any passed arguments to work as an advice."
             (setq mm-tmp-directory (file-name-as-directory
                                     (concat
                                      "/tmp/mml-" (user-login-name))))
-            (make-directory mm-tmp-directory t)))
+            (make-directory mm-tmp-directory t)
+
+            (setq mml-secure-openpgp-sign-with-sender t)))
 
 (use-package cua-base
   :defer t
