@@ -651,12 +651,19 @@ Insert them later with \\[org-insert-all-links]."
 (use-package lsp-mode
   :ensure t
   :defer t
-  :hook ((python-mode . lsp))
-  :init (setq lsp-keymap-prefix "C-M-s-l"))
+  :hook ((python-mode . lsp)
+         (go-mode     . lsp)
+         (rust-mode   . lsp))
+  :bind (("C-c k F r" . lsp-workspace-folders-remove)
+         ("C-c k s d" . lsp-describe-session))
+  :init (setq lsp-keymap-prefix "C-c k"
+              lsp-rust-server 'rust-analyzer))
 
 (use-package lsp-ui
   :ensure t
   :after lsp-mode
+  :bind (:map lsp-ui-mode-map
+         ([remap xref-find-references] . lsp-ui-peek-find-references))
   :init (setq lsp-ui-doc-enable nil))
 
 (use-package js-mode
