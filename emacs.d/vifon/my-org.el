@@ -59,6 +59,30 @@ when using the `*-respect-content' commands."
       (indent-for-tab-command)
       (insert "Follow-up of: " link))))
 
+(defun vifon/org-insert-unique-links ()
+  "A wrapper for `org-insert-all-links' that skips the links
+already present in the buffer."
+  (interactive)
+  (setq org-stored-links
+        (cl-nset-difference
+         org-stored-links
+         (org-element-map (org-element-parse-buffer) 'link
+           (lambda (link)
+             (let ((path (org-element-property :path link))
+                   (type (org-element-property :type link)))
+               (when (equal type "file")
+                 path))))
+         :test (lambda (a b)
+                 (string= (expand-file-name
+                           (string-remove-prefix "file:"
+                                                 (car
+                                                  (split-string
+                                                   (substring-no-properties
+                                                    (car a))
+                                                   "::"))))
+                          (expand-file-name b)))))
+  (call-interactively #'org-insert-all-links))
+
 (require 'ol-notmuch)
 (require 'org-protocol)
 (require 'org-inlinetask)
