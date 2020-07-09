@@ -17,3 +17,6 @@
 /emacs.d/url/
 /emacs.d/snippets/*/.yas-compiled-snippets.el
 /todo.org
+/emacs.d/transient/
+/emacs.d/forge-database.sqlite
+/emacs.d/.lsp-session-v1
