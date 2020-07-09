@@ -1,6 +1,5 @@
 (defun eshell-hooks ()
-  (add-to-list 'eshell-visual-commands "vim")
-  (define-key eshell-mode-map (kbd "C-z") 'bury-buffer))
+  (add-to-list 'eshell-visual-commands "vim"))
 
 (eval-after-load "em-ls"
     '(progn
@@ -44,13 +43,6 @@
          ad-return-value)))
 
 (add-hook 'eshell-mode-hook 'eshell-hooks)
-
-(global-set-key (kbd "C-z") 'eshell)
-(global-set-key (kbd "C-x 4 C-z") '(lambda (&optional arg)
-                                     (interactive "P")
-                                     (split-window-sensibly)
-                                     (other-window 1)
-                                     (eshell arg)))
 
 (setq eshell-hist-ignoredups t)
 
