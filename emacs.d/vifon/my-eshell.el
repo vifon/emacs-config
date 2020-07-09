@@ -1,6 +1,20 @@
 (defun eshell-hooks ()
   (add-to-list 'eshell-visual-commands "vim"))
 
+(eval-after-load "eshell"
+  '(defun eshell/ccat (file)
+     "Like `cat' but output with Emacs syntax highlighting."
+     (with-temp-buffer
+       (insert-file-contents file)
+       (let ((buffer-file-name file))
+         (delay-mode-hooks
+           (set-auto-mode)
+           (if (fboundp 'font-lock-ensure)
+               (font-lock-ensure)
+             (with-no-warnings
+               (font-lock-fontify-buffer)))))
+       (buffer-string))))
+
 (eval-after-load "em-ls"
     '(progn
        (defun ted-eshell-ls-find-file-at-point (point)
