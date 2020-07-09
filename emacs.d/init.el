@@ -384,7 +384,6 @@ Insert them later with \\[org-insert-all-links]."
   :bind (("M-p" . symbol-overlay-jump-prev)
          ("M-n" . symbol-overlay-jump-next)
          ("C-;" . symbol-overlay-put)
-         ("<f10>" . symbol-overlay-remove-all)
          :map symbol-overlay-map
          ("b" . symbol-overlay-switch-backward)
          ("f" . symbol-overlay-switch-forward)))
