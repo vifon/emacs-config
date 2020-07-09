@@ -565,7 +565,8 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package zettel-mode
   :if (file-readable-p "~/.emacs.d/modules/zettel-mode.el")
-  :mode ("/\\.deft/.*\\.org\\'" . zettel-mode))
+  :mode ("/\\.deft/.*\\.org\\'" . zettel-mode)
+  :config (add-hook 'zettel-mode-hook #'org-show-all))
 
 (use-package markdown-mode
   :ensure t
