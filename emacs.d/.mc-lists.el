@@ -29,6 +29,8 @@
         c-electric-slash
         c-electric-star
         comment-dwim
+        company-complete
+        completion-at-point
         counsel-yank-pop-dwim
         cperl-electric-backspace
         cperl-electric-brace
@@ -37,8 +39,10 @@
         cperl-electric-rparen
         cperl-electric-semi
         cperl-electric-terminator
+        cperl-indent-command
         cua-copy-to-global-mark
         cua-cut-region
+        cycle-spacing
         dabbrev-expand
         delete-horizontal-space
         delete-indentation
@@ -53,6 +57,7 @@
         eval-last-sexp
         evil-nerd-commenter-dwim
         exchange-point-and-mark
+        fill-paragraph
         folding-backward-char
         folding-end-of-line
         folding-forward-char
@@ -69,18 +74,23 @@
         kill-region
         kill-sexp
         kill-visual-line
+        ledger-post-align-dwim
         mark-sexp
         markdown-cycle
         markdown-exdent-or-delete
         move-beginning-of-line-dwim
         my-asm-tab
+        open-next-line-dwim
         open-previous-line
         org-beginning-of-line
         org-delete-char
+        org-emphasize
         org-end-of-line
         org-kill-line
         org-return-indent
         org-self-insert-command
+        org-shiftdown
+        org-shiftup
         org-yank
         orgtbl-hijacker-command-102
         orgtbl-hijacker-command-107
@@ -119,6 +129,7 @@
         sh-assignment
         skeleton-expand-partial-lines
         slime-space
+        smart-kill-whole-lines
         split-line
         tab-to-tab-stop
         table-backward-cell
@@ -134,6 +145,8 @@
         wdired-previous-line
         wdired-toggle-bit
         web-mode-element-content-select
+        web-mode-element-rename
+        web-mode-element-vanish
         web-mode-element-wrap
         whitespace-mode
         yaml-electric-backspace
@@ -151,6 +164,7 @@
         haskell-indentation-delete-backward-char
         helm-M-x
         iedit-switch-to-mc-mode
+        markdown-outdent-or-delete
         mwheel-scroll
         orgtbl-hijacker-command-109
         scroll-other-window
