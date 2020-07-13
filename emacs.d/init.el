@@ -735,6 +735,15 @@ Insert them later with \\[org-insert-all-links]."
                 (interactive)
                 (kill-buffer-and-window)))))
 
+(use-package sh-script
+  :bind (:map sh-mode-map
+              ("C-c C-m" . man)))
+
+(use-package fish-mode
+  :ensure t
+  :bind (:map fish-mode-map
+         ("C-c C-m" . man)))
+
 (use-package ledger-mode
   :ensure t
   :defer t
@@ -978,7 +987,6 @@ ignore) any passed arguments to work as an advice."
 (use-package web-beautify :ensure t :defer t)
 (use-package wgrep :ensure t :defer t)
 (use-package ripgrep :ensure t :defer t)
-(use-package fish-mode :ensure t :defer t)
 (use-package orgalist :ensure t :defer t)
 
 ;;; Needs to be the last one because otherwise during the installation
