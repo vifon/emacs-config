@@ -45,13 +45,13 @@
                 (defhydra my-hydra
                   (:hint nil :color blue)
                   "
- delete-_t_railing-whitespace    _A_lign
- r_G_                            align-_R_egexp
+ d^e^lete-_t_railing-whitespace    _A_lign ^ ^
+ r_G_     ^ ^                      ^a^lign-_R_egexp
 
- _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
- _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)    hl-_L_ine-mode                  _d_umb-jump-mode: %-3(bound-and-true-p dumb-jump-mode)
- _s_ort-lines              display-_F_ill-indicator: %-3(bound-and-true-p display-fill-column-indicator-mode)   c_o_mpare-windows
- _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
+ _l_inum-mode           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  tog^g^l^e^-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines) ^^^^^^^^^^^^^^^^^^^^   ^a^g^gress^i^ve-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
+ _w_hitespace-mode: %-3(bound-and-true-p writespace-mode) ^  hl-_L_i^n^e-^m^ode               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   _d_u^mb-ju^m^p-m^o^de: %-3(bound-and-true-p dumb-jump-mode)        ^^^^^^^^
+ _s_ort-lines           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  dis^p^l^a^y-_F_ill-indicator: %-3(bound-and-true-p display-fill-column-indicator-mode)   ^c_o_mpare^-^win^d^ows            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)  aut^o^-_f_il^l^-mode: %-3(not (equal auto-fill-function nil))        ^^^^^^^^^^^^^^^^^   ^i^n^dent-_g_uid^e^-mode: %-3(bound-and-true-p indent-guide-mode)     ^^^^^
 
  _H_ttpd settings    fly_c_heck-mode etc."
                   ("t" delete-trailing-whitespace)
