@@ -680,8 +680,6 @@ Insert them later with \\[org-insert-all-links]."
   :init (progn
           (setq projectile-switch-project-action (lambda ()
                                                    (dired "."))))
-  :bind (:map projectile-command-map
-         ("p" . projectile-switch-project))
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (progn
             (projectile-mode 1)
