@@ -50,7 +50,7 @@
 
  _l_inum-mode              toggle-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines)    aggressive-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
  _w_hitespace-mode: %-3(bound-and-true-p writespace-mode)    hl-_L_ine-mode                  _d_umb-jump-mode: %-3(bound-and-true-p dumb-jump-mode)
- _h_l-defined-mode: %-3(bound-and-true-p highlight-defined-mode)    _s_ort-lines                    c_o_mpare-windows
+ _s_ort-lines              display-_F_ill-indicator: %-3(bound-and-true-p display-fill-column-indicator-mode)   c_o_mpare-windows
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)   auto-_f_ill-mode: %-3(not (equal auto-fill-function nil))           indent-_g_uide-mode: %-3(bound-and-true-p indent-guide-mode)
 
  _H_ttpd settings    fly_c_heck-mode etc."
@@ -68,7 +68,7 @@
                   ("w" whitespace-mode :color red)
                   ("s" sort-lines :color red)
                   ("g" indent-guide-mode :color red)
-                  ("h" highlight-defined-mode :color red)
+                  ("F" display-fill-column-indicator-mode :color red)
                   ("H" httpd-hydra/body :color blue)
                   ("c" fly*-hydra/body :color blue)
                   ("C" ispell-change-dictionary :color blue)
