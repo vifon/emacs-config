@@ -179,12 +179,11 @@ Insert them later with \\[org-insert-all-links]."
   :bind (:map ibuffer-mode-map
          ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)
          ("/ T" . ibuffer-tramp-set-filter-groups-by-tramp-connection))
+  :init (global-set-key (kbd "C-x C-b")
+                        (if (fboundp #'ibuffer-jump)
+                            #'ibuffer-jump
+                          #'ibuffer))
   :config (progn
-            (global-set-key (kbd "C-x C-b")
-                            (if (fboundp #'ibuffer-jump)
-                                #'ibuffer-jump
-                              #'ibuffer))
-
             (add-hook 'ibuffer-mode-hook
                       (lambda ()
                         (setq ibuffer-sorting-mode 'filename/process)))
