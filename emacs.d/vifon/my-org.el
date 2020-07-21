@@ -10,7 +10,10 @@
             (setf (cdr (assoc "\\.pdf\\'"
                               org-file-apps))
                   "evince %s")
-            (add-to-list 'org-file-apps '(directory . emacs))))
+            (add-to-list 'org-file-apps '(directory . emacs))
+            (dolist (ext '("png" "jpg" "jpeg"))
+              (add-to-list 'org-file-apps (cons (concat "\\." ext "\\'")
+                                                "sxiv %s")))))
 
 (use-package org-attach
   :commands (org-attach-expand-link org-attach-attach)
