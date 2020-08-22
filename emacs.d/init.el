@@ -19,6 +19,7 @@
 (require 'my-eshell)
 (require 'my-registers)
 (require 'my-settings)
+(require 'my-spellcheck)
 (require 'my-scratch)
 (when (getenv "START_EXWM")
   (require 'my-exwm)

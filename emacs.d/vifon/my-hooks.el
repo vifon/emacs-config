@@ -16,8 +16,6 @@
 (add-hook 'semantic-symref-results-mode-hook
           (lambda () (toggle-read-only 1)))
 
-(add-hook 'log-edit-mode-hook (lambda () (ispell-change-dictionary "english")))
-
 (mapc (lambda (mode)
         (add-hook mode (lambda ()
                          (setq tex-open-quote ",,")
