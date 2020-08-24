@@ -86,7 +86,7 @@ already present in the buffer."
                           (expand-file-name b)))))
   (call-interactively #'org-insert-all-links))
 
-(require 'ol-notmuch)
+(require 'ol-notmuch nil 'noerror)
 (require 'org-protocol)
 (require 'org-inlinetask)
 
