@@ -84,7 +84,16 @@ already present in the buffer."
                                                     (car a))
                                                    "::"))))
                           (expand-file-name b)))))
-  (call-interactively #'org-insert-all-links))
+  (let ((prefix (concat (make-string (save-excursion
+                                                   (backward-char)
+                                                   (current-indentation))
+                                                 ? ;a space
+                                                 )
+                        "- [ ] ")
+                ))
+    (delete-horizontal-space)
+    (org-insert-all-links nil prefix))
+  (delete-blank-lines))
 
 (require 'ol-notmuch nil 'noerror)
 (require 'org-protocol)
