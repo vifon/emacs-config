@@ -49,6 +49,18 @@ when using the `*-respect-content' commands."
 (advice-add #'org-insert-todo-heading-respect-content :after
             #'org-insert-heading-empty-line-fix)
 
+(defun vifon/org-resolve-clocks-with-calc (orig &rest args)
+  (require 'cl-lib)
+  (cl-letf (((symbol-function 'read-number)
+             (lambda (prompt &optional default)
+               (string-to-number
+                (calc-eval (read-string prompt
+                                        nil
+                                        nil default))))))
+    (apply orig args)))
+(advice-add #'org-resolve-clocks :around
+            #'vifon/org-resolve-clocks-with-calc)
+
 (defun org-followup ()
   (interactive)
   (let ((link (org-store-link nil)))
