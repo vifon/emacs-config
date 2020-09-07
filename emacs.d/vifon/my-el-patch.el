@@ -70,4 +70,129 @@ Return a string suitable for insertion in `dired' buffer."
           (delete-char -2)
           (buffer-string))))))
 
+(el-patch-feature org-clock)
+(with-eval-after-load 'org-clock
+  (el-patch-defun org-clock-resolve (clock &optional prompt-fn last-valid fail-quietly)
+    "Resolve an open Org clock.
+An open clock was found, with `dangling' possibly being non-nil.
+If this function was invoked with a prefix argument, non-dangling
+open clocks are ignored.  The given clock requires some sort of
+user intervention to resolve it, either because a clock was left
+dangling or due to an idle timeout.  The clock resolution can
+either be:
+
+  (a) deleted, the user doesn't care about the clock
+  (b) restarted from the current time (if no other clock is open)
+  (c) closed, giving the clock X minutes
+  (d) closed and then restarted
+  (e) resumed, as if the user had never left
+
+The format of clock is (CONS MARKER START-TIME), where MARKER
+identifies the buffer and position the clock is open at (and
+thus, the heading it's under), and START-TIME is when the clock
+was started."
+    (cl-assert clock)
+    (let* ((ch
+	        (save-window-excursion
+	          (save-excursion
+	            (unless org-clock-resolving-clocks-due-to-idleness
+		          (org-clock-jump-to-current-clock clock))
+	            (unless org-clock-resolve-expert
+		          (with-output-to-temp-buffer "*Org Clock*"
+		            (princ (format-message "Select a Clock Resolution Command:
+
+i/q      Ignore this question; the same as keeping all the idle time.
+
+k/K      Keep X minutes of the idle time (default is all).  If this
+         amount is less than the default, you will be clocked out
+         that many minutes after the time that idling began, and then
+         clocked back in at the present time.
+
+g/G      Indicate that you \"got back\" X minutes ago.  This is quite
+         different from `k': it clocks you out from the beginning of
+         the idle period and clock you back in X minutes ago.
+
+s/S      Subtract the idle time from the current clock.  This is the
+         same as keeping 0 minutes.
+
+C        Cancel the open timer altogether.  It will be as though you
+         never clocked in.
+
+j/J      Jump to the current clock, to make manual adjustments.
+
+For all these options, using uppercase makes your final state
+to be CLOCKED OUT."))))
+	            (org-fit-window-to-buffer (get-buffer-window "*Org Clock*"))
+	            (let (char-pressed)
+		          (while (or (null char-pressed)
+			                 (and (not (memq char-pressed
+					                         '(?k ?K ?g ?G ?s ?S ?C
+						                          ?j ?J ?i ?q)))
+				                  (or (ding) t)))
+		            (setq char-pressed
+			              (read-char (concat (funcall prompt-fn clock)
+					                         " [jkKgGSscCiq]? ")
+				                     nil 45)))
+		          (and (not (memq char-pressed '(?i ?q))) char-pressed)))))
+	       (default
+	         (floor (org-time-convert-to-integer (org-time-since last-valid))
+		            60))
+	       (keep
+	        (and (memq ch '(?k ?K))
+	             (read-number "Keep how many minutes? " default)))
+	       (gotback
+	        (and (memq ch '(?g ?G))
+                 (el-patch-swap
+                   (read-number "Got back how many minutes ago? " default)
+                   (let ((input (read-string "Got back when? " nil nil default)))
+                     (if (string-match-p ":" input)
+                         (let* ((time (parse-time-string input))
+                                (now (current-time))
+                                (date (encode-time (cl-mapcar (lambda (a b)
+                                                                (or a b))
+                                                              time
+                                                              (decode-time now)))))
+                           (floor (time-to-seconds (time-subtract now date))
+                                  60))
+                       (string-to-number (calc-eval input)))))))
+	       (subtractp (memq ch '(?s ?S)))
+	       (barely-started-p (org-time-less-p
+			                  (org-time-subtract last-valid (cdr clock))
+			                  45))
+	       (start-over (and subtractp barely-started-p)))
+      (cond
+       ((memq ch '(?j ?J))
+        (if (eq ch ?J)
+	        (org-clock-resolve-clock clock 'now nil t nil fail-quietly))
+        (org-clock-jump-to-current-clock clock))
+       ((or (null ch)
+	        (not (memq ch '(?k ?K ?g ?G ?s ?S ?C))))
+        (message ""))
+       (t
+        (org-clock-resolve-clock
+         clock (cond
+	            ((or (eq ch ?C)
+		             ;; If the time on the clock was less than a minute before
+		             ;; the user went away, and they've ask to subtract all the
+		             ;; time...
+		             start-over)
+	             nil)
+	            ((or subtractp
+		             (and gotback (= gotback 0)))
+	             last-valid)
+	            ((or (and keep (= keep default))
+		             (and gotback (= gotback default)))
+	             'now)
+	            (keep
+	             (org-time-add last-valid (* 60 keep)))
+	            (gotback
+	             (org-time-since (* 60 gotback)))
+	            (t
+	             (error "Unexpected, please report this as a bug")))
+         (and gotback last-valid)
+         (memq ch '(?K ?G ?S))
+         (and start-over
+	          (not (memq ch '(?K ?G ?S ?C))))
+         fail-quietly))))))
+
 (provide 'my-el-patch)
