@@ -19,14 +19,17 @@
                                 (find-library "scratch-mode")))
     (define-key map (kbd "p") #'projectile-switch-project)
     (define-key map (kbd "SPC") #'notmuch)
+    (define-key map (kbd "E") #'elfeed)
     (define-key map (kbd "z") #'deft)
     (define-key map (kbd "C-c C-x C-j") #'org-clock-goto)
     (define-key map (kbd "j") #'org-clock-goto)
     (define-key map (kbd "J") #'org-mru-clock-select-recent-task)
     (define-key map (kbd "C-'") #'org-cycle-agenda-files)
+    (define-key map (kbd "C-c C-w") #'org-refile)
     (define-key map (kbd "a") #'org-agenda)
+    (define-key map (kbd "r") (lookup-key global-map (kbd "C-x r")))
     (define-key map (kbd "g") #'scratch-reset)
-    (define-key map (kbd "s") #'scratch-dir)
+    (define-key map (kbd "S") #'scratch-dir)
     map))
 
 (defcustom scratch-mode-key-hints
@@ -36,11 +39,12 @@
     "i"
     "p"
     "SPC"
+    "E"
     "z"
     "a"
     "j"
     "J"
-    "s")
+    "S")
   "The keymap hints to show in `scratch-mode'."
   :type '(repeat string))
 
