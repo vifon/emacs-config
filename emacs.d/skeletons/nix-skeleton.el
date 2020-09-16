@@ -2,11 +2,13 @@
   "" ""
   "#!/usr/bin/env nix-shell\n"
   "\n"
-  "with import <nixpkgs> {};\n"
-  "mkShell {\n"
+  "{ pkgs ? import <nixpkgs> {} }:\n"
+  "with pkgs; mkShell {\n"
   "  buildInputs = [\n"
   "    " _ "\n"
   "  ];\n"
+  "  shellHook = ''\n"
+  "  '';\n"
   "}\n"
   )
 
