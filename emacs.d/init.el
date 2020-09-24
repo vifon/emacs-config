@@ -114,9 +114,11 @@
                  (list new)))
               (dired-change-marks ?* new))
 
-            (defun vifon/dired-dragon ()
-              (interactive)
-              (dired-do-async-shell-command "dragon -a -x *"
+            (defun vifon/dired-dragon (&optional single)
+              (interactive "P")
+              (dired-do-async-shell-command (if single
+                                                "dragon -x *"
+                                              "dragon -a -x *")
                                             nil
                                             (dired-get-marked-files)))
 
