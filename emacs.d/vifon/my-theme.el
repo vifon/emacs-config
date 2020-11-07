@@ -78,6 +78,7 @@ See: Info node `(emacs) Sunrise/Sunset'."
        sunset)))
 
 (defun vifon/daytime-p ()
+  "Check whether it's daytime according to the hardcoded times."
   (let ((now (string-to-number (format-time-string "%H%M"))))
     (< 0800
        now
