@@ -51,19 +51,27 @@ Unless the prefix argument was passed, disable the current one beforehand."
                 solarized-use-variable-pitch nil))
 
 
-(defun vifon/daytime-solar-p ()
-  (require 'cl-lib)
+(defun vifon/solar-times ()
   (require 'seq)
   (require 'solar)
-  (let* ((sunrise-sunset
-          (mapcar (lambda (time)
-                    (string-to-number
-                     (let ((calendar-time-display-form '(24-hours minutes)))
-                       (apply #'solar-time-string time))))
-                  (seq-take (solar-sunrise-sunset (calendar-current-date))
-                            2)))
-         (sunrise (cl-first sunrise-sunset))
-         (sunset (cl-second sunrise-sunset))
+  (mapcar (lambda (time)
+            (cons
+             (string-to-number
+              (let ((calendar-time-display-form '(24-hours minutes)))
+                (apply #'solar-time-string time)))
+             (let ((calendar-time-display-form '(24-hours ":" minutes)))
+               (apply #'solar-time-string time))))
+          (seq-take (solar-sunrise-sunset (calendar-current-date))
+                    2)))
+
+(defun vifon/daytime-solar-p ()
+  "Check whether it's daytime according to the calculated sunrise
+& sunset times.
+
+See: Info node `(emacs) Sunrise/Sunset'."
+  (let* ((sunrise-sunset (mapcar #'car (vifon/solar-times)))
+         (sunrise (car sunrise-sunset))
+         (sunset (cadr sunrise-sunset))
          (now (string-to-number (format-time-string "%H%M"))))
     (< sunrise
        now
