@@ -83,6 +83,12 @@ See: Info node `(emacs) Sunrise/Sunset'."
        now
        1800)))
 
+(let ((24h (* 24 60 60)))
+  (run-at-time "8:00" 24h
+               #'vifon/theme-light)
+  (run-at-time "18:00" 24h
+               #'vifon/theme-dark))
+
 (defun vifon/theme-dwim (&optional no-disable)
   (interactive "P")
   (if (vifon/daytime-p)
