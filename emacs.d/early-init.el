@@ -17,7 +17,6 @@
         (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
         (setq package-archives
               '(("gnu"          . "https://elpa.gnu.org/packages/")
-                ("marmalade"    . "https://marmalade-repo.org/packages/")
                 ("melpa"        . "https://melpa.org/packages/")
                 ("melpa-stable" . "https://stable.melpa.org/packages/")
                 ("org"          . "https://orgmode.org/elpa/"))
@@ -25,8 +24,7 @@
               '(("org"          . 20)
                 ("melpa"        . 15)
                 ("gnu"          . 10)
-                ("melpa-stable" . 5)
-                ("marmalade"    . 0)))
+                ("melpa-stable" . 5)))
         (setq package-enable-at-startup nil)
         (package-initialize)
         (unless (package-installed-p 'use-package)
