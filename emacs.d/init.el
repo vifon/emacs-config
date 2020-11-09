@@ -980,6 +980,7 @@ ignore) any passed arguments to work as an advice."
 (use-package aggressive-indent :ensure t :defer t)
 (use-package color-identifiers-mode :ensure t :defer t)
 (use-package dockerfile-mode :ensure t :defer t)
+(use-package nix-mode :ensure t :defer t)
 (use-package dpaste :ensure t :defer t)
 (use-package focus-autosave-mode :ensure t :defer t)
 (use-package impatient-mode :ensure t :defer t)
