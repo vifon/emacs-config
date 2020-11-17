@@ -87,12 +87,14 @@ See: Info node `(emacs) Sunrise/Sunset'."
 ;;; Schedule only once per Emacs launch.  It shouldn't diverge that
 ;;; much during the Emacs instance lifetime for that to matter to
 ;;; recalculate the solar times.
-(let ((24h (* 24 60 60))
-      (sunrise-sunset (mapcar #'cdr (vifon/solar-times))))
-  (run-at-time (car sunrise-sunset) 24h
-               #'vifon/theme-light)
-  (run-at-time (cadr sunrise-sunset) 24h
-               #'vifon/theme-dark))
+(when (or (daemonp)
+          (display-graphic-p))
+  (let ((24h (* 24 60 60))
+        (sunrise-sunset (mapcar #'cdr (vifon/solar-times))))
+    (run-at-time (car sunrise-sunset) 24h
+                 #'vifon/theme-light)
+    (run-at-time (cadr sunrise-sunset) 24h
+                 #'vifon/theme-dark)))
 
 (defun vifon/theme-dwim (&optional no-disable)
   (interactive "P")
