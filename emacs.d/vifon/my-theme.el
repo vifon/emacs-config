@@ -94,7 +94,9 @@ See: Info node `(emacs) Sunrise/Sunset'."
     (run-at-time (car sunrise-sunset) 24h
                  #'vifon/theme-light)
     (run-at-time (cadr sunrise-sunset) 24h
-                 #'vifon/theme-dark)))
+                 #'vifon/theme-dark))
+  (run-at-time "0:00" nil
+               #'vifon/theme-dark))
 
 (defun vifon/theme-dwim (&optional no-disable)
   (interactive "P")
