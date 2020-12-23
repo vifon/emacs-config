@@ -14,7 +14,7 @@
 (require 'my-mode-line)
 (require 'my-fun)
 (require 'my-keys)
-(require 'my-ivy)
+(require 'my-completing-read)
 (require 'my-org)
 (require 'my-eshell)
 (require 'my-registers)
@@ -208,6 +208,15 @@ Insert them later with \\[org-insert-all-links]."
   :ensure t
   :commands ibuffer-tramp-set-filter-groups-by-tramp-connection)
 
+(use-package recentf
+  :bind (("C-x C-r" . vifon/recentf-open))
+  :config (progn
+            (recentf-mode 1)
+            (defun vifon/recentf-open ()
+              (interactive)
+              (find-file (completing-read "Find recent file: "
+                                          recentf-list)))))
+
 (use-package yasnippet
   :ensure t
   :defer 7
@@ -322,8 +331,7 @@ Insert them later with \\[org-insert-all-links]."
          ("C-x M-g" . magit-dispatch)
          ("C-c M-g" . magit-file-dispatch))
   :init (progn
-          (setq magit-diff-refine-hunk t)
-          (setq magit-completing-read-function #'ivy-completing-read))
+          (setq magit-diff-refine-hunk t))
   :config (progn
             (mapcar
              (lambda (keymap)
@@ -588,8 +596,7 @@ Insert them later with \\[org-insert-all-links]."
   :mode ("\\.pod\\'" . pod-mode))
 
 (use-package dumb-jump
-  :ensure t
-  :config (setq dumb-jump-selector 'ivy))
+  :ensure t)
 
 (use-package vlf
   :ensure t
@@ -689,7 +696,7 @@ Insert them later with \\[org-insert-all-links]."
                   (kill-new project-path))
                 (message "%s" project-path)))
             (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)
-            (setq projectile-completion-system 'ivy)
+            (setq projectile-completion-system 'default)
             (setq projectile-ignored-project-function
                   (lambda (path)
                     (or (file-remote-p path)
