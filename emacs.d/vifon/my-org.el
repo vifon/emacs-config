@@ -188,13 +188,13 @@ already present in the buffer."
 (global-set-key (kbd "C-c S") 'org-store-link)
 
 (setq org-capture-templates
-      '(("t" "todo" entry (file+headline "" "Inbox")
+      '(("t" "todo" entry (file "inbox.org")
          "* TODO %?\n  %U\n  %a\n")
 
         ("T" "sub-todo" entry (clock)
          "* TODO %?\n  %U\n  %a\n")
 
-        ("f" "follow-up" entry (file+headline "" "Inbox")
+        ("f" "follow-up" entry (file "inbox.org")
          "* TODO %?\n  %U\n  Follow-up of: %a\n")
 
         ("b" "issue" entry (file+headline
