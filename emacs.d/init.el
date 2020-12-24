@@ -731,7 +731,7 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package sh-script
   :bind (:map sh-mode-map
-              ("C-c C-m" . man)))
+         ("C-c C-m" . man)))
 
 (use-package fish-mode
   :ensure t
