@@ -1,6 +1,7 @@
 (use-package org
   :ensure org-plus-contrib
   :pin org
+  :defer t
   :config (progn
             (define-key org-mode-map (kbd "<C-tab>") nil)
             (define-key org-mode-map (kbd "C-c C-1")
