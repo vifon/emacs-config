@@ -648,7 +648,8 @@ Insert them later with \\[org-insert-all-links]."
   :bind (("C-c k F r" . lsp-workspace-folders-remove)
          ("C-c k s d" . lsp-describe-session))
   :init (setq lsp-keymap-prefix "C-c k"
-              lsp-rust-server 'rust-analyzer))
+              lsp-rust-server 'rust-analyzer
+              lsp-signature-auto-activate nil))
 
 (use-package lsp-ui
   :ensure t
