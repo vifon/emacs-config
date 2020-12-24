@@ -174,10 +174,6 @@ Insert them later with \\[org-insert-all-links]."
                                 (apply #'format text args))
                   (apply #'dired-async-mode-line-message text face args))))
 
-(use-package dired-recent
-  :ensure t
-  :init (dired-recent-mode 1))
-
 (use-package ibuffer
   :bind (:map ibuffer-mode-map
          ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)
