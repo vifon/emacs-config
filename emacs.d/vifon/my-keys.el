@@ -16,6 +16,9 @@
 (global-set-key (kbd "C-c o") 'find-file-at-point)
 
 (global-set-key [remap just-one-space] #'cycle-spacing)
+(global-set-key [remap upcase-word] #'upcase-dwim)
+(global-set-key [remap downcase-word] #'downcase-dwim)
+(global-set-key [remap capitalize-word] #'capitalize-dwim)
 
 (defun run-term (&optional arg)
   (interactive "P")
