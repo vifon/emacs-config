@@ -47,15 +47,12 @@
             (define-key paredit-mode-map (kbd "M-s M-s") 'paredit-splice-sexp))
   :bind (([remap kill-line] . paredit-kill-maybe)))
 
-(use-package yafolding
+(use-package origami
   :ensure t
   :defer t
-  :init (add-hook 'prog-mode-hook #'yafolding-mode)
-  :config (advice-add 'yafolding-go-parent-element :around
-                      (defun yafolding-python-fix (orig-fun &rest args)
-                        (if (eq major-mode 'python-mode)
-                            (python-nav-backward-up-list)
-                          (apply orig-fun args)))))
+  :init (add-hook 'prog-mode-hook #'origami-mode)
+  :bind (:map origami-mode-map
+         ("M-RET" . origami-recursively-toggle-node)))
 
 (use-package hideshow-org
   :ensure t
