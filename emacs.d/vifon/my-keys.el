@@ -201,6 +201,8 @@ ends with a newline."
 (global-set-key (kbd "M-k") #'smart-kill-whole-lines)
 (global-set-key (kbd "M-K") #'smart-yank-whole-lines)
 
+(global-set-key (kbd "C-x C-M-t") #'transpose-regions)
+
 (global-set-key (kbd "<f9>") #'menu-bar-open)
 
 (windmove-default-keybindings)
