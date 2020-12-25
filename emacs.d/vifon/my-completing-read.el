@@ -21,21 +21,30 @@
   :ensure t
   :bind (("M-O" . embark-act)
          :map minibuffer-local-map
-         ("M-o"   . vifon/selectrum-embark-act)
-         ("C-M-o" . vifon/selectrum-embark-act-noexit))
+         ("M-o"   . embark-act)
+         ("C-M-o" . embark-act-noexit))
   :config (progn
-            ;; `embark-act' seems to act on the input, not the
-            ;; completion candidate, when the candidate does not start
-            ;; with the input but is merely a substring.
-            ;; Calling `selectrum-insert-current-candidate' beforehand
-            ;; should do the trick.
-            (defun vifon/selectrum-embark-act ()
-              (interactive)
-              (selectrum-insert-current-candidate)
-              (embark-act))
-            (defun vifon/selectrum-embark-act-noexit ()
-              (interactive)
-              (selectrum-insert-current-candidate)
-              (embark-act-noexit))))
+            ;; Source: https://github.com/raxod502/selectrum/wiki/Additional-Configuration#minibuffer-actions-with-embark
+            (progn
+              (add-hook 'embark-target-finders #'selectrum-get-current-candidate)
+
+              (add-hook 'embark-candidate-collectors
+                        (defun embark-selectrum-candidates+ ()
+                          (when selectrum-active-p
+                            (selectrum-get-current-candidates
+                             ;; Pass relative file names for dired.
+                             minibuffer-completing-file-name))))
+
+              ;; No unnecessary computation delay after injection.
+              (add-hook 'embark-setup-hook #'selectrum-set-selected-candidate)
+
+              (add-hook 'embark-input-getters
+                        (defun embark-selectrum-input-getter+ ()
+                          (when selectrum-active-p
+                            (let ((input (selectrum-get-current-input)))
+                              (if minibuffer-completing-file-name
+                                  ;; Only get the input used for matching.
+                                  (file-name-nondirectory input)
+                                input))))))))
 
 (provide 'my-completing-read)
