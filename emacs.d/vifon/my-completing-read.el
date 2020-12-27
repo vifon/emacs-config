@@ -48,4 +48,25 @@
                                   (file-name-nondirectory input)
                                 input))))))))
 
+(use-package marginalia
+  :ensure t
+  :after selectrum
+  :demand t                     ; :demand applies to :bind but not
+                                ; :after.  We want to eagerly load
+                                ; marginalia once selectrum is loaded.
+  :bind (:map minibuffer-local-map
+         ("C-o" . marginalia-cycle))
+  :config (marginalia-mode 1))
+
+(use-package consult
+  :ensure t
+  :bind (("M-s f" . consult-line-symbol-at-point)
+         ("C-x C-r" . consult-recent-file)
+         ([remap yank-pop] . consult-yank-pop)
+         ([remap goto-line] . consult-goto-line)))
+
+(use-package consult-selectrum
+  :ensure t
+  :after consult)
+
 (provide 'my-completing-read)

@@ -209,13 +209,7 @@ Insert them later with \\[org-insert-all-links]."
   :commands ibuffer-tramp-set-filter-groups-by-tramp-connection)
 
 (use-package recentf
-  :bind (("C-x C-r" . vifon/recentf-open))
-  :config (progn
-            (recentf-mode 1)
-            (defun vifon/recentf-open ()
-              (interactive)
-              (find-file (completing-read "Find recent file: "
-                                          recentf-list)))))
+  :config (recentf-mode 1))
 
 (use-package yasnippet
   :ensure t
