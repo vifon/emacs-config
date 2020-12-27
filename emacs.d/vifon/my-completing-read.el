@@ -26,6 +26,7 @@
   :config (progn
             ;; Source: https://github.com/raxod502/selectrum/wiki/Additional-Configuration#minibuffer-actions-with-embark
             (progn
+              (require 'selectrum)
               (add-hook 'embark-target-finders #'selectrum-get-current-candidate)
 
               (add-hook 'embark-candidate-collectors
