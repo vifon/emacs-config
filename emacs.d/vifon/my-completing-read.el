@@ -16,7 +16,7 @@
 
 (use-package embark
   :ensure t
-  :bind (("M-O" . embark-act)
+  :bind (("ESC M-o" . embark-act)
          :map minibuffer-local-map
          ("M-o"   . embark-act)
          ("C-M-o" . embark-act-noexit))
