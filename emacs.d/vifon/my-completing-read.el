@@ -15,6 +15,7 @@
   :defer t
   :config (progn
             (setq prescient-sort-length-enable nil)
+            (setq prescient-filter-method '(literal regexp initialism prefix))
             (prescient-persist-mode 1)))
 
 (use-package embark
