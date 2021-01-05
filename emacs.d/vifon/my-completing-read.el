@@ -5,18 +5,14 @@
   :bind (("C-x M-r" . selectrum-repeat))
   :init (selectrum-mode 1))
 
-(use-package selectrum-prescient
+(use-package orderless
   :ensure t
   :after selectrum
-  :config (selectrum-prescient-mode 1))
-
-(use-package prescient
-  :ensure t
-  :defer t
-  :config (progn
-            (setq prescient-sort-length-enable nil)
-            (setq prescient-filter-method '(literal regexp initialism prefix))
-            (prescient-persist-mode 1)))
+  :config (setq orderless-matching-styles '(orderless-regexp
+                                            orderless-initialism
+                                            orderless-prefixes)
+                selectrum-refine-candidates-function #'orderless-filter
+                selectrum-highlight-candidates-function #'orderless-highlight-matches))
 
 (use-package embark
   :ensure t
