@@ -24,26 +24,23 @@
             ;; Source: https://github.com/raxod502/selectrum/wiki/Additional-Configuration#minibuffer-actions-with-embark
             (progn
               (require 'selectrum)
-              (add-hook 'embark-target-finders #'selectrum-get-current-candidate)
+              (defun current-candidate+category ()
+                (when selectrum-active-p
+                  (cons (selectrum--get-meta 'category)
+                        (selectrum-get-current-candidate))))
 
-              (add-hook 'embark-candidate-collectors
-                        (defun embark-selectrum-candidates+ ()
-                          (when selectrum-active-p
-                            (selectrum-get-current-candidates
-                             ;; Pass relative file names for dired.
-                             minibuffer-completing-file-name))))
+              (add-hook 'embark-target-finders #'current-candidate+category)
 
+              (defun current-candidates+category ()
+                (when selectrum-active-p
+                  (cons (selectrum--get-meta 'category)
+                        (selectrum-get-current-candidates
+                         ;; Pass relative file names for dired.
+                         minibuffer-completing-file-name))))
+
+              (add-hook 'embark-candidate-collectors #'current-candidates+category)
               ;; No unnecessary computation delay after injection.
-              (add-hook 'embark-setup-hook #'selectrum-set-selected-candidate)
-
-              (add-hook 'embark-input-getters
-                        (defun embark-selectrum-input-getter+ ()
-                          (when selectrum-active-p
-                            (let ((input (selectrum-get-current-input)))
-                              (if minibuffer-completing-file-name
-                                  ;; Only get the input used for matching.
-                                  (file-name-nondirectory input)
-                                input))))))))
+              (add-hook 'embark-setup-hook 'selectrum-set-selected-candidate))))
 
 (use-package marginalia
   :ensure t
