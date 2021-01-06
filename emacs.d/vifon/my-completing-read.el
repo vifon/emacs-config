@@ -5,6 +5,16 @@
   :bind (("C-x M-r" . selectrum-repeat))
   :init (selectrum-mode 1))
 
+(use-package selectrum-prescient
+  :ensure t
+  :after selectrum
+  :config (selectrum-prescient-mode 1))
+
+(use-package prescient
+  :ensure t
+  :defer t
+  :config (prescient-persist-mode 1))
+
 (use-package orderless
   :ensure t
   :after selectrum
