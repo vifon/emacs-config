@@ -690,7 +690,6 @@ Insert them later with \\[org-insert-all-links]."
                   (kill-new project-path))
                 (message "%s" project-path)))
             (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)
-            (setq projectile-completion-system 'default)
             (setq projectile-ignored-project-function
                   (lambda (path)
                     (or (file-remote-p path)
