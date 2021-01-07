@@ -650,7 +650,8 @@ Insert them later with \\[org-insert-all-links]."
          ("C-c k s d" . lsp-describe-session))
   :init (setq lsp-keymap-prefix "C-c k"
               lsp-rust-server 'rust-analyzer
-              lsp-signature-auto-activate nil))
+              lsp-signature-auto-activate nil
+              lsp-headerline-breadcrumb-enable nil))
 
 (use-package lsp-ui
   :ensure t
