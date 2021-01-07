@@ -64,7 +64,7 @@
 
 (use-package consult
   :ensure t
-  :bind (("M-s f" . consult-line-symbol-at-point)
+  :bind (("M-s f" . consult-line)
          ("C-x C-r" . consult-recent-file)
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line)))
