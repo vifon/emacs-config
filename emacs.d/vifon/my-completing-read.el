@@ -52,6 +52,10 @@
               ;; No unnecessary computation delay after injection.
               (add-hook 'embark-setup-hook 'selectrum-set-selected-candidate))))
 
+(use-package embark-consult
+  :ensure t
+  :after (embark consult))
+
 (use-package marginalia
   :ensure t
   :after selectrum
@@ -68,9 +72,5 @@
          ("C-x C-r" . consult-recent-file)
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line)))
-
-(use-package consult-selectrum
-  :ensure t
-  :after consult)
 
 (provide 'my-completing-read)
