@@ -22,7 +22,8 @@
                                             orderless-initialism
                                             orderless-prefixes)
                 selectrum-refine-candidates-function #'orderless-filter
-                selectrum-highlight-candidates-function #'orderless-highlight-matches))
+                selectrum-highlight-candidates-function #'orderless-highlight-matches
+                completion-styles '(orderless)))
 
 (use-package embark
   :ensure t
