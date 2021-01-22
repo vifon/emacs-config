@@ -48,6 +48,7 @@
 (use-package consult
   :ensure t
   :bind (("M-s f" . consult-line)
+         ("M-g g" . consult-line)
          ("C-x C-r" . consult-recent-file)
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
