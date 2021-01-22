@@ -49,7 +49,9 @@
   :ensure t
   :bind (("M-s f" . consult-line)
          ("C-x C-r" . consult-recent-file)
+         ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
-         ([remap goto-line] . consult-goto-line)))
+         ([remap goto-line] . consult-goto-line))
+  :config (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB")))))
 
 (provide 'my-completing-read)
