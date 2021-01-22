@@ -38,6 +38,11 @@
       tramp-backup-directory-alist '(("." . "."))
       backup-by-copying t)
 
+;;; Never timeout the TRAMP sessions, it causes Emacs to hang too
+;;; often.  I'd rather manage their lifetime myself.  This timeout got
+;;; added in Emacs 27.
+(setq tramp-connection-properties '((nil "session-timeout" nil)))
+
 (setq vc-follow-symlinks t)
 (when (equal system-type 'gnu/linux)
   (setq x-select-enable-primary t
