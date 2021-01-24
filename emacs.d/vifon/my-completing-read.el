@@ -54,6 +54,7 @@
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line))
-  :config (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB")))))
+  :config (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB")))
+                consult-project-root-function #'projectile-project-root))
 
 (provide 'my-completing-read)
