@@ -23,33 +23,9 @@
   "    main()"
   )
 
-(define-skeleton python3-async-skeleton
+(define-skeleton python-async-skeleton
   "" ""
   "#!/usr/bin/env python3\n"
-  "\n"
-  "import asyncio\n"
-  "\n\n"
-  "async def main():\n"
-  "    " _ "\n"
-  "\n\n"
-  "if __name__ == \"__main__\":\n"
-  "    loop = asyncio.get_event_loop()\n"
-  "    try:\n"
-  "        task = asyncio.ensure_future(main())\n"
-  "        loop.run_until_complete(task)\n"
-  "    finally:\n"
-  "        task.cancel()\n"
-  "        try:\n"
-  "            loop.run_until_complete(task)\n"
-  "        except asyncio.CancelledError:\n"
-  "            pass\n"
-  "        loop.run_until_complete(loop.shutdown_asyncgens())\n"
-  "        loop.close()"
-  )
-
-(define-skeleton python3.7-async-skeleton
-  "" ""
-  "#!/usr/bin/env python3.7\n"
   "\n"
   "import asyncio\n"
   "\n\n"
