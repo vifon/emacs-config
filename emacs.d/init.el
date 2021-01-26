@@ -300,15 +300,6 @@ Insert them later with \\[org-insert-all-links]."
          ("C-x 4 i" . flop-frame)
          ("C-x 4 I" . flip-frame)))
 
-(use-package evil-nerd-commenter
-  :ensure t
-  :init (defun evil-nerd-commenter-dwim (arg)
-          (interactive "P")
-          (if arg
-              (evilnc-comment-or-uncomment-lines arg)
-            (call-interactively 'comment-dwim)))
-  :bind (([remap comment-dwim] . evil-nerd-commenter-dwim)))
-
 (use-package treemacs
   :ensure t
   :bind (("C-c b" . treemacs)
