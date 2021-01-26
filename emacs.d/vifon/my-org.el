@@ -14,7 +14,9 @@
             (add-to-list 'org-file-apps '(directory . emacs))
             (dolist (ext '("png" "jpg" "jpeg"))
               (add-to-list 'org-file-apps (cons (concat "\\." ext "\\'")
-                                                "sxiv %s")))))
+                                                "sxiv %s")))
+            (setq org-default-notes-file (concat org-directory "/gtd.org"))
+            (plist-put org-format-latex-options :scale 2.0)))
 
 (use-package org-attach
   :after org
@@ -109,8 +111,8 @@ already present in the buffer."
   (delete-blank-lines))
 
 (require 'ol-notmuch nil 'noerror)
-(require 'org-protocol)
-(require 'org-inlinetask)
+(use-package org-protocol :after org)
+(use-package org-inlinetask :after org)
 
 (setq org-hide-leading-stars nil)
 (setq org-special-ctrl-a/e t)
@@ -131,8 +133,6 @@ already present in the buffer."
                                                 (match-end 1)
                                                 "•"))))))
 (setq org-hide-emphasis-markers nil)
-
-(setq org-default-notes-file (concat org-directory "/gtd.org"))
 
 (setq org-refile-targets '((org-agenda-files :tag . "PROJECT")
                            (org-agenda-files :tag . "CATEGORY")
@@ -237,10 +237,9 @@ already present in the buffer."
         ("RECURRING")
         "\\<IGNORE\\>"))
 
-(plist-put org-format-latex-options :scale 2.0)
-
 (use-package ob
   :defer t
+  :after org
   :config (progn
             (setq org-confirm-babel-evaluate nil
                   org-export-use-babel nil)
