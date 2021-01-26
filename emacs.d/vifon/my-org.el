@@ -273,18 +273,6 @@ already present in the buffer."
                   org-babel-python-command "python3"
                   org-babel-perl-preface "use 5.010;")))
 
-(org-add-link-type "evince" 'org-evince-open)
-(defun org-evince-open (link)
-  (string-match "\\(.*?\\)\\(?:::\\([0-9]+\\)\\)?$" link)
-  (let ((path (match-string 1 link))
-        (page (and (match-beginning 2)
-                   (match-string 2 link))))
-    (if page
-        (call-process "evince" nil 0 nil
-                      path "-i" page)
-      (call-process "evince" nil 0 nil
-                    path))))
-
 (use-package org-crypt
   :after org
   :config (progn
