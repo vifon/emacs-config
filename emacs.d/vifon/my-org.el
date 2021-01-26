@@ -17,7 +17,7 @@
                                                 "sxiv %s")))))
 
 (use-package org-attach
-  :commands (org-attach-expand-link org-attach-attach)
+  :after org
   :init (defun org-attach-scrot ()
           (interactive)
           (let* ((timestamp (format-time-string "%Y-%m-%d_%H%M-%s"))
