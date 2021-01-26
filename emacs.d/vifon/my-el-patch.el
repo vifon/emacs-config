@@ -144,7 +144,9 @@ to be CLOCKED OUT."))))
 	        (and (memq ch '(?g ?G))
                  (el-patch-swap
                    (read-number "Got back how many minutes ago? " default)
-                   (let ((input (read-string "Got back when? " nil nil default)))
+                   (let ((input (read-string "Got back when? "
+                                             nil nil
+                                             (format-time-string "%H:%M" nil))))
                      (if (string-match-p ":" input)
                          (let* ((time (parse-time-string input))
                                 (now (current-time))
