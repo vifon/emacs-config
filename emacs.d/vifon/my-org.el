@@ -286,6 +286,7 @@ already present in the buffer."
                     path))))
 
 (use-package org-crypt
+  :after org
   :config (progn
             (org-crypt-use-before-save-magic)
             (add-to-list 'org-tags-exclude-from-inheritance "crypt")
@@ -300,6 +301,7 @@ already present in the buffer."
 
 
 (use-package org-duration
+  :after org
   :config (setq org-duration-units `(("min" . 1)
                                      ("h" . 60)
                                      ("d" . ,(* 60 8))
