@@ -145,24 +145,30 @@ Insert them later with \\[org-insert-all-links]."
                          (nreverse links))))))))
 
 (use-package dired-x
+  :bind (("C-x C-j" . dired-jump))
   :init (setq dired-x-hands-off-my-keys t))
 
 (use-package dired-subtree
   :ensure t
+  :after dired
   :commands dired-subtree-toggle)
 
 (use-package dired-filter
   :ensure t
+  :after dired
   :config (setq-default dired-filter-stack '()))
 
 (use-package dired-rifle
-  :ensure t)
+  :ensure t
+  :after dired)
 
 (use-package dired-collapse
-  :ensure t)
+  :ensure t
+  :after dired)
 
 (use-package dired-async
   :ensure async
+  :after dired
   :commands dired-async-mode
   :config (setq dired-async-message-function
                 (lambda (text face &rest args)
