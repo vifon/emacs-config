@@ -6,5 +6,5 @@ emacs -Q \
       -l ~/.emacs.d/early-init.el \
       --eval "(profiler-start 'cpu)" \
       -l ~/.emacs.d/init.el \
-      -f profiler-report \
-      -f profiler-stop
+      -f profiler-stop \
+      -f profiler-report
