@@ -18,12 +18,18 @@
 (use-package orderless
   :ensure t
   :after selectrum
-  :config (setq orderless-matching-styles '(orderless-regexp
-                                            orderless-initialism
-                                            orderless-prefixes)
-                selectrum-refine-candidates-function #'orderless-filter
-                selectrum-highlight-candidates-function #'orderless-highlight-matches
-                completion-styles '(orderless)))
+  :config (progn
+            (setq orderless-matching-styles '(orderless-regexp
+                                              orderless-initialism
+                                              orderless-prefixes)
+                  selectrum-refine-candidates-function #'orderless-filter
+                  selectrum-highlight-candidates-function #'orderless-highlight-matches
+                  completion-styles '(orderless))
+
+            (defun vifon/orderless-without-if-bang (pattern index total)
+              (when (string-prefix-p "!" pattern)
+                `(orderless-without-literal . ,(substring pattern 1))))
+            (setq orderless-style-dispatchers '(vifon/orderless-without-if-bang))))
 
 (use-package embark
   :ensure t
