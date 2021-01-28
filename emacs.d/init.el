@@ -689,8 +689,7 @@ Insert them later with \\[org-insert-all-links]."
                 (message "%s" project-path)))
             (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)
             (when (package-installed-p 'consult)
-              (define-key projectile-command-map (kbd "s R") #'consult-ripgrep)
-              (setq consult-project-root-function #'projectile-project-root))
+              (define-key projectile-command-map (kbd "s R") #'consult-ripgrep))
             (setq projectile-ignored-project-function
                   (lambda (path)
                     (or (file-remote-p path)
