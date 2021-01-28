@@ -36,7 +36,7 @@
               "    make DESTDIR=$PKG install\n")
     (concat "    make PREFIX=$HOME/local\n"
             "    make PREFIX=$HOME/local DESTDIR=$PKG install\n"))
-  "    rm -rf $PKG/usr/info\n"
+  "    rm -rf $PKG/share/info\n"
   "}\n"
   )
 (define-auto-insert "/Pkgfile$" 'cruxpkg-skeleton)
