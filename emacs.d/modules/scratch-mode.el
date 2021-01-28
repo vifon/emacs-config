@@ -19,7 +19,6 @@
                                 (find-library "scratch-mode")))
     (define-key map (kbd "p") #'projectile-switch-project)
     (define-key map (kbd "SPC") #'notmuch)
-    (define-key map (kbd "E") #'elfeed)
     (define-key map (kbd "z") #'deft)
     (define-key map (kbd "C-c C-x C-j") #'org-clock-goto)
     (define-key map (kbd "j") #'org-clock-goto)
@@ -39,7 +38,6 @@
     "i"
     "p"
     "SPC"
-    "E"
     "z"
     "a"
     "j"
