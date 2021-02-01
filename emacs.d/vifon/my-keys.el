@@ -50,7 +50,7 @@
  r_G_     ^ ^                      ^a^lign-_R_egexp
 
  _l_inum-mode           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  tog^g^l^e^-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines) ^^^^^^^^^^^^^^^^^^^^   ^a^g^gress^i^ve-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
- _w_hitespace-mode: %-3(bound-and-true-p writespace-mode) ^  hl-_L_i^n^e-^m^ode               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   _d_u^mb-ju^m^p-m^o^de: %-3(bound-and-true-p dumb-jump-mode)        ^^^^^^^^
+ _w_hitespace-mode: %-3(bound-and-true-p writespace-mode) ^  hl-_L_i^n^e-^m^ode               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  _s_ort-lines           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  dis^p^l^a^y-_F_ill-indicator: %-3(bound-and-true-p display-fill-column-indicator-mode)   ^c_o_mpare^-^win^d^ows            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)  aut^o^-_f_il^l^-mode: %-3(not (equal auto-fill-function nil))        ^^^^^^^^^^^^^^^^^   ^i^n^dent-_g_uid^e^-mode: %-3(bound-and-true-p indent-guide-mode)     ^^^^^
 
@@ -62,7 +62,6 @@
                   ("v" visual-line-mode :color red)
                   ("l" display-line-numbers-best :color red)
                   ("L" hl-line-mode :color red)
-                  ("d" dumb-jump-mode :color red)
                   ("r" toggle-truncate-lines :color red)
                   ("f" auto-fill-mode :color red)
                   ("i" aggressive-indent-mode :color red)
