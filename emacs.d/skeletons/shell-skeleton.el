@@ -1,6 +1,6 @@
 (define-skeleton bash-strict-skeleton
   "" ""
-  "#!/bin/bash\n"
+  "#!/usr/bin/env bash\n"
   "\n"
   "set -o errexit -o nounset -o pipefail\n"
   "\n"
