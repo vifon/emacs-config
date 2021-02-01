@@ -28,6 +28,7 @@
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
+        capitalize-dwim
         comment-dwim
         company-complete
         completion-at-point
@@ -47,6 +48,7 @@
         delete-horizontal-space
         delete-indentation
         delete-pair
+        downcase-dwim
         downcase-region
         duplicate-line
         electric-newline-and-maybe-indent
@@ -137,6 +139,7 @@
         transpose-sexps
         transpose-words
         typescript-insert-and-indent
+        upcase-dwim
         upcase-region
         wdired-capitalize-word
         wdired-downcase-word
