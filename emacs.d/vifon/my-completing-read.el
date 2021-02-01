@@ -56,6 +56,9 @@
   :ensure t
   :bind (("M-s f" . consult-line)
          ("M-g g" . consult-line)
+         ("M-g o" . consult-outline)
+         ("M-g i" . consult-imenu)
+         ("M-g C-g" . consult-ripgrep)
          ("C-x C-r" . consult-recent-file)
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
