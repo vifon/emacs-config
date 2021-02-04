@@ -179,10 +179,9 @@ already present in the buffer."
 
 (setq org-confirm-elisp-link-function #'y-or-n-p)
 
-(when (file-exists-p "~/org/.agenda-files")
-  (setq org-agenda-files "~/org/.agenda-files"))
-(when (not org-agenda-files)
-  (setq org-agenda-files '("~/org/gtd.org")))
+(setq org-agenda-files (if (file-exists-p "~/org/.agenda-files")
+                           "~/org/.agenda-files"
+                         '("~/org/gtd.org")))
 
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
