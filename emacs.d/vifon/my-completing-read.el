@@ -63,6 +63,13 @@
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line))
-  :config (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB")))))
+  :config (let ((grep-config (list :preview-key (kbd "TAB")
+                                   :keymap (let ((map (make-sparse-keymap)))
+                                             (define-key map [remap selectrum-insert-current-candidate]
+                                               #'ignore)
+                                             map))))
+            (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB"))
+                                   (consult-ripgrep . ,grep-config)
+                                   (consult-grep    . ,grep-config)))))
 
 (provide 'my-completing-read)
