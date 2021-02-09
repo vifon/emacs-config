@@ -29,7 +29,11 @@
             (defun vifon/orderless-without-if-bang (pattern index total)
               (when (string-prefix-p "!" pattern)
                 `(orderless-without-literal . ,(substring pattern 1))))
-            (setq orderless-style-dispatchers '(vifon/orderless-without-if-bang))))
+            (defun vifon/orderless-literal-if-equal (pattern index total)
+              (when (string-prefix-p "=" pattern)
+                `(orderless-literal . ,(substring pattern 1))))
+            (setq orderless-style-dispatchers '(vifon/orderless-without-if-bang
+                                                vifon/orderless-literal-if-equal))))
 
 (use-package embark
   :ensure t
