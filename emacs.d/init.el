@@ -318,7 +318,7 @@ Insert them later with \\[org-insert-all-links]."
 (use-package magit
   :ensure t
   :commands magit-process-file
-  :bind (("C-c g" . magit-status)
+  :bind (("C-c g" . magit-status-here)
          ("C-x M-g" . magit-dispatch)
          ("C-c M-g" . magit-file-dispatch))
   :init (progn
