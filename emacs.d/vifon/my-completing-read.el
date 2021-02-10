@@ -67,13 +67,20 @@
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line))
-  :config (let ((grep-config (list :preview-key (kbd "TAB")
-                                   :keymap (let ((map (make-sparse-keymap)))
-                                             (define-key map [remap selectrum-insert-current-candidate]
-                                               #'ignore)
-                                             map))))
-            (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB"))
-                                   (consult-ripgrep . ,grep-config)
-                                   (consult-grep    . ,grep-config)))))
+  :config (progn
+            (let ((grep-config (list :preview-key (kbd "TAB")
+                                     :keymap (let ((map (make-sparse-keymap)))
+                                               (define-key map [remap selectrum-insert-current-candidate]
+                                                 #'ignore)
+                                               map))))
+              (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB"))
+                                     (consult-ripgrep . ,grep-config)
+                                     (consult-grep    . ,grep-config))))
+
+            ;; Disable consult-buffer project-related capabilities as
+            ;; they are very slow in TRAMP.
+            (setq consult-buffer-sources
+                  (delq 'consult--source-project-buffer
+                        (delq 'consult--source-project-file consult-buffer-sources)))))
 
 (provide 'my-completing-read)
