@@ -30,8 +30,8 @@
               (when (string-prefix-p "!" pattern)
                 `(orderless-without-literal . ,(substring pattern 1))))
             (defun vifon/orderless-literal-if-equal (pattern index total)
-              (when (string-prefix-p "=" pattern)
-                `(orderless-literal . ,(substring pattern 1))))
+              (when (string-suffix-p "=" pattern)
+                `(orderless-literal . ,(substring pattern 0 -1))))
             (setq orderless-style-dispatchers '(vifon/orderless-without-if-bang
                                                 vifon/orderless-literal-if-equal))))
 
