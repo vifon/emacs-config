@@ -39,8 +39,7 @@
   :ensure t
   :bind (("C-c o" . embark-act)
          :map minibuffer-local-map
-         ("M-o"   . embark-act)
-         ("C-M-o" . embark-act-noexit)))
+         ("M-o"   . embark-act)))
 
 (use-package embark-consult
   :ensure t
