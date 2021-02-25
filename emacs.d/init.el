@@ -317,13 +317,10 @@ Insert them later with \\[org-insert-all-links]."
 
 (use-package magit
   :ensure t
-  :commands magit-process-file
-  :bind (("C-c g" . magit-status-here)
-         ("C-x M-g" . magit-dispatch)
-         ("C-c M-g" . magit-file-dispatch))
-  :init (progn
-          (setq magit-diff-refine-hunk t))
+  :defer t
   :config (progn
+            (setq magit-diff-refine-hunk t
+                  magit-status-goto-file-position t)
             (mapcar
              (lambda (keymap)
                (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
