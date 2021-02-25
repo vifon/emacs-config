@@ -296,8 +296,7 @@ Insert them later with \\[org-insert-all-links]."
   :ensure t
   :init (progn
           (setq doom-modeline-env-version nil
-                doom-modeline-icon (or (display-graphic-p)
-                                       (daemonp)))
+                doom-modeline-icon nil)
           (doom-modeline-mode 1)))
 
 (use-package transpose-frame
