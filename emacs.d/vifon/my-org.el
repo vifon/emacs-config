@@ -189,29 +189,29 @@ already present in the buffer."
 
 (setq org-capture-templates
       '(("t" "todo" entry (file "inbox.org")
-         "* TODO %?\n  %U\n  %a\n")
+         "* TODO %i%?\n  %U\n  %a\n")
 
         ("T" "sub-todo" entry (clock)
-         "* TODO %?\n  %U\n  %a\n")
+         "* TODO %i%?\n  %U\n  %a\n")
 
         ("f" "follow-up" entry (file "inbox.org")
-         "* TODO %?\n  %U\n  Follow-up of: %a\n")
+         "* TODO %i%?\n  %U\n  Follow-up of: %a\n")
 
         ("b" "issue" entry (file+headline
                             (concat (or (vc-root-dir)
                                         (projectile-project-root)
                                         default-directory) "todo.org") "Issues")
-         "* TODO %?\n  %U\n  %a\n")
+         "* TODO %i%?\n  %U\n  %a\n")
 
         ("n" "note" entry (file "notes.org")
-         "* %? :NOTE:\n  %U\n  %a\n")
+         "* %i%? :NOTE:\n  %U\n  %a\n")
 
         ("j" "journal" entry (file+olp+datetree "journal.org.gpg")
-         "* %?"
+         "* %i%?"
          :time-prompt t)
 
         ("p" "purchase" entry (file "purchases.org")
-         "* %?\n  %U\n")))
+         "* %i%?\n  %U\n")))
 
 (defun vifon/truncate-org-mode-line ()
   (let* ((heading-text (nth 4 (org-heading-components)))
