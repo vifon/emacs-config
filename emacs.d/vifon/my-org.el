@@ -40,6 +40,14 @@
   :config (setq org-attach-use-inheritance t
                 org-attach-preferred-new-method 'ask))
 
+(use-package org-clock
+  :commands org-clock-goto
+  :config (setq org-clock-into-drawer t
+                org-clock-out-remove-zero-time-clocks t))
+
+(use-package org-mru-clock :ensure t :defer t)
+
+
 (defun org-insert-heading-empty-line-fix ()
   "Correctly surround the new org headings with empty lines.
 By default the empty line after the new heading is not inserted
@@ -159,10 +167,6 @@ already present in the buffer."
 (setq org-todo-keyword-faces '(("NEXT" . "Tomato")))
 (setq org-enforce-todo-dependencies t)
 
-(use-package org-mru-clock :ensure t :defer t)
-
-(setq org-clock-into-drawer t
-      org-clock-out-remove-zero-time-clocks t)
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-archive-to-archive-sibling)
 (setq org-archive-location ".archive/%s_archive::")
