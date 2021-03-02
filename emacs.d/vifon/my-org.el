@@ -170,8 +170,7 @@ already present in the buffer."
 (setq org-cycle-open-archived-trees nil)
 (setq org-archive-default-command 'org-archive-to-archive-sibling)
 (setq org-archive-location ".archive/%s_archive::")
-(setq org-log-into-drawer "LOGBOOK-NOTES"
-      org-clock-into-drawer "LOGBOOK")
+(setq org-log-into-drawer t)
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
 (setq org-catch-invisible-edits 'smart)
