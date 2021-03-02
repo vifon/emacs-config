@@ -15,7 +15,7 @@
             (dolist (ext '("png" "jpg" "jpeg"))
               (add-to-list 'org-file-apps (cons (concat "\\." ext "\\'")
                                                 "sxiv %s")))
-            (setq org-default-notes-file (concat org-directory "/gtd.org"))
+            (setq org-default-notes-file (concat org-directory "/inbox.org"))
             (plist-put org-format-latex-options :scale 2.0)))
 
 (use-package org-attach
@@ -41,7 +41,7 @@
                 org-attach-preferred-new-method 'ask))
 
 (use-package org-clock
-  :commands org-clock-goto
+  :commands (org-clock-goto org-clocking-p)
   :config (setq org-clock-into-drawer t
                 org-clock-out-remove-zero-time-clocks t))
 
@@ -192,30 +192,62 @@ already present in the buffer."
 (global-set-key (kbd "C-c S") 'org-store-link)
 
 (setq org-capture-templates
-      '(("t" "todo" entry (file "inbox.org")
-         "* TODO %i%?\n  %U\n  %a\n")
+      '(("t" "task")
 
-        ("T" "sub-todo" entry (clock)
-         "* TODO %i%?\n  %U\n  %a\n")
+        ("tt" "simple task" entry (file "")
+         "* TODO %?\n  %U\n  %a\n  %i")
 
-        ("f" "follow-up" entry (file "inbox.org")
-         "* TODO %i%?\n  %U\n  Follow-up of: %a\n")
+        ("ti" "task from an issue tracker" entry (file "")
+         "* TODO %?%a\n  %U\n  %i")
 
-        ("b" "issue" entry (file+headline
-                            (concat (or (vc-root-dir)
-                                        (projectile-project-root)
-                                        default-directory) "todo.org") "Issues")
-         "* TODO %i%?\n  %U\n  %a\n")
+        ("ts" "sub-task" entry (clock)
+         "* TODO %?\n  %U\n  %a\n  %i")
 
-        ("n" "note" entry (file "notes.org")
-         "* %i%? :NOTE:\n  %U\n  %a\n")
+        ("tb" "project issue" entry
+         (file+headline (concat (or (vc-root-dir)
+                                    (projectile-project-root))
+                                "todo.org")
+                        "Issues")
+         "* TODO %?\n  %U\n  %a\n  %i\n")
+
+
+        ("n" "task note" item (clock)
+         "- %a%(unless (string-empty-p \"%i\") \" :: %i\")"
+         :immediate-finish t)
+
+        ("f" "task follow-up" entry
+         (function org-back-to-heading)
+         "* TODO %?\n  %U\n  Follow-up of: %a\n")
+
+        ("N" "note" entry (file "notes.org")
+         "* %?  :NOTE:\n  %U\n  %a\n  %i\n")
 
         ("j" "journal" entry (file+olp+datetree "journal.org.gpg")
-         "* %i%?"
+         "* %?\n  %i\n"
+         :time-prompt t)
+
+        ("J" "dev-diary" entry (file+olp+datetree "~/work.d/dev-diary.org")
+         "* %?\n  %i\n"
          :time-prompt t)
 
         ("p" "purchase" entry (file "purchases.org")
-         "* %i%?\n  %U\n")))
+         "* %?%a\n  %U\n  %i\n")
+
+        ("m" "mail")
+
+        ("mm" "meeting" entry (file "")
+         "* TODO %?%a\n  SCHEDULED: %^T\n  %U\n  %i")))
+
+(setq org-capture-templates-contexts
+      '(("f" ((in-mode . "org-mode")))
+        ("b" ((lambda () (derived-mode-p 'prog-mode))))
+        ("m" ((in-mode . "notmuch-show-mode")))
+        ("ts" ((lambda () (org-clocking-p))))
+        ("tb" ((lambda () (or (vc-root-dir)
+                              (projectile-project-root)))))
+        ("n" ((lambda () (org-clocking-p))))
+        ("n" "N" ((lambda () (not (org-clocking-p)))))))
+
 
 (defun vifon/truncate-org-mode-line ()
   (let* ((heading-text (nth 4 (org-heading-components)))
