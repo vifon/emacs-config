@@ -177,6 +177,7 @@ already present in the buffer."
 (setq org-outline-path-complete-in-steps nil
       org-refile-use-outline-path t)
 (setq org-id-link-to-org-use-id 'use-existing)
+(setq org-return-follows-link t)
 
 (setq org-image-actual-width nil)
 
