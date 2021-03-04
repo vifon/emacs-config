@@ -106,4 +106,16 @@ See: Info node `(emacs) Sunrise/Sunset'."
 
 (global-set-key (kbd "C-M-s-?") #'vifon/theme-dwim)
 
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (defun vifon/theme-init-daemon (frame)
+                (with-selected-frame frame
+                  (vifon/theme-dwim 'no-disable))
+                ;; Run this hook only once.
+                (remove-hook 'after-make-frame-functions
+                             #'vifon/theme-init-daemon)
+                (fmakunbound 'vifon/theme-init-daemon)))
+  (vifon/theme-dwim 'no-disable))
+
+
 (provide 'my-theme)
