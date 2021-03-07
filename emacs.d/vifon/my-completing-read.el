@@ -2,7 +2,9 @@
 
 (use-package selectrum
   :ensure t
-  :bind (("C-x M-r" . selectrum-repeat))
+  :bind (("C-x M-r" . selectrum-repeat)
+         :map selectrum-minibuffer-map
+         ("C-l" . backward-kill-sexp))
   :init (selectrum-mode 1))
 
 (use-package selectrum-prescient
