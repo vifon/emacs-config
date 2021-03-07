@@ -667,6 +667,7 @@ Insert them later with \\[org-insert-all-links]."
   :diminish projectile-mode
   :commands (projectile-global-mode
              projectile-switch-project
+             projectile-project-root
              my-projectile-show-path)
   :init (progn
           (setq projectile-switch-project-action (lambda ()
