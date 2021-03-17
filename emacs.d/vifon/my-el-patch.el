@@ -245,4 +245,122 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
            (org-with-point-at heading
              (org-clock-in nil (and clock-out-time resolve-to))))))))))
 
+(el-patch-feature org-capture)
+(with-eval-after-load 'org-capture
+  (el-patch-defun org-capture-place-item ()
+    "Place the template as a new plain list item."
+    (let ((prepend? (org-capture-get :prepend))
+          (template (org-remove-indentation (org-capture-get :template)))
+          item)
+      ;; Make template suitable for insertion.  In particular, add
+      ;; a main bullet if it is missing.
+      (unless (string-match-p (concat "\\`" (org-item-re)) template)
+        (setq template (concat "- " (mapconcat #'identity
+                                               (split-string template "\n")
+                                               "\n  "))))
+      ;; Delimit the area where we should look for a plain list.
+      (pcase-let ((`(,beg . ,end)
+                   (cond ((org-capture-get :exact-position)
+                          ;; User gave a specific position.  Start
+                          ;; looking for lists from here.
+                          (org-with-point-at (org-capture-get :exact-position)
+                            (cons (line-beginning-position)
+                                  (if (org-capture-get :insert-here)
+                                      (line-beginning-position)
+                                    (org-entry-end-position)))))
+                         ((org-capture-get :target-entry-p)
+                          ;; At a heading, limit search to its body.
+                          (cons (line-beginning-position 2)
+                                (org-entry-end-position)))
+                         (t
+                          ;; Table is not necessarily under a heading.
+                          ;; Search whole buffer.
+                          (cons (point-min) (point-max))))))
+        ;; Find the first plain list in the delimited area.
+        (goto-char (el-patch-swap beg end))
+        (let ((item-regexp (org-item-beginning-re)))
+          (catch :found
+            (while ((el-patch-swap re-search-forward
+                                   re-search-backward)
+                    item-regexp
+                    (el-patch-swap end beg)
+                    t)
+              (when (setq item (org-element-lineage
+                                (org-element-at-point) '(plain-list) t))
+                (goto-char (org-element-property (if prepend? :post-affiliated
+                                                   :contents-end)
+                                                 item))
+                (throw :found t)))
+            ;; No list found.  Move to the location when to insert
+            ;; template.  Skip planning info and properties drawers, if
+            ;; any.
+            (goto-char (cond ((org-capture-get :insert-here) beg)
+                             ((not prepend?) end)
+                             ((org-before-first-heading-p) beg)
+                             (t (max (save-excursion
+                                       (org-end-of-meta-data)
+                                       (point))
+                                     beg)))))))
+      ;; Insert template.
+      (let ((origin (point)))
+        (unless (bolp) (insert "\n"))
+        ;; When a new list is created, always obey to `:empty-lines' and
+        ;; friends.
+        ;;
+        ;; When capturing in an existing list, do not change blank lines
+        ;; above or below the list; consider it to be a stable
+        ;; structure.  However, we can control how many blank lines
+        ;; separate items.  So obey to `:empty-lines' between items as
+        ;; long as it does not insert more than one empty line.  In the
+        ;; specific case of empty lines above, it means we only obey the
+        ;; parameter when appending an item.
+        (unless (and item prepend?)
+          (org-capture-empty-lines-before
+           (and item
+                (not prepend?)
+                (min 1 (or (org-capture-get :empty-lines-before)
+                           (org-capture-get :empty-lines)
+                           0)))))
+        (org-capture-position-for-last-stored (point))
+        (let ((beg (line-beginning-position))
+              (end (progn
+                     (insert (org-trim template) "\n")
+                     (point-marker))))
+          (when item
+            (let ((i (save-excursion
+                       (goto-char (org-element-property :post-affiliated item))
+                       (current-indentation))))
+              (save-excursion
+                (goto-char beg)
+                (save-excursion
+                  (while (< (point) end)
+                    (indent-to i)
+                    (forward-line)))
+                ;; Pre-pending an item could change the type of the list
+                ;; if there is a mismatch.  In this situation,
+                ;; prioritize the existing list.
+                (when prepend?
+                  (let ((ordered? (eq 'ordered (org-element-property :type item))))
+                    (when (org-xor ordered?
+                                   (string-match-p "\\`[A-Za-z0-9]\\([.)]\\)"
+                                                   template))
+                      (org-cycle-list-bullet (if ordered? "1." "-")))))
+                ;; Eventually repair the list for proper indentation and
+                ;; bullets.
+                (org-list-repair))))
+          ;; Limit number of empty lines.  See above for details.
+          (unless (and item (not prepend?))
+            (org-capture-empty-lines-after
+             (and item
+                  prepend?
+                  (min 1 (or (org-capture-get :empty-lines-after)
+                             (org-capture-get :empty-lines)
+                             0)))))
+          (org-capture-mark-kill-region origin (point))
+          ;; ITEM always end with a newline character.  Make sure we do
+          ;; not narrow at the beginning of the next line, possibly
+          ;; altering its structure (e.g., when it is a headline).
+          (org-capture-narrow beg (1- end))
+          (org-capture--position-cursor beg end))))))
+
 (provide 'my-el-patch)
