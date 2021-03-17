@@ -720,8 +720,8 @@ Insert them later with \\[org-insert-all-links]."
               (lambda (arg)
                 (interactive "P")
                 (if arg
-                    (kill-buffer)
-                  (kill-buffer-and-window))))
+                    (kill-buffer-and-window)
+                  (kill-buffer))))
             (define-key image-mode-map (kbd "K")
               (lambda ()
                 (interactive)
