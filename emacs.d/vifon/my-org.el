@@ -205,6 +205,10 @@ already present in the buffer."
         ("ti" "task from an issue tracker" entry (file "")
          "* TODO %?%a\n  %U\n  %i")
 
+        ("tf" "task follow-up" entry
+         (function org-back-to-heading)
+         "* TODO %?\n  %U\n  Follow-up of: %a")
+
         ("ts" "sub-task" entry (clock)
          "* TODO %?\n  %U\n  %a\n  %i")
 
@@ -213,30 +217,26 @@ already present in the buffer."
                                     (projectile-project-root))
                                 "todo.org")
                         "Issues")
-         "* TODO %?\n  %U\n  %a\n  %i\n")
+         "* TODO %?\n  %U\n  %a\n  %i")
 
 
         ("n" "task note" item (clock)
          "- %a%(unless (string-empty-p \"%i\") \" :: %i\")"
          :immediate-finish t)
 
-        ("f" "task follow-up" entry
-         (function org-back-to-heading)
-         "* TODO %?\n  %U\n  Follow-up of: %a\n")
-
         ("N" "note" entry (file "notes.org")
-         "* %?  :NOTE:\n  %U\n  %a\n  %i\n")
+         "* %?  :NOTE:\n  %U\n  %a\n  %i")
 
         ("j" "journal" entry (file+olp+datetree "journal.org.gpg")
-         "* %?\n  %i\n"
+         "* %?\n  %i"
          :time-prompt t)
 
         ("J" "dev-diary" entry (file+olp+datetree "~/work.d/dev-diary.org")
-         "* %?\n  %i\n"
+         "* %?\n  %i"
          :time-prompt t)
 
         ("p" "purchase" entry (file "purchases.org")
-         "* %?%a\n  %U\n  %i\n")
+         "* %?%a\n  %U\n  %i")
 
         ("m" "mail")
 
@@ -244,12 +244,12 @@ already present in the buffer."
          "* TODO %?%a\n  SCHEDULED: %^T\n  %U\n  %i")))
 
 (setq org-capture-templates-contexts
-      '(("f" ((in-mode . "org-mode")))
-        ("b" ((lambda () (derived-mode-p 'prog-mode))))
-        ("m" ((in-mode . "notmuch-show-mode")))
+      '(("m" ((in-mode . "notmuch-show-mode")))
+        ("tf" ((in-mode . "org-mode")))
         ("ts" ((lambda () (org-clocking-p))))
-        ("tb" ((lambda () (or (vc-root-dir)
-                              (projectile-project-root)))))
+        ("tb" ((lambda () (and (derived-mode-p 'prog-mode)
+                               (or (vc-root-dir)
+                                   (projectile-project-root))))))
         ("n" ((lambda () (org-clocking-p))))
         ("n" "N" ((lambda () (not (org-clocking-p)))))))
 
