@@ -45,7 +45,11 @@
   :config (setq org-clock-into-drawer t
                 org-clock-out-remove-zero-time-clocks t))
 
-(use-package org-mru-clock :ensure t :defer t)
+(use-package org-mru-clock
+  :ensure t
+  :defer t
+  :config (advice-add #'org-mru-clock-select-recent-task :after
+                      #'org-back-to-heading))
 
 
 (defun org-insert-heading-empty-line-fix ()
