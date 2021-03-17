@@ -270,21 +270,19 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
                                     (org-entry-end-position)))))
                          ((org-capture-get :target-entry-p)
                           ;; At a heading, limit search to its body.
-                          (cons (line-beginning-position 2)
+                          (cons (el-patch-wrap 2
+                                  (or (re-search-forward org-logbook-drawer-re nil t)
+                                      (line-beginning-position 2)))
                                 (org-entry-end-position)))
                          (t
                           ;; Table is not necessarily under a heading.
                           ;; Search whole buffer.
                           (cons (point-min) (point-max))))))
         ;; Find the first plain list in the delimited area.
-        (goto-char (el-patch-swap beg end))
+        (goto-char beg)
         (let ((item-regexp (org-item-beginning-re)))
           (catch :found
-            (while ((el-patch-swap re-search-forward
-                                   re-search-backward)
-                    item-regexp
-                    (el-patch-swap end beg)
-                    t)
+            (while (re-search-forward item-regexp end t)
               (when (setq item (org-element-lineage
                                 (org-element-at-point) '(plain-list) t))
                 (goto-char (org-element-property (if prepend? :post-affiliated
@@ -304,6 +302,9 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
       ;; Insert template.
       (let ((origin (point)))
         (unless (bolp) (insert "\n"))
+        (el-patch-add
+          (unless item
+            (indent-relative t t)))
         ;; When a new list is created, always obey to `:empty-lines' and
         ;; friends.
         ;;
