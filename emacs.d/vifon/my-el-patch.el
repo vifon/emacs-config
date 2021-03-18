@@ -302,9 +302,6 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
       ;; Insert template.
       (let ((origin (point)))
         (unless (bolp) (insert "\n"))
-        (el-patch-add
-          (unless item
-            (indent-relative t t)))
         ;; When a new list is created, always obey to `:empty-lines' and
         ;; friends.
         ;;
@@ -322,6 +319,8 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
                 (min 1 (or (org-capture-get :empty-lines-before)
                            (org-capture-get :empty-lines)
                            0)))))
+        (el-patch-add
+          (indent-relative t t))
         (org-capture-position-for-last-stored (point))
         (let ((beg (line-beginning-position))
               (end (progn
