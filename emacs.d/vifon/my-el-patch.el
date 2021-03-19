@@ -320,7 +320,8 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
                            (org-capture-get :empty-lines)
                            0)))))
         (el-patch-add
-          (indent-relative t t))
+          (unless item
+            (indent-relative t t)))
         (org-capture-position-for-last-stored (point))
         (let ((beg (line-beginning-position))
               (end (progn
