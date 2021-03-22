@@ -46,6 +46,12 @@
                                     (selected-frame)))
                            'face 'bold)))
 
+            ;; XXX: Terrible hack.
+            ;; The same thing for doom-modeline.  A terrible hack but
+            ;; it will suffice for now.
+            (doom-modeline-def-segment workspace-name
+              (format "X%s " (exwm-workspace--position (selected-frame))))
+
             (require 'exwm-randr)
             (let ((vifon/exwm-workspace->display '(3 4 5)))
               (defun vifon/exwm-randr-workspace-output-plist-update ()
@@ -207,7 +213,6 @@
                     (,(kbd "s-r") . (lambda (command)
 	  	                      (interactive (list (read-shell-command "$ ")))
 	  	                      (start-process-shell-command command nil command)))
-                    (,(kbd "s-e") . counsel-linux-app)
                     (,(kbd "s-R") . rename-buffer)
                     (,(kbd "s-' s") . ,(my-exwm-launch "signal-desktop"))
                     (,(kbd "s-' t") . ,(my-exwm-launch "telegram"))
