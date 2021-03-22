@@ -79,8 +79,6 @@
 (setq require-final-newline t)
 (setq-default indicate-buffer-boundaries 'left)
 
-(setq reb-re-syntax 'string)
-
 (setq password-cache-expiry 300)
 
 (when (version<= "24.4" emacs-version)
