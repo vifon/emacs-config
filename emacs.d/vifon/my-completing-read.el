@@ -10,7 +10,9 @@
 (use-package selectrum-prescient
   :ensure t
   :after selectrum
-  :config (selectrum-prescient-mode 1))
+  :config (progn
+            (setq selectrum-prescient-enable-filtering nil)
+            (selectrum-prescient-mode 1)))
 
 (use-package prescient
   :ensure t
@@ -24,6 +26,7 @@
             (setq orderless-matching-styles '(orderless-regexp
                                               orderless-initialism
                                               orderless-prefixes)
+                  orderless-skip-highlighting (lambda () selectrum-is-active)
                   selectrum-refine-candidates-function #'orderless-filter
                   selectrum-highlight-candidates-function #'orderless-highlight-matches
                   completion-styles '(orderless))
