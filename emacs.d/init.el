@@ -117,32 +117,7 @@
                                                 "dragon -x *"
                                               "dragon -a -x *")
                                             nil
-                                            (dired-get-marked-files)))
-
-            (defun vifon/dired-org-store-links ()
-              "Store each file in the current directory as org-mode link.
-
-Insert them later with \\[org-insert-all-links]."
-              (interactive)
-              (require 'org)
-              (require 'ol)
-              (require 'dash)
-              (setq org-stored-links
-                    (nconc
-                     org-stored-links
-                     (save-excursion
-                       (goto-char (point-min))
-                       (let ((links))
-                         (while (not (eobp))
-                           (when-let ((file (ignore-error 'error
-                                              (dired-get-filename))))
-                             (push (list (concat "file:" file)
-                                         (-> file
-                                             file-name-nondirectory
-                                             file-name-sans-extension))
-                                   links))
-                           (forward-line 1))
-                         (nreverse links))))))))
+                                            (dired-get-marked-files)))))
 
 (use-package dired-x
   :bind (("C-x C-j" . dired-jump))

@@ -89,38 +89,38 @@ when using the `*-respect-content' commands."
       (indent-for-tab-command)
       (insert "Follow-up of: " link))))
 
-(defun vifon/org-insert-unique-links ()
-  "A wrapper for `org-insert-all-links' that skips the links
-already present in the buffer."
-  (interactive)
-  (setq org-stored-links
-        (cl-nset-difference
-         org-stored-links
-         (org-element-map (org-element-parse-buffer) 'link
-           (lambda (link)
-             (let ((path (org-element-property :path link))
-                   (type (org-element-property :type link)))
-               (when (equal type "file")
-                 path))))
-         :test (lambda (a b)
-                 (string= (expand-file-name
-                           (string-remove-prefix "file:"
-                                                 (car
-                                                  (split-string
-                                                   (substring-no-properties
-                                                    (car a))
-                                                   "::"))))
-                          (expand-file-name b)))))
-  (let ((prefix (concat (make-string (save-excursion
-                                                   (backward-char)
-                                                   (current-indentation))
-                                                 ? ;a space
-                                                 )
-                        "- [ ] ")
-                ))
+(defun vifon/org-insert-directory (directory)
+  "Insert `directory' as a list of org-mode links."
+  (interactive "D")
+  (let ((org-stored-links (vifon/dired-org-store-links directory))
+        (prefix (concat (make-string (current-indentation)
+                                     ? ;a space
+                                     )
+                        "- ")))
     (delete-horizontal-space)
-    (org-insert-all-links nil prefix))
-  (delete-blank-lines))
+    (org-insert-all-links nil prefix)
+    (delete-blank-lines)))
+
+(defun vifon/dired-org-store-links (directory)
+  "Return a list of all files in `directory' as an org-mode link."
+  (require 'org)
+  (require 'ol)
+  (require 'dash)
+  (with-current-buffer (find-file-noselect directory)
+    (save-excursion
+      (goto-char (point-min))
+      (let ((links))
+        (while (not (eobp))
+          (when-let ((file (ignore-error 'error
+                             (dired-get-filename))))
+            (push (list (concat "file:" file)
+                        (-> file
+                          file-name-nondirectory
+                          file-name-sans-extension))
+                  links))
+          (forward-line 1))
+        (nreverse links)))))
+
 
 (require 'ol-notmuch nil 'noerror)
 (use-package org-protocol :after org)
