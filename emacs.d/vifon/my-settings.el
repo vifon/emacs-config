@@ -50,12 +50,6 @@
         mouse-drag-copy-region t
         x-select-enable-clipboard t))
 
-(setq iswitchb-default-method 'samewindow)
-
-(setq inferior-octave-startup-args '("-q"))
-
-(setq tramp-default-method "sshx")
-
 ;; Turn off tabs
 (setq-default indent-tabs-mode nil)
 
