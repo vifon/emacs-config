@@ -32,6 +32,8 @@
 (mouse-avoidance-mode 'none)
 (transient-mark-mode 1)
 
+(setq display-buffer-alist '(("\\*Calendar\\*" display-buffer-below-selected)))
+
 (setq backup-directory-alist '(("^/media/" . ".")
                                ("^/run/media/" . ".")
                                ("." . "~/.emacs_saves"))
