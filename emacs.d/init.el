@@ -120,7 +120,9 @@
                                             (dired-get-marked-files)))))
 
 (use-package dired-x
-  :bind (("C-x C-j" . dired-jump))
+  :bind (("C-x C-j" . dired-jump)
+         :map dired-mode-map
+         ("h" . dired-jump))
   :init (setq dired-x-hands-off-my-keys t))
 
 (use-package dired-subtree
