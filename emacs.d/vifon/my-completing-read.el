@@ -92,6 +92,9 @@
             ;; they are very slow in TRAMP.
             (setq consult-buffer-sources
                   (delq 'consult--source-project-buffer
-                        (delq 'consult--source-project-file consult-buffer-sources)))))
+                        (delq 'consult--source-project-file consult-buffer-sources)))
+
+            (setq consult--source-hidden-buffer
+                  (plist-put consult--source-hidden-buffer :narrow ?h))))
 
 (provide 'my-completing-read)
