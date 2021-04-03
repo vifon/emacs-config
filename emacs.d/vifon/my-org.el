@@ -144,7 +144,6 @@ when using the `*-respect-content' commands."
                                 (compose-region (match-beginning 1)
                                                 (match-end 1)
                                                 "•"))))))
-(setq org-hide-emphasis-markers nil)
 
 (setq org-refile-targets '((org-agenda-files :tag . "PROJECT")
                            (org-agenda-files :tag . "CATEGORY")
