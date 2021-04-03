@@ -84,6 +84,7 @@
                                                  #'ignore)
                                                map))))
               (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB"))
+                                     (consult-recent-file :preview-key ,(kbd "TAB"))
                                      (consult-ripgrep . ,grep-config)
                                      (consult-grep    . ,grep-config))))
 
