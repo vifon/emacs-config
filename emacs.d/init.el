@@ -560,7 +560,12 @@
   :mode ("\\.pod\\'" . pod-mode))
 
 (use-package dumb-jump
-  :ensure t)
+  :ensure t
+  :config (add-hook 'cperl-mode-hook
+                    (lambda ()
+                      (add-hook 'xref-backend-functions
+                                #'dumb-jump-xref-activate
+                                nil t))))
 
 (use-package vlf
   :ensure t
