@@ -7,6 +7,7 @@
 (global-set-key (kbd "<C-S-iso-lefttab>") '(lambda (arg)
                                              (interactive "p")
                                              (other-window (- (or arg 1)))))
+(global-set-key [mode-line C-mouse-1] #'tear-off-window)
 (global-set-key (kbd "<M-S-iso-lefttab>") 'indent-relative)
 (global-set-key (kbd "M-S-SPC") '(lambda ()
                                    (interactive)
