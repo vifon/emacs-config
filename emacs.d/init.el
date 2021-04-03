@@ -527,7 +527,8 @@
 
 (use-package zettel-mode
   :if (file-readable-p "~/.emacs.d/modules/zettel-mode.el")
-  :mode ("/\\.deft/.*\\.org\\'" . zettel-mode))
+  :mode (("/\\.deft/[^/]+\\.org\\'" . zettel-mode)
+         ("/zettels?/[^/]+\\.org\\'" . zettel-mode)))
 
 (use-package markdown-mode
   :ensure t
