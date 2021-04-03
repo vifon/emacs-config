@@ -271,7 +271,7 @@ when using the `*-respect-content' commands."
       '(("z" . org-kill-note-or-show-branches)))
 
 (setq org-stuck-projects
-      '("PROJECT/-MAYBE-DONE"
+      '("PROJECT/-MAYBE-DONE-ABORTED"
         ("NEXT")
         ("RECURRING")
         "\\<IGNORE\\>"))
