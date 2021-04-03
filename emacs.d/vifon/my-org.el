@@ -204,12 +204,12 @@ when using the `*-respect-content' commands."
         ("ti" "task from an issue tracker" entry (file "")
          "* TODO %?%a\n  %U\n  %i")
 
-        ("tf" "task follow-up" entry
-         (function org-back-to-heading)
-         "* TODO %?\n  %U\n  Follow-up of: %a")
-
-        ("ts" "sub-task" entry (clock)
-         "* TODO %?\n  %U\n  %a\n  %i")
+        ("ts" "sub-task" entry
+         (function (lambda ()
+                     (if (org-clocking-p)
+                         (org-clock-goto)
+                       (org-back-to-heading))))
+         "* TODO %?\n  %U\n%(when (org-clocking-p) \"  %a\n\")  %i")
 
         ("tb" "project issue" entry
          (file+headline (concat (or (vc-root-dir)
@@ -244,8 +244,8 @@ when using the `*-respect-content' commands."
 
 (setq org-capture-templates-contexts
       '(("m" ((in-mode . "notmuch-show-mode")))
-        ("tf" ((in-mode . "org-mode")))
-        ("ts" ((lambda () (org-clocking-p))))
+        ("ts" ((lambda () (or (org-clocking-p)
+                              (derived-mode-p 'org-mode)))))
         ("tb" ((lambda () (and (derived-mode-p 'prog-mode)
                                (or (vc-root-dir)
                                    (projectile-project-root))))))
