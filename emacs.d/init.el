@@ -6,14 +6,13 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-(use-package hydra :ensure t :defer t)
-
 (require 'my-el-patch)
 (require 'my-hooks)
 (require 'my-skeletons)
 (require 'my-mode-line)
 (require 'my-fun)
 (require 'my-keys)
+(require 'my-transient)
 (require 'my-completing-read)
 (require 'my-org)
 (require 'my-eshell)
@@ -67,7 +66,7 @@
 (use-package dired
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
-         ("TAB" . dired-submodes-hydra/body)
+         ("TAB" . vifon/dired-transient)
          ("K" . vifon/dired-subdir-toggle)
          ("* C" . vifon/dired-change-marks*)
          ("E" . vifon/dired-dragon))

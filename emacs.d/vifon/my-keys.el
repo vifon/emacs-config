@@ -39,81 +39,6 @@
        #'display-line-numbers-mode
      #'nlinum-mode)))
 
-(bind-key "C-c t"
-          (defhydra my-hydra
-            (:hint nil :color blue)
-            "
- w^h^i_t_espace-cleanup    _A_lign ^ ^
- r_G_ ^ ^                  ^a^lign-_R_egexp
-
- _l_inum-mode           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  tog^g^l^e^-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines) ^^^^^^^^^^^^^^^^^^^^   ^a^g^gress^i^ve-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
- _w_hitespace-mode: %-3(bound-and-true-p writespace-mode) ^  hl-_L_i^n^e-^m^ode               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- _s_ort-lines           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  dis^p^l^a^y-_F_ill-indicator: %-3(bound-and-true-p display-fill-column-indicator-mode)   ^c_o_mpare^-^win^d^ows            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)  aut^o^-_f_il^l^-mode: %-3(not (equal auto-fill-function nil))        ^^^^^^^^^^^^^^^^^   ^i^n^dent-_g_uid^e^-mode: %-3(bound-and-true-p indent-guide-mode)     ^^^^^
-
- _H_ttpd settings    fly_c_heck-mode etc."
-            ("t" whitespace-cleanup)
-            ("G" rg)
-            ("A" align)
-            ("R" align-regexp)
-            ("v" visual-line-mode :color red)
-            ("l" display-line-numbers-best :color red)
-            ("L" hl-line-mode :color red)
-            ("r" toggle-truncate-lines :color red)
-            ("f" auto-fill-mode :color red)
-            ("i" aggressive-indent-mode :color red)
-            ("w" whitespace-mode :color red)
-            ("s" sort-lines :color red)
-            ("g" indent-guide-mode :color red)
-            ("F" display-fill-column-indicator-mode :color red)
-            ("H" httpd-hydra/body :color blue)
-            ("c" fly*-hydra/body :color blue)
-            ("C" ispell-change-dictionary :color blue)
-            ("o" compare-windows :color red)
-            ("SPC" vydra/body)
-            ("q" nil)))
-
-(defhydra httpd-hydra
-  (:hint nil :color blue)
-  "
-### httpd settings ###
-
-httpd-_s_tart    httpds-_S_top    _i_mpatient-mode"
-  ("i" impatient-mode :color red)
-  ("s" httpd-start)
-  ("S" httpd-stop))
-
-(defhydra fly*-hydra
-  (:hint nil :color red)
-  "
-### fly*-mode ###
-
-fly_c_heck-mode: %-3(bound-and-true-p flycheck-mode)    fly_s_pell-mode: %-3(bound-and-true-p flyspell-mode)
-se_m_antic-mode: %-3(bound-and-true-p semantic-mode)    fly_S_pell-buffer
-_i_spell-change-dictionary: %(when (boundp 'ispell-current-dictionary) ispell-current-dictionary)"
-  ("c" flycheck-mode)
-  ("s" flyspell-mode)
-  ("S" flyspell-buffer :color blue)
-  ("m" semantic-mode)
-  ("i" ispell-change-dictionary))
-
-(autoload 'gnus-dired-mode "gnus-dired" nil t)
-(defhydra dired-submodes-hydra
-  (:hint nil :color red)
-  "
-### dired submodes ###
-
-dired-_a_sync^-^mode:    %-3(bound-and-true-p dired-async-mode)^^^   _f_ind-^d^ired
-dired-_c_olla^p^se-mode: %-3(bound-and-true-p dired-collapse-mode)   _F_ind-^n^ame-dired
-gnus-d^i^red-_m_ode:     %-3(bound-and-true-p gnus-dired-mode)^^^^   ^f^ind-_G_rep-dired
-_v_c status: %-3(bound-and-true-p diff-hl-dired-mode)"
-  ("c" dired-collapse-mode)
-  ("a" dired-async-mode)
-  ("m" gnus-dired-mode)
-  ("f" find-dired :color blue)
-  ("F" find-name-dired :color blue)
-  ("G" find-grep-dired :color blue)
-  ("v" diff-hl-dired-mode :color red))
 
 (bind-key "C-c d" #'delete-pair)
 
@@ -205,34 +130,6 @@ ends with a newline."
 (defun shrink-all-windows-if-larger-than-buffer ()
   (interactive)
   (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
-
-
-(bind-key "C-c e"
-          (defhydra vydra
-            (:hint nil :color pink)
-            "
-^↑^_b_↑  ^ ^_k_^ ^  ↔_v_↔
-_0__a_↤  _h__i__l_  ↦_e_
-^↓^_f_↓  ^ ^_j_^ ^   ^ ^
-"
-            ("h" backward-char)
-            ("j" next-line)
-            ("k" previous-line)
-            ("l" forward-char)
-
-            ("f" scroll-up-command)
-            ("b" scroll-down-command)
-
-            ("v" er/expand-region)
-
-            ("0" move-beginning-of-line-dwim)
-            ("a" move-beginning-of-line-dwim)
-            ("e" move-end-of-line)
-
-            ("i" nil)
-            ("q" nil)
-            ("SPC" nil)))
-
 
 (bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)
 
