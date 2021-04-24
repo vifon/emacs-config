@@ -20,6 +20,7 @@
     (define-key map (kbd "p") #'projectile-switch-project)
     (define-key map (kbd "P") #'package-list-packages)
     (define-key map (kbd "SPC") #'notmuch)
+    (define-key map (kbd "s") #'notmuch-search)
     (define-key map (kbd "M") #'notmuch-mua-new-mail)
     (define-key map (kbd "z") #'deft)
     (define-key map (kbd "C-c C-x C-j") #'org-clock-goto)
@@ -41,6 +42,7 @@
     "i"
     "p"
     "SPC"
+    "s"
     "M"
     "z"
     "a"
