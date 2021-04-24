@@ -2,12 +2,14 @@
   :ensure org-plus-contrib
   :pin org
   :defer t
+  :bind (:map org-mode-map
+         ("<C-tab>" . nil))
   :config (progn
-            (define-key org-mode-map (kbd "<C-tab>") nil)
-            (define-key org-mode-map (kbd "C-c C-1")
-              (lambda ()
-                (interactive)
-                (org-time-stamp-inactive '(16))))
+            (bind-key "C-c C-1"
+                      (lambda ()
+                        (interactive)
+                        (org-time-stamp-inactive '(16)))
+                      org-mode-map)
             (setf (cdr (assoc "\\.pdf\\'"
                               org-file-apps))
                   "evince %s")
@@ -191,9 +193,9 @@ when using the `*-respect-content' commands."
                            "~/org/.agenda-files"
                          '("~/org/gtd.org")))
 
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c S") 'org-store-link)
+(bind-key "C-c c" #'org-capture)
+(bind-key "C-c a" #'org-agenda)
+(bind-key "C-c S" #'org-store-link)
 
 (setq org-capture-templates
       '(("t" "task")

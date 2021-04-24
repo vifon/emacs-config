@@ -71,12 +71,12 @@
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line))
-  :init (define-key isearch-mode-map
-          (kbd "TAB")
-          (lambda ()
-            (interactive)
-            (isearch-exit)
-            (consult-line isearch-string)))
+  :init (bind-key "TAB"
+                  (lambda ()
+                    (interactive)
+                    (isearch-exit)
+                    (consult-line isearch-string))
+                  isearch-mode-map)
   :config (progn
             (let ((grep-config (list :preview-key (kbd "TAB")
                                      :keymap (let ((map (make-sparse-keymap)))

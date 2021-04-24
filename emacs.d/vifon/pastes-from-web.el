@@ -58,7 +58,7 @@ narrowed."
         ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
         (t (narrow-to-defun))))
 
-(global-set-key (kbd "C-c l") #'narrow-or-widen-dwim)
+(bind-key "C-c l" #'narrow-or-widen-dwim)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -86,7 +86,7 @@ narrowed."
   (interactive)
   (let ((fill-column (point-max)))
     (fill-paragraph nil)))
-(global-set-key (kbd "M-Q") 'unfill-paragraph)
+(bind-key "M-Q" #'unfill-paragraph)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -112,25 +112,6 @@ narrowed."
         (delete-region (point-min) (point-max))
         (insert output)
         (search-backward "ERROR!")))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;; http://endlessparentheses.com/create-github-prs-from-emacs-with-magit.html
-(defun visit-pull-request-url ()
-  "Visit the current branch's PR on Github."
-  (interactive)
-  (browse-url
-   (format "https://github.com/%s/pull/new/%s"
-           (replace-regexp-in-string
-            "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
-            (magit-get "remote"
-                       (magit-get-remote)
-                       "url"))
-           (cdr (magit-get-remote-branch)))))
-
-;; (eval-after-load 'magit
-;;   '(define-key magit-mode-map "V"
-;;      #'visit-pull-request-url))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

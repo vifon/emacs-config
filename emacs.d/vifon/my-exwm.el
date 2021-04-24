@@ -218,21 +218,24 @@
                     (,(kbd "s-' t") . ,(my-exwm-launch "telegram"))
                     (,(kbd "s-' m") . ,(my-exwm-launch "notmuch-sync"))))
 
-            (define-key exwm-mode-map (kbd "C-q")
-              (lambda ()
-                (interactive)
-                ;; Swallow the prefix argument to prevent happy accidents.
-                (exwm-input-send-next-key 1)))
+            (bind-key "C-q"
+                      (lambda ()
+                        (interactive)
+                        ;; Swallow the prefix argument to prevent happy accidents.
+                        (exwm-input-send-next-key 1))
+                      exwm-mode-map)
 
             ;; The regular C-x 4 0 doesn't work in exwm-mode, let's do
             ;; it manually.
-            (define-key exwm-mode-map (kbd "C-x 4 0")
-              (lambda ()
-                (interactive)
-                (kill-buffer)
-                (delete-window)))
+            (bind-key "C-x 4 0"
+                      (lambda ()
+                        (interactive)
+                        (kill-buffer)
+                        (delete-window))
+                      exwm-mode-map)
 
-            (define-key exwm-mode-map (kbd "C-c C-M-m") #'exwm-workspace-move)
+            (bind-key "C-c C-M-m" #'exwm-workspace-move
+                      exwm-mode-map)
 
             (cl-mapcar (lambda (c n)
                          (define-key exwm-mode-map (kbd (format "s-%c" c))

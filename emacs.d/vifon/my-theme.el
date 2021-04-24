@@ -41,8 +41,8 @@ Unless the prefix argument was passed, disable the current one beforehand."
                         (unless no-disable
                           vifon/theme-light))))
 
-(global-set-key (kbd "C-M-s-<") #'vifon/theme-light)
-(global-set-key (kbd "C-M-s->") #'vifon/theme-dark)
+(bind-key "C-M-s-<" #'vifon/theme-light)
+(bind-key "C-M-s->" #'vifon/theme-dark)
 
 (use-package solarized-theme
   :ensure t
@@ -104,7 +104,7 @@ See: Info node `(emacs) Sunrise/Sunset'."
       (vifon/theme-light no-disable)
     (vifon/theme-dark no-disable)))
 
-(global-set-key (kbd "C-M-s-?") #'vifon/theme-dwim)
+(bind-key "C-M-s-?" #'vifon/theme-dwim)
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions

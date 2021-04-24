@@ -42,10 +42,10 @@
                 (paredit-kill)
               (kill-line arg)))
           (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
-  :config (progn
-            (define-key paredit-mode-map (kbd "M-s") nil)
-            (define-key paredit-mode-map (kbd "M-s M-s") 'paredit-splice-sexp))
-  :bind (([remap kill-line] . paredit-kill-maybe)))
+  :bind (([remap kill-line] . paredit-kill-maybe)
+         :map paredit-mode-map
+         ("M-s" . nil)
+         ("M-s M-s" . paredit-splice-sexp)))
 
 (use-package origami
   :ensure t
@@ -158,10 +158,10 @@
   :bind (:map ibuffer-mode-map
          ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)
          ("/ T" . ibuffer-tramp-set-filter-groups-by-tramp-connection))
-  :init (global-set-key (kbd "C-x C-b")
-                        (if (fboundp #'ibuffer-jump)
-                            #'ibuffer-jump
-                          #'ibuffer))
+  :init (bind-key "C-x C-b"
+                  (if (fboundp #'ibuffer-jump)
+                      #'ibuffer-jump
+                    #'ibuffer))
   :config (progn
             (add-hook 'ibuffer-mode-hook
                       (lambda ()
@@ -297,15 +297,15 @@
   :config (progn
             (setq magit-diff-refine-hunk t
                   magit-status-goto-file-position t)
-            (mapcar
-             (lambda (keymap)
-               (define-key keymap (kbd "M-<tab>") #'magit-section-cycle)
-               (define-key keymap (kbd "C-<tab>") nil))
-             (list magit-status-mode-map
-                   magit-log-mode-map
-                   magit-reflog-mode-map
-                   magit-refs-mode-map
-                   magit-diff-mode-map))
+            (dolist (keymap (list magit-status-mode-map
+                                  magit-log-mode-map
+                                  magit-reflog-mode-map
+                                  magit-refs-mode-map
+                                  magit-diff-mode-map))
+              (bind-key "M-<tab>" #'magit-section-cycle
+                        keymap)
+              ;; For some reason unbind-key doesn't work here.
+              (bind-key "C-<tab>" nil keymap))
             (transient-append-suffix 'magit-log "-f"
               '("-1" "First parent" "--first-parent"))
             (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
@@ -319,10 +319,10 @@
 (use-package git-commit
   :ensure t
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
-  :config (progn
-            (define-key git-commit-mode-map (kbd "C-c C-l") 'magit-log)
-            (add-hook 'git-commit-mode-hook (defun turn-on-flyspell ()
-                                              (flyspell-mode 1)))))
+  :bind (:map git-commit-mode-map
+         ("C-c C-l" . magit-log))
+  :config (add-hook 'git-commit-mode-hook (defun turn-on-flyspell ()
+                                            (flyspell-mode 1))))
 
 (use-package git-messenger
   :ensure t
@@ -402,11 +402,11 @@
          ("C->"         . mc/mark-more-like-this-extended)
          ("C-*"         . mc/mark-all-like-this-dwim)
          ("C-M-;"       . mc/mark-all-like-this-dwim)
-         ("M-<mouse-1>" . mc/add-cursor-on-click))
-  :init (global-unset-key (kbd "M-<down-mouse-1>"))
-  :config (progn
-            (define-key mc/keymap (kbd "C-s") 'phi-search)
-            (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))
+         ("M-<mouse-1>" . mc/add-cursor-on-click)
+         ("M-<down-mouse-1>" . nil)
+         :map mc/keymap
+         ("C-s" . phi-search)
+         ("C-r" . phi-search-backward)))
 
 (use-package expand-region
   :ensure t
@@ -499,10 +499,7 @@
   :config (setq win-switch-window-threshold 2))
 
 (use-package winner
-  :bind (("C-c z" . winner-undo)
-         :map winner-mode-map
-         ("<XF86Back>"    . winner-undo)
-         ("<XF86Forward>" . winner-redo))
+  :bind ("C-c z" . winner-undo)
   :init (winner-mode 1))
 
 (use-package uniquify
@@ -601,10 +598,11 @@
                       (funcall cursor-not-after-word-p))
                   (self-insert-command 1)
                 (insert "->")))))
-  :config (progn
-            (define-key cperl-mode-map (kbd ".") #'perl-method-call-dwim)
-            (require 'perltidy)
-            (define-key cperl-mode-map (kbd "C-c C-i") #'perltidy-dwim-safe)))
+  :bind (:map cperl-mode-map
+         ("." . perl-method-call-dwim)
+         ("C-c C-i" . perltidy-dwim-safe)))
+(use-package perltidy
+  :commands perltidy-dwim-safe)
 
 (use-package python
   :defer t
@@ -650,26 +648,16 @@
   :diminish projectile-mode
   :commands (projectile-global-mode
              projectile-switch-project
-             projectile-project-root
-             my-projectile-show-path)
+             projectile-project-root)
   :init (progn
           (setq projectile-switch-project-action (lambda ()
                                                    (dired "."))))
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (progn
             (projectile-mode 1)
-            (defun my-projectile-show-path (arg)
-              (interactive "P")
-              (let ((project-path (if (projectile-project-p)
-                                      (file-relative-name buffer-file-name
-                                                          (projectile-project-root))
-                                    buffer-file-name)))
-                (when arg
-                  (kill-new project-path))
-                (message "%s" project-path)))
-            (define-key projectile-command-map (kbd "C-f") #'my-projectile-show-path)
             (when (package-installed-p 'consult)
-              (define-key projectile-command-map (kbd "s R") #'consult-ripgrep)
+              (bind-key "s R" #'consult-ripgrep
+                        projectile-command-map)
               (setq consult-project-root-function #'projectile-project-root))
             (setq projectile-ignored-project-function
                   (lambda (path)
@@ -699,16 +687,15 @@
 (use-package image-mode
   :defer t
   :config (progn
-            (define-key image-mode-map (kbd "k")
-              (lambda (arg)
-                (interactive "P")
-                (if arg
-                    (kill-buffer-and-window)
-                  (kill-buffer))))
-            (define-key image-mode-map (kbd "K")
-              (lambda ()
-                (interactive)
-                (kill-buffer-and-window)))))
+            (bind-key "k"
+                      (lambda (arg)
+                        (interactive "P")
+                        (if arg
+                            (kill-buffer-and-window)
+                          (kill-buffer)))
+                      image-mode-map)
+            (bind-key "K" #'kill-buffer-and-window
+                      image-mode-map)))
 
 (use-package sh-script
   :bind (:map sh-mode-map
@@ -771,10 +758,11 @@ ignore) any passed arguments to work as an advice."
 
             (enable-lui-track-bar)
 
-            (define-key lui-mode-map (kbd "C-c C-o")
-              (lambda ()
-                (interactive)
-                (ffap-next-url t)))))
+            (bind-key "C-c C-o"
+                      (lambda ()
+                        (interactive)
+                        (ffap-next-url t))
+                      lui-mode-map)))
 
 (use-package notmuch
   :ensure t
@@ -825,23 +813,26 @@ ignore) any passed arguments to work as an advice."
 
             (dolist (map (list notmuch-hello-mode-map
                                notmuch-show-mode-map))
-              (define-key map (kbd "<C-tab>") nil))
+              (unbind-key "<C-tab>" map))
             (dolist (map (list notmuch-hello-mode-map
                                notmuch-show-mode-map
                                notmuch-search-mode-map))
               (when (file-executable-p "~/.bin/notmuch-sync")
-                (define-key map (kbd "G") #'my-notmuch-poll-and-refresh-this-buffer)))
+                (bind-key "G" #'my-notmuch-poll-and-refresh-this-buffer
+                          map)))
 
-            (define-key notmuch-search-mode-map (kbd "A")
-              (lambda ()
-                (interactive)
-                (when (y-or-n-p "Archive all?")
-                  (notmuch-search-tag-all '("-unread" "-inbox")))))
-            (define-key notmuch-search-mode-map (kbd "D")
-              (lambda ()
-                (interactive)
-                (when (y-or-n-p "Delete all?")
-                  (notmuch-search-tag-all '("-unread" "-inbox" "+deleted")))))
+            (bind-key "A"
+                      (lambda ()
+                        (interactive)
+                        (when (y-or-n-p "Archive all?")
+                          (notmuch-search-tag-all '("-unread" "-inbox"))))
+                      notmuch-search-mode-map)
+            (bind-key "D"
+                      (lambda ()
+                        (interactive)
+                        (when (y-or-n-p "Delete all?")
+                          (notmuch-search-tag-all '("-unread" "-inbox" "+deleted"))))
+                      notmuch-search-mode-map)
 
 
             (defun notmuch-clear-search-history ()
@@ -849,24 +840,26 @@ ignore) any passed arguments to work as an advice."
               (when (y-or-n-p "Clear the notmuch search history? ")
                 (setq notmuch-search-history nil)
                 (notmuch-refresh-this-buffer)))
-            (define-key notmuch-hello-mode-map
-              (kbd "D") #'notmuch-clear-search-history)
-            (define-key notmuch-show-mode-map (kbd "C-c C-o")
-              (lambda (arg)
-                (interactive "P")
-                (if arg
-                    (progn
-                      (require 'shr)
-                      (shr-next-link))
-                  (require 'ffap)
-                  (ffap-next-url))))
+            (bind-key "D" #'notmuch-clear-search-history
+                      notmuch-hello-mode-map)
+            (bind-key "C-c C-o"
+                      (lambda (arg)
+                        (interactive "P")
+                        (if arg
+                            (progn
+                              (require 'shr)
+                              (shr-next-link))
+                          (require 'ffap)
+                          (ffap-next-url)))
+                      notmuch-show-mode-map)
 
-            (define-key notmuch-hello-mode-map
-              (kbd "O") (lambda () (interactive)
-                          (setq notmuch-search-oldest-first
-                                (not notmuch-search-oldest-first))
-                          (message "Notmuch search oldest first: %s"
-                                   notmuch-search-oldest-first)))
+            (bind-key "O"
+                      (lambda () (interactive)
+                        (setq notmuch-search-oldest-first
+                              (not notmuch-search-oldest-first))
+                        (message "Notmuch search oldest first: %s"
+                                 notmuch-search-oldest-first))
+                      notmuch-hello-mode-map)
 
             (defun notmuch-fcc-replace ()
               (interactive)
@@ -894,13 +887,13 @@ ignore) any passed arguments to work as an advice."
           ;; Using `cua-selection-mode' alone is not enough. It still
           ;; binds C-RET and overrides this keybinding for instance in
           ;; org-mode. I'd rather keep using my hack.
-          (global-set-key (kbd "C-S-SPC")
-                          (defun cualess-global-mark ()
-                            (interactive)
-                            (if (version<= "24.4" emacs-version)
-                                (cua-selection-mode 1)
-                              (cua-mode 1))
-                            (call-interactively 'cua-toggle-global-mark)))
+          (bind-key "C-S-SPC"
+                    (defun cualess-global-mark ()
+                      (interactive)
+                      (if (version<= "24.4" emacs-version)
+                          (cua-selection-mode 1)
+                        (cua-mode 1))
+                      (call-interactively 'cua-toggle-global-mark)))
           (advice-add 'cua--deactivate-global-mark :after
                       (lambda (ret-value)
                         (cua-mode 0)

@@ -1,23 +1,19 @@
-(global-set-key (kbd "C-c i") 'auto-insert)
-(global-set-key (kbd "C-c m") 'compile)
-(global-set-key (kbd "C-c r") 'revert-buffer)
-(global-set-key (kbd "C-c R") 'auto-revert-mode)
-(global-set-key (kbd "C-c z") 'winner-undo)
-(global-set-key (kbd "<C-tab>") 'other-window)
-(global-set-key (kbd "<C-S-iso-lefttab>") '(lambda (arg)
-                                             (interactive "p")
-                                             (other-window (- (or arg 1)))))
-(global-set-key [mode-line C-mouse-1] #'tear-off-window)
-(global-set-key (kbd "<M-S-iso-lefttab>") 'indent-relative)
-(global-set-key (kbd "M-S-SPC") '(lambda ()
-                                   (interactive)
-                                   (save-excursion
-                                     (insert " "))))
+(bind-key "C-c i" #'auto-insert)
+(bind-key "C-c m" #'compile)
+(bind-key "C-c r" #'revert-buffer)
+(bind-key "C-c R" #'auto-revert-mode)
+(bind-key "C-c z" #'winner-undo)
+(bind-key "<C-tab>" #'other-window)
+(bind-key "<C-S-iso-lefttab>" (lambda (arg)
+                                (interactive "p")
+                                (other-window (- (or arg 1)))))
+(bind-key [mode-line C-mouse-1] #'tear-off-window)
+(bind-key "<M-S-iso-lefttab>" #'indent-relative)
 
-(global-set-key [remap just-one-space] #'cycle-spacing)
-(global-set-key [remap upcase-word] #'upcase-dwim)
-(global-set-key [remap downcase-word] #'downcase-dwim)
-(global-set-key [remap capitalize-word] #'capitalize-dwim)
+(bind-key [remap just-one-space] #'cycle-spacing)
+(bind-key [remap upcase-word] #'upcase-dwim)
+(bind-key [remap downcase-word] #'downcase-dwim)
+(bind-key [remap capitalize-word] #'capitalize-dwim)
 
 (defun run-term (&optional arg)
   (interactive "P")
@@ -29,12 +25,12 @@
       (call-process "tmux" nil 0 nil
                     "split-window" "-h"))))
 
-(global-set-key (kbd "C-c x") 'run-term)
-(global-set-key (kbd "M-o") 'run-term)
+(bind-key "C-c x" #'run-term)
+(bind-key "M-o" #'run-term)
 
-(global-set-key (kbd "C-c =") 'diff-buffer-with-file)
+(bind-key "C-c =" #'diff-buffer-with-file)
 
-(global-set-key (kbd "M-C-?") 'hippie-expand)
+(bind-key "M-C-?" #'hippie-expand)
 
 (defun display-line-numbers-best ()
   (interactive)
@@ -43,12 +39,12 @@
        #'display-line-numbers-mode
      #'nlinum-mode)))
 
-(global-set-key (kbd "C-c t")
-                (defhydra my-hydra
-                  (:hint nil :color blue)
-                  "
- d^e^lete-_t_railing-whitespace    _A_lign ^ ^
- r_G_     ^ ^                      ^a^lign-_R_egexp
+(bind-key "C-c t"
+          (defhydra my-hydra
+            (:hint nil :color blue)
+            "
+ w^h^i_t_espace-cleanup    _A_lign ^ ^
+ r_G_ ^ ^                  ^a^lign-_R_egexp
 
  _l_inum-mode           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  tog^g^l^e^-t_r_uncate-lines: %-3(bound-and-true-p truncate-lines) ^^^^^^^^^^^^^^^^^^^^   ^a^g^gress^i^ve-_i_ndent-mode: %-3(bound-and-true-p aggressive-indent-mode)
  _w_hitespace-mode: %-3(bound-and-true-p writespace-mode) ^  hl-_L_i^n^e-^m^ode               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -56,26 +52,26 @@
  _v_isual-line-mode: %-3(bound-and-true-p visual-line-mode)  aut^o^-_f_il^l^-mode: %-3(not (equal auto-fill-function nil))        ^^^^^^^^^^^^^^^^^   ^i^n^dent-_g_uid^e^-mode: %-3(bound-and-true-p indent-guide-mode)     ^^^^^
 
  _H_ttpd settings    fly_c_heck-mode etc."
-                  ("t" delete-trailing-whitespace)
-                  ("G" rg)
-                  ("A" align)
-                  ("R" align-regexp)
-                  ("v" visual-line-mode :color red)
-                  ("l" display-line-numbers-best :color red)
-                  ("L" hl-line-mode :color red)
-                  ("r" toggle-truncate-lines :color red)
-                  ("f" auto-fill-mode :color red)
-                  ("i" aggressive-indent-mode :color red)
-                  ("w" whitespace-mode :color red)
-                  ("s" sort-lines :color red)
-                  ("g" indent-guide-mode :color red)
-                  ("F" display-fill-column-indicator-mode :color red)
-                  ("H" httpd-hydra/body :color blue)
-                  ("c" fly*-hydra/body :color blue)
-                  ("C" ispell-change-dictionary :color blue)
-                  ("o" compare-windows :color red)
-                  ("SPC" vydra/body)
-                  ("q" nil)))
+            ("t" whitespace-cleanup)
+            ("G" rg)
+            ("A" align)
+            ("R" align-regexp)
+            ("v" visual-line-mode :color red)
+            ("l" display-line-numbers-best :color red)
+            ("L" hl-line-mode :color red)
+            ("r" toggle-truncate-lines :color red)
+            ("f" auto-fill-mode :color red)
+            ("i" aggressive-indent-mode :color red)
+            ("w" whitespace-mode :color red)
+            ("s" sort-lines :color red)
+            ("g" indent-guide-mode :color red)
+            ("F" display-fill-column-indicator-mode :color red)
+            ("H" httpd-hydra/body :color blue)
+            ("c" fly*-hydra/body :color blue)
+            ("C" ispell-change-dictionary :color blue)
+            ("o" compare-windows :color red)
+            ("SPC" vydra/body)
+            ("q" nil)))
 
 (defhydra httpd-hydra
   (:hint nil :color blue)
@@ -119,7 +115,7 @@ _v_c status: %-3(bound-and-true-p diff-hl-dired-mode)"
   ("G" find-grep-dired :color blue)
   ("v" diff-hl-dired-mode :color red))
 
-(global-set-key (kbd "C-c d") 'delete-pair)
+(bind-key "C-c d" #'delete-pair)
 
 (if (version<= "24.4" emacs-version)
     ;; DEPRECATION
@@ -138,7 +134,7 @@ _v_c status: %-3(bound-and-true-p diff-hl-dired-mode)"
                                          nil
                                        (or arg 1)))))
 
-(global-set-key (kbd "C-x M-!") #'find-file-path)
+(bind-key "C-x M-!" #'find-file-path)
 (autoload 's-trim "s")
 (defun find-file-path ()
   "Find file using the PATH env var."
@@ -158,15 +154,15 @@ _v_c status: %-3(bound-and-true-p diff-hl-dired-mode)"
     (if (not (zerop (or selective-display 0)))
         (set-selective-display nil)
       (set-selective-display (current-column)))))
-(global-set-key [remap set-selective-display] #'toggle-selective-display)
+(bind-key [remap set-selective-display] #'toggle-selective-display)
 
-(global-set-key [remap move-beginning-of-line]
-                (defun move-beginning-of-line-dwim (arg)
-                  (interactive "^p")
-                  (let ((old-point (point)))
-                    (back-to-indentation)
-                    (when (= old-point (point))
-                      (move-beginning-of-line arg)))))
+(bind-key [remap move-beginning-of-line]
+          (defun move-beginning-of-line-dwim (arg)
+            (interactive "^p")
+            (let ((old-point (point)))
+              (back-to-indentation)
+              (when (= old-point (point))
+                (move-beginning-of-line arg)))))
 
 (defun smart-kill-whole-lines (&optional arg)
   "Kill the whole line while keeping the point in place."
@@ -196,12 +192,12 @@ ends with a newline."
                               "\n")
                        (insert "\n"))
                      (point)))))
-(global-set-key (kbd "M-k") #'smart-kill-whole-lines)
-(global-set-key (kbd "M-K") #'smart-yank-whole-lines)
+(bind-key "M-k" #'smart-kill-whole-lines)
+(bind-key "M-K" #'smart-yank-whole-lines)
 
-(global-set-key (kbd "C-x C-M-t") #'transpose-regions)
+(bind-key "C-x C-M-t" #'transpose-regions)
 
-(global-set-key (kbd "<f9>") #'menu-bar-open)
+(bind-key "<f9>" #'menu-bar-open)
 
 (windmove-default-keybindings)
 
@@ -211,34 +207,34 @@ ends with a newline."
   (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
 
 
-(global-set-key (kbd "C-c e")
-                (defhydra vydra
-                  (:hint nil :color pink)
-                  "
+(bind-key "C-c e"
+          (defhydra vydra
+            (:hint nil :color pink)
+            "
 ^↑^_b_↑  ^ ^_k_^ ^  ↔_v_↔
 _0__a_↤  _h__i__l_  ↦_e_
 ^↓^_f_↓  ^ ^_j_^ ^   ^ ^
 "
-                  ("h" backward-char)
-                  ("j" next-line)
-                  ("k" previous-line)
-                  ("l" forward-char)
+            ("h" backward-char)
+            ("j" next-line)
+            ("k" previous-line)
+            ("l" forward-char)
 
-                  ("f" scroll-up-command)
-                  ("b" scroll-down-command)
+            ("f" scroll-up-command)
+            ("b" scroll-down-command)
 
-                  ("v" er/expand-region)
+            ("v" er/expand-region)
 
-                  ("0" move-beginning-of-line-dwim)
-                  ("a" move-beginning-of-line-dwim)
-                  ("e" move-end-of-line)
+            ("0" move-beginning-of-line-dwim)
+            ("a" move-beginning-of-line-dwim)
+            ("e" move-end-of-line)
 
-                  ("i" nil)
-                  ("q" nil)
-                  ("SPC" nil)))
+            ("i" nil)
+            ("q" nil)
+            ("SPC" nil)))
 
 
-(define-key isearch-mode-map (kbd "C-M-r") #'isearch-query-replace)
+(bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)
 
 
 (provide 'my-keys)

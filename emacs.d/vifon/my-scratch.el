@@ -1,10 +1,10 @@
 (require 'scratch-mode)
 
-(define-key scratch-mode-map (kbd ",") #'vifon/theme-light)
-(define-key scratch-mode-map (kbd ".") #'vifon/theme-dark)
-(define-key scratch-mode-map (kbd "/") #'vifon/theme-dwim)
+(bind-key "," #'vifon/theme-light scratch-mode-map)
+(bind-key "." #'vifon/theme-dark scratch-mode-map)
+(bind-key "/" #'vifon/theme-dwim scratch-mode-map)
 
-(global-set-key (kbd "C-c s") #'scratch-reset)
+(bind-key "C-c s" #'scratch-reset)
 (setq initial-major-mode 'scratch-mode)
 
 (provide 'my-scratch)
