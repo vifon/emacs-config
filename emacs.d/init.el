@@ -558,11 +558,12 @@
 
 (use-package dumb-jump
   :ensure t
-  :config (add-hook 'cperl-mode-hook
-                    (lambda ()
-                      (add-hook 'xref-backend-functions
-                                #'dumb-jump-xref-activate
-                                nil t))))
+  :config (dolist (hook '(cperl-mode-hook c-mode-common-hook))
+            (add-hook hook
+                      (lambda ()
+                        (add-hook 'xref-backend-functions
+                                  #'dumb-jump-xref-activate
+                                  nil t)))))
 
 (use-package vlf
   :ensure t
