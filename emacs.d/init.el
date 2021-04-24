@@ -911,6 +911,8 @@ ignore) any passed arguments to work as an advice."
 
 (use-package go-mode :ensure t :defer t)
 
+(use-package lua-mode :ensure t :defer t)
+
 (defun my-minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
 (defun my-minibuffer-exit-hook ()
