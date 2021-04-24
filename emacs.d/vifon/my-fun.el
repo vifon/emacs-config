@@ -146,4 +146,16 @@ See also: `flags-if-supported'."
               (dired-mark nil))
           (forward-line 1))))))
 
+(defun vifon/image-yank ()
+  (interactive)
+  (when (or (zerop (buffer-size))
+            (y-or-n-p "Buffer not empty. Proceed?"))
+    (erase-buffer)
+    (call-process "xclip" nil t nil "-selection" "clipboard" "-t" "image/png" "-o")
+    (set-buffer-file-coding-system 'raw-text)
+    (save-buffer)
+    (normal-mode)
+    (when (y-or-n-p "Kill the buffer?")
+      (kill-buffer))))
+
 (provide 'my-fun)
