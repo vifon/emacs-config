@@ -71,7 +71,6 @@
 
 (setq parens-require-spaces nil)
 
-(setq find-file-existing-other-name nil)
 (setq require-final-newline t)
 (setq-default indicate-buffer-boundaries 'left)
 
