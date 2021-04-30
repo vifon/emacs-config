@@ -537,7 +537,8 @@
   :ensure t
   :config (dolist (hook '(cperl-mode-hook c-mode-common-hook))
             (add-hook hook
-                      (lambda ()
+                      (defun dumb-jump-activate ()
+                        (interactive)
                         (add-hook 'xref-backend-functions
                                   #'dumb-jump-xref-activate
                                   nil t)))))
