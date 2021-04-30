@@ -23,7 +23,7 @@
   "Create an ad-hoc working directory and open it in dired.
 
 Prefix argument initializes the Git repository."
-  (interactive "P\nMName: ")
+  (interactive "P\nMScratch directory name: ")
   (let ((directory (expand-file-name (scratch-dir-path name))))
     (make-directory directory t)
     (when (file-symlink-p "~/scratch")
