@@ -245,8 +245,7 @@
                   '(("jinja" . "\\.j2\\'")
                     ("jinja" . "\\.html\\'")))
             ;; Fix Jinja2 autopairing; was producing: "{{  }}}}".
-            (setq web-mode-enable-auto-pairing nil)
-            (add-to-list 'company-backends 'company-css)))
+            (setq web-mode-enable-auto-pairing nil)))
 
 (use-package emmet-mode
   :ensure t
@@ -425,25 +424,6 @@
                   global-semantic-decoration-mode
                   global-semantic-stickyfunc-mode)))
 
-(use-package company
-  :ensure t
-  :defer 5
-  :config (progn
-            (add-hook 'eshell-mode-hook (lambda ()
-                                          (company-mode 0)))
-            (add-hook 'org-mode-hook (lambda ()
-                                       (company-mode 0)))
-            (global-company-mode 1))
-  :init (add-hook 'c++-mode-hook
-                  (lambda ()
-                    (setq-local company-clang-arguments '("-std=c++14"))))
-  :bind (("C-c v" . company-complete)
-         ("C-c /" . company-files)))
-
-(use-package company-clang
-  :after company
-  :bind ("C-c V" . company-clang))
-
 (use-package ggtags
   :ensure t
   :demand t        ;bad things happen in the globalized mode otherwise
@@ -470,8 +450,6 @@
               (lambda ()
                 (when (derived-mode-p 'c-mode 'c++-mode)
                   (rtags-minor-mode 1))))
-            (require 'company)
-            (add-to-list 'company-backends 'company-rtags)
             (setq rtags-autostart-diagnostics t)
             (setq rtags-completions-enabled t)))
 

@@ -5,7 +5,21 @@
   :bind (("C-x M-r" . selectrum-repeat)
          :map selectrum-minibuffer-map
          ("C-l" . backward-kill-sexp))
-  :init (selectrum-mode 1))
+  :init (selectrum-mode 1)
+  :config (progn
+            (autoload 'ffap-file-at-point "ffap")
+            (add-hook 'completion-at-point-functions
+                      (defun complete-path-at-point+ ()
+                        (let ((fn (ffap-file-at-point))
+                              (fap (thing-at-point 'filename)))
+                          (when (and (or fn
+                                         (equal "/" fap))
+                                     (save-excursion
+                                       (search-backward fap (line-beginning-position) t)))
+                            (list (match-beginning 0)
+                                  (match-end 0)
+                                  #'completion-file-name-table))))
+                      'append)))
 
 (use-package selectrum-prescient
   :ensure t
