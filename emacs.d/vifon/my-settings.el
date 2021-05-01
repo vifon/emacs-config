@@ -45,6 +45,8 @@
 ;;; added in Emacs 27.
 (setq tramp-connection-properties '((nil "session-timeout" nil)))
 
+(setq tramp-completion-use-auth-sources nil)
+
 (setq vc-follow-symlinks t)
 (when (equal system-type 'gnu/linux)
   (setq x-select-enable-primary t
