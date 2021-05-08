@@ -31,7 +31,8 @@
 (use-package paredit
   :ensure t
   :diminish "[()]"
-  :commands (paredit-mode paredit-kill)
+  :commands paredit-kill
+  :hook (emacs-lisp-mode . paredit-mode)
   :init (progn
           (setq paredit-space-for-delimiter-predicates
                 '((lambda (endp delimiter) nil)))
@@ -39,8 +40,7 @@
             (interactive "P")
             (if (consp arg)
                 (paredit-kill)
-              (kill-line arg)))
-          (add-hook 'emacs-lisp-mode-hook #'paredit-mode))
+              (kill-line arg))))
   :bind (([remap kill-line] . paredit-kill-maybe)
          :map paredit-mode-map
          ("M-s" . nil)
@@ -48,8 +48,7 @@
 
 (use-package origami
   :ensure t
-  :defer t
-  :init (add-hook 'prog-mode-hook #'origami-mode)
+  :hook (prog-mode . origami-mode)
   :bind (:map origami-mode-map
          ("M-RET" . origami-recursively-toggle-node)))
 
@@ -249,12 +248,10 @@
 
 (use-package emmet-mode
   :ensure t
+  :hook (web-mode
+         html-mode
+         css-mode)
   :commands emmet-mode
-  :init (mapc (lambda (mode)
-                (add-hook mode  #'emmet-mode))
-              '(web-mode-hook
-                html-mode-hook
-                css-mode-hook))
   :config (progn
             (setq emmet-self-closing-tag-style " /")
             (add-to-list 'emmet-css-major-modes 'web-css-mode)))
@@ -535,13 +532,12 @@
 
 (use-package dumb-jump
   :ensure t
-  :config (dolist (hook '(cperl-mode-hook c-mode-common-hook))
-            (add-hook hook
-                      (defun dumb-jump-activate ()
-                        (interactive)
-                        (add-hook 'xref-backend-functions
-                                  #'dumb-jump-xref-activate
-                                  nil t)))))
+  :hook ((cperl-mode c-mode-common) . dumb-jump-activate)
+  :init (defun dumb-jump-activate ()
+          (interactive)
+          (add-hook 'xref-backend-functions
+                    #'dumb-jump-xref-activate
+                    nil t)))
 
 (use-package vlf
   :ensure t
