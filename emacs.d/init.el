@@ -617,27 +617,6 @@
   :defer t
   :init (setq-default typescript-indent-level 2))
 
-(use-package projectile
-  :ensure t
-  :defer 3
-  :diminish projectile-mode
-  :commands (projectile-global-mode
-             projectile-switch-project
-             projectile-project-root)
-  :init (progn
-          (setq projectile-switch-project-action (lambda ()
-                                                   (dired "."))))
-  :bind-keymap ("C-c p" . projectile-command-map)
-  :config (progn
-            (projectile-mode 1)
-            (when (package-installed-p 'consult)
-              (bind-key "s R" #'consult-ripgrep
-                        projectile-command-map))
-            (setq projectile-ignored-project-function
-                  (lambda (path)
-                    (or (file-remote-p path)
-                        (string-prefix-p "/media/" path))))))
-
 (use-package project
   :ensure t
   :defer t)
