@@ -17,7 +17,7 @@
     (define-key map (kbd "C") (lambda ()
                                 (interactive)
                                 (find-library "scratch-mode")))
-    (define-key map (kbd "p") #'projectile-switch-project)
+    (define-key map (kbd "p") #'project-switch-project)
     (define-key map (kbd "P") #'package-list-packages)
     (define-key map (kbd "SPC") #'notmuch)
     (define-key map (kbd "s") #'notmuch-search)

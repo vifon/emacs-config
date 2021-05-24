@@ -632,12 +632,15 @@
             (projectile-mode 1)
             (when (package-installed-p 'consult)
               (bind-key "s R" #'consult-ripgrep
-                        projectile-command-map)
-              (setq consult-project-root-function #'projectile-project-root))
+                        projectile-command-map))
             (setq projectile-ignored-project-function
                   (lambda (path)
                     (or (file-remote-p path)
                         (string-prefix-p "/media/" path))))))
+
+(use-package project
+  :ensure t
+  :defer t)
 
 (use-package rg
   :ensure t

@@ -92,6 +92,7 @@
                     (consult-line isearch-string))
                   isearch-mode-map)
   :config (progn
+            (setq consult-project-root-function #'vc-root-dir)
             (let ((grep-config (list :preview-key (kbd "TAB")
                                      :keymap (let ((map (make-sparse-keymap)))
                                                (define-key map [remap selectrum-insert-current-candidate]
