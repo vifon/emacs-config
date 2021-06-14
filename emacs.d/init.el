@@ -409,7 +409,7 @@
          ("M-S-<SPC>" . er/expand-region)))
 
 (use-package semantic/decorate/mode
-  :defer t
+  :after semantic
   :config (setq-default semantic-decoration-styles
                         '(("semantic-decoration-on-includes" . t))))
 
