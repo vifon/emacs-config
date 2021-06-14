@@ -27,7 +27,7 @@
 
 (blink-cursor-mode 0)
 (setq visible-cursor nil)
-(setq scroll-conservatively 10
+(setq scroll-step 10
       next-screen-context-lines 10)
 (mouse-avoidance-mode 'none)
 (transient-mark-mode 1)
