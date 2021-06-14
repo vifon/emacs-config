@@ -590,8 +590,13 @@
   :init (setq-default typescript-indent-level 2))
 
 (use-package project
+  :pin gnu
   :ensure t
   :defer t)
+
+;;; For the additional project.el functionality.
+(use-package magit-extras
+  :after project)
 
 (use-package rg
   :ensure t
