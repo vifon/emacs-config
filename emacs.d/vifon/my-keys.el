@@ -72,17 +72,17 @@
             (find-file path)))
       (error "No such program"))))
 
-(defun toggle-selective-display (arg)
+(defun vifon/toggle-selective-display (arg)
   (interactive "P")
   (if arg
       (set-selective-display arg)
-    (if (not (zerop (or selective-display 0)))
-        (set-selective-display nil)
-      (set-selective-display (current-column)))))
-(bind-key [remap set-selective-display] #'toggle-selective-display)
+    (set-selective-display (and (zerop (or selective-display 0))
+                                (not (zerop (current-column)))
+                                (current-column)))))
+(bind-key [remap set-selective-display] #'vifon/toggle-selective-display)
 
 (bind-key [remap move-beginning-of-line]
-          (defun move-beginning-of-line-dwim (arg)
+          (defun vifon/move-beginning-of-line (arg)
             (interactive "^p")
             (let ((old-point (point)))
               (back-to-indentation)
@@ -126,10 +126,6 @@ ends with a newline."
 
 (windmove-default-keybindings)
 
-
-(defun shrink-all-windows-if-larger-than-buffer ()
-  (interactive)
-  (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
 
 (bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)
 

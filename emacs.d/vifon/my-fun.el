@@ -158,4 +158,8 @@ See also: `flags-if-supported'."
     (when (y-or-n-p "Kill the buffer?")
       (kill-buffer))))
 
+(defun vifon/shrink-all-windows-if-larger-than-buffer ()
+  (interactive)
+  (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
+
 (provide 'my-fun)
