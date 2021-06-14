@@ -545,10 +545,11 @@
                   (self-insert-command 1)
                 (insert "->")))))
   :bind (:map cperl-mode-map
-         ("." . perl-method-call-dwim)
-         ("C-c C-i" . perltidy-dwim-safe)))
+         ("." . perl-method-call-dwim)))
 (use-package perltidy
-  :commands perltidy-dwim-safe)
+  :after cperl-mode
+  :bind (:map cperl-mode-map
+         ("C-c C-i" . perltidy-dwim-safe)))
 
 (use-package python
   :defer t
