@@ -58,7 +58,11 @@
   :ensure t
   :bind (("C-c o" . embark-act)
          :map minibuffer-local-map
-         ("M-o"   . embark-act)))
+         ("M-o"   . embark-act))
+  :config (setf (alist-get 'project-file embark-keymap-alist)
+                (embark-define-keymap embark-project-map
+                  "Keymap for Embark project actions."
+                  ("k" project-remove-known-project))))
 
 (use-package embark-consult
   :ensure t
