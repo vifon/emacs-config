@@ -300,7 +300,7 @@
               (bind-key "M-<tab>" #'magit-section-cycle
                         keymap)
               ;; For some reason unbind-key doesn't work here.
-              (bind-key "C-<tab>" nil keymap))
+              (define-key keymap (kbd "C-<tab>") nil))
             (transient-append-suffix 'magit-log "-f"
               '("-1" "First parent" "--first-parent"))
             (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
