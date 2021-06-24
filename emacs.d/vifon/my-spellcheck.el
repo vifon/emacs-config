@@ -13,10 +13,11 @@
   (ispell-hunspell-add-multi-dic "pl_PL,en_US")
   ;; For saving words to the personal dictionary, don't infer it from
   ;; the locale, otherwise it would save to ~/.hunspell_pl_PL.
-  (setq ispell-personal-dictionary "~/.hunspell_personal"))
-;; The personal dictionary file has to exist, otherwise hunspell will
-;; silently not use it.
-(unless (file-exists-p "~/.hunspell_personal")
-  (shell-command "touch ~/.hunspell_personal"))
+  (setq ispell-personal-dictionary "~/.hunspell_personal")
+
+  ;; The personal dictionary file has to exist, otherwise hunspell will
+  ;; silently not use it.
+  (unless (file-exists-p ispell-personal-dictionary)
+    (write-region "" nil ispell-personal-dictionary nil 0)))
 
 (provide 'my-spellcheck)
