@@ -211,7 +211,8 @@ when using the `*-respect-content' commands."
                      (if (org-clocking-p)
                          (org-clock-goto)
                        (org-back-to-heading))))
-         "* TODO %?\n  %U\n%(when (org-clocking-p) \"  %a\n\")  %i")
+         "* TODO %?\n  %U\n%(when (org-clocking-p) \"  %a\n\")  %i"
+         :unnarrowed t)
 
         ("tb" "project issue" entry
          (file+headline (concat (or (vc-root-dir)
