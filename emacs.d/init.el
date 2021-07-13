@@ -722,17 +722,18 @@ ignore) any passed arguments to work as an advice."
                        (read (current-buffer))))))
             (setq message-signature
                   (lambda ()
-                    (let* ((signature-override
-                            (concat (file-name-as-directory "~/.signature.d")
-                                    (message-sendmail-envelope-from)))
-                           (signature-file
-                            (if (file-readable-p signature-override)
-                                signature-override
-                              "~/.signature")))
-                      (when (file-readable-p signature-file)
-                        (with-temp-buffer
-                          (insert-file-contents signature-file)
-                          (buffer-string))))))
+                    (when (eq this-command #'message-insert-signature)
+                      (let* ((signature-override
+                              (concat (file-name-as-directory "~/.signature.d")
+                                      (message-sendmail-envelope-from)))
+                             (signature-file
+                              (if (file-readable-p signature-override)
+                                  signature-override
+                                "~/.signature")))
+                        (when (file-readable-p signature-file)
+                          (with-temp-buffer
+                            (insert-file-contents signature-file)
+                            (buffer-string)))))))
 
             (setq message-sendmail-envelope-from 'header)
             (setq notmuch-always-prompt-for-sender t)
