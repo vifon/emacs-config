@@ -10,6 +10,13 @@
                         (interactive)
                         (org-time-stamp-inactive '(16)))
                       org-mode-map)
+            (bind-key [remap insert-file]
+                      (lambda (arg)
+                        (interactive "P")
+                        (call-interactively (if arg
+                                                #'vifon/org-insert-directory
+                                              #'insert-file)))
+                      org-mode-map)
             (setf (cdr (assoc "\\.pdf\\'"
                               org-file-apps))
                   "evince %s")
