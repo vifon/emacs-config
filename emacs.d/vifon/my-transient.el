@@ -16,9 +16,10 @@
                    ("lh" "Highlight current line" hl-line-mode :transient t)
                    ("ww" "Whitespace mode" whitespace-mode :transient t)
                    ("gf" "Display fill indicator" display-fill-column-indicator-mode :transient t)
-                   ("gi" "Indent guide mode" indent-guide-mode :transient t)]
+                   ("gi" "Indent guide mode" indent-guide-mode :transient t)
+                   ("fl" "Follow mode" follow-mode :transient t)]
      ["Others"
-      ("f" "fly*-modes…" vifon/fly*-transient)
+      ("F" "fly*-modes…" vifon/fly*-transient)
       ("o" "compare" compare-windows :transient t)
       ("nm" "normal-mode" normal-mode)
       ("tc" "TRAMP shutdown" tramp-cleanup-all-buffers)]])
