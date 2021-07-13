@@ -268,7 +268,8 @@
   :ensure t
   :init (progn
           (setq doom-modeline-env-version nil
-                doom-modeline-icon nil)
+                doom-modeline-icon nil
+                doom-modeline-minor-modes t)
           (doom-modeline-mode 1)))
 
 (use-package transpose-frame
