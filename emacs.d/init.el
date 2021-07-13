@@ -780,7 +780,7 @@ ignore) any passed arguments to work as an advice."
               (when (y-or-n-p "Clear the notmuch search history? ")
                 (setq notmuch-search-history nil)
                 (notmuch-refresh-this-buffer)))
-            (bind-key "D" #'notmuch-clear-search-history
+            (bind-key "d" #'notmuch-clear-search-history
                       notmuch-hello-mode-map)
             (bind-key "C-c C-o"
                       (lambda (arg)
