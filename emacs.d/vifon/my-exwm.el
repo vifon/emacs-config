@@ -88,7 +88,7 @@
 
             (defun my-exwm-mediaplayer ()
               (interactive)
-              (start-process "alacritty" nil "alacritty" "-e" "ncmpcpp-run"))
+              (start-process "alacritty" nil "alacritty" "-e" "ncmpcpp-auth"))
 
             (defun my-exwm-next-workspace (arg)
               (interactive "p")
