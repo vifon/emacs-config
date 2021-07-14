@@ -179,7 +179,6 @@
             (setq exwm-input-global-keys
                   `((,(kbd "s-M")        . my-exwm-mediaplayer)
                     (,(kbd "<s-escape>") . my-exwm-mediaplayer)
-                    (,(kbd "C-c <C-tab>") . vifon/switch-to-last-buffer)
                     (,(kbd "<C-s-tab>") . vifon/switch-to-last-buffer)
                     (,(kbd "s-d") . exwm-reset)
                     (,(kbd "s-c") . exwm-input-release-keyboard)
