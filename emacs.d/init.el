@@ -735,7 +735,8 @@ ignore) any passed arguments to work as an advice."
                             (insert-file-contents signature-file)
                             (buffer-string)))))))
 
-            (setq message-sendmail-envelope-from 'header)
+            (setq message-sendmail-envelope-from 'header
+                  send-mail-function 'sendmail-send-it)
             (setq notmuch-always-prompt-for-sender t)
 
             (setq notmuch-wash-signature-lines-max 3)
@@ -759,7 +760,8 @@ ignore) any passed arguments to work as an advice."
 
             ;; Allow <M-tab> complete the addresses, since I no longer
             ;; use company-mode for that.  By default it spellchecks.
-            (unbind-key "C-M-i" notmuch-message-mode-map)
+            (bind-key "C-M-i" #'completion-at-point
+                      notmuch-message-mode-map)
 
             (bind-key "A"
                       (lambda ()
