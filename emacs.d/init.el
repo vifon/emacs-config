@@ -555,6 +555,7 @@
   :hook ((python-mode . lsp-deferred)
          (go-mode     . lsp-deferred)
          (rust-mode   . lsp-deferred)
+	     (js-mode     . lsp-deferred)
          (typescript-mode . lsp-deferred))
   :bind (("C-c k F r" . lsp-workspace-folders-remove)
          ("C-c k s d" . lsp-describe-session))
