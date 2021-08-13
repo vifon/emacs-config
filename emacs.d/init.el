@@ -524,6 +524,7 @@
 
 (use-package cperl-mode
   :commands cperl-mode
+  :mode ("\\.t\\'" . cperl-mode)
   :init (progn
           (defalias 'perl-mode 'cperl-mode)
           (setq cperl-indent-level 4

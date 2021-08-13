@@ -98,6 +98,8 @@
      ,@body
      (goto-char old-point)))
 
+(autoload 'tramp-tramp-file-p "tramp")
+
 ;;;###autoload
 (defun perltidy-region (beg end)
   "Tidy perl code in the region."
@@ -107,7 +109,6 @@
           (put 'perltidy-program 'has-perltidy t)
         (error "Seem perltidy is not installed")))
   (perltidy-save-point
-
     (let ((old-perltidy-env (getenv "PERLTIDY"))
           (remote? (tramp-tramp-file-p buffer-file-name))
           (perltidyrc (expand-file-name
