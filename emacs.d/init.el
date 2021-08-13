@@ -879,7 +879,6 @@ ignore) any passed arguments to work as an advice."
 (use-package dockerfile-mode :ensure t :defer t)
 (use-package nix-mode :ensure t :defer t)
 (use-package dpaste :ensure t :defer t)
-(use-package focus-autosave-mode :ensure t :defer t)
 (use-package impatient-mode :ensure t :defer t)
 (use-package rainbow-mode :ensure t :defer t)
 (use-package restclient :ensure t :defer t)
