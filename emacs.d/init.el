@@ -280,6 +280,20 @@
   :config (progn
             (setq magit-diff-refine-hunk t
                   magit-status-goto-file-position t)
+            (setq magit-repository-directories
+                  '(("~/configs/" . 1)
+                    ("~/projects/" . 2))
+                  magit-repolist-columns
+                  '(("Name" 25 magit-repolist-column-ident ())
+                    ("Version" 25 magit-repolist-column-version ())
+                    ("D" 1 magit-repolist-column-dirty ())
+                    ("B<U" 3 magit-repolist-column-unpulled-from-upstream
+                     ((:right-align t)
+                      (:help-echo "Upstream changes not in branch")))
+                    ("B>U" 3 magit-repolist-column-unpushed-to-upstream
+                     ((:right-align t)
+                      (:help-echo "Local changes not in upstream")))
+                    ("Path" 99 magit-repolist-column-path ())))
             (dolist (keymap (list magit-status-mode-map
                                   magit-log-mode-map
                                   magit-reflog-mode-map
