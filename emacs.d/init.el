@@ -78,20 +78,7 @@
                   wdired-allow-to-change-permissions t
                   image-dired-external-viewer "sxiv")
 
-            ;; Easy switching between the pleasant dired switches and
-            ;; the POSIX compliant ones to use with TRAMP when
-            ;; connecting to non-GNU systems.
-            (let ((portable "-alh"))
-              (defun vifon/dired-switches-default ()
-                (interactive)
-                (setq dired-listing-switches
-                      (flags-nonportable portable "ls"
-                                         "--group-directories-first"
-                                         "-v")))
-              (defun vifon/dired-switches-compat ()
-                (interactive)
-                (setq dired-listing-switches portable)))
-            (vifon/dired-switches-default)
+            (setq dired-listing-switches "-alh --group-directories-first -v")
 
             (defun vifon/dired-subdir-toggle ()
               (interactive)
