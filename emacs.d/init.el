@@ -858,12 +858,6 @@ ignore) any passed arguments to work as an advice."
 (require 'my-theme)
 
 
-;;; DEPRECATION: replaced by "~/.emacs.d/local.el"
-(use-package my-secret
-  :if (file-directory-p "~/.emacs.d/secret")
-  :load-path ("~/.emacs.d/secret"))
-;;; /DEPRECATION
-
 (when (file-exists-p "~/.emacs.d/local.el")
   (load "~/.emacs.d/local.el"))
 
