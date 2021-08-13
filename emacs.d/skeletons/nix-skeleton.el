@@ -1,6 +1,5 @@
 (define-skeleton nix-shell-skeleton
   "" ""
-  "#!/usr/bin/env nix-shell\n"
   "{ pkgs ? import <nixpkgs> {} }:\n"
   "\n"
   "with pkgs; mkShell {\n"
