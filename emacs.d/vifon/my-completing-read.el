@@ -97,15 +97,10 @@
                   isearch-mode-map)
   :config (progn
             (setq consult-project-root-function #'vc-root-dir)
-            (let ((grep-config (list :preview-key (kbd "TAB")
-                                     :keymap (let ((map (make-sparse-keymap)))
-                                               (define-key map [remap selectrum-insert-current-candidate]
-                                                 #'ignore)
-                                               map))))
-              (setq consult-config `((consult-buffer :preview-key ,(kbd "TAB"))
-                                     (consult-recent-file :preview-key ,(kbd "TAB"))
-                                     (consult-ripgrep . ,grep-config)
-                                     (consult-grep    . ,grep-config))))
+            (consult-customize
+             consult-ripgrep consult-grep
+             consult-buffer consult-recent-file
+             :preview-key (kbd "M-."))
 
             ;; Disable consult-buffer project-related capabilities as
             ;; they are very slow in TRAMP.
