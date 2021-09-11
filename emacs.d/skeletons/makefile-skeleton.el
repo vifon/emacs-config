@@ -7,4 +7,4 @@
   ".PHONY: all\n"
   "all: " (skeleton-read "Output file: " "main") "\n")
 
-(define-auto-insert "/Makefile$" 'makefile-skeleton)
+(define-auto-insert "/Makefile\\'" 'makefile-skeleton)

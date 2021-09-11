@@ -19,7 +19,7 @@
   "BDEPEND=\"\"\n"
   _
   )
-(define-auto-insert "\\.ebuild$" 'ebuild-skeleton)
+(define-auto-insert "\\.ebuild\\'" 'ebuild-skeleton)
 
 (define-skeleton cruxpkg-skeleton
   "" ""
@@ -39,4 +39,4 @@
   "    rm -rf $PKG/share/info\n"
   "}\n"
   )
-(define-auto-insert "/Pkgfile$" 'cruxpkg-skeleton)
+(define-auto-insert "/Pkgfile\\'" 'cruxpkg-skeleton)

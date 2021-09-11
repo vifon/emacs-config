@@ -7,4 +7,4 @@
   "  return ()"
   )
 
-(define-auto-insert "\\.hs$" 'haskell-skeleton)
+(define-auto-insert "\\.hs\\'" 'haskell-skeleton)

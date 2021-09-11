@@ -9,6 +9,19 @@
   "}\n"
   )
 
+(define-skeleton nix-shell-python-skeleton
+  "" ""
+  "{ pkgs ? import <nixpkgs> {} }:\n"
+  "\n"
+  "with pkgs; mkShell {\n"
+  "  buildInputs = let pyenv = ps: with ps; [\n"
+  "    " _ "\n"
+  "  ]; in [\n"
+  "    (python3.withPackages pyenv)\n"
+  "  ];\n"
+  "}\n"
+  )
+
 (define-skeleton nix-docker-skeleton
   "" ""
   "{ pkgs ? import <nixpkgs> {} }:\n"

@@ -5,4 +5,4 @@
   "}\n"
   )
 
-(define-auto-insert "\\.rs$" 'rust-skeleton)
+(define-auto-insert "\\.rs\\'" 'rust-skeleton)

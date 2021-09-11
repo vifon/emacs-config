@@ -10,12 +10,12 @@
   "\\linespread{1.3}\n"
   "\\makeatletter\n"
   "\n"
-  "\\title{" (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) "}\n"
-  "\\author{Wojciech Siewierski}\n"
+  "\\title{" (file-name-base (buffer-file-name)) "}\n"
+  "\\author{" user-full-name "}\n"
   "\n"
   "\\begin{document}\n\n"
   _
   "\n\n\\end{document}\n"
   )
 
-(define-auto-insert "\\.tex$" 'latex-skeleton)
+(define-auto-insert "\\.tex\\'" 'latex-skeleton)

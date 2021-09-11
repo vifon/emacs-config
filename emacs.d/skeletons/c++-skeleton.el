@@ -6,7 +6,7 @@
 (define-skeleton c++-skeleton
   "" ""
   (c-c++-skeleton--get-file-comment)
-  (let ((header (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".hpp")))
+  (let ((header (concat (file-name-base (buffer-file-name)) ".hpp")))
     (if (file-exists-p header)
         (concat "\n#include \"" header "\"\n\n"
                 (when (progn
@@ -19,7 +19,7 @@
                 "int main(int argc, char *argv[])\n"
                 "{\n    ")))
     _
-    (if (not (file-exists-p (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".hpp")))
+    (if (not (file-exists-p (concat (file-name-base (buffer-file-name)) ".hpp")))
         (concat "\n    return 0;\n"
                 "}\n")
         (when (not (string= "" v1))
@@ -29,7 +29,7 @@
 (define-skeleton c-skeleton
   "" ""
   (c-c++-skeleton--get-file-comment)
-  (let ((header (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".h")))
+  (let ((header (concat (file-name-base (buffer-file-name)) ".h")))
     (if (file-exists-p header)
         (concat "\n#include \"" header "\"\n\n")
         (concat "\n#include <stdio.h>\n"
@@ -38,7 +38,7 @@
                 "int main(int argc, char *argv[])\n"
                 "{\n    ")))
   _
-    (if (not (file-exists-p (concat (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) ".h")))
+    (if (not (file-exists-p (concat (file-name-base (buffer-file-name)) ".h")))
         (concat "\n    return 0;\n"
                 "}\n")))
 
@@ -101,8 +101,8 @@
   )
 
 
-(define-auto-insert "\\.\\(C\\|cc\\|cpp\\)$" 'c++-skeleton)
-(define-auto-insert "\\.c$" 'c-skeleton)
-(define-auto-insert "\\.\\(H\\|hpp\\)$" 'c++-header-skeleton)
-(define-auto-insert "\\.h$" 'c-header-skeleton)
-(define-auto-insert "/catch.cpp$" 'c++-catch-skeleton)
+(define-auto-insert "\\.\\(C\\|cc\\|cpp\\)\\'" 'c++-skeleton)
+(define-auto-insert "\\.c\\'" 'c-skeleton)
+(define-auto-insert "\\.\\(H\\|hpp\\)\\'" 'c++-header-skeleton)
+(define-auto-insert "\\.h\\'" 'c-header-skeleton)
+(define-auto-insert "/catch.cpp\\'" 'c++-catch-skeleton)
