@@ -31,6 +31,7 @@
 (bind-key "C-c =" #'diff-buffer-with-file)
 
 (bind-key "M-C-?" #'hippie-expand)
+(bind-key [remap ispell-complete-word] #'completion-at-point)
 
 (defun display-line-numbers-best ()
   (interactive)

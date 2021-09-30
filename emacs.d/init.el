@@ -761,11 +761,6 @@ ignore) any passed arguments to work as an advice."
                 (bind-key "G" #'my-notmuch-poll-and-refresh-this-buffer
                           map)))
 
-            ;; Allow <M-tab> complete the addresses, since I no longer
-            ;; use company-mode for that.  By default it spellchecks.
-            (bind-key "C-M-i" #'completion-at-point
-                      notmuch-message-mode-map)
-
             (bind-key "A"
                       (lambda ()
                         (interactive)
