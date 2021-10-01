@@ -571,8 +571,6 @@
          (rust-mode   . lsp-deferred)
 	     (js-mode     . lsp-deferred)
          (typescript-mode . lsp-deferred))
-  :bind (("C-c k F r" . lsp-workspace-folders-remove)
-         ("C-c k s d" . lsp-describe-session))
   :init (setq lsp-keymap-prefix "C-c k"
               lsp-rust-server 'rust-analyzer
               lsp-signature-auto-activate nil
