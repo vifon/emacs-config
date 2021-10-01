@@ -27,9 +27,13 @@
 (require 'pastes-from-web)
 
 
-(use-package s :ensure t :defer t)
+(use-package project
+  :straight t
+  :defer t)
+
+(use-package s :straight t :defer t)
 (use-package paredit
-  :ensure t
+  :straight t
   :diminish "[()]"
   :commands paredit-kill
   :hook (emacs-lisp-mode . paredit-mode)
@@ -47,17 +51,17 @@
          ("M-s M-s" . paredit-splice-sexp)))
 
 (use-package origami
-  :ensure t
+  :straight t
   :hook (prog-mode . origami-mode)
   :bind (:map origami-mode-map
          ("M-RET" . origami-recursively-toggle-node)))
 
 (use-package hideshow-org
-  :ensure t
+  :straight t
   :commands hs-org/minor-mode)
 
 (use-package folding
-  :ensure t
+  :straight t
   :commands folding-mode
   :config (folding-add-to-marks-list 'cperl-mode
                                      "=over" "=back"))
@@ -111,25 +115,25 @@
   :init (setq dired-x-hands-off-my-keys t))
 
 (use-package dired-subtree
-  :ensure t
+  :straight t
   :after dired
   :commands dired-subtree-toggle)
 
 (use-package dired-filter
-  :ensure t
+  :straight t
   :after dired
   :config (setq-default dired-filter-stack '()))
 
 (use-package dired-rifle
-  :ensure t
+  :straight t
   :after dired)
 
 (use-package dired-collapse
-  :ensure t
+  :straight t
   :after dired)
 
 (use-package dired-async
-  :ensure async
+  :straight async
   :after dired
   :commands dired-async-mode
   :config (setq dired-async-message-function
@@ -169,18 +173,18 @@
                           " " filename)))))
 
 (use-package ibuffer-vc
-  :ensure t
+  :straight t
   :commands ibuffer-vc-set-filter-groups-by-vc-root)
 
 (use-package ibuffer-tramp
-  :ensure t
+  :straight t
   :commands ibuffer-tramp-set-filter-groups-by-tramp-connection)
 
 (use-package recentf
   :config (recentf-mode 1))
 
 (use-package yasnippet
-  :ensure t
+  :straight t
   :defer 7
   :diminish yas-minor-mode
   :commands yas-global-mode
@@ -189,11 +193,11 @@
   :config (yas-global-mode 1))
 
 (use-package yasnippet-snippets
-  :ensure t
+  :straight t
   :after yasnippet)
 
 (use-package auto-yasnippet
-  :ensure t
+  :straight t
   :bind (("C-c Y" . aya-create)
          ("C-c y" . aya-expand-with-indent))
   :config (defun aya-expand-with-indent (arg)
@@ -203,11 +207,11 @@
               (indent-for-tab-command))))
 
 (use-package tiny
-  :ensure t
+  :straight t
   :bind ("C-:" . tiny-expand))
 
 (use-package auctex
-  :ensure t
+  :straight t
   :defer t
   :init (setq preview-scale-function 2.0)
   :config (defun my-auctex-build-pdf ()
@@ -215,7 +219,7 @@
             (TeX-command "LaTeX" 'TeX-master-file)))
 
 (use-package web-mode
-  :ensure t
+  :straight t
   :mode (("\\.html\\'"      . web-mode)
          ("\\.html\\.[^.]+\\'" . web-mode)
          ("\\.tt\\'"        . web-mode)
@@ -234,7 +238,7 @@
             (setq web-mode-enable-auto-pairing nil)))
 
 (use-package emmet-mode
-  :ensure t
+  :straight t
   :hook (web-mode
          html-mode
          css-mode)
@@ -244,7 +248,7 @@
             (add-to-list 'emmet-css-major-modes 'web-css-mode)))
 
 (use-package legalese
-  :ensure t
+  :straight t
   :commands legalese
   :init (defun legalese-box (ask)
           (interactive "P")
@@ -252,7 +256,7 @@
             (legalese ask))))
 
 (use-package doom-modeline
-  :ensure t
+  :straight t
   :init (progn
           (setq doom-modeline-env-version nil
                 doom-modeline-icon nil
@@ -260,13 +264,13 @@
           (doom-modeline-mode 1)))
 
 (use-package transpose-frame
-  :ensure t
+  :straight t
   :bind (("C-x 4 t" . transpose-frame)
          ("C-x 4 i" . flop-frame)
          ("C-x 4 I" . flip-frame)))
 
 (use-package treemacs
-  :ensure t
+  :straight t
   :bind (("C-c b" . treemacs)
          ("C-c B" . treemacs-switch-workspace)
          :map treemacs-mode-map
@@ -275,7 +279,7 @@
          ("W" . treemacs-switch-workspace)))
 
 (use-package magit
-  :ensure t
+  :straight t
   :defer t
   :config (progn
             (setq magit-diff-refine-hunk t
@@ -307,14 +311,14 @@
               '("-1" "First parent" "--first-parent"))
             (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
-(use-package magit-todos :ensure t :defer t)
+(use-package magit-todos :straight t :defer t)
 
 (use-package forge
-  :ensure t
+  :straight t
   :after magit)
 
 (use-package git-commit
-  :ensure t
+  :straight t
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
   :bind (:map git-commit-mode-map
          ("C-c C-l" . magit-log))
@@ -322,25 +326,25 @@
                                             (flyspell-mode 1))))
 
 (use-package git-messenger
-  :ensure t
+  :straight t
   :bind ("C-x v p" . git-messenger:popup-message))
 
 (use-package git-timemachine
-  :ensure t
+  :straight t
   :bind ("C-x v t" . git-timemachine))
 
 (use-package git-link
-  :ensure t
+  :straight t
   :bind ("C-x v w" . git-link)
   :config (setq git-link-default-branch "master"))
 
 (use-package goto-last-change
-  :ensure t
+  :straight t
   :demand t
   :bind ("C-x C-\\" . goto-last-change))
 
 (use-package symbol-overlay
-  :ensure t
+  :straight t
   :bind (("M-p" . symbol-overlay-jump-prev)
          ("M-n" . symbol-overlay-jump-next)
          ("C-;" . symbol-overlay-put)
@@ -349,51 +353,51 @@
          ("f" . symbol-overlay-switch-forward)))
 
 (use-package indent-guide
-  :ensure t
+  :straight t
   :defer t
   :init (add-hook 'LaTeX-mode-hook (lambda ()
                                      (indent-guide-mode 1)))
   :config (setq indent-guide-delay nil))
 
 (use-package writeroom-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package olivetti
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package presentation
-  :ensure t
+  :straight t
   :commands presentation-mode)
 
 (use-package highlight-defined
-  :ensure t
+  :straight t
   :commands highlight-defined-mode)
 
 (use-package visual-regexp
-  :ensure t
+  :straight t
   :defer t
   :bind (([remap query-replace-regexp] . vr/query-replace)))
 (use-package visual-regexp-steroids
-  :ensure t
+  :straight t
   :after visual-regexp)
 
 (use-package volatile-highlights
-  :ensure t
+  :straight t
   :diminish volatile-highlights-mode
   :config (volatile-highlights-mode 1))
 
 (use-package beacon
-  :ensure t
+  :straight t
   :diminish beacon-mode
   :config (beacon-mode 1))
 
 (use-package phi-search
-  :ensure t
+  :straight t
   :commands (phi-search phi-search-backward))
 (use-package multiple-cursors
-  :ensure t
+  :straight t
   :demand t                             ;C-v/M-v don't work otherwise
   :bind (("C-<"         . mc/mark-previous-like-this)
          ("C->"         . mc/mark-more-like-this-extended)
@@ -406,7 +410,7 @@
          ("C-r" . phi-search-backward)))
 
 (use-package expand-region
-  :ensure t
+  :straight t
   :bind (("C-=" . er/expand-region)
          ("M-S-<SPC>" . er/expand-region)))
 
@@ -424,7 +428,7 @@
                   global-semantic-stickyfunc-mode)))
 
 (use-package flycheck
-  :ensure t
+  :straight t
   :defer t
   :init (progn
           (add-hook 'c-mode-hook (lambda ()
@@ -433,15 +437,15 @@
                                      (setq flycheck-clang-language-standard "c++14")))))
 
 (use-package cmake-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package avy
-  :ensure t
+  :straight t
   :bind ("C-c j" . avy-goto-char-timer))
 
 (use-package win-switch
-  :ensure t
+  :straight t
   :bind ("C-x o" . win-switch-dispatch)
   :config (setq win-switch-window-threshold 2))
 
@@ -454,7 +458,7 @@
                 uniquify-strip-common-suffix t))
 
 (use-package deft
-  :ensure t
+  :straight t
   :bind (("<f5>" . deft)
          :map deft-mode-map
          ("<f5>" . deft-index))
@@ -475,7 +479,7 @@
          ("/zettels?/[^/]+\\.org\\'" . zettel-mode)))
 
 (use-package markdown-mode
-  :ensure t
+  :straight t
   :defer t
   :config (add-hook 'markdown-mode-hook
                     (defun my-markdown-mode-hook ()
@@ -483,7 +487,7 @@
                                    '(?` . ?`)))))
 
 (use-package ansible
-  :ensure t
+  :straight t
   :defer t
   :init (add-hook 'yaml-mode-hook
                   (defun ansible-maybe (&optional arg)
@@ -492,10 +496,10 @@
                     (when (or (string-match-p "/roles/.*\\.yml\\'" (buffer-file-name))
                               (string-match-p "/main\\.yml\\'" (buffer-file-name)))
                       (ansible arg)))))
-(use-package ansible-doc :ensure t :defer t)
+(use-package ansible-doc :straight t :defer t)
 
 (use-package yaml-mode
-  :ensure t
+  :straight t
   :defer t
   :mode ("\\.sls\\'" . yaml-mode)       ;Saltstack files
 )
@@ -504,7 +508,7 @@
   :mode ("\\.pod\\'" . pod-mode))
 
 (use-package dumb-jump
-  :ensure t
+  :straight t
   :hook ((cperl-mode c-mode-common) . dumb-jump-activate)
   :init (defun dumb-jump-activate ()
           (interactive)
@@ -513,11 +517,11 @@
                     nil t)))
 
 (use-package vlf
-  :ensure t
+  :straight t
   :init (require 'vlf-setup))
 
 (use-package haskell-mode
-  :ensure t
+  :straight t
   :defer t
   :config (progn
             (setq haskell-program-name "cabal repl")
@@ -564,7 +568,7 @@
                               py-indent-offset 4)))))
 
 (use-package lsp-mode
-  :ensure t
+  :straight t
   :defer t
   :hook ((python-mode . lsp-deferred)
          (go-mode     . lsp-deferred)
@@ -577,7 +581,7 @@
               lsp-headerline-breadcrumb-enable nil))
 
 (use-package lsp-ui
-  :ensure t
+  :straight t
   :after lsp-mode
   :bind (:map lsp-ui-mode-map
          ([remap xref-find-references] . lsp-ui-peek-find-references))
@@ -587,26 +591,21 @@
   :defer t
   :init (setq-default js-indent-level 2))
 (use-package typescript-mode
-  :ensure t
+  :straight t
   :defer t
   :init (setq-default typescript-indent-level 2))
-
-(use-package project
-  :pin gnu
-  :ensure t
-  :defer t)
 
 ;;; For the additional project.el functionality.
 (use-package magit-extras
   :after project)
 
 (use-package rg
-  :ensure t
+  :straight t
   :commands rg
   :bind ("M-s ," . rg-dwim))
 
 (use-package sane-term
-  :ensure t
+  :straight t
   :init (setq sane-term-shell-command (getenv "SHELL"))
   :config (add-hook 'term-mode-hook
                     (lambda ()
@@ -614,7 +613,7 @@
   :bind ("C-x T" . sane-term))
 
 (use-package diff-hl
-  :ensure t
+  :straight t
   :defer 2
   :bind ("C-x v \\" . diff-hl-amend-mode)
   :config (progn
@@ -638,12 +637,12 @@
          ("C-c C-m" . man)))
 
 (use-package fish-mode
-  :ensure t
+  :straight t
   :bind (:map fish-mode-map
          ("C-c C-m" . man)))
 
 (use-package ledger-mode
-  :ensure t
+  :straight t
   :defer t
   :bind (:map ledger-mode-map
          ("<C-tab>" . nil)
@@ -667,7 +666,7 @@ ignore) any passed arguments to work as an advice."
                         #'vifon/delete-blank-lines)))
 
 (use-package circe
-  :ensure t
+  :straight t
   :defer t
   :if (file-directory-p "~/.password-store/emacs/circe")
   :bind (:map lui-mode-map
@@ -701,7 +700,7 @@ ignore) any passed arguments to work as an advice."
                       lui-mode-map)))
 
 (use-package notmuch
-  :ensure t
+  :straight t
   :if (and (file-directory-p "~/Mail/.notmuch")
            (file-regular-p   "~/.emacs.d/secret/notmuch-fcc"))
   :bind (("<f7>" . notmuch))
@@ -838,18 +837,18 @@ ignore) any passed arguments to work as an advice."
                         ret-value))))
 
 (use-package slime
-  :ensure t
+  :straight t
   :defer t
   :config (when (file-readable-p "~/quicklisp/slime-helper.el")
             (load "~/quicklisp/slime-helper.el")))
 (use-package slime-autoloads
   :config (setq inferior-lisp-program "sbcl"))
 
-(use-package rust-mode :ensure t :defer t)
+(use-package rust-mode :straight t :defer t)
 
-(use-package go-mode :ensure t :defer t)
+(use-package go-mode :straight t :defer t)
 
-(use-package lua-mode :ensure t :defer t)
+(use-package lua-mode :straight t :defer t)
 
 (require 'my-theme)
 
@@ -858,7 +857,7 @@ ignore) any passed arguments to work as an advice."
   (load "~/.emacs.d/local.el"))
 
 (use-package nlinum
-  :ensure t
+  :straight t
   :defer t
   :if (not (fboundp #'display-line-numbers-mode)))
 
@@ -867,28 +866,28 @@ ignore) any passed arguments to work as an advice."
   :config (midnight-mode 1))
 
 (use-package hyperlist-mode
-  :ensure t
+  :straight t
   :mode ("\\.hl\\'" . hyperlist-mode))
 
-(use-package aggressive-indent :ensure t :defer t)
-(use-package color-identifiers-mode :ensure t :defer t)
-(use-package dockerfile-mode :ensure t :defer t)
-(use-package nix-mode :ensure t :defer t)
-(use-package dpaste :ensure t :defer t)
-(use-package impatient-mode :ensure t :defer t)
-(use-package rainbow-mode :ensure t :defer t)
-(use-package restclient :ensure t :defer t)
-(use-package web-beautify :ensure t :defer t)
-(use-package wgrep :ensure t :defer t)
-(use-package ripgrep :ensure t :defer t)
-(use-package orgalist :ensure t :defer t)
-(use-package chronos :ensure t :defer t)
+(use-package aggressive-indent :straight t :defer t)
+(use-package color-identifiers-mode :straight t :defer t)
+(use-package dockerfile-mode :straight t :defer t)
+(use-package nix-mode :straight t :defer t)
+(use-package dpaste :straight t :defer t)
+(use-package impatient-mode :straight t :defer t)
+(use-package rainbow-mode :straight t :defer t)
+(use-package restclient :straight t :defer t)
+(use-package web-beautify :straight t :defer t)
+(use-package wgrep :straight t :defer t)
+(use-package ripgrep :straight t :defer t)
+(use-package orgalist :straight t :defer t)
+(use-package chronos :straight t :defer t)
 
 ;;; Needs to be the last one because otherwise during the installation
 ;;; (via :ensure) it prompts whether to save ~/.abbrev_defs making it
 ;;; no longer fully automated. Sadly I've got no idea why it happens.
 (use-package ess
-  :ensure t
+  :straight t
   :defer t
   :config (setq ess-keep-dump-files nil
                 ess-delete-dump-files t

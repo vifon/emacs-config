@@ -1,6 +1,5 @@
 (use-package org
-  :ensure org-plus-contrib
-  :pin org
+  :straight t
   :defer t
   :bind (:map org-mode-map
          ("<C-tab>" . nil))
@@ -27,6 +26,10 @@
                                                 "sxiv %s")))
             (setq org-default-notes-file (concat org-directory "/inbox.org"))
             (plist-put org-format-latex-options :scale 2.0)))
+
+(use-package org-contrib
+  :straight t
+  :defer t)
 
 (use-package org-attach
   :after org
@@ -56,7 +59,7 @@
                 org-clock-out-remove-zero-time-clocks t))
 
 (use-package org-mru-clock
-  :ensure t
+  :straight t
   :defer t
   :config (advice-add #'org-mru-clock-select-recent-task :after
                       #'org-back-to-heading))
@@ -347,7 +350,7 @@ when using the `*-respect-content' commands."
                                      ("y" . ,(* 60 8 5 4 11)))))
 
 (use-package steam
-  :ensure t
+  :straight t
   :defer t
   :config (setq steam-username "vifon"))
 

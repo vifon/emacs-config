@@ -1,5 +1,5 @@
 (use-package el-patch
-  :ensure t
+  :straight t
   :config (setq el-patch-use-aggressive-defvar t))
 
 (el-patch-feature dired)

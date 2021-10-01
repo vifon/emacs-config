@@ -5,38 +5,31 @@
           'append)
 (setq gc-cons-threshold most-positive-fixnum)
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+(defun bootstrap-straight ()
+  (setq straight-vc-git-default-clone-depth 'full
+        straight-check-for-modifications '(check-on-save find-when-checking)
+        straight-build-dir (format "build-%s" emacs-version))
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage)))
+
 (defun bootstrap-use-package ()
-  "Load `use-package' possibly installing it beforehand"
-  (if (locate-library "package")
-      (progn
-        (require 'package)
-        (setq package-user-dir (locate-user-emacs-file
-                                (concat
-                                 (file-name-as-directory "elpa")
-                                 emacs-version)))
-        (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-        (setq package-archives
-              '(("gnu"          . "https://elpa.gnu.org/packages/")
-                ("melpa"        . "https://melpa.org/packages/")
-                ("melpa-stable" . "https://stable.melpa.org/packages/")
-                ("org"          . "https://orgmode.org/elpa/"))
-              package-archive-priorities
-              '(("org"          . 20)
-                ("melpa"        . 15)
-                ("gnu"          . 10)
-                ("melpa-stable" . 5)))
-        (setq package-enable-at-startup nil)
-        (package-initialize)
-        (unless (package-installed-p 'use-package)
-          (package-refresh-contents)
-          (package-install 'use-package))
-        (setq use-package-enable-imenu-support t)
-        (require 'use-package))
-    (message "WARNING: Ancient emacs! No advice-add, package.el")
-    (defmacro advice-add (&rest body))
-    (defmacro use-package (&rest body)))
-  (use-package diminish :ensure t :defer t)
-  (use-package bind-key :ensure t :defer t))
+  (setq use-package-enable-imenu-support t)
+  (straight-use-package 'use-package)
+  (use-package diminish :straight t :defer t))
+
+(bootstrap-straight)
 (bootstrap-use-package)
 
 (dolist (mode '(scroll-bar-mode

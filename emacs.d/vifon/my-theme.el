@@ -45,7 +45,7 @@ Unless the prefix argument was passed, disable the current one beforehand."
 (bind-key "C-M-s->" #'vifon/theme-dark)
 
 (use-package solarized-theme
-  :ensure t
+  :straight t
   :config (setq solarized-scale-org-headlines nil
                 solarized-scale-outline-headlines nil
                 solarized-use-variable-pitch nil))

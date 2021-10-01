@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package selectrum
-  :ensure t
+  :straight t
   :bind (("C-x M-r" . selectrum-repeat)
          :map selectrum-minibuffer-map
          ("C-l" . backward-kill-sexp))
@@ -22,19 +22,19 @@
                       'append)))
 
 (use-package selectrum-prescient
-  :ensure t
+  :straight t
   :after selectrum
   :config (progn
             (setq selectrum-prescient-enable-filtering nil)
             (selectrum-prescient-mode 1)))
 
 (use-package prescient
-  :ensure t
+  :straight t
   :defer t
   :config (prescient-persist-mode 1))
 
 (use-package orderless
-  :ensure t
+  :straight t
   :after selectrum
   :config (progn
             (setq orderless-matching-styles '(orderless-regexp
@@ -55,17 +55,17 @@
                                                 vifon/orderless-literal-if-equal))))
 
 (use-package embark
-  :ensure t
+  :straight t
   :bind (("C-c o" . embark-act)
          :map minibuffer-local-map
          ("M-o"   . embark-act)))
 
 (use-package embark-consult
-  :ensure t
+  :straight t
   :after (embark consult))
 
 (use-package marginalia
-  :ensure t
+  :straight t
   :after selectrum
   :demand t                     ; :demand applies to :bind but not
                                 ; :after.  We want to eagerly load
@@ -75,7 +75,7 @@
   :config (marginalia-mode 1))
 
 (use-package consult
-  :ensure t
+  :straight t
   :bind (("M-s f" . consult-line)
          ("M-g g" . consult-line)
          ("M-g o" . consult-outline)

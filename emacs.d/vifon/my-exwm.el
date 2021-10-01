@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package exwm
-  :ensure t
+  :straight t
   :demand t
   :config (progn
             (require 'cl-lib)
