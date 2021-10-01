@@ -20,3 +20,5 @@
 /emacs.d/transient/
 /emacs.d/forge-database.sqlite
 /emacs.d/.lsp-session-v1
+/emacs.d/straight/build-*
+/emacs.d/straight/repos/

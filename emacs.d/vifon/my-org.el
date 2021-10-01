@@ -25,7 +25,8 @@
               (add-to-list 'org-file-apps (cons (concat "\\." ext "\\'")
                                                 "sxiv %s")))
             (setq org-default-notes-file (concat org-directory "/inbox.org"))
-            (plist-put org-format-latex-options :scale 2.0)))
+            (plist-put org-format-latex-options :scale 2.0)
+            (setq org-adapt-indentation t)))
 
 (use-package org-contrib
   :straight t
