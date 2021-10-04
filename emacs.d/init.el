@@ -573,7 +573,7 @@
   :hook ((python-mode . lsp-deferred)
          (go-mode     . lsp-deferred)
          (rust-mode   . lsp-deferred)
-	     (js-mode     . lsp-deferred)
+         (js-mode     . lsp-deferred)
          (typescript-mode . lsp-deferred))
   :init (setq lsp-keymap-prefix "C-c k"
               lsp-rust-server 'rust-analyzer
