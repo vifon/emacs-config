@@ -11,6 +11,7 @@
       ("s" "Sort lines" sort-lines)]
      [:description "Modes"
                    ("v" "Visual line mode" visual-line-mode :transient t)
+                   ("O" "Olivetti" olivetti-mode :transient t)
                    ("r" "Truncate lines" toggle-truncate-lines :transient t)
                    ("ln" "Display line numbers" display-line-numbers-best :transient t)
                    ("lh" "Highlight current line" hl-line-mode :transient t)
