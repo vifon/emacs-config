@@ -84,17 +84,29 @@ See: Info node `(emacs) Sunrise/Sunset'."
        now
        1800)))
 
+(defvar vifon/theme-timers nil)
+
+(require 'cl-lib)
+(defun vifon/theme-schedule-timers ()
+  "Schedule the timers for automatic theme switching."
+  (dolist (timer vifon/theme-timers)
+    (cancel-timer timer))
+  (let ((24h (* 24 60 60))
+        (sunrise-sunset (mapcar #'cdr (vifon/solar-times))))
+    (setq vifon/theme-timers
+          (cl-mapcar
+           (lambda (time theme)
+             (run-at-time time 24h theme))
+           sunrise-sunset
+           '(vifon/theme-light
+             vifon/theme-dark)))))
+
 ;;; Schedule only once per Emacs launch.  It shouldn't diverge that
 ;;; much during the Emacs instance lifetime for that to matter to
 ;;; recalculate the solar times.
 (when (or (daemonp)
           (display-graphic-p))
-  (let ((24h (* 24 60 60))
-        (sunrise-sunset (mapcar #'cdr (vifon/solar-times))))
-    (run-at-time (car sunrise-sunset) 24h
-                 #'vifon/theme-light)
-    (run-at-time (cadr sunrise-sunset) 24h
-                 #'vifon/theme-dark))
+  (vifon/theme-schedule-timers)
   (run-at-time "0:00" nil
                #'vifon/theme-dark))
 
