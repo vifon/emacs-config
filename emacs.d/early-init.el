@@ -39,4 +39,8 @@
   (when (fboundp mode)
     (funcall mode 0)))
 
+
+(when (file-exists-p "~/.emacs.d/early-local.el")
+  (load "~/.emacs.d/early-local.el"))
+
 (provide 'early-init)

@@ -13,6 +13,7 @@
 /emacs.d/request/
 /emacs.d/secret/
 /emacs.d/local.el
+/emacs.d/early-local.el
 /emacs.d/semanticdb
 /emacs.d/smex-items
 /emacs.d/tramp
