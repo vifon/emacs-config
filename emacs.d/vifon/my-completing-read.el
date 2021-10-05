@@ -106,5 +106,3 @@
 
             (setq consult--source-hidden-buffer
                   (plist-put consult--source-hidden-buffer :narrow ?h))))
-
-(provide 'my-completing-read)

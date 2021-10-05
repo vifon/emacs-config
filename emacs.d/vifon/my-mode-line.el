@@ -77,5 +77,3 @@
   '((t :inherit mode-line-face
        :foreground "red"))
   nil)
-
-(provide 'my-mode-line)

@@ -363,5 +363,3 @@ CLOCK is a cons cell of the form (MARKER START-TIME)."
           ;; altering its structure (e.g., when it is a headline).
           (org-capture-narrow beg (1- end))
           (org-capture--position-cursor beg end))))))
-
-(provide 'my-el-patch)

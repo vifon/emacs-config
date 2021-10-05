@@ -354,5 +354,3 @@ when using the `*-respect-content' commands."
   :straight t
   :defer t
   :config (setq steam-username "vifon"))
-
-(provide 'my-org)

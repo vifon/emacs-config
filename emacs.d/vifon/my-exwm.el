@@ -305,5 +305,3 @@
                         (cd (getenv "HOME"))))
 
             (exwm-enable)))
-
-(provide 'my-exwm)

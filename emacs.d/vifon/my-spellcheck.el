@@ -19,5 +19,3 @@
   ;; silently not use it.
   (unless (file-exists-p ispell-personal-dictionary)
     (write-region "" nil ispell-personal-dictionary nil 0)))
-
-(provide 'my-spellcheck)

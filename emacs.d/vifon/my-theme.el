@@ -128,6 +128,3 @@ See: Info node `(emacs) Sunrise/Sunset'."
                              #'vifon/theme-init-daemon)
                 (fmakunbound 'vifon/theme-init-daemon)))
   (vifon/theme-dwim 'no-disable))
-
-
-(provide 'my-theme)

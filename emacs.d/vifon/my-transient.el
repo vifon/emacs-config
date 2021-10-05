@@ -49,5 +49,3 @@
       ("ff" "find-dired" find-dired)
       ("fn" "find-name-dired" find-name-dired)
       ("fg" "find-grep-dired" find-grep-dired)]]))
-
-(provide 'my-transient)

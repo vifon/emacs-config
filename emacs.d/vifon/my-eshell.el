@@ -59,5 +59,3 @@
 (add-hook 'eshell-mode-hook 'eshell-hooks)
 
 (setq eshell-hist-ignoredups t)
-
-(provide 'my-eshell)

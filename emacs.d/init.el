@@ -6,25 +6,25 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
-(require 'my-el-patch)
-(require 'my-hooks)
-(require 'my-skeletons)
-(require 'my-mode-line)
-(require 'my-fun)
-(require 'my-keys)
-(require 'my-transient)
-(require 'my-completing-read)
-(require 'my-org)
-(require 'my-eshell)
-(require 'my-registers)
-(require 'my-settings)
-(require 'my-spellcheck)
-(require 'my-scratch)
+(load "my-el-patch")
+(load "my-hooks")
+(load "my-skeletons")
+(load "my-mode-line")
+(load "my-fun")
+(load "my-keys")
+(load "my-transient")
+(load "my-completing-read")
+(load "my-org")
+(load "my-eshell")
+(load "my-registers")
+(load "my-settings")
+(load "my-spellcheck")
+(load "my-scratch")
 (when (getenv "START_EXWM")
-  (require 'my-exwm)
+  (load "my-exwm")
   (setenv "START_EXWM"))
 
-(require 'pastes-from-web)
+(load "pastes-from-web")
 
 
 (use-package project
@@ -852,7 +852,7 @@ ignore) any passed arguments to work as an advice."
 
 (use-package lua-mode :straight t :defer t)
 
-(require 'my-theme)
+(load "my-theme")
 
 
 (when (file-exists-p "~/.emacs.d/local.el")

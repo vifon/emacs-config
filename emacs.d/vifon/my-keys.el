@@ -131,6 +131,3 @@ ends with a newline."
 
 
 (bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)
-
-
-(provide 'my-keys)

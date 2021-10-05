@@ -102,6 +102,3 @@
 (defalias 'iconify-frame 'ignore)
 
 (defalias 'elpa 'package-list-packages)
-
-
-(provide 'my-settings)

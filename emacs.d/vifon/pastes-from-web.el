@@ -112,7 +112,3 @@ narrowed."
         (delete-region (point-min) (point-max))
         (insert output)
         (search-backward "ERROR!")))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(provide 'pastes-from-web)
