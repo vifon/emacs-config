@@ -42,7 +42,8 @@
   '("o"
     "e"
     "m"
-    "i"
+    ("i" . "~/.emacs.d/init.el")
+    ("I" . "~/.emacs.d/early-init.el")
     "p"
     "SPC"
     "s"
@@ -68,11 +69,14 @@
 
   (let ((inhibit-read-only t))
     (erase-buffer)
-    (dolist (key scratch-mode-key-hints)
-      (let ((command (local-key-binding (kbd key))))
-        (insert (format "%s: %s\n"
-                        key
-                        command)))))
+    (dolist (elem scratch-mode-key-hints)
+      (let* ((key (if (consp elem)
+                      (car elem)
+                    elem))
+             (desc (if (consp elem)
+                       (cdr elem)
+                     (local-key-binding (kbd key)))))
+        (insert (format "%s: %s\n" key desc)))))
   (set-buffer-modified-p nil)
   (goto-char (point-min))
   (add-hook 'change-major-mode-hook
