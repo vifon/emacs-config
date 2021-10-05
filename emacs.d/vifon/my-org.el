@@ -96,11 +96,9 @@ when using the `*-respect-content' commands."
     (org-insert-heading-respect-content)
     (end-of-line)
     (save-excursion
-      (insert "\n")
-      (indent-for-tab-command)
+      (org-return 'indent)
       (org-time-stamp-inactive '(16))
-      (insert "\n")
-      (indent-for-tab-command)
+      (org-return 'indent)
       (insert "Follow-up of: " link))))
 
 (defun vifon/org-insert-directory (directory)
