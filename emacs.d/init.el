@@ -303,10 +303,12 @@
                                   magit-reflog-mode-map
                                   magit-refs-mode-map
                                   magit-diff-mode-map))
-              (bind-key "M-<tab>" #'magit-section-cycle
-                        keymap)
-              ;; For some reason unbind-key doesn't work here.
-              (define-key keymap (kbd "C-<tab>") nil))
+              (let* ((oldkey (kbd "C-<tab>"))
+                     (newkey (kbd "M-<tab>"))
+                     (oldcmd (lookup-key keymap oldkey)))
+                (when oldcmd
+                  (define-key keymap newkey oldcmd)
+                  (define-key keymap oldkey nil))))
             (transient-append-suffix 'magit-log "-f"
               '("-1" "First parent" "--first-parent"))
             (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
