@@ -476,7 +476,7 @@
               (deft-find-file "index.org"))))
 
 (use-package zettel-mode
-  :if (file-readable-p "~/.emacs.d/modules/zettel-mode.el")
+  :straight (:host github :repo "vifon/zettel-mode")
   :mode (("/\\.deft/[^/]+\\.org\\'" . zettel-mode)
          ("/zettels?/[^/]+\\.org\\'" . zettel-mode)))
 
