@@ -16,7 +16,6 @@
 (load "my-completing-read")
 (load "my-org")
 (load "my-eshell")
-(load "my-registers")
 (load "my-settings")
 (load "my-spellcheck")
 (load "my-scratch")
