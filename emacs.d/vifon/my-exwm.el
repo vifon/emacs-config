@@ -53,16 +53,13 @@
               (format "X%s " (exwm-workspace--position (selected-frame))))
 
             (require 'exwm-randr)
-            (let ((vifon/exwm-workspace->display '(3 4 5)))
-              (defun vifon/exwm-randr-workspace-output-plist-update ()
-                (setq exwm-randr-workspace-output-plist
-                      (mapcan (lambda (n)
-                                (list n "DP-1-2"))
-                              vifon/exwm-workspace->display))))
-            (defun vifon/exwm-randr-refresh ()
-              (vifon/exwm-randr-workspace-output-plist-update)
-              (exwm-randr-refresh))
-            (vifon/exwm-randr-workspace-output-plist-update)
+            (setq exwm-randr-workspace-monitor-plist
+                  (list 0 "DP-2"
+                        1 "DP-4"
+                        2 "DP-4"
+                        3 "DP-4"
+                        4 "HDMI-0"
+                        5 "HDMI-0"))
             (exwm-randr-enable)
 
             (defvar vifon/exwm-last-workspace-index nil)
