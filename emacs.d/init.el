@@ -18,7 +18,6 @@
 (load "my-eshell")
 (load "my-settings")
 (load "my-spellcheck")
-(load "my-scratch")
 (when (getenv "START_EXWM")
   (load "my-exwm")
   (setenv "START_EXWM"))
@@ -662,6 +661,23 @@ ignore) any passed arguments to work as an advice."
                         #'vifon/delete-blank-lines)
             (advice-add #'ledger-fully-complete-xact :after
                         #'vifon/delete-blank-lines)))
+
+(use-package scratch-mode
+  :straight (:host github :repo "vifon/scratch-mode")
+  :bind (("C-c s" . scratch-reset)
+         :map scratch-mode-map
+         ("," . vifon/theme-light)
+         ("." . vifon/theme-dark)
+         ("/" . vifon/theme-dwim)
+         ("b" . consult-buffer))
+  :init (setq initial-major-mode 'scratch-mode)
+  :config (bind-key "c" (lambda ()
+                          (interactive)
+                          (unless (bound-and-true-p chronos--buffer)
+                            (require 'chronos)
+                            (chronos-initialize))
+                          (switch-to-buffer chronos--buffer))
+                    scratch-mode-map))
 
 (use-package circe
   :straight t
