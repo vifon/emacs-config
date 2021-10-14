@@ -48,14 +48,9 @@
          ("M-s" . nil)
          ("M-s M-s" . paredit-splice-sexp)))
 
-(use-package origami
-  :straight t
-  :hook (prog-mode . origami-mode)
-  :bind (:map origami-mode-map
-         ("M-RET" . origami-recursively-toggle-node)))
-
 (use-package hideshow-org
   :straight t
+  :bind ("M-RET" . hs-toggle-hiding)
   :commands hs-org/minor-mode)
 
 (use-package folding
