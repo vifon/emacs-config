@@ -1,7 +1,38 @@
+;;; scratch-mode.el --- An opinionated major mode for a multi-purpose scratch buffer.  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2020-2021  Wojciech Siewierski
+
+;; Author: Wojciech Siewierski
+;; Keywords: convenience
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; To enable, set `initial-major-mode' to `scratch-mode':
+;;   (setq initial-major-mode 'scratch-mode)
+
+;; It is also recommended to bind `scratch-reset' to a key, for example:
+;;   (global-set-key (kbd "C-c s") #'scratch-reset)
+
+;;; Code:
+
 (defgroup scratch-mode nil
   "A specialized mode for the scratch buffer.")
 
 (defun scratch-reset ()
+  "Reset the *scratch* buffer to its initial `scratch-mode' state."
   (interactive)
   (switch-to-buffer "*scratch*")
   (scratch-mode))
@@ -106,3 +137,5 @@ was generalized."
             nil t))
 
 (provide 'scratch-mode)
+
+;;; scratch-mode.el ends here
