@@ -6,6 +6,25 @@
   (switch-to-buffer "*scratch*")
   (scratch-mode))
 
+(defun scratch-self-insert (&optional pre post)
+  "Produce a function calling `self-insert-command' in `scratch-mode'.
+
+First switch to `lisp-interaction-mode' or call `PRE' instead if supplied.
+Then call `self-insert-command' inserting whatever was pressed.
+Finally call `POST' if it was supplied.
+
+Initially intended as a quick way to switch to
+`lisp-interaction-mode' and start a new S-expression, then it
+was generalized."
+  (lambda ()
+    (interactive)
+    (if pre
+        (funcall pre)
+      (lisp-interaction-mode))
+    (self-insert-command 1)
+    (when post
+      (funcall post))))
+
 (defvar scratch-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "o") #'org-mode)
@@ -36,6 +55,7 @@
     (define-key map (kbd "r") (lookup-key global-map (kbd "C-x r")))
     (define-key map (kbd "g") #'scratch-reset)
     (define-key map (kbd "S") #'scratch-dir)
+    (define-key map (kbd "(") (scratch-self-insert))
     map))
 
 (defcustom scratch-mode-key-hints
