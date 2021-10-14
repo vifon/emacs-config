@@ -664,15 +664,18 @@ ignore) any passed arguments to work as an advice."
          ("," . vifon/theme-light)
          ("." . vifon/theme-dark)
          ("/" . vifon/theme-dwim)
-         ("b" . consult-buffer))
+         ("b" . consult-buffer)
+         ("S" . scratch-dir))
   :init (setq initial-major-mode 'scratch-mode)
-  :config (bind-key "c" (lambda ()
-                          (interactive)
-                          (unless (bound-and-true-p chronos--buffer)
-                            (require 'chronos)
-                            (chronos-initialize))
-                          (switch-to-buffer chronos--buffer))
-                    scratch-mode-map))
+  :config (progn
+            (bind-key "c" (lambda ()
+                            (interactive)
+                            (unless (bound-and-true-p chronos--buffer)
+                              (require 'chronos)
+                              (chronos-initialize))
+                            (switch-to-buffer chronos--buffer))
+                      scratch-mode-map)
+            (add-to-list 'scratch-mode-key-hints "S" 'append)))
 
 (use-package circe
   :straight t
