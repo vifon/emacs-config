@@ -505,9 +505,6 @@
   :mode ("\\.sls\\'" . yaml-mode)       ;Saltstack files
 )
 
-(use-package pod-mode
-  :mode ("\\.pod\\'" . pod-mode))
-
 (use-package dumb-jump
   :straight t
   :hook ((cperl-mode c-mode-common) . dumb-jump-activate)

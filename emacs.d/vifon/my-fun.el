@@ -12,6 +12,14 @@
    (split-string text ",")
    ", "))
 
+(defun c-c++-header ()
+  "Sets either c-mode or c++-mode, whichever is appropriate."
+  (interactive)
+  (let ((c-file (concat (substring (buffer-file-name) 0 -1) "c")))
+    (if (file-exists-p c-file)
+        (c-mode)
+        (c++-mode))))
+
 (defun scratch-dir-path (name)
   (concat "~/scratch.d/scratch-"
           (format-time-string "%Y-%m-%d_%s")
