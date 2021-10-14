@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;; The code in this file consists of various code snippets found on
 ;;; the internet, possibly modified. I do not claim ownership on them.
 

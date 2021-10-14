@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;; used by yasnippet
 (defun get-c-arg-names (arg-list)
   (mapconcat

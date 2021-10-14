@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (setq-default mode-line-format
               '("%e"
                 mode-line-front-space

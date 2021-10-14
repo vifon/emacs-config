@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (bind-key "C-c i" #'auto-insert)
 (bind-key "C-c m" #'compile)
 (bind-key "C-c r" #'revert-buffer)

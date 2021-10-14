@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (add-hook 'c-mode-common-hook
           (defun my-c-common-hook ()
             (local-set-key (kbd "C-c o") 'ff-find-other-file)

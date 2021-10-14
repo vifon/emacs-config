@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (global-subword-mode 1)
 (diminish 'subword-mode)
 (electric-pair-mode 1)

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;; Based on: https://200ok.ch/posts/2020-08-22_setting_up_spell_checking_with_multiple_dictionaries.html
 (with-eval-after-load "ispell"
   ;; Configure `LANG`, otherwise ispell.el cannot find a 'default

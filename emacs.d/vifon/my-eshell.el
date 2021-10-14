@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (defun eshell-hooks ()
   (add-to-list 'eshell-visual-commands "vim"))
 

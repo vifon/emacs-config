@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package el-patch
   :straight t
   :config (setq el-patch-use-aggressive-defvar t))

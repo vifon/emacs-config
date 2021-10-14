@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package transient
   :commands (vifon/dired-transient)
   :bind ("C-c t" . vifon-transient)

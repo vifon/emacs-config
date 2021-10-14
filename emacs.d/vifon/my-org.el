@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package org
   :straight t
   :defer t
