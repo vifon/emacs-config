@@ -18,22 +18,11 @@
                                                 #'vifon/org-insert-directory
                                               #'insert-file)))
                       org-mode-map)
-            (defun vifon/org-file-apps-append (handlers)
-              (dolist (handler handlers)
-                (let ((program (car handler))
-                      (types (cdr handler)))
-                  (dolist (type types)
-                    (let ((ext (concat "\\." type "\\'")))
-                      (if-let ((rule (assoc ext org-file-apps)))
-                          (setf (cdr rule) handler)
-                        (add-to-list 'org-file-apps
-                                     (cons ext program)
-                                     'append)))))))
-            (vifon/org-file-apps-append
-             '(("evince -- %s" "pdf")
-               ("libreoffice -- %s" "docx")
-               ("sxiv -- %s" "png" "jpg" "jpeg")
-               ("mpv -- %s" "mp4" "mkv")))
+            (add-to-list 'org-file-apps
+                         (cons t
+                               (lambda (path link)
+                                 (call-process "rifle" nil 0 nil path)))
+                         'append)
             (setq org-default-notes-file (concat org-directory "/inbox.org"))
             (plist-put org-format-latex-options :scale 2.0)
             (setq org-adapt-indentation t)))
