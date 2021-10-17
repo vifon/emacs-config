@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
+(require 'cl-lib)
+
+
 ;;; used by yasnippet
 (defun get-c-arg-names (arg-list)
   (mapconcat
@@ -121,7 +124,6 @@ manpage."
                 flag))
             flags)))
 
-(require 'cl-lib)
 (defun flags-nonportable (portable-flags command &rest nonportable-flags)
   "Combine PORTABLE-FLAGS and the supported NONPORTABLE-FLAGS
 into a single string with `combine-and-quote-strings'.
@@ -171,3 +173,12 @@ See also: `flags-if-supported'."
 (defun vifon/shrink-all-windows-if-larger-than-buffer ()
   (interactive)
   (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
+
+(defun vifon/add-to-list-after (list-var old new &optional compare-fn)
+  (let ((cmp (or compare-fn #'equal)))
+    (cl-do ((x (symbol-value list-var) (cdr x)))
+        ((or (null x)
+             (funcall cmp (cadr x) new)))
+      (when (funcall cmp (car x) old)
+        (setf (cdr x) (cons new (cdr x))))))
+  (symbol-value list-var))
