@@ -54,12 +54,14 @@
 
             (require 'exwm-randr)
             (setq exwm-randr-workspace-monitor-plist
-                  (list 0 "DP-2"
-                        1 "DP-4"
-                        2 "DP-4"
-                        3 "DP-4"
-                        4 "HDMI-0"
-                        5 "HDMI-0"))
+                  (pcase (system-name)
+                    ("bifrost" (list 0 "DP-2"
+                                     1 "DP-4"
+                                     2 "DP-4"
+                                     3 "DP-4"
+                                     4 "HDMI-0"
+                                     5 "HDMI-0"))
+                    (_ nil)))
             (exwm-randr-enable)
 
             (defvar vifon/exwm-last-workspace-index nil)
