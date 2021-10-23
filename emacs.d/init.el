@@ -18,9 +18,7 @@
 (load "my-eshell")
 (load "my-settings")
 (load "my-spellcheck")
-(when (getenv "START_EXWM")
-  (load "my-exwm")
-  (setenv "START_EXWM"))
+(load "my-exwm")
 
 (load "pastes-from-web")
 
