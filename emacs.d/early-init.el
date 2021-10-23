@@ -29,6 +29,10 @@
   (straight-use-package 'use-package)
   (use-package diminish :straight t :defer t))
 
+
+(when (file-exists-p "~/.emacs.d/early-local.el")
+  (load "~/.emacs.d/early-local.el"))
+
 (bootstrap-straight)
 (bootstrap-use-package)
 
@@ -38,9 +42,5 @@
                 tool-bar-mode))
   (when (fboundp mode)
     (funcall mode 0)))
-
-
-(when (file-exists-p "~/.emacs.d/early-local.el")
-  (load "~/.emacs.d/early-local.el"))
 
 (provide 'early-init)
