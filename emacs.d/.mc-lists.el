@@ -85,10 +85,13 @@
         open-next-line-dwim
         open-previous-line
         org-beginning-of-line
+        org-ctrl-c-ctrl-c
         org-delete-char
         org-emphasize
         org-end-of-line
+        org-insert-todo-heading
         org-kill-line
+        org-metaright
         org-return-indent
         org-self-insert-command
         org-shiftdown
@@ -141,6 +144,7 @@
         typescript-insert-and-indent
         upcase-dwim
         upcase-region
+        vifon/move-beginning-of-line
         wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
