@@ -675,6 +675,7 @@ ignore) any passed arguments to work as an advice."
                               (chronos-initialize))
                             (switch-to-buffer chronos--buffer))
                       scratch-mode-map)
+            (add-to-list 'scratch-mode-key-hints (cons "c" "chronos") 'append)
             (add-to-list 'scratch-mode-key-hints "S" 'append)
             (vifon/add-to-list-after
              'scratch-mode-key-hints "e"
