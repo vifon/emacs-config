@@ -18,6 +18,8 @@
 (bind-key [remap downcase-word] #'downcase-dwim)
 (bind-key [remap capitalize-word] #'capitalize-dwim)
 (bind-key [remap count-words-region] #'count-words)
+(bind-key [remap eval-last-sexp] #'pp-eval-last-sexp)
+(bind-key [remap eval-expression] #'pp-eval-expression)
 
 (defun run-term (&optional arg)
   (interactive "P")
