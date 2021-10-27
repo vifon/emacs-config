@@ -23,9 +23,7 @@
 (when (boundp 'async-shell-command-display-buffer)
   (setq async-shell-command-display-buffer nil))
 
-(setq show-paren-delay 0)
 (setq echo-keystrokes 0.1)
-(show-paren-mode t)
 
 (blink-cursor-mode 0)
 (setq visible-cursor nil)

@@ -174,6 +174,12 @@
 (use-package recentf
   :config (recentf-mode 1))
 
+(use-package paren
+  :config (progn
+            (setq show-paren-delay 0
+                  show-paren-when-point-in-periphery t)
+            (show-paren-mode 1)))
+
 (use-package yasnippet
   :straight t
   :defer 7
