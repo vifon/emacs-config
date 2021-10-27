@@ -21,6 +21,8 @@
 (bind-key [remap eval-last-sexp] #'pp-eval-last-sexp)
 (bind-key [remap eval-expression] #'pp-eval-expression)
 
+(bind-key "C-x M-e" #'pp-macroexpand-last-sexp)
+
 (defun run-term (&optional arg)
   (interactive "P")
   (let ((default-directory (if (derived-mode-p 'dired-mode)
