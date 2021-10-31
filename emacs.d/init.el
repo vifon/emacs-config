@@ -30,7 +30,6 @@
 (use-package s :straight t :defer t)
 (use-package paredit
   :straight t
-  :diminish "[()]"
   :commands paredit-kill
   :hook (emacs-lisp-mode . paredit-mode)
   :init (progn
