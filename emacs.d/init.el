@@ -763,21 +763,20 @@ ignore) any passed arguments to work as an advice."
             (setq notmuch-wash-signature-lines-max 3)
 
             (when (file-executable-p "~/.bin/notmuch-sync")
-              (defun my-notmuch-poll-and-refresh-this-buffer ()
+              (defun vifon/notmuch-poll-and-refresh-this-buffer ()
                 (interactive)
                 (call-process
                  "notmuch-sync" nil 0 nil
-                 (buffer-name (current-buffer)))))
+                 (buffer-name (current-buffer))))
+              (dolist (map (list notmuch-hello-mode-map
+                                 notmuch-show-mode-map
+                                 notmuch-search-mode-map))
+                (bind-key "G" #'vifon/notmuch-poll-and-refresh-this-buffer
+                          map)))
 
             (dolist (map (list notmuch-hello-mode-map
                                notmuch-show-mode-map))
               (unbind-key "<C-tab>" map))
-            (dolist (map (list notmuch-hello-mode-map
-                               notmuch-show-mode-map
-                               notmuch-search-mode-map))
-              (when (file-executable-p "~/.bin/notmuch-sync")
-                (bind-key "G" #'my-notmuch-poll-and-refresh-this-buffer
-                          map)))
 
             (bind-key "A"
                       (lambda ()
