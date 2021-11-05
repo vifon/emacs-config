@@ -274,8 +274,10 @@ when using the `*-respect-content' commands."
                               "\\1…" text-without-links)))
 (setq org-clock-heading-function #'vifon/truncate-org-mode-line)
 
-(setq org-speed-commands-user
-      '(("z" . org-kill-note-or-show-branches)))
+(with-eval-after-load 'org-keys
+  (setf (alist-get "z" org-speed-commands
+                   nil nil #'equal)
+        #'org-kill-note-or-show-branches))
 
 (setq org-stuck-projects
       '("PROJECT/-MAYBE-DONE-ABORTED"
