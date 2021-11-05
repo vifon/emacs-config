@@ -670,7 +670,8 @@ ignore) any passed arguments to work as an advice."
          ("." . vifon/theme-dark)
          ("/" . vifon/theme-dwim)
          ("b" . consult-buffer)
-         ("S" . scratch-dir))
+         ("S" . scratch-dir)
+         ("P" . straight-use-package))
   :init (setq initial-major-mode 'scratch-mode)
   :config (progn
             (bind-key "c" (lambda ()
