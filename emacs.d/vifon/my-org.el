@@ -185,7 +185,7 @@ when using the `*-respect-content' commands."
       org-log-redeadline 'time)
 (setq org-catch-invisible-edits 'smart)
 (setq org-outline-path-complete-in-steps nil
-      org-refile-use-outline-path t)
+      org-refile-use-outline-path 'file)
 (setq org-id-link-to-org-use-id 'use-existing)
 (setq org-return-follows-link t)
 
