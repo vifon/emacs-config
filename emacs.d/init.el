@@ -25,7 +25,8 @@
 
 (use-package project
   :straight t
-  :defer t)
+  :defer t
+  :config (setq project-switch-commands #'project-dired))
 
 (use-package s :straight t :defer t)
 (use-package paredit
