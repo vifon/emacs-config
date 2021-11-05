@@ -183,6 +183,7 @@ when using the `*-respect-content' commands."
 (setq org-log-into-drawer t)
 (setq org-log-reschedule 'time
       org-log-redeadline 'time)
+(setq org-deadline-warning-days 10)
 (setq org-catch-invisible-edits 'smart)
 (setq org-outline-path-complete-in-steps nil
       org-refile-use-outline-path 'file)
