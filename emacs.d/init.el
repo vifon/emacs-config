@@ -61,7 +61,6 @@
   :bind (:map dired-mode-map
          ("z" . dired-subtree-toggle)
          ("TAB" . vifon/dired-transient)
-         ("K" . vifon/dired-subdir-toggle)
          ("I" . vifon/dired-insert-subdir-keep-point)
          ("* C" . vifon/dired-change-marks*)
          ("E" . vifon/dired-dragon))
@@ -75,14 +74,6 @@
                   image-dired-external-viewer "sxiv")
 
             (setq dired-listing-switches "-alh --group-directories-first -v")
-
-            (defun vifon/dired-subdir-toggle ()
-              (interactive)
-              (if (equal (dired-current-directory)
-                         (expand-file-name default-directory))
-                  (call-interactively #'dired-maybe-insert-subdir)
-                (dired-kill-subdir)
-                (pop-to-mark-command)))
 
             (defun vifon/dired-insert-subdir-keep-point ()
               (interactive)
