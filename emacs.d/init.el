@@ -62,6 +62,7 @@
          ("z" . dired-subtree-toggle)
          ("TAB" . vifon/dired-transient)
          ("K" . vifon/dired-subdir-toggle)
+         ("I" . vifon/dired-insert-subdir-keep-point)
          ("* C" . vifon/dired-change-marks*)
          ("E" . vifon/dired-dragon))
   :config (progn
@@ -82,6 +83,14 @@
                   (call-interactively #'dired-maybe-insert-subdir)
                 (dired-kill-subdir)
                 (pop-to-mark-command)))
+
+            (defun vifon/dired-insert-subdir-keep-point ()
+              (interactive)
+              (let ((dir-name (dired-get-filename t)))
+                (call-interactively #'dired-maybe-insert-subdir)
+                (dired-jump)
+                (dired-next-line 1)
+                (message "Inserted `%s'" dir-name)))
 
             (defun vifon/dired-change-marks* (&optional new)
               (interactive
