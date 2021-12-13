@@ -51,7 +51,7 @@
   (el-patch-define-and-eval-template
    (defun org-clock-resolve-clock)
    (el-patch-remove
-     ((pred (org-time-less-p nil))
+     ((pred (time-less-p nil))
       (error ...)))))
 
 (el-patch-feature org-capture)
