@@ -28,3 +28,4 @@
 /emacs.d/straight/build-*
 /emacs.d/straight/repos/
 /emacs.d/vifon/my-el-patch.elc
+/emacs.d/local.d/
