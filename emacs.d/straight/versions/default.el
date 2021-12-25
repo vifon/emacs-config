@@ -76,6 +76,7 @@
  ("multiple-cursors.el" . "588daf8c520f4545323e36b8900f02693ddcf5d3")
  ("nix-mode" . "1ac42cd103ba11c37e8566e240a2272966e6f813")
  ("nlinum" . "81217de299b62457995e3e646601994dc73ef1c2")
+ ("no-littering" . "aaf1bd4ec9e1d7fdfccba6e52cbdc634dde96840")
  ("notmuch" . "fc3c79dd37d4bae938a5d0a1d7773bea48dd09b4")
  ("olivetti" . "a31ac05a161a91fe5c157930b62a6c07037982ee")
  ("orderless" . "62f71c34baca0b7d0adeab4a1c07d85ffcee80d9")

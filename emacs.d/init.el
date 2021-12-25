@@ -1,9 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 (require 'early-init "~/.emacs.d/early-init.el")
 
+(use-package no-littering :straight t)
+
 (add-to-list 'load-path "~/.emacs.d/vifon")
 (add-to-list 'load-path "~/.emacs.d/modules")
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
 (load "my-el-patch")
@@ -185,8 +187,7 @@
   :defer 7
   :diminish yas-minor-mode
   :commands yas-global-mode
-  :mode ("emacs\\.d/snippets/" . snippet-mode)
-  :init (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  :mode ("/yasnippet/snippets/" . snippet-mode)
   :config (yas-global-mode 1))
 
 (use-package yasnippet-snippets

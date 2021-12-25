@@ -1,30 +1,22 @@
-/emacs.d/.org-id-locations
-/emacs.d/anaconda-mode/
-/emacs.d/auto-save-list/
-/emacs.d/bookmarks
-/emacs.d/elpa/
-/emacs.d/eshell/
-/emacs.d/image-dired
-/emacs.d/network-security.data
-/emacs.d/projectile-bookmarks.eld
-/emacs.d/projects
-/emacs.d/recentf
-/emacs.d/request/
+# Personal local files.
 /emacs.d/secret/
 /emacs.d/local.el
+/emacs.d/local.d/
 /emacs.d/early-local.el
-/emacs.d/semanticdb
-/emacs.d/smex-items
-/emacs.d/tramp
-/emacs.d/url/
-/emacs.d/snippets/*/.yas-compiled-snippets.el
-/todo.org
-/emacs.d/transient/
-/emacs.d/forge-database.sqlite
-/emacs.d/.lsp-session-v1
-/emacs.d/.cache/
-/emacs.d/var/
+
+# straight.el
 /emacs.d/straight/build-*
 /emacs.d/straight/repos/
+
+# Byte-compiled el-patch templates.
 /emacs.d/vifon/my-el-patch.elc
-/emacs.d/local.d/
+
+# no-littering.el
+/emacs.d/var/
+/emacs.d/etc/*
+# …but include the snippets…
+!/emacs.d/etc/yasnippet/
+/emacs.d/etc/yasnippet/*
+# …except their compiled form.
+!/emacs.d/etc/yasnippet/snippets/
+/emacs.d/etc/yasnippet/snippets/*/.yas-compiled-snippets.el

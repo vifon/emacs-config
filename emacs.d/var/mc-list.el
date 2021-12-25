@@ -28,6 +28,7 @@
         c-electric-semi&comma
         c-electric-slash
         c-electric-star
+        c-indent-line-or-region
         capitalize-dwim
         comment-dwim
         company-complete

@@ -34,10 +34,10 @@
 
 (setq display-buffer-alist '(("\\*Calendar\\*" display-buffer-below-selected)))
 
-(setq backup-directory-alist '(("^/media/" . ".")
-                               ("^/run/media/" . ".")
-                               ("." . "~/.emacs_saves"))
-      tramp-backup-directory-alist '(("." . "."))
+(dolist (rule '(("^/media/" . ".")
+                ("^/run/media/" . ".")))
+  (add-to-list 'backup-directory-alist rule))
+(setq tramp-backup-directory-alist '(("." . "."))
       backup-by-copying t)
 
 ;;; Never timeout the TRAMP sessions, it causes Emacs to hang too
