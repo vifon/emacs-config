@@ -672,7 +672,8 @@ ignore) any passed arguments to work as an advice."
          ("/" . vifon/theme-dwim)
          ("b" . consult-buffer)
          ("S" . vifon/make-scratch-dir)
-         ("P" . straight-use-package))
+         ("P" . straight-use-package)
+         ("t" . text-mode))
   :init (setq initial-major-mode 'scratch-mode)
   :config (progn
             (bind-key "c" (lambda ()
@@ -688,7 +689,10 @@ ignore) any passed arguments to work as an advice."
              'scratch-mode-key-hints "e"
              (cons "("
                    (lambda (k)
-                     (format "%s + %s" #'lisp-interaction-mode k))))))
+                     (format "%s + %s" #'lisp-interaction-mode k))))
+            (vifon/add-to-list-after
+             'scratch-mode-key-hints "m"
+             "t")))
 
 (use-package circe
   :straight t
