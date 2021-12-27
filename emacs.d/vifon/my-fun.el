@@ -25,28 +25,31 @@
         (c-mode)
         (c++-mode))))
 
-(defun scratch-dir-path (name)
+(defun vifon/scratch-dir-path (name)
   (concat "~/scratch.d/scratch-"
           (format-time-string "%Y-%m-%d_%s")
           (when (not (string= name ""))
             (concat "--" name))
           "/"))
 
-(defun scratch-dir (&optional use-git name)
-  "Create an ad-hoc working directory and open it in dired.
+(define-obsolete-function-alias
+  'scratch-dir 'vifon/make-scratch-dir "2021-11-04")
 
-Prefix argument initializes the Git repository."
-  (interactive "P\nMScratch directory name: ")
-  (let ((directory (expand-file-name (scratch-dir-path name))))
-    (make-directory directory t)
+(defun vifon/make-scratch-dir (&optional name git)
+  "Create an ad-hoc working directory at NAME and open it in dired.
+
+Prefix argument GIT initializes it as a Git repository."
+  (interactive "MScratch directory name: \nP")
+  (let ((scratch (expand-file-name (vifon/scratch-dir-path name))))
+    (make-directory scratch t)
     (when (file-symlink-p "~/scratch")
-      (delete-file "~/scratch"))
-    (make-symbolic-link directory "~/scratch" t)
-    (when (car use-git)
+      (delete-file "~/scratch")
+      (make-symbolic-link scratch "~/scratch" t))
+    (when git
       (require 'vc-git)
-      (let ((default-directory directory))
+      (let ((default-directory scratch))
         (vc-git-create-repo)))
-    (find-file directory)))
+    (dired scratch)))
 
 (defun call-with-default-completing-read (oldfun &rest args)
   "Call `oldfun' with a `completing-read-function' set to `completing-read-default'.
