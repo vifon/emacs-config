@@ -40,3 +40,13 @@
   "}\n"
   )
 (define-auto-insert "/Pkgfile\\'" 'cruxpkg-skeleton)
+
+(define-skeleton desktop-file-skeleton
+  "" ""
+  "[Desktop Entry]\n"
+  "Name=" (setq v1 (skeleton-read "Name: ")) "\n"
+  "Exec=" (downcase v1) _ "\n"
+  "Terminal=true\n"
+  "Type=Application\n"
+  )
+(define-auto-insert "\\.desktop\\'" #'desktop-file-skeleton)
