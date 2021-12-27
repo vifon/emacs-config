@@ -179,6 +179,7 @@
 (use-package paren
   :config (progn
             (setq show-paren-delay 0
+                  show-paren-when-point-inside-paren t
                   show-paren-when-point-in-periphery t)
             (show-paren-mode 1)))
 
