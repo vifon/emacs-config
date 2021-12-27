@@ -10,7 +10,6 @@
 
 (load "my-el-patch")
 (load "my-hooks")
-(load "my-skeletons")
 (load "my-mode-line")
 (load "my-fun")
 (load "my-keys")
@@ -21,6 +20,11 @@
 (load "my-settings")
 (load "my-spellcheck")
 (load "my-exwm")
+
+(dolist (skeleton-file (directory-files
+                        (no-littering-expand-etc-file-name "skeletons/")
+                        t "\\.elc?$"))
+  (load skeleton-file))
 
 (load "pastes-from-web")
 
