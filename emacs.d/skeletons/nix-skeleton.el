@@ -75,5 +75,28 @@
   "}\n"
   )
 
+(define-skeleton nix-module-skeleton
+  "" ""
+  "{ config, pkgs, lib, ... }:\n"
+  "\n"
+  "let cfg = config.services." (setq v1 (skeleton-read "Module name: ")) ";\n"
+  "in {\n"
+  "  options = {\n"
+  "    services." v1 " = {\n"
+  "      enable = lib.mkOption {\n"
+  "        default = false;\n"
+  "        type = with lib.types; bool;\n"
+  "        description = ''\n"
+  "        '';\n"
+  "      };\n"
+  "    };\n"
+  "  };\n"
+  "\n"
+  "  config = lib.mkIf cfg.enable {\n"
+  "    environment.systemPackages = [ " _ "];\n"
+  "  };\n"
+  "}\n"
+)
+
 (define-auto-insert "/shell.nix\\'" 'nix-shell-skeleton)
 (define-auto-insert "/default.nix\\'" 'nix-package-skeleton)
