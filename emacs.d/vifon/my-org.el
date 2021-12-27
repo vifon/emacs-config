@@ -53,6 +53,10 @@
   :config (setq org-attach-use-inheritance t
                 org-attach-preferred-new-method 'ask))
 
+
+(use-package org-refile
+  :commands org-refile)
+
 (use-package org-clock
   :commands (org-clock-goto org-clocking-p)
   :config (setq org-clock-into-drawer t
