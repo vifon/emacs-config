@@ -4,7 +4,7 @@
 (use-package no-littering :straight t)
 
 (add-to-list 'load-path "~/.emacs.d/vifon")
-(add-to-list 'load-path "~/.emacs.d/modules")
+(add-to-list 'load-path "~/.emacs.d/vendor")
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
