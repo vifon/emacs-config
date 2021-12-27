@@ -66,6 +66,30 @@
          ("I" . vifon/dired-insert-subdir-keep-point)
          ("* C" . vifon/dired-change-marks*)
          ("E" . vifon/dired-dragon))
+  :init (progn
+          (defun vifon/dired-insert-subdir-keep-point ()
+            (interactive)
+            (let ((dir-name (dired-get-filename t)))
+              (call-interactively #'dired-maybe-insert-subdir)
+              (dired-jump)
+              (dired-next-line 1)
+              (message "Inserted `%s'" dir-name)))
+
+          (defun vifon/dired-change-marks* (&optional new)
+            (interactive
+             (let* ((cursor-in-echo-area t)
+                    (new (progn (message "Change * marks to (new mark): ")
+                                (read-char))))
+               (list new)))
+            (dired-change-marks ?* new))
+
+          (defun vifon/dired-dragon (&optional single)
+            (interactive "P")
+            (dired-do-async-shell-command (if single
+                                              "dragon -x *"
+                                            "dragon -a -x *")
+                                          nil
+                                          (dired-get-marked-files))))
   :config (progn
             (setq dired-dwim-target nil
                   dired-free-space-args "-Pkh"
@@ -75,31 +99,7 @@
                   wdired-allow-to-change-permissions t
                   image-dired-external-viewer "sxiv")
 
-            (setq dired-listing-switches "-alh --group-directories-first -v")
-
-            (defun vifon/dired-insert-subdir-keep-point ()
-              (interactive)
-              (let ((dir-name (dired-get-filename t)))
-                (call-interactively #'dired-maybe-insert-subdir)
-                (dired-jump)
-                (dired-next-line 1)
-                (message "Inserted `%s'" dir-name)))
-
-            (defun vifon/dired-change-marks* (&optional new)
-              (interactive
-               (let* ((cursor-in-echo-area t)
-                      (new (progn (message "Change * marks to (new mark): ")
-                                  (read-char))))
-                 (list new)))
-              (dired-change-marks ?* new))
-
-            (defun vifon/dired-dragon (&optional single)
-              (interactive "P")
-              (dired-do-async-shell-command (if single
-                                                "dragon -x *"
-                                              "dragon -a -x *")
-                                            nil
-                                            (dired-get-marked-files)))))
+            (setq dired-listing-switches "-alh --group-directories-first -v")))
 
 (use-package dired-x
   :bind (("C-x C-j" . dired-jump)
@@ -198,11 +198,11 @@
   :straight t
   :bind (("C-c Y" . aya-create)
          ("C-c y" . aya-expand-with-indent))
-  :config (defun aya-expand-with-indent (arg)
-            (interactive "P")
-            (aya-expand)
-            (unless arg
-              (indent-for-tab-command))))
+  :init (defun aya-expand-with-indent (arg)
+          (interactive "P")
+          (aya-expand)
+          (unless arg
+            (indent-for-tab-command))))
 
 (use-package tiny
   :straight t
@@ -211,10 +211,11 @@
 (use-package auctex
   :straight t
   :defer t
-  :init (setq preview-scale-function 2.0)
-  :config (defun my-auctex-build-pdf ()
+  :init (progn
+          (setq preview-scale-function 2.0)
+          (defun my-auctex-build-pdf ()
             (interactive)
-            (TeX-command "LaTeX" 'TeX-master-file)))
+            (TeX-command "LaTeX" 'TeX-master-file))))
 
 (use-package web-mode
   :straight t
@@ -322,8 +323,7 @@
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
   :bind (:map git-commit-mode-map
          ("C-c C-l" . magit-log))
-  :config (add-hook 'git-commit-mode-hook (defun turn-on-flyspell ()
-                                            (flyspell-mode 1))))
+  :config (add-hook 'git-commit-mode-hook (lambda () (flyspell-mode 1))))
 
 (use-package git-messenger
   :straight t
@@ -462,16 +462,16 @@
   :bind (("<f5>" . deft)
          :map deft-mode-map
          ("<f5>" . deft-index))
-  :init (setq deft-auto-save-interval 0)
-  :config (progn
-            (setq deft-default-extension "org"
-                  deft-use-filter-string-for-filename t
-                  deft-file-naming-rules '((noslash . "-")
-                                           (nospace . "-")
-                                           (case-fn . downcase)))
-            (defun deft-index ()
-              (interactive)
-              (deft-find-file "index.org"))))
+  :init (progn
+          (setq deft-auto-save-interval 0)
+          (defun deft-index ()
+            (interactive)
+            (deft-find-file "index.org")))
+  :config (setq deft-default-extension "org"
+                deft-use-filter-string-for-filename t
+                deft-file-naming-rules '((noslash . "-")
+                                         (nospace . "-")
+                                         (case-fn . downcase))))
 
 (use-package zettel-mode
   :straight (:host github :repo "vifon/zettel-mode")
