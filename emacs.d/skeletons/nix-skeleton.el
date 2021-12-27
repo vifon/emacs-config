@@ -98,5 +98,5 @@
   "}\n"
 )
 
-(define-auto-insert "/shell.nix\\'" 'nix-shell-skeleton)
-(define-auto-insert "/default.nix\\'" 'nix-package-skeleton)
+(define-auto-insert "/shell\\.nix\\'" #'nix-shell-skeleton)
+(define-auto-insert "/default\\.nix\\'" #'nix-package-skeleton)

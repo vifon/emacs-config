@@ -18,4 +18,4 @@
   "\n\n\\end{document}\n"
   )
 
-(define-auto-insert "\\.tex\\'" 'latex-skeleton)
+(define-auto-insert "\\.tex\\'" #'latex-skeleton)

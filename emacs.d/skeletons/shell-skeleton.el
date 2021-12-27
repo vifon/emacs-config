@@ -9,4 +9,4 @@
   _
   )
 
-(define-auto-insert "\\.sh\\'" 'bash-strict-skeleton)
+(define-auto-insert "\\.sh\\'" #'bash-strict-skeleton)

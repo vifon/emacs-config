@@ -64,5 +64,5 @@
   "    )\n"
   )
 
-(define-auto-insert "\\.py\\'" 'python3-skeleton)
-(define-auto-insert "/setup.py\\'" 'python-setup-skeleton)
+(define-auto-insert "\\.py\\'" #'python3-skeleton)
+(define-auto-insert "/setup\\.py\\'" #'python-setup-skeleton)

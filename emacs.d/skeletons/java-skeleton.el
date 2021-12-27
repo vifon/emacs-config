@@ -7,4 +7,4 @@
   "}\n"
   )
 
-(define-auto-insert "\\.java\\'" 'java-skeleton)
+(define-auto-insert "\\.java\\'" #'java-skeleton)

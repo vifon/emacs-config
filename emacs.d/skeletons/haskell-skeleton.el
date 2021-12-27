@@ -4,7 +4,7 @@
   "main :: IO ()\n"
   "main = do\n"
   "  " _ "\n"
-  "  return ()"
+  "  return ()\n"
   )
 
-(define-auto-insert "\\.hs\\'" 'haskell-skeleton)
+(define-auto-insert "\\.hs\\'" #'haskell-skeleton)

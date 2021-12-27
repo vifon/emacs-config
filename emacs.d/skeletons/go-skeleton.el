@@ -18,4 +18,4 @@
   )
 
 (define-auto-insert "\\.go\\'" #'go-skeleton)
-(define-auto-insert "/main.go\\'" #'go-main-skeleton)
+(define-auto-insert "/main\\.go\\'" #'go-main-skeleton)

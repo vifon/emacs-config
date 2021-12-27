@@ -13,4 +13,4 @@
   "CMD [\"/bin/sh\"]\n"
   )
 
-(define-auto-insert "/Dockerfile\\'" 'docker-skeleton)
+(define-auto-insert "/Dockerfile\\'" #'docker-skeleton)

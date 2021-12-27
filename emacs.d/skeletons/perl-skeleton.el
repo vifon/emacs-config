@@ -9,4 +9,4 @@
   _
   )
 
-(define-auto-insert "\\.pl\\'" 'perl-skeleton)
+(define-auto-insert "\\.pl\\'" #'perl-skeleton)

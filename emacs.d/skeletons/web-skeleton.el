@@ -17,4 +17,4 @@
   "</html>\n"
   )
 
-(define-auto-insert "\\.html\\'" 'html-skeleton)
+(define-auto-insert "\\.html\\'" #'html-skeleton)
