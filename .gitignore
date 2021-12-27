@@ -13,10 +13,4 @@
 
 # no-littering.el
 /emacs.d/var/
-/emacs.d/etc/*
-# …but include the snippets…
-!/emacs.d/etc/yasnippet/
-/emacs.d/etc/yasnippet/*
-# …except their compiled form.
-!/emacs.d/etc/yasnippet/snippets/
 /emacs.d/etc/yasnippet/snippets/*/.yas-compiled-snippets.el
