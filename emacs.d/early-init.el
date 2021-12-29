@@ -5,7 +5,9 @@
           'append)
 (setq gc-cons-threshold most-positive-fixnum)
 
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;; Workaround for https://debbugs.gnu.org/34341 in GNU Emacs <= 26.3.
+(when (and (version< emacs-version "26.3") (>= libgnutls-version 30603))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 (defun bootstrap-straight ()
   (setq straight-vc-git-default-clone-depth 'full
