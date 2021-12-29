@@ -57,8 +57,10 @@
 (use-package embark
   :straight t
   :bind (("C-c o" . embark-act)
+         ("C-."   . embark-act)
          :map minibuffer-local-map
-         ("M-o"   . embark-act)))
+         ("M-o"   . embark-act))
+  :config (setq embark-mixed-indicator-delay 2))
 
 (use-package embark-consult
   :straight t
