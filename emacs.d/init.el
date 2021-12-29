@@ -9,7 +9,6 @@
 (load custom-file 'noerror)
 
 (load "my-el-patch")
-(load "my-hooks")
 (load "my-mode-line")
 (load "my-fun")
 (load "my-keys")

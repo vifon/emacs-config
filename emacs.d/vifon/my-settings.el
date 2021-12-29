@@ -76,6 +76,9 @@
 (setq require-final-newline t)
 (setq-default indicate-buffer-boundaries 'left)
 
+(add-hook 'prog-mode-hook
+          (lambda () (setq show-trailing-whitespace t)))
+
 (setq password-cache-expiry 300)
 
 (when (version<= "24.4" emacs-version)
@@ -91,6 +94,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("/Pkgfile\\'" . sh-mode))
+
+(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
 (setq epa-file-name-regexp "\\.gpg\\(~\\|\\.~[0-9]+~\\)?\\'\\|\\.asc")
 (epa-file-name-regexp-update)
