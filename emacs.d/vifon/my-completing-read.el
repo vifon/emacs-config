@@ -27,7 +27,7 @@
             (setq orderless-matching-styles '(orderless-regexp
                                               orderless-initialism
                                               orderless-prefixes)
-                  completion-styles '(orderless))
+                  orderless-component-separator #'orderless-escapable-split-on-space)
 
             ;; Use the built-in "partial-completion" style to complete
             ;; file inputs such as "/e/ni/co.nix" into
@@ -36,6 +36,8 @@
             ;; inputs such as "/sshx:HOSTNAME".
             (setq completion-category-defaults nil
                   completion-category-overrides '((file (styles basic partial-completion))))
+
+            (setq completion-styles '(orderless))
 
             (defun vifon/orderless-without-if-bang (pattern index total)
               (when (string-prefix-p "!" pattern)
