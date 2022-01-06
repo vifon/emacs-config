@@ -1,49 +1,41 @@
 ;;; -*- lexical-binding: t; -*-
 
-(use-package selectrum
-  :straight t
-  :bind (("C-x M-r" . selectrum-repeat)
-         :map selectrum-minibuffer-map
-         ("C-l" . backward-kill-sexp))
-  :init (selectrum-mode 1)
-  :config (progn
-            (autoload 'ffap-file-at-point "ffap")
-            (add-hook 'completion-at-point-functions
-                      (defun complete-path-at-point+ ()
-                        (let ((fn (ffap-file-at-point))
-                              (fap (thing-at-point 'filename)))
-                          (when (and (or fn
-                                         (equal "/" fap))
-                                     (save-excursion
-                                       (search-backward fap (line-beginning-position) t)))
-                            (list (match-beginning 0)
-                                  (match-end 0)
-                                  #'completion-file-name-table))))
-                      'append)))
+(use-package vertico
+  :straight (vertico :files (:defaults "extensions/*"))
+  :bind (:map vertico-map
+         ("C-l" . vertico-directory-delete-word))
+  :init (vertico-mode 1))
 
-(use-package selectrum-prescient
-  :straight t
-  :after selectrum
-  :config (progn
-            (setq selectrum-prescient-enable-filtering nil)
-            (selectrum-prescient-mode 1)))
-
-(use-package prescient
-  :straight t
-  :defer t
-  :config (prescient-persist-mode 1))
+(use-package vertico-repeat
+  :after vertico
+  :bind ("C-x M-r" . vertico-repeat)
+  :config (add-hook 'minibuffer-setup-hook #'vertico-repeat-save))
+(use-package vertico-mouse
+  :after vertico
+  :config (vertico-mouse-mode 1))
+(use-package vertico-multiform
+  :after vertico
+  :init (vertico-multiform-mode 1)
+  :bind (:map vertico-map
+         ("M-g" . vertico-multiform-grid)
+         ("M-q" . vertico-multiform-flat)))
 
 (use-package orderless
   :straight t
-  :after selectrum
+  :after vertico
   :config (progn
             (setq orderless-matching-styles '(orderless-regexp
                                               orderless-initialism
                                               orderless-prefixes)
-                  orderless-skip-highlighting (lambda () selectrum-is-active)
-                  selectrum-refine-candidates-function #'orderless-filter
-                  selectrum-highlight-candidates-function #'orderless-highlight-matches
                   completion-styles '(orderless))
+
+            ;; Use the built-in "partial-completion" style to complete
+            ;; file inputs such as "/e/ni/co.nix" into
+            ;; "/etc/nixos/configuration/nix".  The "basic" style is
+            ;; needed to support the hostname completion in the TRAMP
+            ;; inputs such as "/sshx:HOSTNAME".
+            (setq completion-category-defaults nil
+                  completion-category-overrides '((file (styles basic partial-completion))))
 
             (defun vifon/orderless-without-if-bang (pattern index total)
               (when (string-prefix-p "!" pattern)
@@ -68,10 +60,10 @@
 
 (use-package marginalia
   :straight t
-  :after selectrum
+  :after vertico
   :demand t                     ; :demand applies to :bind but not
                                 ; :after.  We want to eagerly load
-                                ; marginalia once selectrum is loaded.
+                                ; marginalia once vertico is loaded.
   :bind (:map minibuffer-local-map
          ("C-o" . marginalia-cycle))
   :config (marginalia-mode 1))
@@ -108,3 +100,18 @@
 
             (setq consult--source-hidden-buffer
                   (plist-put consult--source-hidden-buffer :narrow ?h))))
+
+
+;;; https://with-emacs.com/posts/tutorials/customize-completion-at-point/
+(autoload 'ffap-file-at-point "ffap")
+(add-hook 'completion-at-point-functions
+          (defun complete-path-at-point+ ()
+            (let ((fn (ffap-file-at-point))
+                  (fap (thing-at-point 'filename)))
+              (when (and (or fn (equal "/" fap))
+                         (save-excursion
+                           (search-backward fap (line-beginning-position) t)))
+                (list (match-beginning 0)
+                      (match-end 0)
+                      #'completion-file-name-table :exclusive 'no))))
+          'append)
