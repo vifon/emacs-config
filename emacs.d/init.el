@@ -618,8 +618,7 @@
   :defer 2
   :bind ("C-x v \\" . diff-hl-amend-mode)
   :commands diff-hl-magit-post-refresh
-  :config (progn
-            (global-diff-hl-mode 1)))
+  :config (global-diff-hl-mode 1))
 
 (use-package image-mode
   :defer t
