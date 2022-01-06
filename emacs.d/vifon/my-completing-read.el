@@ -115,3 +115,6 @@
                       (match-end 0)
                       #'completion-file-name-table :exclusive 'no))))
           'append)
+
+(setq enable-recursive-minibuffers t)
+(minibuffer-depth-indicate-mode 1)

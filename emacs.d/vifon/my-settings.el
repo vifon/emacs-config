@@ -8,9 +8,6 @@
 (setq tags-revert-without-query t
       tags-add-tables nil)
 
-(setq enable-recursive-minibuffers t)
-(minibuffer-depth-indicate-mode 1)
-
 (setq bidi-display-reordering nil)
 
 (tooltip-mode 0)
