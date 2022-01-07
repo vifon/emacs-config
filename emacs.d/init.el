@@ -177,7 +177,12 @@
   :commands ibuffer-tramp-set-filter-groups-by-tramp-connection)
 
 (use-package recentf
-  :config (recentf-mode 1))
+  :init (recentf-mode 1)
+  :config (setq recentf-exclude '("\\`/media/"
+                                  "\\`/run/media/"
+                                  "/COMMIT_EDITMSG\\'")
+                recentf-max-menu-items 10000
+                recentf-max-saved-items 1000))
 
 (use-package paren
   :config (progn
@@ -472,6 +477,7 @@
             (interactive)
             (deft-find-file "index.org")))
   :config (setq deft-default-extension "org"
+                deft-new-file-format "%Y%m%d%H%M%S_new"
                 deft-use-filter-string-for-filename t
                 deft-file-naming-rules '((noslash . "-")
                                          (nospace . "-")
@@ -770,6 +776,9 @@ ignore) any passed arguments to work as an advice."
             (setq message-sendmail-envelope-from 'header
                   send-mail-function 'sendmail-send-it)
             (setq notmuch-always-prompt-for-sender t)
+
+            (setq message-auto-save-directory nil
+                  message-confirm-send t)
 
             (setq notmuch-wash-signature-lines-max 3)
 

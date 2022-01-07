@@ -12,6 +12,8 @@
 
 (tooltip-mode 0)
 
+(setq inhibit-startup-screen t)
+
 (column-number-mode t)
 
 (when (version<= "26.1" emacs-version)
@@ -28,6 +30,9 @@
       next-screen-context-lines 10)
 (mouse-avoidance-mode 'none)
 (transient-mark-mode 1)
+
+(setq ediff-grab-mouse nil
+      ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setq display-buffer-alist '(("\\*Calendar\\*" display-buffer-below-selected)))
 
@@ -69,6 +74,9 @@
 (c-set-offset 'innamespace 0)
 
 (setq parens-require-spaces nil)
+
+(setq fill-nobreak-predicate '(fill-single-word-nobreak-p
+                               fill-single-char-nobreak-p))
 
 (setq require-final-newline t)
 (setq-default indicate-buffer-boundaries 'left)
