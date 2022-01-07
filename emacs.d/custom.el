@@ -20,12 +20,3 @@
  '(calendar-mark-diary-entries-flag nil)
  '(calendar-mark-holidays-flag nil)
  '(calendar-week-start-day 1))
-
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'scroll-left 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
-(put 'narrow-to-page 'disabled nil)
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'erase-buffer 'disabled nil)
-(put 'set-goal-column 'disabled nil)

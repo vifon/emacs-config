@@ -102,6 +102,15 @@
 (setq epa-file-name-regexp "\\.gpg\\(~\\|\\.~[0-9]+~\\)?\\'\\|\\.asc")
 (epa-file-name-regexp-update)
 
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'scroll-left 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
+(put 'erase-buffer 'disabled nil)
+(put 'set-goal-column 'disabled nil)
+
 ;; My window managers usually don't play nice with iconifying Emacs.
 ;; Let's disable it but save the original function under a different
 ;; name.
