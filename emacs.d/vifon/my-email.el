@@ -5,6 +5,7 @@
   :if (and (file-directory-p "~/Mail/.notmuch")
            (file-regular-p   "~/.emacs.d/secret/notmuch-fcc"))
   :bind (("<f7>" . notmuch))
+  :custom-face (notmuch-search-unread-face ((t (:weight extra-bold))))
   :config (progn
             (setq notmuch-fcc-dirs
                   (let ((tags "-new -unread -inbox +sent"))
