@@ -40,7 +40,7 @@
   :hook (emacs-lisp-mode . paredit-mode)
   :init (progn
           (setq paredit-space-for-delimiter-predicates
-                '((lambda (endp delimiter) nil)))
+                (list (lambda (endp delimiter) nil)))
           (defun paredit-kill-maybe (arg)
             (interactive "P")
             (if (consp arg)
