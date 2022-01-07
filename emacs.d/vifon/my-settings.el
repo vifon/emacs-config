@@ -36,8 +36,8 @@
 
 (setq display-buffer-alist '(("\\*Calendar\\*" display-buffer-below-selected)))
 
-(dolist (rule '(("^/media/" . ".")
-                ("^/run/media/" . ".")))
+(dolist (rule '(("\\`/media/" . ".")
+                ("\\`/run/media/" . ".")))
   (add-to-list 'backup-directory-alist rule))
 (setq tramp-backup-directory-alist '(("." . "."))
       backup-by-copying t)
@@ -89,8 +89,8 @@
 (when (version<= "24.4" emacs-version)
   (setq browse-url-browser-function #'browse-url-generic)
   (if (version<= "27.0" emacs-version)
-      (setq browse-url-secondary-browser-function 'browse-url-generic)
-    (setq shr-external-browser 'browse-url-generic))
+      (setq browse-url-secondary-browser-function #'browse-url-generic)
+    (setq shr-external-browser #'browse-url-generic))
   (setq eww-download-directory "~/dl"))
 (setq browse-url-generic-program "webbroboard")
 

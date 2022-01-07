@@ -22,7 +22,7 @@
 
 (dolist (skeleton-file (directory-files
                         (no-littering-expand-etc-file-name "skeletons/")
-                        t "\\.elc?$"))
+                        t "\\.elc?\\'"))
   (load skeleton-file))
 
 (load "pastes-from-web")
@@ -896,7 +896,7 @@ ignore) any passed arguments to work as an advice."
 (when (file-exists-p "~/.emacs.d/local.el")
   (load "~/.emacs.d/local.el"))
 (when (file-directory-p "~/.emacs.d/local.d/")
-  (dolist (local-file (directory-files "~/.emacs.d/local.d/" t "\\.elc?$"))
+  (dolist (local-file (directory-files "~/.emacs.d/local.d/" t "\\.elc?\\'"))
     (load local-file)))
 
 (use-package nlinum
