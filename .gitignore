@@ -3,6 +3,7 @@
 /emacs.d/local.el
 /emacs.d/local.d/
 /emacs.d/early-local.el
+/emacs.d/custom.el
 
 # straight.el
 /emacs.d/straight/build-*
