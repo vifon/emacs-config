@@ -94,9 +94,6 @@
   (setq eww-download-directory "~/dl"))
 (setq browse-url-generic-program "webbroboard")
 
-(add-to-list 'auto-mode-alist '("^/tmp/mutt.*" . mail-mode))
-(add-to-list 'auto-mode-alist '("\\.claws-mail/tmp/tmpmsg\\.0x.*" . mail-mode))
-
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("/Pkgfile\\'" . sh-mode))
 
