@@ -102,7 +102,7 @@
 (setq epa-file-name-regexp "\\.gpg\\(~\\|\\.~[0-9]+~\\)?\\'\\|\\.asc")
 (epa-file-name-regexp-update)
 
-(setq calendar-date-style 'european
+(setq calendar-date-style 'iso
       calendar-mark-diary-entries-flag nil
       calendar-mark-holidays-flag nil
       calendar-week-start-day 1)
