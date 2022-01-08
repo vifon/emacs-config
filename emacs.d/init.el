@@ -363,12 +363,7 @@
 
 (use-package flycheck
   :straight t
-  :defer t
-  :init (progn
-          (add-hook 'c-mode-hook (lambda ()
-                                   (setq flycheck-clang-language-standard "c14")))
-          (add-hook 'c++-mode-hook (lambda ()
-                                     (setq flycheck-clang-language-standard "c++14")))))
+  :defer t)
 
 (use-package cmake-mode
   :straight t
