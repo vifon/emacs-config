@@ -11,7 +11,8 @@
   :config (progn
             (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
             (vertico-mouse-mode 1)
-            (vertico-multiform-mode 1)))
+            (vertico-multiform-mode 1)
+            (setq vertico-multiform-categories '((consult-grep buffer)))))
 
 (use-package orderless
   :straight t
