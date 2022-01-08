@@ -2,23 +2,16 @@
 
 (use-package vertico
   :straight (vertico :files (:defaults "extensions/*"))
-  :bind (:map vertico-map
-         ("C-l" . vertico-directory-delete-word))
-  :init (vertico-mode 1))
-
-(use-package vertico-repeat
-  :after vertico
-  :bind ("C-x M-r" . vertico-repeat)
-  :config (add-hook 'minibuffer-setup-hook #'vertico-repeat-save))
-(use-package vertico-mouse
-  :after vertico
-  :config (vertico-mouse-mode 1))
-(use-package vertico-multiform
-  :after vertico
-  :init (vertico-multiform-mode 1)
-  :bind (:map vertico-map
+  :bind (("C-x M-r" . vertico-repeat)
+         :map vertico-map
+         ("C-l" . vertico-directory-delete-word)
          ("M-g" . vertico-multiform-grid)
-         ("M-q" . vertico-multiform-flat)))
+         ("M-q" . vertico-multiform-flat))
+  :init (vertico-mode 1)
+  :config (progn
+            (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
+            (vertico-mouse-mode 1)
+            (vertico-multiform-mode 1)))
 
 (use-package orderless
   :straight t
