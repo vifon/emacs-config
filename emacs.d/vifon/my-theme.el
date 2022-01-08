@@ -54,15 +54,19 @@ Unless the prefix argument was passed, disable the current one beforehand."
 (defun vifon/solar-times ()
   (require 'seq)
   (require 'solar)
-  (mapcar (lambda (time)
-            (cons
-             (string-to-number
-              (let ((calendar-time-display-form '(24-hours minutes)))
-                (apply #'solar-time-string time)))
-             (let ((calendar-time-display-form '(24-hours ":" minutes)))
-               (apply #'solar-time-string time))))
-          (seq-take (solar-sunrise-sunset (calendar-current-date))
-                    2)))
+  (if (and calendar-latitude
+           calendar-longitude)
+      (mapcar (lambda (time)
+                (cons
+                 (string-to-number
+                  (let ((calendar-time-display-form '(24-hours minutes)))
+                    (apply #'solar-time-string time)))
+                 (let ((calendar-time-display-form '(24-hours ":" minutes)))
+                   (apply #'solar-time-string time))))
+              (seq-take (solar-sunrise-sunset (calendar-current-date))
+                        2))
+    '((900 . "09:00")
+      (1700 . "17:00"))))
 
 (defun vifon/daytime-solar-p ()
   "Check whether it's daytime according to the calculated sunrise
