@@ -74,7 +74,9 @@
          ("C-x C-r" . consult-recent-file)
          ([remap switch-to-buffer] . consult-buffer)
          ([remap yank-pop] . consult-yank-pop)
-         ([remap goto-line] . consult-goto-line))
+         ([remap goto-line] . consult-goto-line)
+         :map minibuffer-local-map
+         ([remap previous-matching-history-element] . consult-history))
   :init (bind-key "TAB"
                   (lambda ()
                     (interactive)
