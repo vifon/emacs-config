@@ -25,7 +25,7 @@
 
             ;; Use the built-in "partial-completion" style to complete
             ;; file inputs such as "/e/ni/co.nix" into
-            ;; "/etc/nixos/configuration/nix".  The "basic" style is
+            ;; "/etc/nixos/configuration.nix".  The "basic" style is
             ;; needed to support the hostname completion in the TRAMP
             ;; inputs such as "/sshx:HOSTNAME".
             (setq completion-category-defaults nil
