@@ -97,7 +97,10 @@
                         (delq 'consult--source-project-file consult-buffer-sources)))
 
             (setq consult--source-hidden-buffer
-                  (plist-put consult--source-hidden-buffer :narrow ?h))))
+                  (plist-put consult--source-hidden-buffer :narrow ?h))
+
+            (advice-add #'completing-read-multiple :override
+                        #'consult-completing-read-multiple)))
 
 
 ;;; https://with-emacs.com/posts/tutorials/customize-completion-at-point/
