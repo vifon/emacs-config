@@ -3,31 +3,24 @@
 
 (use-package no-littering :straight t)
 
-(add-to-list 'load-path "~/.emacs.d/vifon")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
-(load "my-el-patch")
-(load "my-mode-line")
-(load "my-fun")
-(load "my-keys")
-(load "my-transient")
-(load "my-completing-read")
-(load "my-org")
-(load "my-dired")
-(load "my-eshell")
-(load "my-settings")
-(load "my-spellcheck")
-(load "my-email")
-(load "my-exwm")
+
+;;; Load all the config parts.
+(dolist (file (delete-dups
+               (mapcar
+                #'file-name-sans-extension
+                (directory-files
+                 (expand-file-name "init.parts" user-emacs-directory)
+                 t "\\.elc?\\'"))))
+  (load file))
 
 (dolist (skeleton-file (directory-files
                         (no-littering-expand-etc-file-name "skeletons/")
                         t "\\.elc?\\'"))
   (load skeleton-file))
-
-(load "pastes-from-web")
 
 
 (use-package project
@@ -697,7 +690,7 @@ ignore) any passed arguments to work as an advice."
 
 (use-package lua-mode :straight t :defer t)
 
-(load "my-theme")
+(load (expand-file-name "theme" user-emacs-directory))
 
 
 (when (file-exists-p "~/.emacs.d/local.el")

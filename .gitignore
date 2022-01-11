@@ -9,8 +9,8 @@
 /emacs.d/straight/build-*
 /emacs.d/straight/repos/
 
-# Byte-compiled el-patch templates.
-/emacs.d/vifon/my-el-patch.elc
+# Byte-compiled files.
+*.elc
 
 # no-littering.el
 /emacs.d/var/
