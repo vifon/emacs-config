@@ -7,20 +7,25 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
+(defun load-parts (directory &optional regexp)
+  "Load all the Elisp files from DIRECTORY, in the lexicographical order.
+
+REGEXP defaults to \"\\.elc?\\'\".
+
+Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
+  (interactive "D")
+  (setq regexp (or regexp "\\.elc?\\'"))
+  (dolist (part (delete-dups
+                 (mapcar #'file-name-sans-extension
+                         (directory-files (file-name-as-directory directory)
+                                          t regexp))))
+    (load part)))
 
 ;;; Load all the config parts.
-(dolist (file (delete-dups
-               (mapcar
-                #'file-name-sans-extension
-                (directory-files
-                 (expand-file-name "init.parts" user-emacs-directory)
-                 t "\\.elc?\\'"))))
-  (load file))
+(load-parts (expand-file-name "lisp/" user-emacs-directory))
 
-(dolist (skeleton-file (directory-files
-                        (no-littering-expand-etc-file-name "skeletons/")
-                        t "\\.elc?\\'"))
-  (load skeleton-file))
+;;; Load the skeletons.
+(load-parts (no-littering-expand-etc-file-name "skeletons/"))
 
 
 (use-package project
@@ -693,11 +698,12 @@ ignore) any passed arguments to work as an advice."
 (load (expand-file-name "theme" user-emacs-directory))
 
 
-(when (file-exists-p "~/.emacs.d/local.el")
-  (load "~/.emacs.d/local.el"))
-(when (file-directory-p "~/.emacs.d/local.d/")
-  (dolist (local-file (directory-files "~/.emacs.d/local.d/" t "\\.elc?\\'"))
-    (load local-file)))
+(let ((local-lisp (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-lisp)
+    (load local-lisp)))
+(let ((local-lisps (expand-file-name "local.d/" user-emacs-directory)))
+  (when (file-directory-p local-lisps)
+    (load-parts local-lisps)))
 
 (use-package nlinum
   :straight t
