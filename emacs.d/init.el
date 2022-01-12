@@ -497,9 +497,7 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
   :defer t
   :hook ((python-mode . lsp-deferred)
          (go-mode     . lsp-deferred)
-         (rust-mode   . lsp-deferred)
-         (js-mode     . lsp-deferred)
-         (typescript-mode . lsp-deferred))
+         (rust-mode   . lsp-deferred))
   :init (setq lsp-keymap-prefix "C-c k"
               lsp-rust-server 'rust-analyzer
               lsp-signature-auto-activate nil
