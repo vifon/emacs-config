@@ -22,7 +22,8 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
     (load part)))
 
 ;;; Load all the config parts.
-(load-parts (expand-file-name "lisp/" user-emacs-directory))
+(load-parts (expand-file-name "lisp/" user-emacs-directory)
+            "\\`[[:digit:]]\\{2\\}-[^-/][^/]*\\.elc?\\'")
 
 ;;; Load the skeletons.
 (load-parts (no-littering-expand-etc-file-name "skeletons/"))
