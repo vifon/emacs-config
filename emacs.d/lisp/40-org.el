@@ -23,6 +23,12 @@
                                (lambda (path link)
                                  (call-process "rifle" nil 0 nil path)))
                          'append)
+
+            ;; Don't open the org-linked HTML files in the web
+            ;; browser.  Most of the time I want to edit them, not
+            ;; view them!
+            (setq org-file-apps (assoc-delete-all "\\.x?html?\\'" org-file-apps))
+
             (setq org-default-notes-file (concat org-directory "/inbox.org"))
             (plist-put org-format-latex-options :scale 2.0)
             (setq org-adapt-indentation t)))
