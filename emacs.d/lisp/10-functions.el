@@ -29,28 +29,6 @@ Prefix argument GIT initializes it as a Git repository."
         (vc-git-create-repo)))
     (dired scratch)))
 
-(defun dired-import-ranger-tags ()
-  (interactive)
-  (let* ((ranger-tag-lines (with-temp-buffer
-                             (insert-file-contents "~/.config/ranger/tagged")
-                             (split-string (buffer-string) "\n")))
-         (ranger-tags (mapcan (lambda (line)
-                                (when (string-match "\\(?:\\(.\\):\\)?\\(.*\\)"
-                                                    line)
-                                  (list
-                                   (cons (match-string 2 line)
-                                         (string-to-char
-                                          (or (match-string 1 line) "*"))))))
-                              ranger-tag-lines)))
-    (save-excursion
-      (goto-char (point-min))
-      (while (not (eobp))
-        (if-let ((file (dired-get-filename nil t))
-                 (tag (cdr (assoc file ranger-tags))))
-            (let ((dired-marker-char tag))
-              (dired-mark nil))
-          (forward-line 1))))))
-
 (defun vifon/image-yank ()
   (interactive)
   (when (or (zerop (buffer-size))
