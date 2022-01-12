@@ -79,3 +79,12 @@
   '((t :inherit mode-line-face
        :foreground "red"))
   nil)
+
+
+(use-package doom-modeline
+  :straight t
+  :init (progn
+          (setq doom-modeline-env-version nil
+                doom-modeline-icon nil
+                doom-modeline-minor-modes t)
+          (doom-modeline-mode 1)))

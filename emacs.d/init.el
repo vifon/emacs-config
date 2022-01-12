@@ -186,14 +186,6 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
           (let ((comment-style 'box))
             (legalese ask))))
 
-(use-package doom-modeline
-  :straight t
-  :init (progn
-          (setq doom-modeline-env-version nil
-                doom-modeline-icon nil
-                doom-modeline-minor-modes t)
-          (doom-modeline-mode 1)))
-
 (use-package transpose-frame
   :straight t
   :bind (("C-x 4 t" . transpose-frame)
