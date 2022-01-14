@@ -513,10 +513,6 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
   :defer t
   :init (setq-default typescript-indent-level 2))
 
-;;; For the additional project.el functionality.
-(use-package magit-extras
-  :after project)
-
 (use-package rg
   :straight t
   :commands rg
