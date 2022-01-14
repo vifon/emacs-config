@@ -586,7 +586,7 @@ ignore) any passed arguments to work as an advice."
          ("," . vifon/theme-light)
          ("." . vifon/theme-dark)
          ("/" . vifon/theme-dwim)
-         ("b" . consult-buffer)
+         ("b" . switch-to-buffer)
          ("S" . vifon/make-scratch-dir)
          ("P" . straight-use-package))
   :init (setq initial-major-mode 'scratch-mode)
