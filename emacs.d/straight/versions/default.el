@@ -104,7 +104,7 @@
  ("rust-mode" . "49ff6cceba7a546595c5b0cc18c7501b22e0c9e9")
  ("s.el" . "08661efb075d1c6b4fa812184c1e5e90c08795a9")
  ("sane-term" . "46352169bd6d2a86ca9c2052cd05ecd16fc7657b")
- ("scratch-mode" . "6cbf9f8624a39bddad7d7d532730565fa566b8a4")
+ ("scratch-mode" . "2de8f864d2a849d783a8da3c8789a74bb2c78607")
  ("secret-mode.el" . "c4ea6cbffda9c67af112f25b2db2843aa4abce85")
  ("shrink-path.el" . "c14882c8599aec79a6e8ef2d06454254bb3e1e41")
  ("slime" . "4af8072274aea7c2995824f12a471623b577f656")
