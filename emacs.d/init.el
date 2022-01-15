@@ -3,7 +3,7 @@
 
 (use-package no-littering :straight t)
 
-(add-to-list 'load-path "~/.emacs.d/vendor")
+(add-to-list 'load-path (expand-file-name "vendor/" user-emacs-directory))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
