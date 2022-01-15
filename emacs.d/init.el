@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
-(require 'early-init "~/.emacs.d/early-init.el")
+(require 'early-init (expand-file-name "early-init.el" user-emacs-directory))
 
 (use-package no-littering :straight t)
 
