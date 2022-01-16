@@ -25,7 +25,8 @@
       ("F" "fly*-modes…" vifon/fly*-transient)
       ("o" "compare" compare-windows :transient t)
       ("nm" "normal-mode" normal-mode)
-      ("tc" "TRAMP shutdown" tramp-cleanup-all-buffers)]])
+      ("tc" "TRAMP shutdown" tramp-cleanup-all-buffers)
+      ("de" "debug-on-error" toggle-debug-on-error)]])
 
   (transient-define-prefix vifon/fly*-transient ()
     "Flycheck, flyspell and the related commands."
