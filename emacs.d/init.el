@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
-(require 'early-init (expand-file-name "early-init.el" user-emacs-directory))
+(require 'early-init (expand-file-name "early-init" user-emacs-directory))
 
 (use-package no-littering :straight t)
 
@@ -670,7 +670,7 @@ ignore) any passed arguments to work as an advice."
   :straight t
   :defer t
   :config (when (file-readable-p "~/quicklisp/slime-helper.el")
-            (load "~/quicklisp/slime-helper.el")))
+            (load "~/quicklisp/slime-helper")))
 (use-package slime-autoloads
   :config (setq inferior-lisp-program "sbcl"))
 
@@ -683,7 +683,7 @@ ignore) any passed arguments to work as an advice."
 (load (expand-file-name "theme" user-emacs-directory))
 
 
-(let ((local-lisp (expand-file-name "local.el" user-emacs-directory)))
+(let ((local-lisp (expand-file-name "local" user-emacs-directory)))
   (when (file-exists-p local-lisp)
     (load local-lisp)))
 (let ((local-lisps (expand-file-name "local.d/" user-emacs-directory)))
