@@ -657,11 +657,11 @@ ignore) any passed arguments to work as an advice."
           (bind-key "C-S-SPC"
                     (defun cualess-global-mark ()
                       (interactive)
-                      (if (version<= "24.4" emacs-version)
+                      (if (version>= emacs-version "24.4")
                           (cua-selection-mode 1)
                         (cua-mode 1))
-                      (call-interactively 'cua-toggle-global-mark)))
-          (advice-add 'cua--deactivate-global-mark :after
+                      (call-interactively #'cua-toggle-global-mark)))
+          (advice-add #'cua--deactivate-global-mark :after
                       (lambda (ret-value)
                         (cua-mode 0)
                         ret-value))))
