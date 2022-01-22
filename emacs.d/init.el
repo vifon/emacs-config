@@ -684,8 +684,7 @@ ignore) any passed arguments to work as an advice."
 
 
 (let ((local-lisp (expand-file-name "local" user-emacs-directory)))
-  (when (file-exists-p local-lisp)
-    (load local-lisp)))
+  (load local-lisp 'noerror))
 (let ((local-lisps (expand-file-name "local.d/" user-emacs-directory)))
   (when (file-directory-p local-lisps)
     (load-parts local-lisps)))
