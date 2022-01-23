@@ -52,7 +52,12 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
   :bind (([remap kill-line] . paredit-kill-maybe)
          :map paredit-mode-map
          ("M-s" . nil)
-         ("M-s M-s" . paredit-splice-sexp)))
+         ("M-s M-s" . paredit-splice-sexp)
+         ;; Do not bind C-j in modes that already override it.
+         ;; Instead remap the global binding.  Fixes a minor annoyance
+         ;; with `lisp-interaction-mode'.
+         ("C-j" . nil)
+         ([remap electric-newline-and-maybe-indent] . paredit-newline)))
 
 (use-package hideshow-org
   :straight t
