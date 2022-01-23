@@ -44,13 +44,19 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
   :init (progn
           (setq paredit-space-for-delimiter-predicates
                 (list (lambda (endp delimiter) nil)))
-          (defun paredit-kill-maybe (arg)
+          (defun paredit-kill-maybe (pair-aware)
+            "A globally accessible pair-aware `kill-line'.
+
+With prefix argument PAIR-AWARE uses `paredit-kill', otherwise
+calls the regular `kill-line'."
             (interactive "P")
-            (if (consp arg)
+            (if (consp pair-aware)
                 (paredit-kill)
-              (kill-line arg))))
+              (kill-line pair-aware))))
   :bind (([remap kill-line] . paredit-kill-maybe)
          :map paredit-mode-map
+         ;; Allow the global M-s keymap to be used with paredit.
+         ;; Bind `paredit-splice-sexp' under this keymap instead.
          ("M-s" . nil)
          ("M-s M-s" . paredit-splice-sexp)
          ;; Do not bind C-j in modes that already override it.
