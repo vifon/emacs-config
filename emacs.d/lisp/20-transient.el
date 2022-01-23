@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
+(autoload 'tramp-cleanup-all-buffers "tramp-cmds")
+
 (use-package transient
   :commands (vifon/dired-transient)
   :bind ("C-c t" . vifon-transient)
