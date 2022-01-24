@@ -563,6 +563,7 @@ calls the regular `kill-line'."
 
 (use-package fish-mode
   :straight t
+  :mode ("\\`/tmp/tmp.[a-zA-Z0-9]+.fish\\'" . fish-mode)
   :bind (:map fish-mode-map
          ("C-c C-m" . man)))
 
