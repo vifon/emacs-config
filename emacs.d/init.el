@@ -347,6 +347,10 @@ calls the regular `kill-line'."
          ("C-s" . phi-search)
          ("C-r" . phi-search-backward)))
 
+(use-package kmacro-mc
+  :straight t
+  :bind ("C-x C-k M" . kmacro-mc-region))
+
 (use-package expand-region
   :straight t
   :bind (("C-=" . er/expand-region)
