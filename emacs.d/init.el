@@ -534,14 +534,6 @@ calls the regular `kill-line'."
   :commands rg
   :bind ("M-s ," . rg-dwim))
 
-(use-package sane-term
-  :straight t
-  :init (setq sane-term-shell-command (getenv "SHELL"))
-  :config (add-hook 'term-mode-hook
-                    (lambda ()
-                      (yas-minor-mode -1)))
-  :bind ("C-x T" . sane-term))
-
 (use-package diff-hl
   :straight t
   :defer 2
