@@ -16,7 +16,7 @@
       ("aa" "Align" align)
       ("ar" "Align regexp" align-regexp)
       ("s" "Sort lines" sort-lines)]
-     [:description "Modes"
+     [:description "Toggles"
                    ("v" "Visual line mode" visual-line-mode :transient t)
                    ("O" "Olivetti" olivetti-mode :transient t)
                    ("r" "Truncate lines" toggle-truncate-lines :transient t)
@@ -25,13 +25,13 @@
                    ("ww" "Whitespace mode" whitespace-mode :transient t)
                    ("gf" "Display fill indicator" display-fill-column-indicator-mode :transient t)
                    ("gi" "Indent guide mode" indent-guide-mode :transient t)
-                   ("fl" "Follow mode" follow-mode :transient t)]
+                   ("fl" "Follow mode" follow-mode :transient t)
+                   ("de" "Debug on error" toggle-debug-on-error :transient t)]
      ["Others"
       ("F" "fly*-modes…" vifon/fly*-transient)
       ("o" "compare" compare-windows :transient t)
       ("nm" "normal-mode" normal-mode)
-      ("tc" "TRAMP shutdown" tramp-cleanup-all-buffers)
-      ("de" "debug-on-error" toggle-debug-on-error)]])
+      ("tc" "TRAMP shutdown" tramp-cleanup-all-buffers)]])
 
   (transient-define-prefix vifon/fly*-transient ()
     "Flycheck, flyspell and the related commands."
