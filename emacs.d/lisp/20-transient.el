@@ -2,6 +2,9 @@
 
 (autoload 'tramp-cleanup-all-buffers "tramp-cmds")
 
+(unless (fboundp #'display-line-numbers-mode)
+  (fset 'display-line-numbers-mode 'nlinum-mode))
+
 (use-package transient
   :commands (vifon/dired-transient)
   :bind ("C-c t" . vifon-transient)
@@ -17,7 +20,7 @@
                    ("v" "Visual line mode" visual-line-mode :transient t)
                    ("O" "Olivetti" olivetti-mode :transient t)
                    ("r" "Truncate lines" toggle-truncate-lines :transient t)
-                   ("ln" "Display line numbers" display-line-numbers-best :transient t)
+                   ("ln" "Display line numbers" display-line-numbers-mode :transient t)
                    ("lh" "Highlight current line" hl-line-mode :transient t)
                    ("ww" "Whitespace mode" whitespace-mode :transient t)
                    ("gf" "Display fill indicator" display-fill-column-indicator-mode :transient t)

@@ -12,78 +12,36 @@
 (bind-key [mode-line C-mouse-1] #'tear-off-window)
 (bind-key "<M-S-iso-lefttab>" #'indent-relative)
 
-;;; Better versions of default commands.
-(bind-key [remap just-one-space] #'cycle-spacing)
-(bind-key [remap upcase-word] #'upcase-dwim)
-(bind-key [remap downcase-word] #'downcase-dwim)
-(bind-key [remap capitalize-word] #'capitalize-dwim)
-(bind-key [remap count-words-region] #'count-words)
-(bind-key [remap eval-last-sexp] #'pp-eval-last-sexp)
-(bind-key [remap eval-expression] #'pp-eval-expression)
-
+(bind-key "C-x C-M-t" #'transpose-regions)
 (bind-key "C-x M-e" #'pp-macroexpand-last-sexp)
-
-(defun run-term (&optional arg)
-  (interactive "P")
-  (let ((default-directory (if (derived-mode-p 'dired-mode)
-                               (dired-current-directory)
-                             default-directory)))
-    (if (window-system)
-        (call-process "alacritty" nil 0 nil)
-      (call-process "tmux" nil 0 nil
-                    "split-window" "-h"))))
-
-(bind-key "C-c x" #'run-term)
-(bind-key "M-o" #'run-term)
 
 (bind-key "C-c =" #'diff-buffer-with-file)
 
 (bind-key "M-C-?" #'hippie-expand)
 (bind-key [remap ispell-complete-word] #'completion-at-point)
 
-(defun display-line-numbers-best ()
-  (interactive)
-  (call-interactively
-   (if (fboundp #'display-line-numbers-mode)
-       #'display-line-numbers-mode
-     #'nlinum-mode)))
-
-
 (bind-key "C-c d" #'delete-pair)
+(bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)
 
-(add-hook 'eval-expression-minibuffer-setup-hook
-          #'paredit-mode)
+(bind-key "<f9>" #'menu-bar-open)
 
-(use-package misc
-  :bind (("M-z" . zap-up-to-char)
-         ("C-M-y" . copy-from-above-maybe-line))
-  :config (defun copy-from-above-maybe-line (arg)
+(bind-key [remap zap-to-char] #'zap-up-to-char)
+
+(bind-key "C-M-y"
+          (defun vifon/copy-from-above-maybe-line (arg)
             (interactive "P")
             (copy-from-above-command (if (consp arg)
                                          nil
                                        (or arg 1)))))
 
-(bind-key "C-x M-!" #'find-file-path)
-(autoload 's-trim "s")
-(defun find-file-path ()
-  "Find file using the PATH env var."
-  (interactive)
-  (let* ((program (read-shell-command "Program name: "))
-         (path (executable-find (s-trim program))))
-    (if path
-        (let ((path (read-from-minibuffer "Find file: " path)))
-          (when (and path (stringp path))
-            (find-file path)))
-      (error "No such program"))))
-
-(defun vifon/toggle-selective-display (arg)
-  (interactive "P")
-  (if arg
-      (set-selective-display arg)
-    (set-selective-display (and (zerop (or selective-display 0))
-                                (not (zerop (current-column)))
-                                (current-column)))))
-(bind-key [remap set-selective-display] #'vifon/toggle-selective-display)
+(bind-key [remap set-selective-display]
+          (defun vifon/toggle-selective-display (arg)
+            (interactive "P")
+            (if arg
+                (set-selective-display arg)
+              (set-selective-display (and (zerop (or selective-display 0))
+                                          (not (zerop (current-column)))
+                                          (current-column))))))
 
 (bind-key [remap move-beginning-of-line]
           (defun vifon/move-beginning-of-line (arg)
@@ -93,7 +51,7 @@
               (when (= old-point (point))
                 (move-beginning-of-line arg)))))
 
-(defun smart-kill-whole-lines (&optional arg)
+(defun vifon/smart-kill-whole-lines (&optional arg)
   "Kill the whole line while keeping the point in place."
   (interactive "P")
   (let ((kill-whole-line t)
@@ -106,8 +64,8 @@
       (goto-char (point-min))
       (forward-line (1- saved-line))
       (end-of-line))))
-(defun smart-yank-whole-lines ()
-  "Yank and reindent the yanked text. Ensures the yanked text
+(defun vifon/smart-yank-whole-lines ()
+  "Yank and reindent the yanked text.  Ensures the yanked text
 ends with a newline."
   (interactive)
   (save-excursion
@@ -121,10 +79,9 @@ ends with a newline."
                               "\n")
                        (insert "\n"))
                      (point)))))
-(bind-key "M-k" #'smart-kill-whole-lines)
-(bind-key "M-K" #'smart-yank-whole-lines)
+(bind-key "M-k" #'vifon/smart-kill-whole-lines)
+(bind-key "M-K" #'vifon/smart-yank-whole-lines)
 
-(bind-key "C-x C-M-t" #'transpose-regions)
 
 ;;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
 (defun narrow-or-widen-dwim (p)
@@ -152,9 +109,4 @@ narrowed."
 (bind-key "M-Q" #'unfill-paragraph)
 
 
-(bind-key "<f9>" #'menu-bar-open)
-
 (windmove-default-keybindings)
-
-
-(bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)

@@ -40,7 +40,8 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
 (use-package paredit
   :straight t
   :commands paredit-kill
-  :hook (emacs-lisp-mode . paredit-mode)
+  :hook ((emacs-lisp-mode . paredit-mode)
+         (eval-expression-minibuffer-setup . paredit-mode))
   :init (progn
           (setq paredit-space-for-delimiter-predicates
                 (list (lambda (endp delimiter) nil)))
