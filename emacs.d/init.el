@@ -443,7 +443,7 @@ calls the regular `kill-line'."
 
 (use-package dumb-jump
   :straight t
-  :hook ((cperl-mode c-mode-common) . dumb-jump-activate)
+  :hook ((cperl-mode c-mode-common sh-mode) . dumb-jump-activate)
   :init (defun dumb-jump-activate ()
           (interactive)
           (add-hook 'xref-backend-functions
