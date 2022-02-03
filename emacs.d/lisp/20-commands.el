@@ -3,7 +3,7 @@
 (defun vifon/scratch-dir-path (name)
   (concat "~/scratch.d/scratch-"
           (format-time-string "%Y-%m-%d_%s")
-          (when (not (string= name ""))
+          (when (and name (not (string= name "")))
             (concat "--" name))
           "/"))
 
