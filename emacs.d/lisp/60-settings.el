@@ -72,6 +72,7 @@
 (c-set-offset 'inline-open 0)
 (c-set-offset 'access-label -2)
 (c-set-offset 'innamespace 0)
+(setq css-indent-offset 2)
 
 (setq parens-require-spaces nil)
 

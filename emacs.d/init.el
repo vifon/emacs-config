@@ -169,9 +169,7 @@ calls the regular `kill-line'."
   :mode (("\\.html\\'"      . web-mode)
          ("\\.html\\.[^.]+\\'" . web-mode)
          ("\\.tt\\'"        . web-mode)
-         ("\\.vue\\'"       . web-mode)
-         ("\\.css\\'"       . web-css-mode)
-         ("\\.scss\\'"      . web-css-mode))
+         ("\\.vue\\'"       . web-mode))
   :config (progn
             (define-derived-mode web-css-mode web-mode "WebCSS")
             (setq web-mode-markup-indent-offset 2
