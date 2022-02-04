@@ -92,6 +92,19 @@
              consult-buffer consult-recent-file
              :preview-key (kbd "M-."))
 
+            (defun vifon/orderless-fix-consult-tofu (pattern index total)
+              "Ignore the last character which is hidden and used only internally."
+              (when (string-suffix-p "$" pattern)
+                `(orderless-regexp . ,(concat (substring pattern 0 -1)
+                                              "[\x100000-\x10FFFD]*$"))))
+
+            (dolist (command '(consult-buffer consult-line))
+              (advice-add command :around
+                          (lambda (orig &rest args)
+                            (let ((orderless-style-dispatchers (cons #'vifon/orderless-fix-consult-tofu
+                                                                     orderless-style-dispatchers)))
+                              (apply orig args)))))
+
             ;; Disable consult-buffer project-related capabilities as
             ;; they are very slow in TRAMP.
             (setq consult-buffer-sources
