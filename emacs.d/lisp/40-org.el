@@ -71,6 +71,12 @@
 (use-package org-mru-clock
   :straight t
   :defer t
+  :init (advice-add #'org-clock-goto :before
+                    (lambda (&rest ignored)
+                      "Ensure the persistent clock history is loaded."
+                      (unless (bound-and-true-p org-clock-history)
+                       (require 'org-mru-clock)
+                       (org-mru-clock-to-history))))
   :config (advice-add #'org-mru-clock-select-recent-task :after
                       #'org-back-to-heading))
 
