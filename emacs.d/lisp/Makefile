@@ -1,6 +1,6 @@
-el-patch-requires = $(shell sed -n < 00-el-patch.el "s/el-patch-feature /require '/p")
+el-patch-requires = $(shell sed -n < 99-el-patch.el "s/el-patch-feature /require '/p")
 
-00-el-patch.elc: 00-el-patch.el
+99-el-patch.elc: 99-el-patch.el
 	emacs --batch \
 		-l ~/.emacs.d/init.el \
 		--eval "(progn $(el-patch-requires))" \
