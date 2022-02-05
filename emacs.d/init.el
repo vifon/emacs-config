@@ -23,9 +23,7 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
 
 ;;; Load all the config parts.
 (load-parts (expand-file-name "lisp/" user-emacs-directory)
-            ;; Match files like 10-name.el, but allow "commenting" the
-            ;; files with a double hyphen, like 10--name.el
-            "\\`[[:digit:]]\\{2\\}-[^-/][^/]*\\.elc?\\'")
+            "\\`[[:digit:]]\\{2\\}-[^/]*\\.elc?\\'")
 
 ;;; Load the skeletons.
 (load-parts (no-littering-expand-etc-file-name "skeletons/"))
