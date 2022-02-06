@@ -10,8 +10,7 @@
 (require 'config-lib (expand-file-name "config-lib" user-emacs-directory))
 
 ;;; Load all the config parts.
-(load-parts (expand-file-name "lisp/" user-emacs-directory)
-            "\\`[[:digit:]]\\{2\\}-[^/]*\\.elc?\\'")
+(load-numbered-parts (expand-file-name "lisp/" user-emacs-directory))
 
 ;;; Load the skeletons.
 (load-parts (no-littering-expand-etc-file-name "skeletons/"))
