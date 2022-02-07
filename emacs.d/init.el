@@ -7,12 +7,9 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
-(require 'config-lib (expand-file-name "config-lib" user-emacs-directory))
-
 ;;; Load all the config parts.
+(require 'config-lib (expand-file-name "config-lib" user-emacs-directory))
 (load-numbered-parts (expand-file-name "lisp/" user-emacs-directory))
-
-;;; Load the skeletons.
 (load-parts (no-littering-expand-etc-file-name "skeletons/"))
 
 
