@@ -112,4 +112,6 @@
                                      "/tmp/mml-" (user-login-name))))
             (make-directory mm-tmp-directory t)
 
-            (setq mml-secure-openpgp-sign-with-sender t)))
+            (setq mml-secure-openpgp-sign-with-sender t)
+
+            (setq shr-use-colors nil)))
