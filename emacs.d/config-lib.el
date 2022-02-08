@@ -12,7 +12,10 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
     (load part)))
 
 (defun require-parts (directory &optional regexp)
-  "The same as `load-parts' but uses `require' instead of `load'."
+  "The same as `load-parts' but uses `require' instead of `load'.
+
+Should be used instead `load-parts' if loading a feature multiple
+times is a concern."
   (dolist (part (load-parts--gather directory regexp))
     (require (intern (file-name-nondirectory part))
              part)))
