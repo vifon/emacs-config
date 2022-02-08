@@ -14,7 +14,7 @@ Inspired by: https://manpages.debian.org/stable/debianutils/run-parts.8.en.html"
 (defun require-parts (directory &optional regexp)
   "The same as `load-parts' but uses `require' instead of `load'."
   (dolist (part (load-parts--gather directory regexp))
-    (require (intern (file-name-sans-extension (file-name-nondirectory part)))
+    (require (intern (file-name-nondirectory part))
              part)))
 
 (defun load-parts--gather (directory &optional regexp)
