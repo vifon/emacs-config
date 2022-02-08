@@ -25,7 +25,7 @@ REGEXP defaults to \"\\.elc?\\'\"."
   (rx string-start
       (= 2 digit)
       "-"
-      (zero-or-more (not "/"))
+      (one-or-more (not "/"))
       ".el"
       (opt "c")
       string-end)
