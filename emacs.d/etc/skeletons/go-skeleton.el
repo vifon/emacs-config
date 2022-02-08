@@ -19,3 +19,5 @@
 
 (define-auto-insert "\\.go\\'" #'go-skeleton)
 (define-auto-insert "/main\\.go\\'" #'go-main-skeleton)
+
+(provide 'go-skeleton)

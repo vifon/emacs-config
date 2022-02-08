@@ -10,3 +10,5 @@
   )
 
 (define-auto-insert "\\.pl\\'" #'perl-skeleton)
+
+(provide 'perl-skeleton)

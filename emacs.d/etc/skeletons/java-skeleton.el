@@ -8,3 +8,5 @@
   )
 
 (define-auto-insert "\\.java\\'" #'java-skeleton)
+
+(provide 'java-skeleton)

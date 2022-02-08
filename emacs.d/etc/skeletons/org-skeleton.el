@@ -26,3 +26,5 @@
 ** Daily
    #+BEGIN: clocktable :maxlevel 4 :scope file :block thisweek :step day
    #+END:")
+
+(provide 'org-skeleton)

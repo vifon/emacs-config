@@ -6,3 +6,5 @@
   )
 
 (define-auto-insert "\\.rs\\'" #'rust-skeleton)
+
+(provide 'rust-skeleton)

@@ -8,3 +8,5 @@
   "all: " (skeleton-read "Output file: " "main") "\n")
 
 (define-auto-insert "/Makefile\\'" #'makefile-skeleton)
+
+(provide 'makefile-skeleton)

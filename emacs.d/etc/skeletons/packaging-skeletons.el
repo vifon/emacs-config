@@ -50,3 +50,5 @@
   "Type=Application\n"
   )
 (define-auto-insert "\\.desktop\\'" #'desktop-file-skeleton)
+
+(provide 'packaging-skeletons)

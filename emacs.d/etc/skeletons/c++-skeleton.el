@@ -72,3 +72,5 @@
 (define-auto-insert "\\.c\\'" #'c-skeleton)
 (define-auto-insert "\\.\\(H\\|hpp\\)\\'" #'c++-header-skeleton)
 (define-auto-insert "\\.h\\'" #'c-header-skeleton)
+
+(provide 'c++-skeleton)

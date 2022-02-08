@@ -8,3 +8,5 @@
   )
 
 (define-auto-insert "\\.hs\\'" #'haskell-skeleton)
+
+(provide 'haskell-skeleton)

@@ -18,3 +18,5 @@
   )
 
 (define-auto-insert "\\.html\\'" #'html-skeleton)
+
+(provide 'web-skeleton)

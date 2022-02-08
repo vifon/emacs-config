@@ -10,3 +10,5 @@
   )
 
 (define-auto-insert "\\.sh\\'" #'bash-strict-skeleton)
+
+(provide 'shell-skeleton)

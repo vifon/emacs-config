@@ -37,3 +37,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   )
 
 (define-auto-insert "\\.md\\'" #'markdown-skeleton)
+
+(provide 'markdown-skeleton)

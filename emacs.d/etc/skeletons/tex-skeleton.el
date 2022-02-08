@@ -19,3 +19,5 @@
   )
 
 (define-auto-insert "\\.tex\\'" #'latex-skeleton)
+
+(provide 'tex-skeleton)

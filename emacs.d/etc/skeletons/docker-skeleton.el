@@ -14,3 +14,5 @@
   )
 
 (define-auto-insert "/Dockerfile\\'" #'docker-skeleton)
+
+(provide 'docker-skeleton)
