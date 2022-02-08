@@ -64,7 +64,7 @@ calls the regular `kill-line'."
          ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)
          ("/ T" . ibuffer-tramp-set-filter-groups-by-tramp-connection))
   :init (bind-key "C-x C-b"
-                  (if (fboundp #'ibuffer-jump)
+                  (if (fboundp 'ibuffer-jump)
                       #'ibuffer-jump
                     #'ibuffer))
   :config (progn
@@ -683,7 +683,7 @@ ignore) any passed arguments to work as an advice."
 (use-package nlinum
   :straight t
   :defer t
-  :if (not (fboundp #'display-line-numbers-mode)))
+  :if (not (fboundp 'display-line-numbers-mode)))
 
 (use-package midnight
   :defer 13

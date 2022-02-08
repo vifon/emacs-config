@@ -2,7 +2,7 @@
 
 (autoload 'tramp-cleanup-all-buffers "tramp-cmds")
 
-(unless (fboundp #'display-line-numbers-mode)
+(unless (fboundp 'display-line-numbers-mode)
   (fset 'display-line-numbers-mode 'nlinum-mode))
 
 (use-package transient
