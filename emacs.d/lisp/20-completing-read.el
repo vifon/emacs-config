@@ -53,6 +53,9 @@
   :config (progn
             (setq embark-mixed-indicator-delay 2)
 
+            (cl-pushnew 'embark--allow-edit
+                        (alist-get 'pp-eval-expression embark-target-injection-hooks))
+
             (defun embark-act-with-eval (expression)
               "Evaluate EXPRESSION and call `embark-act' on the result."
               (interactive "sExpression: ")
