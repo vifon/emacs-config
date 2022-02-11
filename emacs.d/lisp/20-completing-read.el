@@ -65,7 +65,15 @@
 
             (dolist (keymap (list embark-variable-map embark-expression-map))
               (bind-key "v" #'embark-act-with-eval
-                        keymap))))
+                        keymap))
+
+            ;; Source: https://github.com/oantolin/embark/wiki/Additional-Actions#attaching-file-to-an-email-message
+            (autoload 'gnus-dired-attach "gnus-dired" nil t)
+            (defun embark-attach-file (file)
+              "Attach FILE to an email message."
+              (interactive "fAttach: ")
+              (gnus-dired-attach (list file)))
+            (bind-key "a" #'embark-attach-file embark-file-map)))
 
 (use-package embark-consult
   :straight t
