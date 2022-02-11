@@ -32,8 +32,9 @@
   (use-package diminish :straight t :defer t))
 
 
-(when (file-exists-p "~/.emacs.d/early-local.el")
-  (load "~/.emacs.d/early-local.el"))
+(unless (getenv "EMACS_NO_LOCAL")
+  (when (file-exists-p "~/.emacs.d/early-local.el")
+    (load "~/.emacs.d/early-local.el")))
 
 (bootstrap-straight)
 (bootstrap-use-package)

@@ -674,11 +674,12 @@ ignore) any passed arguments to work as an advice."
 (load (expand-file-name "theme" user-emacs-directory))
 
 
-(let ((local-lisp (expand-file-name "local" user-emacs-directory)))
-  (load local-lisp 'noerror))
-(let ((local-lisps (expand-file-name "local.d/" user-emacs-directory)))
-  (when (file-directory-p local-lisps)
-    (load-parts local-lisps)))
+(unless (getenv "EMACS_NO_LOCAL")
+  (let ((local-lisp (expand-file-name "local" user-emacs-directory)))
+    (load local-lisp 'noerror))
+  (let ((local-lisps (expand-file-name "local.d/" user-emacs-directory)))
+    (when (file-directory-p local-lisps)
+      (load-parts local-lisps))))
 
 (use-package nlinum
   :straight t
