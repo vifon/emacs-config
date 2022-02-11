@@ -50,7 +50,19 @@
          ("C-."   . embark-act)
          :map minibuffer-local-map
          ("M-o"   . embark-act))
-  :config (setq embark-mixed-indicator-delay 2))
+  :config (progn
+            (setq embark-mixed-indicator-delay 2)
+
+            (defun embark-act-with-eval (expression)
+              "Evaluate EXPRESSION and call `embark-act' on the result."
+              (interactive "sExpression: ")
+              (with-temp-buffer
+                (insert (eval (read expression)))
+                (embark-act)))
+
+            (dolist (keymap (list embark-variable-map embark-expression-map))
+              (bind-key "v" #'embark-act-with-eval
+                        keymap))))
 
 (use-package embark-consult
   :straight t
