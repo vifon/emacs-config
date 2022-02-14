@@ -94,7 +94,6 @@ when using the `*-respect-content' commands."
             #'org-insert-heading-empty-line-fix)
 
 (defun vifon/org-resolve-clocks-with-calc (orig &rest args)
-  (require 'cl-lib)
   (cl-letf (((symbol-function 'read-number)
              (lambda (prompt &optional default)
                (string-to-number

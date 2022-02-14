@@ -90,7 +90,6 @@ See: Info node `(emacs) Sunrise/Sunset'."
 
 (defvar vifon/theme-timers nil)
 
-(require 'cl-lib)
 (defun vifon/theme-schedule-timers ()
   "Schedule the timers for automatic theme switching."
   (dolist (timer vifon/theme-timers)

@@ -7,8 +7,6 @@
 (defun vifon/exwm-activate ()
   (interactive)
 
-  (require 'cl-lib)
-
   (setq exwm-workspace-number 6)
   (add-hook 'exwm-update-class-hook
             (defun my-exwm-update-class-hook ()

@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(require 'cl-lib)
-
 (defun vifon/add-to-list-after (list-var old new &optional compare-fn)
   (let ((cmp (or compare-fn #'equal)))
     (cl-do ((x (symbol-value list-var) (cdr x)))
