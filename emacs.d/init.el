@@ -242,7 +242,7 @@ calls the regular `kill-line'."
   :mode ("/COMMIT_EDITMSG\\'" . git-commit-mode)
   :bind (:map git-commit-mode-map
          ("C-c C-l" . magit-log))
-  :config (add-hook 'git-commit-mode-hook (lambda () (flyspell-mode 1))))
+  :config (add-hook 'git-commit-mode-hook #'flyspell-mode))
 
 (use-package git-messenger
   :straight t
