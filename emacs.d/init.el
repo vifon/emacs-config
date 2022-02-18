@@ -229,7 +229,8 @@ calls the regular `kill-line'."
                   (define-key keymap oldkey nil))))
             (transient-append-suffix 'magit-log "-f"
               '("-1" "First parent" "--first-parent"))
-            (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
+            (add-hook 'magit-pre-refresh-hook #'diff-hl-magit-pre-refresh)
+            (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh)))
 
 (use-package magit-todos :straight t :defer t)
 
@@ -520,7 +521,8 @@ calls the regular `kill-line'."
   :straight t
   :defer 2
   :bind ("C-x v \\" . diff-hl-amend-mode)
-  :commands diff-hl-magit-post-refresh
+  :commands (diff-hl-magit-pre-refresh
+             diff-hl-magit-post-refresh)
   :config (global-diff-hl-mode 1))
 
 (use-package image-mode
