@@ -1,11 +1,13 @@
 ;;; -*- lexical-binding: t; -*-
 
 (defun vifon/scratch-dir-path (name)
-  (concat "~/scratch.d/scratch-"
-          (format-time-string "%Y-%m-%d_%s")
-          (when (and name (not (string= name "")))
-            (concat "--" name))
-          "/"))
+  (file-name-as-directory
+   (expand-file-name
+    (concat "scratch-"
+            (format-time-string "%Y-%m-%d_%s")
+            (when (and name (not (string= name "")))
+              (concat "--" name)))
+    "~/scratch.d")))
 
 (define-obsolete-function-alias
   'scratch-dir 'vifon/make-scratch-dir "2021-11-04")

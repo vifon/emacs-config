@@ -26,8 +26,9 @@
                   (lambda ()
                     (when (eq this-command #'message-insert-signature)
                       (let* ((signature-override
-                              (concat (file-name-as-directory "~/.signature.d")
-                                      (message-sendmail-envelope-from)))
+                              (expand-file-name
+                               (message-sendmail-envelope-from)
+                               "~/.signature.d/"))
                              (signature-file
                               (if (file-readable-p signature-override)
                                   signature-override

@@ -29,7 +29,7 @@
             ;; view them!
             (setq org-file-apps (assoc-delete-all "\\.x?html?\\'" org-file-apps))
 
-            (setq org-default-notes-file (concat org-directory "/inbox.org"))
+            (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
             (plist-put org-format-latex-options :scale 2.0)
             (setq org-adapt-indentation t)))
 
@@ -45,8 +45,8 @@
                  (basename (concat "scrot-"
                                    timestamp
                                    ".png"))
-                 (filepath (concat "/tmp/"
-                                   basename)))
+                 (filepath (expand-file-name basename
+                                             "/tmp/")))
             (shell-command
              (concat "scrot -s -d2 "
                      filepath))
@@ -235,9 +235,9 @@ when using the `*-respect-content' commands."
          :unnarrowed t)
 
         ("tb" "project issue" entry
-         (file+headline (concat (or (vc-root-dir)
-                                    (projectile-project-root))
-                                "todo.org")
+         (file+headline (expand-file-name "todo.org"
+                                          (or (vc-root-dir)
+                                              (projectile-project-root)))
                         "Issues")
          "* TODO %?\n  %U\n  %a\n  %i")
 
