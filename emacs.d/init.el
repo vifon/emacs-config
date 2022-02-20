@@ -245,10 +245,6 @@ calls the regular `kill-line'."
          ("C-c C-l" . magit-log))
   :config (add-hook 'git-commit-mode-hook #'flyspell-mode))
 
-(use-package git-messenger
-  :straight t
-  :bind ("C-x v p" . git-messenger:popup-message))
-
 (use-package git-timemachine
   :straight t
   :bind ("C-x v t" . git-timemachine))
