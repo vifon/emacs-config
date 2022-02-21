@@ -18,7 +18,6 @@
   :defer t
   :config (setq project-switch-commands #'project-dired))
 
-(use-package s :straight t :defer t)
 (use-package paredit
   :straight t
   :commands paredit-kill
