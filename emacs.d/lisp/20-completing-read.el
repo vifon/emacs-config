@@ -56,6 +56,11 @@
             (cl-pushnew 'embark--allow-edit
                         (alist-get 'pp-eval-expression embark-target-injection-hooks))
 
+            ;; Reload the project list after using
+            ;; C-u `embark-act' with `project-forget-project'.
+            (cl-pushnew 'embark--restart
+                        (alist-get 'project-forget-project embark-post-action-hooks))
+
             (defun embark-act-with-eval (expression)
               "Evaluate EXPRESSION and call `embark-act' on the result."
               (interactive "sExpression: ")
