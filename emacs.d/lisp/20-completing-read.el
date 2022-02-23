@@ -53,6 +53,11 @@
   :config (progn
             (setq embark-mixed-indicator-delay 2)
 
+            ;; Make the eval action editable.  Evaluating code
+            ;; in-place is simple enough without Embark, if I invoke
+            ;; it with Embark, I almost definitely want to edit the
+            ;; expression beforehand.  And even if not, I can
+            ;; just confirm.
             (cl-pushnew 'embark--allow-edit
                         (alist-get 'pp-eval-expression embark-target-injection-hooks))
 
