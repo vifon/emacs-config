@@ -75,8 +75,9 @@
                     (lambda (&rest ignored)
                       "Ensure the persistent clock history is loaded."
                       (unless (bound-and-true-p org-clock-history)
-                       (require 'org-mru-clock)
-                       (org-mru-clock-to-history))))
+                        (message "Loading the org-clock history...")
+                        (require 'org-mru-clock)
+                        (org-mru-clock-to-history))))
   :config (advice-add #'org-mru-clock-select-recent-task :after
                       #'org-back-to-heading))
 
