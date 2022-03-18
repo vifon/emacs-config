@@ -266,9 +266,11 @@ calls the regular `kill-line'."
          ("C-s" . phi-search)
          ("C-r" . phi-search-backward)))
 
-(use-package kmacro-mc
+(use-package kmacro-x
   :straight t
-  :bind ("C-x C-k M" . kmacro-mc-region))
+  :bind ("C-M-:" . kmacro-x-mc)
+  :custom (kmacro-x-atomic-undo-mode t)
+  :diminish kmacro-x-atomic-undo-mode)
 
 (use-package expand-region
   :straight t
