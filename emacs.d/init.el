@@ -353,7 +353,6 @@ calls the regular `kill-line'."
                     (when (or (string-match-p "/roles/.*\\.yml\\'" (buffer-file-name))
                               (string-match-p "/main\\.yml\\'" (buffer-file-name)))
                       (ansible arg)))))
-(use-package ansible-doc :straight t :defer t)
 
 (use-package yaml-mode
   :straight t
