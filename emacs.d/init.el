@@ -509,7 +509,8 @@ ignore) any passed arguments to work as an advice."
          ("/" . vifon/theme-dwim)
          ("b" . switch-to-buffer)
          ("S" . vifon/make-scratch-dir)
-         ("P" . straight-use-package))
+         ("P" . straight-use-package)
+         ("R" . recentf-edit-list))
   :init (setq initial-major-mode 'scratch-mode)
   :config (progn
             (bind-key "c" (lambda ()
@@ -521,6 +522,7 @@ ignore) any passed arguments to work as an advice."
                       scratch-mode-map)
             (add-to-list 'scratch-mode-key-hints '("c" . "chronos") 'append)
             (add-to-list 'scratch-mode-key-hints '("S" . "make-scratch-dir") 'append)
+            (add-to-list 'scratch-mode-key-hints "R" 'append)
             (vifon/add-to-list-after
              'scratch-mode-key-hints "e"
              (cons "("
