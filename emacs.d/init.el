@@ -189,7 +189,6 @@ calls the regular `kill-line'."
 (use-package treemacs
   :straight t
   :bind (("C-c b" . treemacs)
-         ("C-c B" . treemacs-switch-workspace)
          :map treemacs-mode-map
          ("j" . treemacs-next-line)
          ("k" . treemacs-previous-line)
