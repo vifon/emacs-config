@@ -83,6 +83,19 @@ ends with a newline."
 (bind-key "M-K" #'vifon/smart-yank-whole-lines)
 
 
+(defun vifon/indent-relative-dwim (&optional first-only unindented-ok)
+  "Like `indent-relative' but disable `indent-tabs-mode' when aligning."
+  (interactive "P")
+  (let* ((at-indent-p (save-excursion
+                        (skip-chars-backward " \t")
+                        (eq (point) (point-at-bol))))
+         (indent-tabs-mode (if at-indent-p
+                               indent-tabs-mode
+                             nil)))
+    (indent-relative first-only unindented-ok)))
+(bind-key [remap indent-relative] #'vifon/indent-relative-dwim)
+
+
 ;;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
 (defun narrow-or-widen-dwim (p)
   "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
