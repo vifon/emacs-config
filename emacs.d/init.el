@@ -600,7 +600,10 @@ ignore) any passed arguments to work as an advice."
 
 (use-package rust-mode :straight t :defer t)
 
-(use-package go-mode :straight t :defer t)
+(use-package go-mode
+  :straight t
+  :defer t
+  :config (setq gofmt-args '("-s")))
 
 (use-package lua-mode :straight t :defer t)
 
