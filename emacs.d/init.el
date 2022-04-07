@@ -457,6 +457,7 @@
                       image-mode-map)))
 
 (use-package sh-script
+  :mode ("/\\.env\\(?:rc\\)?\\'" . sh-mode)
   :bind (:map sh-mode-map
          ("C-c C-m" . man)))
 
