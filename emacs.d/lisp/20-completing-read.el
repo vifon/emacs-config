@@ -49,7 +49,14 @@
   :bind (("C-c o" . embark-act)
          ("C-."   . embark-act)
          :map minibuffer-local-map
-         ("M-o"   . embark-act))
+         ("M-o"   . embark-act)
+         :map embark-command-map
+         ;; Unbind the dangerous `global-set-key' and `local-set-key'
+         ;; actions.  It's far too easy to accidentally bind over some
+         ;; `self-insert-command' binding or even over
+         ;; \\[keyboard-quit].
+         ("g" . nil)
+         ("l" . nil))
   :config (progn
             (setq embark-mixed-indicator-delay 2)
 
