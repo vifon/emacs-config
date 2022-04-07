@@ -11,6 +11,7 @@
 
 # Byte-compiled files.
 *.elc
+/emacs.d/eln-cache/
 
 # no-littering.el
 /emacs.d/var/
