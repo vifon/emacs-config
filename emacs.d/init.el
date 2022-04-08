@@ -593,7 +593,9 @@ ignore) any passed arguments to work as an advice."
 (use-package go-mode
   :straight t
   :defer t
-  :config (setq gofmt-args '("-s")))
+  :config (progn
+            (setq gofmt-args '("-s"))
+            (vifon/gofmt-global-mode 1)))
 
 (use-package lua-mode :straight t :defer t)
 
