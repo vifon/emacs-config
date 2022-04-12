@@ -2,7 +2,9 @@
 
 (bind-key "C-c i" #'auto-insert)
 (bind-key "C-c m" #'compile)
-(bind-key "C-c r" #'revert-buffer)
+(unless (fboundp 'revert-buffer-quick)
+  ;; In Emacs 28+ use \\[revert-buffer-quick] instead.
+  (bind-key "C-c r" #'revert-buffer))
 (bind-key "C-c R" #'auto-revert-mode)
 (bind-key "C-c z" #'winner-undo)
 (bind-key "<C-tab>" #'other-window)
