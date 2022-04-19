@@ -20,10 +20,10 @@
   (setq auto-hscroll-mode 'current-line))
 
 (when (version<= "28.0" emacs-version)
-  ;; Don't replace this check with `boundp'!
-  ;; `bookmark-set-fringe-mark' is not autoloaded, so it is *not*
-  ;; bound during the startup.
-  (setq bookmark-set-fringe-mark nil))
+  ;; Don't replace this check with `boundp'!  These variables are not
+  ;; autoloaded, so they are *not* bound during the startup.
+  (setq bookmark-set-fringe-mark nil)
+  (setq calc-make-windows-dedicated t))
 
 (when (boundp 'async-shell-command-display-buffer)
   (setq async-shell-command-display-buffer nil))
