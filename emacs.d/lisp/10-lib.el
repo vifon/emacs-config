@@ -14,3 +14,18 @@ to COMPARE-FN, making this function idempotent."
                  (not (funcall cmp (cadr x) new)))
         (setf (cdr x) (cons new (cdr x))))))
   (symbol-value list-var))
+
+(defun vifon/string-make-clickable (string click-command)
+  "Create a clickable STRING according to \"33.19.8 Defining Clickable Text\".
+
+CLICK-COMMAND is what happens on click with the documentation
+string of this command being the tooltip."
+  (propertize
+   string
+   'mouse-face 'highlight
+   'help-echo (concat "mouse-2: " (documentation click-command 'raw))
+   'keymap (let ((map (make-sparse-keymap)))
+             (define-key map [mouse-2] click-command)
+             (define-key map (kbd "RET") click-command)
+             (define-key map [follow-link] 'mouse-face)
+             map)))
