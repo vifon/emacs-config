@@ -16,6 +16,10 @@
                 image-dired-external-viewer "sxiv"
                 dired-listing-switches "-alh --group-directories-first -v"))
 
+;;; Deprecation: `dired-jump' was moved to `dired' in Emacs 28.1 and
+;;; it got bound to C-x C-j by default.  The `dired-mode-map' binding
+;;; should be moved accordingly and dired-x now can be safely
+;;; dropped entirely.
 (use-package dired-x
   :bind (("C-x C-j" . dired-jump)
          :map dired-mode-map
