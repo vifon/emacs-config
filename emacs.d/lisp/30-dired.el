@@ -82,8 +82,12 @@
 
 (defun vifon/dired-import-ranger-tags ()
   (interactive)
-  (let* ((ranger-tag-lines (with-temp-buffer
-                             (insert-file-contents "~/.config/ranger/tagged")
+  (require 'seq)
+  (let* ((ranger-tag-file (seq-find #'file-exists-p
+                                    '("~/.local/share/ranger/tagged"
+                                      "~/.config/ranger/tagged")))
+         (ranger-tag-lines (with-temp-buffer
+                             (insert-file-contents ranger-tag-file)
                              (split-string (buffer-string) "\n")))
          (ranger-tags (mapcan (lambda (line)
                                 (when (string-match "\\(?:\\(.\\):\\)?\\(.*\\)"
