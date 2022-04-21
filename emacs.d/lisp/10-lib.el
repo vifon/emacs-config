@@ -15,15 +15,16 @@ to COMPARE-FN, making this function idempotent."
         (setf (cdr x) (cons new (cdr x))))))
   (symbol-value list-var))
 
-(defun vifon/string-make-clickable (string click-command)
+(defun vifon/string-make-clickable (string click-command &optional help-echo)
   "Create a clickable STRING according to \"33.19.8 Defining Clickable Text\".
 
-CLICK-COMMAND is what happens on click with the documentation
-string of this command being the tooltip."
+CLICK-COMMAND is what happens on click and HELP-ECHO or the
+documentation string of CLICK-COMMAND is the tooltip."
   (propertize
    string
    'mouse-face 'highlight
-   'help-echo (concat "mouse-2: " (documentation click-command 'raw))
+   'help-echo (concat "mouse-2: " (or help-echo
+                                      (documentation click-command 'raw)))
    'keymap (let ((map (make-sparse-keymap)))
              (define-key map [mouse-2] click-command)
              (define-key map (kbd "RET") click-command)
