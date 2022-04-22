@@ -7,20 +7,22 @@
          ("I" . vifon/dired-insert-subdir-keep-point)
          ("* C" . vifon/dired-change-marks*)
          ("E" . vifon/dired-dragon))
-  :config (setq dired-dwim-target nil
-                dired-free-space-args "-Pkh"
-                dired-ls-F-marks-symlinks t
-                dired-isearch-filenames 'dwim
-                dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
-                wdired-allow-to-change-permissions t
-                image-dired-external-viewer "sxiv"
-                dired-listing-switches "-alh --group-directories-first -v"))
+  :config (progn
+            (setq dired-dwim-target nil
+                  dired-free-space-args "-Pkh"
+                  dired-ls-F-marks-symlinks t
+                  dired-isearch-filenames 'dwim
+                  dired-omit-files "^\\.?#\\|^\\.[^\\.]\\|^\\.\\.."
+                  wdired-allow-to-change-permissions t
+                  image-dired-external-viewer "sxiv"
+                  dired-listing-switches "-alh --group-directories-first -v")
+            (when (version<= "28.0" emacs-version)
+              (bind-key "h" #'dired-jump dired-mode-map))))
 
 ;;; Deprecation: `dired-jump' was moved to `dired' in Emacs 28.1 and
-;;; it got bound to C-x C-j by default.  The `dired-mode-map' binding
-;;; should be moved accordingly and dired-x now can be safely
-;;; dropped entirely.
+;;; it got bound to C-x C-j by default.
 (use-package dired-x
+  :if (version< emacs-version "28.0")
   :bind (("C-x C-j" . dired-jump)
          :map dired-mode-map
          ("h" . dired-jump))
