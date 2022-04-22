@@ -36,11 +36,11 @@
   (transient-define-prefix vifon/fly*-transient ()
     "Flycheck, flyspell and the related commands."
     ["fly*-modes"
-     ("c" "Flycheck mode" flycheck-mode :if-derived prog-mode)
-     ("sm" "Flyspell prog mode" flyspell-prog-mode :if-derived prog-mode)
-     ("sm" "Flyspell mode" flyspell-mode :if-not-derived prog-mode)
+     ("c" "Flycheck mode" flycheck-mode :if-derived prog-mode :transient t)
+     ("sm" "Flyspell prog mode" flyspell-prog-mode :if-derived prog-mode :transient t)
+     ("sm" "Flyspell mode" flyspell-mode :if-not-derived prog-mode :transient t)
      ("sb" "Flyspell buffer" flyspell-buffer)
-     ("i" "Ispell change dictionary" ispell-change-dictionary)])
+     ("i" "Ispell change dictionary" ispell-change-dictionary :transient t)])
 
   (autoload 'gnus-dired-mode "gnus-dired" nil t)
   (transient-define-prefix vifon/dired-transient ()
