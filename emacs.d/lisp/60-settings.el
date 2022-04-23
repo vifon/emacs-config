@@ -19,14 +19,11 @@
 (when (version<= "26.1" emacs-version)
   (setq auto-hscroll-mode 'current-line))
 
-(when (version<= "28.0" emacs-version)
-  ;; Don't replace this check with `boundp'!  These variables are not
-  ;; autoloaded, so they are *not* bound during the startup.
-  (setq bookmark-set-fringe-mark nil)
-  (setq calc-make-windows-dedicated t))
+(setq bookmark-set-fringe-mark nil)
 
-(when (boundp 'async-shell-command-display-buffer)
-  (setq async-shell-command-display-buffer nil))
+(setq calc-make-windows-dedicated t)
+
+(setq async-shell-command-display-buffer nil)
 
 (setq delete-pair-blink-delay 0)
 
