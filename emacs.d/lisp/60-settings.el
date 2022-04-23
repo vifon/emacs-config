@@ -28,6 +28,8 @@
 (when (boundp 'async-shell-command-display-buffer)
   (setq async-shell-command-display-buffer nil))
 
+(setq delete-pair-blink-delay 0)
+
 (setq echo-keystrokes 0.1)
 
 (blink-cursor-mode 0)
