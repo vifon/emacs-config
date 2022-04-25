@@ -117,14 +117,20 @@ when using the `*-respect-content' commands."
       (insert "Follow-up of: " link))))
 
 (defun vifon/org-insert-directory (directory)
-  "Insert `directory' as a list of org-mode links."
-  (interactive "D")
+  "Insert `directory' as a list of org-mode links.
+
+Intended to be invoked in an empty line, at the desired
+indentation level."
+  (interactive (list
+                (read-directory-name "Directory to insert as links: "
+                                     nil (dired-dwim-target-defaults nil nil))))
   (let ((org-stored-links (vifon/dired-org-store-links directory))
         (prefix (concat (make-string (current-indentation)
                                      ? ;a space
                                      )
                         "- ")))
     (delete-horizontal-space)
+    (push-mark)
     (org-insert-all-links nil prefix)
     (delete-blank-lines)))
 
