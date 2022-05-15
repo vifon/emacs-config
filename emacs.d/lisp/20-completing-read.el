@@ -156,6 +156,10 @@
             (advice-add #'completing-read-multiple :override
                         #'consult-completing-read-multiple)))
 
+(use-package corfu
+  :straight t
+  :init (corfu-global-mode 1))
+
 
 ;;; https://with-emacs.com/posts/tutorials/customize-completion-at-point/
 (autoload 'ffap-file-at-point "ffap")
@@ -174,11 +178,11 @@
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode 1)
 
-;;; Use the completing-read UI for the M-tab completion.
-(setq completion-in-region-function
-      (lambda (&rest args)
-        (apply (if vertico-mode
-                   #'consult-completion-in-region
-                 #'completion--in-region)
-               args)))
-(setq completion-cycle-threshold 3)
+;;; Use the completing-read UI for the M-tab completion unless
+;;; overridden (for example by `corfu').
+(setq-default completion-in-region-function
+              (lambda (&rest args)
+                (apply (if vertico-mode
+                           #'consult-completion-in-region
+                         #'completion--in-region)
+                       args)))
