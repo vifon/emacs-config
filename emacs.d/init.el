@@ -571,7 +571,7 @@ ignore) any passed arguments to work as an advice."
           (bind-key "C-S-SPC"
                     (defun cualess-global-mark ()
                       (interactive)
-                      (if (version>= emacs-version "24.4")
+                      (if (version<= "24.4" emacs-version)
                           (cua-selection-mode 1)
                         (cua-mode 1))
                       (call-interactively #'cua-toggle-global-mark)))
