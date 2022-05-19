@@ -4,7 +4,8 @@
   :straight t
   :if (and (file-directory-p "~/Mail/.notmuch")
            (file-regular-p   "~/.emacs.d/secret/notmuch-fcc"))
-  :bind (("<f7>" . notmuch))
+  :bind (("<f7>" . notmuch)
+         ([remap compose-mail] . notmuch-mua-new-mail))
   :custom-face (notmuch-search-unread-face ((t (:weight extra-bold))))
   :config (progn
             (setq notmuch-fcc-dirs
