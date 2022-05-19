@@ -122,6 +122,3 @@ narrowed."
   (let ((fill-column (point-max)))
     (fill-paragraph nil)))
 (bind-key "M-Q" #'unfill-paragraph)
-
-
-(windmove-default-keybindings)
