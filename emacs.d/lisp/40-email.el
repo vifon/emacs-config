@@ -56,12 +56,12 @@
               (dolist (map (list notmuch-hello-mode-map
                                  notmuch-show-mode-map
                                  notmuch-search-mode-map))
-                (bind-key "G" #'vifon/notmuch-poll-and-refresh-this-buffer
-                          map)))
+                (define-key map (kbd "G")
+                  #'vifon/notmuch-poll-and-refresh-this-buffer)))
 
             (dolist (map (list notmuch-hello-mode-map
                                notmuch-show-mode-map))
-              (unbind-key "<C-tab>" map))
+              (define-key map (kbd "<C-tab>") nil))
 
             (bind-key "A"
                       (lambda ()
