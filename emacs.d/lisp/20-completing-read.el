@@ -158,7 +158,7 @@
 
 (use-package corfu
   :straight t
-  :init (corfu-global-mode 1))
+  :init (global-corfu-mode 1))
 
 
 ;;; https://with-emacs.com/posts/tutorials/customize-completion-at-point/
