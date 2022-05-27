@@ -290,11 +290,6 @@
   :straight t
   :bind ("C-c j" . avy-goto-char-timer))
 
-(use-package win-switch
-  :straight t
-  :bind ("C-x o" . win-switch-dispatch)
-  :config (setq win-switch-window-threshold 2))
-
 (use-package winner
   :bind ("C-c z" . winner-undo)
   :init (winner-mode 1))
