@@ -20,7 +20,7 @@
 (bind-key "C-c =" #'diff-buffer-with-file)
 
 (bind-key "M-C-?" #'hippie-expand)
-(bind-key [remap ispell-complete-word] #'completion-at-point)
+(bind-key [remap ispell-complete-word] #'complete-symbol)
 
 (bind-key "C-c d" #'delete-pair)
 (bind-key "C-M-r" #'isearch-query-replace isearch-mode-map)
