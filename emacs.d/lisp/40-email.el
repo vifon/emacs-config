@@ -116,4 +116,6 @@
 
             (setq mml-secure-openpgp-sign-with-sender t)
 
-            (setq shr-use-colors nil)))
+            (setq shr-use-colors nil)
+
+            (add-hook 'notmuch-message-mode-hook (lambda () (corfu-mode 0)))))
