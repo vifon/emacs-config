@@ -197,12 +197,14 @@
          ("b" . symbol-overlay-switch-backward)
          ("f" . symbol-overlay-switch-forward)))
 
-(use-package indent-guide
+(use-package highlight-indent-guides
   :straight t
-  :defer t
-  :init (add-hook 'LaTeX-mode-hook (lambda ()
-                                     (indent-guide-mode 1)))
-  :config (setq indent-guide-delay nil))
+  :commands highlight-indent-guides-mode
+  :config (setq highlight-indent-guides-method 'column)
+  :init (define-globalized-minor-mode global-highlight-indent-guides-mode highlight-indent-guides-mode
+          (lambda ()
+            (when (derived-mode-p 'prog-mode)
+              (highlight-indent-guides-mode 1)))))
 
 (use-package writeroom-mode
   :straight t

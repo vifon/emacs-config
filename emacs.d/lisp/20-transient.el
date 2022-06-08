@@ -24,7 +24,7 @@
                    ("lh" "Highlight current line" hl-line-mode :transient t)
                    ("ww" "Whitespace mode" whitespace-mode :transient t)
                    ("gf" "Display fill indicator" display-fill-column-indicator-mode :transient t)
-                   ("gi" "Indent guide mode" indent-guide-mode :transient t)
+                   ("gi" "Indent guide mode" highlight-indent-guides-mode :transient t)
                    ("fl" "Follow mode" follow-mode :transient t)
                    ("de" "Debug on error" toggle-debug-on-error :transient t)]
      ["Others"
