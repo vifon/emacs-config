@@ -402,12 +402,11 @@
 
 (use-package python
   :defer t
-  :config (progn
-            (add-hook 'python-mode-hook
-                      (defun my-python-hook ()
-                        (setq tab-width 4
-                              python-indent 4
-                              py-indent-offset 4)))))
+  :config (add-hook 'python-mode-hook
+                    (defun my-python-hook ()
+                      (setq tab-width 4
+                            python-indent 4
+                            py-indent-offset 4))))
 
 (use-package lsp-mode
   :straight t
