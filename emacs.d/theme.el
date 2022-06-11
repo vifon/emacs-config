@@ -13,30 +13,22 @@
       (add-to-list 'default-frame-alist `(font . ,font))
       (set-frame-font font nil t))))
 
-(defun vifon/switch-theme (new-theme &optional old-theme)
-  "Change the current theme to NEW-THEME, disabling OLD-THEME."
-  (when old-theme
-    (disable-theme old-theme))
+(defun vifon/switch-theme (new-theme)
+  "Change the current theme to NEW-THEME, disabling other themes."
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme))
   (load-theme new-theme 'no-confirm)
   (vifon/set-font))
 
-(defun vifon/theme-light (&optional no-disable)
-  "Enable the preferred light theme.
+(defun vifon/theme-light ()
+  "Switch to the preferred light theme."
+  (interactive)
+  (vifon/switch-theme vifon/theme-light))
 
-Unless the prefix argument was passed, disable the current one beforehand."
-  (interactive "P")
-  (vifon/switch-theme vifon/theme-light
-                      (unless no-disable
-                        vifon/theme-dark)))
-
-(defun vifon/theme-dark (&optional no-disable)
-  "Enable the preferred dark theme.
-
-Unless the prefix argument was passed, disable the current one beforehand."
-  (interactive "P")
-  (vifon/switch-theme vifon/theme-dark
-                      (unless no-disable
-                        vifon/theme-light)))
+(defun vifon/theme-dark ()
+  "Switch to the preferred dark theme."
+  (interactive)
+  (vifon/switch-theme vifon/theme-dark))
 
 (bind-key "C-M-s-<" #'vifon/theme-light)
 (bind-key "C-M-s->" #'vifon/theme-dark)
@@ -113,8 +105,8 @@ See: Info node `(emacs) Sunrise/Sunset'."
 (defun vifon/theme-dwim (&optional no-disable)
   (interactive "P")
   (if (vifon/daytime-solar-p)
-      (vifon/theme-light no-disable)
-    (vifon/theme-dark no-disable)))
+      (vifon/theme-light)
+    (vifon/theme-dark)))
 
 (bind-key "C-M-s-?" #'vifon/theme-dwim)
 
