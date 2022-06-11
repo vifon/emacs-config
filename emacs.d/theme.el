@@ -13,13 +13,10 @@
       (add-to-list 'default-frame-alist `(font . ,font))
       (set-frame-font font nil t))))
 
-(defun vifon/switch-theme (background-mode new-theme &optional old-theme)
-  "Change the current theme to NEW-THEME, disabling OLD-THEME.
-
-BACKGROUND-MODE should be either `dark' or `light'."
+(defun vifon/switch-theme (new-theme &optional old-theme)
+  "Change the current theme to NEW-THEME, disabling OLD-THEME."
   (when old-theme
     (disable-theme old-theme))
-  (setq frame-background-mode background-mode)
   (load-theme new-theme 'no-confirm)
   (vifon/set-font))
 
@@ -28,8 +25,7 @@ BACKGROUND-MODE should be either `dark' or `light'."
 
 Unless the prefix argument was passed, disable the current one beforehand."
   (interactive "P")
-  (vifon/switch-theme 'light
-                      vifon/theme-light
+  (vifon/switch-theme vifon/theme-light
                       (unless no-disable
                         vifon/theme-dark)))
 
@@ -38,8 +34,7 @@ Unless the prefix argument was passed, disable the current one beforehand."
 
 Unless the prefix argument was passed, disable the current one beforehand."
   (interactive "P")
-  (vifon/switch-theme 'dark
-                      vifon/theme-dark
+  (vifon/switch-theme vifon/theme-dark
                       (unless no-disable
                         vifon/theme-light)))
 
