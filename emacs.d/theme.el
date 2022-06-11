@@ -1,11 +1,15 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defvar vifon/theme-light 'solarized-light)
+(defvar vifon/theme-dark  'solarized-dark)
+(defvar vifon/font-name "JetBrains Mono")
+(defvar vifon/font-size "13")
+
+
 (defun vifon/set-font ()
   (interactive)
   (ignore-errors
-    (let* ((font-name "JetBrains Mono")
-           (font-size "13")
-           (font (concat font-name "-" font-size)))
+    (let ((font (concat vifon/font-name "-" vifon/font-size)))
       (add-to-list 'default-frame-alist `(font . ,font))
       (set-frame-font font nil t))))
 
@@ -19,27 +23,25 @@ BACKGROUND-MODE should be either `dark' or `light'."
   (load-theme new-theme 'no-confirm)
   (vifon/set-font))
 
-(let ((vifon/theme-light 'solarized-light)
-      (vifon/theme-dark  'solarized-dark))
-  (defun vifon/theme-light (&optional no-disable)
-    "Enable the preferred light theme.
+(defun vifon/theme-light (&optional no-disable)
+  "Enable the preferred light theme.
 
 Unless the prefix argument was passed, disable the current one beforehand."
-    (interactive "P")
-    (vifon/switch-theme 'light
-                        vifon/theme-light
-                        (unless no-disable
-                          vifon/theme-dark)))
+  (interactive "P")
+  (vifon/switch-theme 'light
+                      vifon/theme-light
+                      (unless no-disable
+                        vifon/theme-dark)))
 
-  (defun vifon/theme-dark (&optional no-disable)
-    "Enable the preferred dark theme.
+(defun vifon/theme-dark (&optional no-disable)
+  "Enable the preferred dark theme.
 
 Unless the prefix argument was passed, disable the current one beforehand."
-    (interactive "P")
-    (vifon/switch-theme 'dark
-                        vifon/theme-dark
-                        (unless no-disable
-                          vifon/theme-light))))
+  (interactive "P")
+  (vifon/switch-theme 'dark
+                      vifon/theme-dark
+                      (unless no-disable
+                        vifon/theme-light)))
 
 (bind-key "C-M-s-<" #'vifon/theme-light)
 (bind-key "C-M-s->" #'vifon/theme-dark)
