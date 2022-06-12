@@ -15,8 +15,7 @@
 
 (defun vifon/switch-theme (new-theme)
   "Change the current theme to NEW-THEME, disabling other themes."
-  (dolist (theme custom-enabled-themes)
-    (disable-theme theme))
+  (mapc #'disable-theme custom-enabled-themes)
   (load-theme new-theme 'no-confirm)
   (vifon/set-font))
 
@@ -81,8 +80,7 @@ See: Info node `(emacs) Sunrise/Sunset'."
 
 (defun vifon/theme-schedule-timers ()
   "Schedule the timers for automatic theme switching."
-  (dolist (timer vifon/theme-timers)
-    (cancel-timer timer))
+  (mapc #'cancel-timer vifon/theme-timers)
   (let ((24h (* 24 60 60))
         (sunrise-sunset (mapcar #'cdr (vifon/solar-times))))
     (setq vifon/theme-timers

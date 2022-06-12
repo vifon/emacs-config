@@ -42,7 +42,7 @@ Prefix argument GIT initializes it as a Git repository."
 
 (defun vifon/shrink-all-windows-if-larger-than-buffer ()
   (interactive)
-  (mapcar #'shrink-window-if-larger-than-buffer (window-list)))
+  (mapc #'shrink-window-if-larger-than-buffer (window-list)))
 
 (defun ansi-colorize-buffer ()
   (interactive)
