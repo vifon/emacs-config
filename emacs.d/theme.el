@@ -15,6 +15,11 @@
 
 (defun vifon/switch-theme (new-theme)
   "Change the current theme to NEW-THEME, disabling other themes."
+  (interactive
+   (list
+    (intern (completing-read "Load custom theme: "
+                             (mapcar #'symbol-name
+				                     (custom-available-themes))))))
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme new-theme 'no-confirm)
   (vifon/set-font))
@@ -100,11 +105,13 @@ See: Info node `(emacs) Sunrise/Sunset'."
   (run-at-time "0:00" nil
                #'vifon/theme-dark))
 
-(defun vifon/theme-dwim (&optional no-disable)
+(defun vifon/theme-dwim (&optional interactive)
   (interactive "P")
-  (if (vifon/daytime-solar-p)
-      (vifon/theme-light)
-    (vifon/theme-dark)))
+  (if interactive
+      (call-interactively #'vifon/switch-theme)
+    (if (vifon/daytime-solar-p)
+        (vifon/theme-light)
+      (vifon/theme-dark))))
 
 (bind-key "C-M-s-?" #'vifon/theme-dwim)
 
@@ -112,9 +119,9 @@ See: Info node `(emacs) Sunrise/Sunset'."
     (add-hook 'after-make-frame-functions
               (defun vifon/theme-init-daemon (frame)
                 (with-selected-frame frame
-                  (vifon/theme-dwim 'no-disable))
+                  (vifon/theme-dwim))
                 ;; Run this hook only once.
                 (remove-hook 'after-make-frame-functions
                              #'vifon/theme-init-daemon)
                 (fmakunbound 'vifon/theme-init-daemon)))
-  (vifon/theme-dwim 'no-disable))
+  (vifon/theme-dwim))
