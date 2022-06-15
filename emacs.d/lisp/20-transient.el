@@ -21,7 +21,7 @@
                    ("O" "Olivetti" olivetti-mode :transient t)
                    ("r" "Truncate lines" toggle-truncate-lines :transient t)
                    ("ln" "Display line numbers" display-line-numbers-mode :transient t)
-                   ("lh" "Highlight current line" hl-line-mode :transient t)
+                   ("hl" "Highlight current line" hl-line-mode :transient t)
                    ("ww" "Whitespace mode" whitespace-mode :transient t)
                    ("gf" "Display fill indicator" display-fill-column-indicator-mode :transient t)
                    ("gi" "Indent guide mode" highlight-indent-guides-mode :transient t)
