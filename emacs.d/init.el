@@ -401,7 +401,8 @@
          ("C-c C-i" . perltidy-dwim-safe)))
 
 (use-package python
-  :defer t
+  :bind (:map python-mode-map
+         ([remap yank] . vifon/python-yank))
   :config (add-hook 'python-mode-hook
                     (defun my-python-hook ()
                       (setq tab-width 4

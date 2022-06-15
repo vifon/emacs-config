@@ -55,3 +55,29 @@ Prefix argument GIT initializes it as a Git repository."
   (interactive)
   (ansi-colorize-buffer)
   (grep-mode))
+
+;;; Experimental!
+(defun vifon/python-yank (&optional arg)
+  "`yank' and reindent when yanking whole blocks."
+  (interactive "*P")
+  (setq this-command 'yank)
+  (if (and (python-info-current-line-empty-p)
+           (> (current-indentation) 0))
+      (let* ((target-indent (current-indentation))
+             (yanked-text (with-temp-buffer
+                            (yank arg)
+                            ;; If the yanked text doesn't end with a newline, assume
+                            ;; it's not a whole block so don't try to reindent it.
+                            (when (eq (char-after (1- (point-max))) ?\n)
+                              (goto-char (point-min))
+                              (let ((min-indent (current-indentation)))
+                                (while (progn (forward-line)
+                                              (not (eobp)))
+                                  (setq min-indent (min (current-indentation)
+                                                        min-indent)))
+                                (indent-rigidly (point-min) (point-max)
+                                                (- target-indent min-indent))))
+                            (buffer-string))))
+        (delete-horizontal-space t)
+        (insert yanked-text))
+    (yank arg)))
