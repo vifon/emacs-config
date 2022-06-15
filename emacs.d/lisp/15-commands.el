@@ -49,3 +49,9 @@ Prefix argument GIT initializes it as a Git repository."
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max)))
   (set-buffer-modified-p nil))
+
+(autoload 'grep-mode "grep" nil t)
+(defun ansi-color-grep-mode ()
+  (interactive)
+  (ansi-colorize-buffer)
+  (grep-mode))
