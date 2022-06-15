@@ -323,7 +323,17 @@ ignore) any passed arguments to work as an advice."
              'scratch-mode-key-hints "e"
              (cons "("
                    (lambda (k)
-                     (format "%s + %s" #'lisp-interaction-mode k))))))
+                     (format "%s + %s" #'lisp-interaction-mode k))))
+            (bind-key "l" (lambda ()
+                            (interactive)
+                            (find-file
+                             (expand-file-name "lisp/"
+                                               user-emacs-directory)))
+                      scratch-mode-map)
+            (vifon/add-to-list-after
+             'scratch-mode-key-hints
+             '("I" . "~/.emacs.d/early-init.el")
+             '("l" . "~/.emacs.d/lisp/"))))
 
 (use-package circe
   :straight t
