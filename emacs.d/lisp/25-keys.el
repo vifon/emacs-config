@@ -27,31 +27,12 @@
 
 (bind-key "<f9>" #'menu-bar-open)
 
-(bind-key [remap zap-to-char] #'zap-up-to-char)
-
-(bind-key "C-M-y"
-          (defun vifon/copy-from-above-maybe-line (arg)
-            (interactive "P")
-            (copy-from-above-command (if (consp arg)
-                                         nil
-                                       (or arg 1)))))
-
-(bind-key [remap set-selective-display]
-          (defun vifon/toggle-selective-display (arg)
-            (interactive "P")
-            (if arg
-                (set-selective-display arg)
-              (set-selective-display (and (zerop (or selective-display 0))
-                                          (not (zerop (current-column)))
-                                          (current-column))))))
-
-(bind-key [remap move-beginning-of-line]
-          (defun vifon/move-beginning-of-line (arg)
-            (interactive "^p")
-            (let ((old-point (point)))
-              (back-to-indentation)
-              (when (= old-point (point))
-                (move-beginning-of-line arg)))))
+(defun vifon/copy-from-above-maybe-line (arg)
+  (interactive "P")
+  (copy-from-above-command (if (consp arg)
+                               nil
+                             (or arg 1))))
+(bind-key "C-M-y" #'vifon/copy-from-above-maybe-line)
 
 (defun vifon/smart-kill-whole-lines (&optional arg)
   "Kill the whole line while keeping the point in place."
@@ -83,19 +64,6 @@ ends with a newline."
                      (point)))))
 (bind-key "M-k" #'vifon/smart-kill-whole-lines)
 (bind-key "M-K" #'vifon/smart-yank-whole-lines)
-
-
-(defun vifon/indent-relative-dwim (&optional first-only unindented-ok)
-  "Like `indent-relative' but disable `indent-tabs-mode' when aligning."
-  (interactive "P")
-  (let* ((at-indent-p (save-excursion
-                        (skip-chars-backward " \t")
-                        (eq (point) (point-at-bol))))
-         (indent-tabs-mode (if at-indent-p
-                               indent-tabs-mode
-                             nil)))
-    (indent-relative first-only unindented-ok)))
-(bind-key [remap indent-relative] #'vifon/indent-relative-dwim)
 
 
 ;;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html

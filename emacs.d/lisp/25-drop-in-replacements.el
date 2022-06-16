@@ -7,3 +7,4 @@
 (bind-key [remap count-words-region] #'count-words)
 (bind-key [remap eval-last-sexp] #'pp-eval-last-sexp)
 (bind-key [remap eval-expression] #'pp-eval-expression)
+(bind-key [remap zap-to-char] #'zap-up-to-char)
