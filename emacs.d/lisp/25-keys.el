@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
 (bind-key "C-c i" #'auto-insert)
-(bind-key "C-c m" #'compile)
 (unless (fboundp 'revert-buffer-quick)
   ;; In Emacs 28+ use \\[revert-buffer-quick] instead.
   (bind-key "C-c r" #'revert-buffer))
