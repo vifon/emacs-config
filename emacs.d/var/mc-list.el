@@ -146,6 +146,7 @@
         upcase-dwim
         upcase-region
         vifon/move-beginning-of-line
+        wdired--self-insert
         wdired-capitalize-word
         wdired-downcase-word
         wdired-finish-edit
