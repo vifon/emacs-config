@@ -151,10 +151,7 @@
                         (delq 'consult--source-project-file consult-buffer-sources)))
 
             (setq consult--source-hidden-buffer
-                  (plist-put consult--source-hidden-buffer :narrow ?h))
-
-            (advice-add #'completing-read-multiple :override
-                        #'consult-completing-read-multiple)))
+                  (plist-put consult--source-hidden-buffer :narrow ?h))))
 
 (use-package corfu
   :straight t
@@ -174,6 +171,19 @@
                       (match-end 0)
                       #'completion-file-name-table :exclusive 'no))))
           'append)
+
+;;; Add prompt indicator to `completing-read-multiple'.
+;;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
+;;;
+;;; Taken from the Vertico docs.
+(defun crm-indicator (args)
+  (cons (format "[CRM%s] %s"
+                (replace-regexp-in-string
+                 "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                 crm-separator)
+                (car args))
+        (cdr args)))
+(advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
 (setq enable-recursive-minibuffers t)
 (minibuffer-depth-indicate-mode 1)
