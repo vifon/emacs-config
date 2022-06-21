@@ -56,6 +56,13 @@ Prefix argument GIT initializes it as a Git repository."
   (ansi-colorize-buffer)
   (grep-mode))
 
+(defun vifon/paredit-kill (&optional argument)
+  "Like `paredit-kill' but with inverted ARGUMENT semantics."
+  (interactive "P")
+  (if (consp argument)
+      (paredit-kill)
+    (kill-line argument)))
+
 ;;; Experimental!
 (defun vifon/python-yank (&optional arg)
   "`yank' and reindent when yanking whole blocks."

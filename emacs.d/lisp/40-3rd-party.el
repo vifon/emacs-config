@@ -12,7 +12,7 @@
          (eval-expression-minibuffer-setup . paredit-mode))
   :init (setq paredit-space-for-delimiter-predicates
               (list (lambda (endp delimiter) nil)))
-  :bind (([remap kill-line] . paredit-kill)
+  :bind (([remap kill-line] . vifon/paredit-kill)
          :map paredit-mode-map
          ;; Allow the global M-s keymap to be used with paredit.
          ;; Bind `paredit-splice-sexp' under this keymap instead.
