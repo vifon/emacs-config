@@ -135,7 +135,7 @@
               "Ignore the last character which is hidden and used only internally."
               (when (string-suffix-p "$" pattern)
                 `(orderless-regexp . ,(concat (substring pattern 0 -1)
-                                              "[\x100000-\x10FFFD]*$"))))
+                                              "[\x200000-\x300000]*$"))))
 
             (dolist (command '(consult-buffer consult-line))
               (advice-add command :around
