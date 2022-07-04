@@ -155,7 +155,11 @@ indentation level."
         (nreverse links)))))
 
 
-(require 'ol-notmuch nil 'noerror)
+(with-eval-after-load 'org
+  (require 'ol-notmuch nil 'noerror))
+(with-eval-after-load 'notmuch
+  (require 'ol-notmuch nil 'noerror))
+
 (use-package org-protocol :after org)
 (use-package org-inlinetask :after org)
 
