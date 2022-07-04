@@ -118,4 +118,17 @@
 
             (setq shr-use-colors nil)
 
-            (add-hook 'notmuch-message-mode-hook (lambda () (corfu-mode 0)))))
+            (add-hook 'notmuch-message-mode-hook (lambda () (corfu-mode 0)))
+
+            (defun vifon/notmuch-send-as (address)
+              "Set a sender to ADDRESS, distinct from the From field.
+
+Useful when sending from an alias address."
+              (interactive
+               (list (read-from-minibuffer
+                      "From: " nil nil nil nil
+                      (nth 1 (mail-extract-address-components
+		                      (message-fetch-field "from"))))))
+              (setq-local mail-specify-envelope-from t
+                          mail-envelope-from address)
+              (setq-local header-line-format `("Sending as " ,address)))))
