@@ -39,7 +39,7 @@
                             (insert-file-contents signature-file)
                             (buffer-string)))))))
 
-            (setq message-sendmail-envelope-from 'header
+            (setq mail-envelope-from 'header
                   send-mail-function 'sendmail-send-it)
             (setq notmuch-always-prompt-for-sender t)
 
