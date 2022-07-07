@@ -122,7 +122,10 @@
                   (lambda ()
                     (interactive)
                     (isearch-exit)
-                    (consult-line isearch-string))
+                    (let ((query (if isearch-regexp
+                                     isearch-string
+                                   (regexp-quote isearch-string))))
+                      (consult-line query)))
                   isearch-mode-map)
   :config (progn
             (setq consult-project-root-function #'vc-root-dir)
