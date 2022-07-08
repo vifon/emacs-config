@@ -117,16 +117,9 @@
          ([remap yank-pop] . consult-yank-pop)
          ([remap goto-line] . consult-goto-line)
          :map minibuffer-local-map
-         ([remap previous-matching-history-element] . consult-history))
-  :init (bind-key "TAB"
-                  (lambda ()
-                    (interactive)
-                    (isearch-exit)
-                    (let ((query (if isearch-regexp
-                                     isearch-string
-                                   (regexp-quote isearch-string))))
-                      (consult-line query)))
-                  isearch-mode-map)
+         ([remap previous-matching-history-element] . consult-history)
+         :map isearch-mode-map
+         ("TAB" . vifon/isearch-to-consult-line))
   :config (progn
             (setq consult-project-root-function #'vc-root-dir)
             (consult-customize
@@ -154,7 +147,16 @@
                         (delq 'consult--source-project-file consult-buffer-sources)))
 
             (setq consult--source-hidden-buffer
-                  (plist-put consult--source-hidden-buffer :narrow ?h))))
+                  (plist-put consult--source-hidden-buffer :narrow ?h))
+
+            (defun vifon/isearch-to-consult-line ()
+              "Search using `consult-line' what was being searched with `isearch'."
+              (interactive)
+              (isearch-exit)
+              (let ((query (if isearch-regexp
+                               isearch-string
+                             (regexp-quote isearch-string))))
+                (consult-line query)))))
 
 (use-package corfu
   :straight t
