@@ -24,6 +24,10 @@
          ("C-j" . nil)
          ([remap electric-newline-and-maybe-indent] . paredit-newline)))
 
+(use-package package-lint
+  :straight t
+  :defer t)
+
 (use-package hideshow-org
   :straight t
   :bind ("M-RET" . hs-toggle-hiding)
