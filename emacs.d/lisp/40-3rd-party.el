@@ -151,22 +151,27 @@
   :bind (("<f5>" . deft)
          :map deft-mode-map
          ("<f5>" . deft-index))
-  :init (progn
-          (setq deft-auto-save-interval 0)
-          (defun deft-index ()
-            (interactive)
-            (deft-find-file "index.org")))
-  :config (setq deft-default-extension "org"
-                deft-new-file-format "%Y%m%d%H%M%S_new"
-                deft-use-filter-string-for-filename t
-                deft-file-naming-rules '((noslash . "-")
-                                         (nospace . "-")
-                                         (case-fn . downcase))))
+  :init (defun deft-index ()
+          (interactive)
+          (dired deft-directory))
+  :config (progn
+            (setq deft-auto-save-interval 0
+                  deft-default-extension "org"
+                  deft-new-file-format "%Y%m%dT%H%M%S--new"
+                  deft-use-filter-string-for-filename nil
+                  deft-file-naming-rules '((noslash . "-")
+                                           (nospace . "-")
+                                           (case-fn . downcase)))
+            (define-key deft-mode-map (kbd "C-c C-n") #'zettel2-create-note)))
 
-(use-package zettel-mode
-  :straight (:host github :repo "vifon/zettel-mode")
-  :mode (("/\\.deft/[^/]+\\.org\\'" . zettel-mode)
-         ("/zettels?/[^/]+\\.org\\'" . zettel-mode)))
+(use-package zettel2
+  :straight (:host github :repo "vifon/zettel2"
+             :files (:defaults "graph.pl"))
+  :mode (("/\\.deft/[^/]+\\.org\\'" . zettel2-mode)
+         ("/zettels?/[^/]+\\.org\\'" . zettel2-mode))
+  :config (progn
+            (require 'zettel2-link)
+            (setq zettel2-graph-format "png")))
 
 (use-package markdown-mode
   :straight t
