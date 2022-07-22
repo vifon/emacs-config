@@ -1,7 +1,0 @@
-#name : sub new { ... }
-# --
-sub new {
-    my $class = shift;
-    my $self = { $0 };
-    bless $self, $class;
-}

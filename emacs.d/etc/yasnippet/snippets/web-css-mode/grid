@@ -1,9 +1,0 @@
-# key: grid
-# name: grid
-# --
-display: grid;
-grid-template-columns: ${1:1fr};
-grid-template-rows: ${2:1fr};
-grid-template-areas:
-"$0"
-;

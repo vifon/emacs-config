@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: breakpoint
-# key: bp
-# --
-import $1pdb
-$1pdb.set_trace()

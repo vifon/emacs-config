@@ -1,3 +1,0 @@
-#name : malloc(sizeof(...)*...);
-# --
-${1:$(if (string-match "^$" yas-text) "" (concat "(" yas-text "*)"))}malloc(sizeof(${1:int})${2:})

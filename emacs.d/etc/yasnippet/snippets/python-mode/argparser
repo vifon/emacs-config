@@ -1,5 +1,0 @@
-#name : parser = argparse.ArgumentParser()
-# --
-${1:parser} = argparse.ArgumentParser()
-$1.add_argument($0)
-${2:args} = $1.parse_args()

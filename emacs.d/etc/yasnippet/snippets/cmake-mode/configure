@@ -1,7 +1,0 @@
-#name : configure_file(...)
-# --
-configure_file(
-  ${1:\$\{CMAKE_CURRENT_SOURCE_DIR\}}/${2:config.h}.in
-  ${3:\$\{CMAKE_CURRENT_BINARY_DIR\}}/${4:$2}
-  @ONLY
-  )

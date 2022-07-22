@@ -1,6 +1,0 @@
-#name : while (1)
-# --
-bool _ = true;
-for (;_;) {
-    $0
-}

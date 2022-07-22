@@ -1,4 +1,0 @@
-#name : with open(..., ...) as ...:
-# --
-with open(${1:path}, '${2:r}') as ${3:name}:
-    $0

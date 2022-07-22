@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: unique_ptr
-# key: up
-# binding: direct-keybinding
-# --
-std::unique_ptr<${1:T}> ${2:ptr}(new $1($3));

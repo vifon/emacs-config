@@ -1,3 +1,0 @@
-#name : std::cout << ... << std::endl;
-# --
-std::cout << $1 << std::endl;

@@ -1,8 +1,0 @@
-#name : for ( iterator ...; ...; ...) { ... }
-# --
-for (${1:std::vector<${2:T}>}::${3:iterator} ${4:it} = ${5:container}.$6begin();
-     $4 != $5.$6end();
-     ++$4) {
-
-    $0
-}

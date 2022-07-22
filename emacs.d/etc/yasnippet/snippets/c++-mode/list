@@ -1,3 +1,0 @@
-#name : std::list<...>;
-# --
-std::list<${1:T}>$0;
